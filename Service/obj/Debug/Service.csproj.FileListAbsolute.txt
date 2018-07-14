@@ -1,0 +1,15 @@
+E:\Project\BuildCommercial\Service\bin\Debug\Service.dll
+E:\Project\BuildCommercial\Service\bin\Debug\Service.pdb
+E:\Project\BuildCommercial\Service\bin\Debug\Common.dll
+E:\Project\BuildCommercial\Service\bin\Debug\Data.dll
+E:\Project\BuildCommercial\Service\bin\Debug\Model.dll
+E:\Project\BuildCommercial\Service\bin\Debug\Common.pdb
+E:\Project\BuildCommercial\Service\bin\Debug\Data.pdb
+E:\Project\BuildCommercial\Service\bin\Debug\Data.dll.config
+E:\Project\BuildCommercial\Service\bin\Debug\Model.pdb
+E:\Project\BuildCommercial\Service\bin\Debug\Model.dll.config
+E:\Project\BuildCommercial\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+E:\Project\BuildCommercial\Service\obj\Debug\Service.dll
+E:\Project\BuildCommercial\Service\obj\Debug\Service.pdb
+E:\Project\BuildCommercial\Service\bin\Debug\EntityFramework.dll
+E:\Project\BuildCommercial\Service\bin\Debug\EntityFramework.xml
