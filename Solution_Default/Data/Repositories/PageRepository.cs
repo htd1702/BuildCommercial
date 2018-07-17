@@ -1,0 +1,14 @@
+﻿using Data.Infrastructure;
+using Model.Model;
+
+namespace Data.Repositories
+{
+    public interface IPageRepository : IRepository<Page>
+    { }
+
+    public class PageRepository : RepositoryBase<Page>, IPageRepository
+    {
+        public PageRepository(IDbFactory dbFactory) : base(dbFactory)
+        { }
+    }
+}

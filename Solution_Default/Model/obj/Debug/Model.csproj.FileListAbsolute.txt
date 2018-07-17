@@ -1,0 +1,12 @@
+E:\Studys\Project\Solution_Default\Model\bin\Debug\Model.dll.config
+E:\Studys\Project\Solution_Default\Model\bin\Debug\Model.dll
+E:\Studys\Project\Solution_Default\Model\bin\Debug\Model.pdb
+E:\Studys\Project\Solution_Default\Model\bin\Debug\EntityFramework.dll
+E:\Studys\Project\Solution_Default\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Studys\Project\Solution_Default\Model\bin\Debug\EntityFramework.xml
+E:\Studys\Project\Solution_Default\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Studys\Project\Solution_Default\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\Studys\Project\Solution_Default\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\Studys\Project\Solution_Default\Model\obj\Debug\Model.csproj.CopyComplete
+E:\Studys\Project\Solution_Default\Model\obj\Debug\Model.dll
+E:\Studys\Project\Solution_Default\Model\obj\Debug\Model.pdb
