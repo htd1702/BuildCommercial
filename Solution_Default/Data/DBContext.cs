@@ -18,7 +18,6 @@ namespace Data
 
         //Khai báo tất cả các table trong cấu hình confic
         public DbSet<Footer> Footers { get; set; }
-
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuGroup> MenuGroups { get; set; }
         public DbSet<Order> Orders { get; set; }

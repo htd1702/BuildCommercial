@@ -16,11 +16,7 @@ namespace Data.Infrastructure
         private DBContext dataContext;
         private readonly IDbSet<T> dbSet;
 
-        protected IDbFactory DbFactory
-        {
-            get;
-            private set;
-        }
+        protected IDbFactory DbFactory { get; private set; }
 
         protected DBContext DbContext
         {
@@ -29,6 +25,7 @@ namespace Data.Infrastructure
 
         #endregion Properties
 
+        //Khai báo DBContext
         protected RepositoryBase(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
@@ -37,22 +34,26 @@ namespace Data.Infrastructure
 
         #region Implementation
 
+        //Add
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
         }
 
+        //Update
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);
             dataContext.Entry(entity).State = EntityState.Modified;
         }
 
+        //Delete truyền nhìu multi
         public virtual void Delete(T entity)
         {
             dbSet.Remove(entity);
         }
 
+        //Delete truyền ID
         public virtual void Delete(int id)
         {
             var entity = dbSet.Find(id);

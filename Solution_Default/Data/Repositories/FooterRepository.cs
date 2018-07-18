@@ -3,6 +3,7 @@ using Model.Model;
 
 namespace Data.Repositories
 {
+    //Tất cả con của Interface đều faj~ kế thừa từ IRepository
     public interface IFooterRepository : IRepository<Footer>
     {
     }
