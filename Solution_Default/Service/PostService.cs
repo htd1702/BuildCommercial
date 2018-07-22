@@ -21,6 +21,8 @@ namespace Service
 
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
+        IEnumerable<Post> GetAllByCategoryPaging(int categoryId, string tag, int page, int pageSize, out int totalRow);
+
         void SaveChange();
     }
 
@@ -51,6 +53,11 @@ namespace Service
         public IEnumerable<Post> GetAll()
         {
             return _postRepository.GetAll(new string[] { "PostCategory" });
+        }
+
+        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, string tag, int page, int pageSize, out int totalRow)
+        {
+            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
         }
 
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)

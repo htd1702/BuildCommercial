@@ -3,15 +3,15 @@ E:\Studys\Project\Solution_Default\Service\bin\Debug\Service.pdb
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Common.dll
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Data.dll
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Model.dll
+E:\Studys\Project\Solution_Default\Service\bin\Debug\EntityFramework.dll
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Common.pdb
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Data.pdb
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Data.dll.config
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Model.pdb
 E:\Studys\Project\Solution_Default\Service\bin\Debug\Model.dll.config
+E:\Studys\Project\Solution_Default\Service\bin\Debug\EntityFramework.xml
 E:\Studys\Project\Solution_Default\Service\obj\Debug\Service.csprojAssemblyReference.cache
 E:\Studys\Project\Solution_Default\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
 E:\Studys\Project\Solution_Default\Service\obj\Debug\Service.csproj.CopyComplete
 E:\Studys\Project\Solution_Default\Service\obj\Debug\Service.dll
 E:\Studys\Project\Solution_Default\Service\obj\Debug\Service.pdb
-E:\Studys\Project\Solution_Default\Service\bin\Debug\EntityFramework.dll
-E:\Studys\Project\Solution_Default\Service\bin\Debug\EntityFramework.xml

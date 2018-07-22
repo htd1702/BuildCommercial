@@ -15,6 +15,7 @@ namespace Data.Repositories
         public PostRepository(IDbFactory dbFactory) : base(dbFactory)
         { }
 
+        //Lấy danh sách post by tag
         public IEnumerable<Post> GetAllByTag(string tag, int pagIndex, int pageSize, out int totalRow)
         {
             var query = from p in DbContext.Posts
