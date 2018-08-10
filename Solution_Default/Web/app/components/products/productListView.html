@@ -1,0 +1,50 @@
+﻿<style>
+    .messageStatusGreen {
+        color: green;
+    }
+
+    .messageStatusRed {
+        color: red;
+    }
+</style>
+<!-- MAIN CONTENT-->
+<div class="main-content" style="padding-top:60px !important;">
+    <div class="container-fluid">
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderless table-data3">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Gía</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in products">
+                                <td>{{item.ID}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Price}}</td>
+                                <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
+                                <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

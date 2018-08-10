@@ -13,6 +13,7 @@ namespace UnitTest.ServiceTest
     {
         //Mock khởi tạo đối tượng giả
         private Mock<IPostCategoryRepository> _mockRepository;
+
         private Mock<IUnitOfWork> _mockUnitOfWork;
         private IPostCategoryService _categoryService;
         private List<PostCategory> _listCategory;

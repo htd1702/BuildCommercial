@@ -1,9 +1,10 @@
-﻿using Model.Model;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Model.Model;
 using System.Data.Entity;
 
 namespace Data
 {
-    public class DBContext : DbContext
+    public class DBContext : IdentityDbContext<ApplicationUser>
     {
         //Get connection string fix connect data
         public DBContext() : base("BuildingConnection")
@@ -14,10 +15,19 @@ namespace Data
         //chạy khi khởi tạo entities
         protected override void OnModelCreating(DbModelBuilder builder)
         {
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+        }
+
+        //Tạo mới identitydbcontext
+        public static DBContext Create()
+        {
+            return new DBContext();
         }
 
         //Khai báo tất cả các table trong cấu hình confic
         public DbSet<Footer> Footers { get; set; }
+
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuGroup> MenuGroups { get; set; }
         public DbSet<Order> Orders { get; set; }

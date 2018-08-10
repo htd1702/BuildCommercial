@@ -3,7 +3,7 @@ using Model.Model;
 
 namespace Data.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     { }
 
     public class ProductRepository : RepositoryBase<Product>, IProductRepository

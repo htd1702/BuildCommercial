@@ -1,0 +1,64 @@
+﻿<style>
+    .messageStatusGreen {
+        color: green;
+    }
+
+    .messageStatusRed {
+        color: red;
+    }
+</style>
+<!-- MAIN CONTENT-->
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success pull-right" ui-sref="add_product_category">Thêm mới</button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">Simple Table</h4>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in productCategories">
+                        <td>{{item.ID}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
+                        <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
+                        <td>
+                            <button class="btn btn-primary">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->
