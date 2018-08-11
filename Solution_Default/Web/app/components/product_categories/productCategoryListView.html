@@ -12,7 +12,10 @@
     <div class="row">
         <div class="col-md-6">
             <div class="input-group">
-                <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa..." />
+                <input type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Từ khóa..." />
+                <ul class="nav" ng-hide="hideSeach" ng-model="hideSeach">
+                    <li class="nav-item" ng-repeat="name in filterName" ng-click="filterSearch(name)">{{name}}</li>
+                </ul>
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
@@ -25,7 +28,7 @@
 </div>
 <div class="card">
     <div class="card-header card-header-primary">
-        <h4 class="card-title ">Simple Table</h4>
+        <h4 class="card-title ">List Product Category</h4>
         <p class="card-category"> Here is a subtitle for this table</p>
     </div>
     <div class="card-body">
@@ -47,9 +50,7 @@
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
                         <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
                         <td>
-                            <button class="btn btn-primary">
-                                <i class="fa fa-pencil"></i>
-                            </button>
+                            <button class="btn btn-primary" ui-sref="edit_product_category({id:item.ID})"><i class="fa fa-pencil"></i></button>
                             <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>

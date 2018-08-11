@@ -40,7 +40,26 @@
                 console.log('Load productcategory failed.');
             });
         }
-
+        //autocomplete
+        $scope.complateKeyWord = function (string) {
+            if (string != "") {
+                $scope.hideSeach = false;
+                var output = [];
+                angular.forEach($scope.productCategories, function (value) {
+                    if (value.Name.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
+                        output.push(value.Name);
+                    }
+                });
+                $scope.filterName = output;
+            }
+            else
+                $scope.hideSeach = true;
+        }
+        $scope.filterSearch = function (string) {
+            $scope.keyword = string;
+            $scope.hideSeach = true;
+            console.log($scope.hideSeach);
+        }
         $scope.getProductCategories();
     }
 })(angular.module('default.product_categories'));

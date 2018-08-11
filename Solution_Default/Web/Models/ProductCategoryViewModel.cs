@@ -8,10 +8,10 @@ namespace Web.Models
     {
         public int ID { set; get; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập tên danh mục")]
         public string Name { set; get; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập tiêu đề SEO")]
         public string Alias { set; get; }
 
         public string Description { set; get; }
@@ -36,7 +36,7 @@ namespace Web.Models
 
         public string MetaDescription { set; get; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập trạng thái")]
         public bool Status { set; get; }
 
         public virtual IEnumerable<ProductViewModel> Products { set; get; }

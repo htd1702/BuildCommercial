@@ -257,6 +257,7 @@
     <Content Include="app\shared\filter\statusFilter.js" />
     <Content Include="app\shared\modules\notificationService.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\commonService.js" />
     <Content Include="Content\admin\demo.css" />
     <Content Include="Content\admin\material-dashboard.css" />
     <Content Include="Content\client\material-kit.css" />

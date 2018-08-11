@@ -3,13 +3,19 @@
     //apiService tầng service gọi get post put delete
     //notificationService message thông báo
     //$state : trỏ đến page
-    productCategoryAddController.$inject = ["$scope", "apiService", "notificationService", "$state"];
+    productCategoryAddController.$inject = ["$scope", "apiService", "notificationService", "$state", "commonService"];
 
-    function productCategoryAddController($scope, apiService, notificationService, $state) {
+    function productCategoryAddController($scope, apiService, notificationService, $state, commonService) {
         //set value model
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true
+        }
+
+        $scope.GetSeoTitle = GetSeoTitle;
+
+        function GetSeoTitle() {
+            $scope.productCategory.Alias = commonService.getSEOTitle($scope.productCategory.Name);
         }
 
         //load option parentID

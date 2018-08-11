@@ -75,7 +75,7 @@ namespace Web.Api
             });
         }
 
-        [Route("getid")]
+        [Route("getid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetId(HttpRequestMessage request, int id)
         {
@@ -111,6 +111,8 @@ namespace Web.Api
                     ProductCategory newProductCategory = new ProductCategory();
                     //Call method add product category in folder extensions
                     newProductCategory.UpdateProductCategory(productCategoryVM);
+                    //Set date
+                    newProductCategory.CreatedDate = DateTime.Now;
                     //Add data
                     _productCategoryService.Add(newProductCategory);
                     //Save change
@@ -143,6 +145,8 @@ namespace Web.Api
                     ProductCategory dbProductCategory = _productCategoryService.GetById(productCategoryVM.ID);
                     //Call method add product category in folder extensions
                     dbProductCategory.UpdateProductCategory(productCategoryVM);
+                    //Set date
+                    dbProductCategory.UpdatedDate = DateTime.Now;
                     //Add data
                     _productCategoryService.Update(dbProductCategory);
                     //Save change
