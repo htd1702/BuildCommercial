@@ -2,19 +2,39 @@
     app.controller("productCategoryListController", productCategoryListController);
     //apiService tầng service gọi get post put delete
     //notificationService message thông báo
-    productCategoryListController.$inject = ["$scope", "apiService", "notificationService"];
-
-    function productCategoryListController($scope, apiService, notificationService) {
+    //$ngBootbox show modelbox
+    //$filter liberty
+    productCategoryListController.$inject = ["$scope", "apiService", "notificationService", "$ngBootbox", "$filter"];
+    
+    function productCategoryListController($scope, apiService, notificationService, $ngBootbox, $filter) {
         //scope binding
         $scope.productCategories = [];
+        $scope.keyword = "";
         $scope.page = 0;
         $scope.pagesCount = 0;
+        //create funtion
         $scope.getProductCategories = getProductCategories;
-        //binding
-        $scope.keyword = "";
-        //method search
-        $scope.search = function () {
-            getProductCategories();
+        $scope.search = search;
+        $scope.deleteProductCategory = deleteProductCategory;
+        $scope.complateKeyWord = complateKeyWord;
+        $scope.filterSearch = filterSearch;
+        $scope.deleteProductCategory = deleteProductCategory;
+        $scope.deleteAllProductCategories = deleteAllProductCategories;
+        //method delete
+        function deleteProductCategory(id) {
+            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+                var config = {
+                    params: {
+                        id: id
+                    }
+                }
+                apiService.delete("/api/productcategory/delete", config, function () {
+                    notificationService.displaySuccess("Xóa thành công!");
+                    search();
+                }, function () {
+                    notificationService.displayError("Xóa không thành công!");
+                });
+            });
         }
         //method get product cate
         function getProductCategories(page) {
@@ -40,8 +60,12 @@
                 console.log('Load productcategory failed.');
             });
         }
+        //method search
+        function search() {
+            getProductCategories();
+        }
         //autocomplete
-        $scope.complateKeyWord = function (string) {
+        function complateKeyWord(string) {
             if (string != "") {
                 $scope.hideSeach = false;
                 var output = [];
@@ -55,11 +79,51 @@
             else
                 $scope.hideSeach = true;
         }
-        $scope.filterSearch = function (string) {
+        //search keyword in model
+        function filterSearch(string) {
             $scope.keyword = string;
             $scope.hideSeach = true;
-            console.log($scope.hideSeach);
         }
-        $scope.getProductCategories();
+        //method delete
+        function deleteProductCategory(id) {
+            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+                var config = {
+                    params: {
+                        id: id
+                    }
+                }
+                apiService.delete("/api/productcategory/delete", config, function () {
+                    notificationService.displaySuccess("Xóa thành công!");
+                    search();
+                }, function () {
+                    notificationService.displayError("Xóa không thành công!");
+                });
+            });
+        }
+        //method delete multi
+        function deleteAllProductCategories() {
+            var listId = [];
+            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+                $(".chk_allProductCategories:checked").each(function () {
+                    listId.push($(this).val());
+                });
+
+                var config = {
+                    params: {
+                        listId: JSON.stringify(listId)
+                    }
+                }
+                console.log(config);
+
+                apiService.delete("/api/productcategory/deletemulti", config, function (result) {
+                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    search();
+                }, function (error) {
+                    notificationService.displayError("Xóa không thành công!");
+                });
+            });
+        }
+        //call getproduct
+        getProductCategories();
     }
 })(angular.module('default.product_categories'));

@@ -31,6 +31,9 @@ namespace Model.Model
         public decimal Price { set; get; }
 
         public decimal? PromotionPrice { set; get; }
+
+        public int? Quantity { set; get; }
+
         public int? Warranty { set; get; }
 
         [MaxLength(500)]
@@ -39,7 +42,9 @@ namespace Model.Model
         public string Content { set; get; }
 
         public bool? HomeFlag { set; get; }
+
         public bool? HotFlag { set; get; }
+
         public int? ViewCount { set; get; }
 
         [ForeignKey("CategoryID")]

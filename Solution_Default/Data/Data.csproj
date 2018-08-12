@@ -98,6 +98,14 @@
     <Compile Include="Migrations\201807311441558_ChangeKey.Designer.cs">
       <DependentUpon>201807311441558_ChangeKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808121100255_AddQuantityProduct.cs" />
+    <Compile Include="Migrations\201808121100255_AddQuantityProduct.Designer.cs">
+      <DependentUpon>201808121100255_AddQuantityProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808121102520_ChangeAttriQuantityProduct.cs" />
+    <Compile Include="Migrations\201808121102520_ChangeAttriQuantityProduct.Designer.cs">
+      <DependentUpon>201808121102520_ChangeAttriQuantityProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -145,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807311441558_ChangeKey.resx">
       <DependentUpon>201807311441558_ChangeKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121100255_AddQuantityProduct.resx">
+      <DependentUpon>201808121100255_AddQuantityProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121102520_ChangeAttriQuantityProduct.resx">
+      <DependentUpon>201808121102520_ChangeAttriQuantityProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

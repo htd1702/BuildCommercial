@@ -15,6 +15,8 @@ namespace Service
 
         IEnumerable<Product> GetAll();
 
+        IEnumerable<Product> GetAll(string keyword);
+
         IEnumerable<Product> GetAllByParentId(int parentId);
 
         Product GetById(int id);
@@ -46,6 +48,14 @@ namespace Service
         public IEnumerable<Product> GetAll()
         {
             return _productRepository.GetAll();
+        }
+
+        public IEnumerable<Product> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+                return _productRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _productRepository.GetAll();
         }
 
         public IEnumerable<Product> GetAllByParentId(int parentId)

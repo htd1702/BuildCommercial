@@ -37,3 +37,5 @@ E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.csproj.CoreCompileInputs.
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.csproj.CopyComplete
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.dll
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.pdb
+E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.AddQuantityProduct.resources
+E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.ChangeAttriQuantityProduct.resources

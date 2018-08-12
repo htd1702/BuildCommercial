@@ -24,7 +24,12 @@
             $http.post(url, data).then(function (result) {
                 success(result);
             }, function (error) {
-                failed(error);
+                if (error.status == "401") {
+                    notificationService.displayError("Authenticate is required");
+                }
+                else if (failed != null) {
+                    failed(error);
+                }
             });
         }
         //method put
@@ -32,13 +37,32 @@
             $http.put(url, data).then(function (result) {
                 success(result);
             }, function (error) {
-                failed(error);
+                if (error.status == "401") {
+                    notificationService.displayError("Authenticate is required");
+                }
+                else if (failed != null) {
+                    failed(error);
+                }
+            });
+        }
+        //method delete
+        function del(url, data, success, failed) {
+            $http.delete(url, data).then(function (result) {
+                success(result);
+            }, function (error) {
+                if (error.status == "401") {
+                    notificationService.displayError("Authenticate is required");
+                }
+                else if (failed != null) {
+                    failed(error);
+                }
             });
         }
         return {
             get: get,
             post: post,
-            put: put
+            put: put,
+            delete: del
         }
     }
 })(angular.module("default.common"));

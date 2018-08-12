@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using Web.Infrastructure.Core;
 using Web.Infrastructure.Extensions;
 using Web.Models;
@@ -79,21 +80,25 @@ namespace Web.Api
         [HttpGet]
         public HttpResponseMessage GetId(HttpRequestMessage request, int id)
         {
-            return CreateHttpResponse(request, () =>
+            if (id > 0)
             {
-                var model = _productCategoryService.GetById(id);
-                //mapp data
-                var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
-                //check status
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                //return status
-                return response;
-            });
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _productCategoryService.GetById(id);
+                    //mapp data
+                    var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
         [Route("create")]
         [HttpPost]
-        //nặc danh
         [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductCategoryViewModel productCategoryVM)
         {
@@ -128,7 +133,6 @@ namespace Web.Api
 
         [Route("update")]
         [HttpPut]
-        //nặc danh
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVM)
         {
@@ -155,6 +159,70 @@ namespace Web.Api
                     var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(dbProductCategory);
                     //Check request
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+                return response;
+            });
+        }
+
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            if (id > 0)
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    HttpResponseMessage response = null;
+                    //check issue
+                    if (!ModelState.IsValid)
+                    {
+                        //get status
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                    }
+                    else
+                    {
+                        //Delete
+                        var reponse = _productCategoryService.Delete(id);
+                        //Save change
+                        _productCategoryService.Save();
+                        //Mapping data to dataView
+                        var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(reponse);
+                        //Check request
+                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                    }
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                //check issue
+                if (!ModelState.IsValid)
+                {
+                    //get status
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(listId);
+                    foreach (var id in listProductCategory)
+                    {
+                        _productCategoryService.Delete(id);
+                    }
+                    //Save change
+                    _productCategoryService.Save();
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
                 }
                 return response;
             });

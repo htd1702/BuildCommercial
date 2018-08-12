@@ -308,6 +308,7 @@
     <Content Include="img\client\profile_city.jpg" />
     <Content Include="Scripts\admin\material-dashboard.js" />
     <Content Include="Scripts\admin\material-dashboard.min.js" />
+    <Content Include="Scripts\angular-ui-route.js" />
     <Content Include="Scripts\core\bootstrap-material-design.min.js" />
     <Content Include="Scripts\core\jquery.min.js" />
     <Content Include="Scripts\core\popper.min.js" />
@@ -321,11 +322,13 @@
     <Content Include="app\app.js" />
     <Content Include="Scripts\client\material-kit.js" />
     <Content Include="Scripts\client\material-kit.min.js" />
+    <Content Include="Scripts\plugins\bootbox.min.js" />
     <Content Include="Scripts\plugins\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\plugins\bootstrap-notify.js" />
     <Content Include="Scripts\plugins\chartist.min.js" />
     <Content Include="Scripts\plugins\jquery.sharrre.js" />
     <Content Include="Scripts\plugins\moment.min.js" />
+    <Content Include="Scripts\plugins\ngBootbox.js" />
     <Content Include="Scripts\plugins\nouislider.min.js" />
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\plugins\toastr.min.js" />

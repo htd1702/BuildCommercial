@@ -36,26 +36,30 @@
             <table class="table">
                 <thead class=" text-primary">
                     <tr>
+                        <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>ID</th>
                         <th>Tên</th>
                         <th>Ngày tạo</th>
                         <th>Trạng thái</th>
-                        <th>Thao tác</th>
+                        <th>
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllProductCategories()"><i class="fa fa-trash"></i></button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in productCategories">
+                        <td><input type="checkbox" class="chk_allProductCategories" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.ID}}</td>
                         <td>{{item.Name}}</td>
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
                         <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
                         <td>
                             <button class="btn btn-primary" ui-sref="edit_product_category({id:item.ID})"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-danger" ng-click="deleteProductCategory(item.ID)"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                        <td colspan="6"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('default.common', ['ui.router'])
+    angular.module('default.common', ['ui.router', 'ngBootbox'])
 })();
