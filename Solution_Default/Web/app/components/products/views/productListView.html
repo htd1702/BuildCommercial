@@ -17,24 +17,23 @@
                     <li class="nav-item" ng-repeat="name in filterName" ng-click="filterSearch(name)">{{name}}</li>
                 </ul>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-success pull-right" ui-sref="product_add">Thêm mới</button>
+            <button class="btn btn-success pull-right" ui-sref="product_add"><i class="material-icons">add</i></button>
         </div>
     </div>
 </div>
 <div class="card">
     <div class="card-header card-header-primary">
         <h4 class="card-title ">List Product</h4>
-        <p class="card-category"> Here is a subtitle for this table</p>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table">
-                <thead class=" text-primary">
+            <table class="table text-center">
+                <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>ID</th>
@@ -44,8 +43,8 @@
                         <th>Lượt xem</th>
                         <th>Ngày tạo</th>
                         <th>Trạng thái</th>
-                        <th>
-                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllProductCategories()"><i class="fa fa-trash"></i></button>
+                        <th class="td-actions text-right">
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllProduct()"><i class="fa fa-trash"></i></button>
                         </th>
                     </tr>
                 </thead>
@@ -59,13 +58,20 @@
                         <td>{{item.ViewCount}}</td>
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
                         <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
-                        <td>
-                            <button class="btn btn-primary" ui-sref="edit_product({id:item.ID})"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger" ng-click="deleteProduct(item.ID)"><i class="fa fa-trash"></i></button>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="product_edit({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" ng-click="deleteProduct(item.ID)">
+                                <i class="material-icons">close</i>
+                            </button>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="9"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                        <td colspan="9">
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getProduct(page)"></pager-directive>
+                            <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>

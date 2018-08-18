@@ -1,14 +1,14 @@
 ﻿<div ng-hide="(!pagesCount || pagesCount < 2)">
-    <ul class="pagination">
-        <li class="page-item"><button ng-hide="page == 0" ng-click="search(0)" class="page-link"><<</button></li>
+    <ul class="pagination pagination-primary">
+        <li><button ng-hide="page == 0" ng-click="search(0)" class="page-link"><<</button></li>
         <!--<li class="page-item"><button ng-hide="page == 0" ng-click="search(page-1)" class="page-link"><</button></li>-->
-        <li class="page-item" ng-repeat="n in range()" ng-class="{active: n == page}">
+        <li ng-repeat="n in range()" ng-class="{active: n == page}">
             <button ng-click="search(n)" ng-if="n != page" class="page-link">{{n+1}}</button>
             <button ng-click="search(n)" ng-if="n == page" class="page-link">{{n+1}}</button>
         </li>
         <!--<li class="page-item">
             <button ng-hide="page == pagesCount - 1" ng-click="search(pagePlus(1))" class="page-link">></button>
         </li>-->
-        <li class="page-item"><button ng-hide="page == pagesCount - 1" ng-click="search(pagesCount - 1)" class="page-link">>></button></li>
+        <li><button ng-hide="page == pagesCount - 1" ng-click="search(pagesCount - 1)" class="page-link">>></button></li>
     </ul>
 </div>

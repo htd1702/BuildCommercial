@@ -5,7 +5,7 @@
     //$ngBootbox show modelbox
     //$filter liberty
     productCategoryListController.$inject = ["$scope", "apiService", "notificationService", "$ngBootbox", "$filter"];
-    
+
     function productCategoryListController($scope, apiService, notificationService, $ngBootbox, $filter) {
         //scope binding
         $scope.productCategories = [];
@@ -107,14 +107,11 @@
                 $(".chk_allProductCategories:checked").each(function () {
                     listId.push($(this).val());
                 });
-
                 var config = {
                     params: {
                         listId: JSON.stringify(listId)
                     }
                 }
-                console.log(config);
-
                 apiService.delete("/api/productcategory/deletemulti", config, function (result) {
                     notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
                     search();

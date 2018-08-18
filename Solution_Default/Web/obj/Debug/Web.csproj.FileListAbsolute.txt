@@ -1,3 +1,9 @@
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.IO.Compression.dll
+E:\Studys\Project\Solution_Default\Web\bin\roslyn\VBCSCompiler.exe
 E:\Studys\Project\Solution_Default\Web\bin\ApplicationInsights.config
 E:\Studys\Project\Solution_Default\Web\bin\Web.dll.config
 E:\Studys\Project\Solution_Default\Web\bin\Web.dll
@@ -9,13 +15,9 @@ E:\Studys\Project\Solution_Default\Web\bin\roslyn\csi.exe
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\csi.exe.config
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\csi.rsp
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -25,7 +27,6 @@ E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.Console.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.Diagnostics.Process.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.IO.Compression.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -48,7 +49,6 @@ E:\Studys\Project\Solution_Default\Web\bin\roslyn\System.Xml.XPath.XDocument.dll
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\vbc.exe
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\vbc.exe.config
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\vbc.rsp
-E:\Studys\Project\Solution_Default\Web\bin\roslyn\VBCSCompiler.exe
 E:\Studys\Project\Solution_Default\Web\bin\roslyn\VBCSCompiler.exe.config
 E:\Studys\Project\Solution_Default\Web\bin\Antlr3.Runtime.dll
 E:\Studys\Project\Solution_Default\Web\bin\Autofac.dll
@@ -139,3 +139,7 @@ E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.csproj.CoreCompileInputs.ca
 E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.csproj.CopyComplete
 E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.pdb
+E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.I18N.admin.product.product-en.resources
+E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.I18N.admin.product.product-fr.resources
+E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.I18N.admin.product.product-vi.resources
+E:\Studys\Project\Solution_Default\Web\obj\Debug\Web.csproj.GenerateResource.cache

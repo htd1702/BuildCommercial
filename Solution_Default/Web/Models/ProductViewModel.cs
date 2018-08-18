@@ -8,7 +8,6 @@ namespace Web.Models
         public int ID { set; get; }
 
         [Required]
-
         public string Name { set; get; }
 
         [Required]

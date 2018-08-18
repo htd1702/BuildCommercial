@@ -32,10 +32,10 @@ E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.InitialDB.reso
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.AddErrorTable.resources
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.IntergrateAspnetIdentity.resources
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.ChangeKey.resources
+E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.AddQuantityProduct.resources
+E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.ChangeAttriQuantityProduct.resources
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.csproj.GenerateResource.cache
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.csproj.CopyComplete
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.dll
 E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.pdb
-E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.AddQuantityProduct.resources
-E:\Studys\Project\Solution_Default\Data\obj\Debug\Data.Migrations.ChangeAttriQuantityProduct.resources
