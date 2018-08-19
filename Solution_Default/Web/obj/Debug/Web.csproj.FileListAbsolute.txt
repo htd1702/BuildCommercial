@@ -200,6 +200,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.Integration.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.Integration.WebApi.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\AutoMapper.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\CKFinder.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Common.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\EntityFramework.dll
@@ -288,4 +289,3 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.Core
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\CKFinder.dll

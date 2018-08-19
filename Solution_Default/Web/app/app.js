@@ -1,4 +1,5 @@
-﻿/// <reference path="../scripts/angular.js" />
+﻿/// <reference path="../scripts/plugins/angular/angular.min.js" />
+
 //config routing default
 (function () {
     angular.module('default',

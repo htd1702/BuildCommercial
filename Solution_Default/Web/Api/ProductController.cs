@@ -113,6 +113,7 @@ namespace Web.Api
                     newProduct.UpdateProduct(productVM);
                     //Set date
                     newProduct.CreatedDate = DateTime.Now;
+                    newProduct.UpdatedDate = DateTime.Now;
                     //Add data
                     _productService.Add(newProduct);
                     //Save change

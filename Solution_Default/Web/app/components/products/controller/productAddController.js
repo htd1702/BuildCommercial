@@ -13,9 +13,9 @@
             Status: true
         }
         //setting ckeditor
-        ckeditorOptions = {
-            lang: 'vi',
-            height: '50px'
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
         }
         //create function
         $scope.GetSeoTitle = GetSeoTitle;

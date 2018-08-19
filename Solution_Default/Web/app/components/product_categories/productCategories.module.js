@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../scripts/angular.js" />
+﻿/// <reference path="../../../scripts/plugins/angular/angular.min.js" />
 
 (function () {
     angular.module("default.product_categories", ['default.common']).config(config);
