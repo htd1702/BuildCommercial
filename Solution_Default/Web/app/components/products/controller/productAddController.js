@@ -12,9 +12,15 @@
             CreatedDate: new Date(),
             Status: true
         }
+        //setting ckeditor
+        ckeditorOptions = {
+            lang: 'vi',
+            height: '50px'
+        }
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProduct = AddProduct;
+        $scope.ChooseImage = ChooseImage;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSEOTitle($scope.product.Name);
@@ -35,6 +41,14 @@
             }, function (error) {
                 notificationService.displayError("Thêm mới thất bại!");
             });
+        }
+        //funcion upload
+        function ChooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.product.Image = filtUrl;
+            }
+            finder.popup();
         }
         //call method load list categories
         LoadCategory();

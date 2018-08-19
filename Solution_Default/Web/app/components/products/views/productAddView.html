@@ -47,21 +47,20 @@
                 <div class="form-group col-md-4">
                     <label for="image">Hình</label>
                     <input type="text" class="form-control" ng-model="product.Image" name="image">
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="image">Hình</label>
-                    <input type="text" class="form-control" ng-model="product.MoreImages" name="image">
+                    <label for="metaKeyword">Meta Keyword</label>
+                    <input type="text" required placeholder="Nhập Meta Keyword..." class="form-control" ng-model="product.MetaKeyword" name="metaKeyword">
+                    <span ng-show="frmAddproduct.metaKeyword.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">Mô tả</label>
-                <textarea rows="2" placeholder="Nội dung..." class="form-control" ng-maxlength="600" ng-model="product.Description" name="description"></textarea>
+                <textarea rows="2" placeholder="Nội dung..." class="form-control" ckeditor="ckeditorOptions" ng-maxlength="600" ng-model="product.Description" name="description"></textarea>
                 <span class="text-danger" ng-show="frmAddproduct.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
-            </div>
-            <div class="form-group">
-                <label for="metaKeyword">Meta Keyword</label>
-                <input type="text" required placeholder="Nhập Meta Keyword..." class="form-control" ng-model="product.MetaKeyword" name="metaKeyword">
-                <span ng-show="frmAddproduct.metaKeyword.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
             </div>
             <div class="form-group">
                 <label for="metaDescription">Meta Description</label>
