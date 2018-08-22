@@ -1,0 +1,13 @@
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\bin\Demo.dll.config
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\bin\Demo.dll
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\bin\Demo.pdb
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\obj\Debug\Demo.dll
+c:\users\user\documents\visual studio 2013\Projects\Demo\Demo\obj\Debug\Demo.pdb
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\bin\Demo.dll.config
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\bin\Demo.dll
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\bin\Demo.pdb
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\obj\Debug\Demo.csprojAssemblyReference.cache
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\obj\Debug\Demo.dll
+E:\Studys\Project\BuildCommercial\Front-End\Demo\Demo\obj\Debug\Demo.pdb

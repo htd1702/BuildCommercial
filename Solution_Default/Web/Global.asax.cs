@@ -1,4 +1,7 @@
-﻿using System.Web.Http;
+﻿using System.Globalization;
+using System.Threading;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,6 +19,21 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_BeginRequest()
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["Lang"];
+            if (cookie != null && cookie.Value != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(cookie.Value);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(cookie.Value);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            }
         }
     }
 }

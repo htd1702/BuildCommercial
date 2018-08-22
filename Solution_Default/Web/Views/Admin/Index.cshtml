@@ -31,7 +31,7 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" data-toggle="collapse" href="#pageProduct" aria-expanded="false">
                             <i class="material-icons">dashboard</i>
-                            <p>Product<b class="caret"></b></p>
+                            <p>@Web.Resources.admin.re_Product.Product<b class="caret"></b></p>
                         </a>
                         <div class="collapse" id="pageProduct">
                             <ul>
@@ -176,3 +176,13 @@
     <script src="~/app/components/home/homeController.js"></script>
 </body>
 </html>
+<script>
+    $("a[data-lang]").click(function () {
+        var lang = $(this).attr("data-lang");
+        //tinh toan thoi gian cooki ton tai
+        var expires = new Date();
+        expires.setMonth(expires.getMonth() + 1);
+        document.cookie = "Lang=" + lang + ";expires=" + expires.toGMTString() + ";path=/";
+        location.reload(); // khi goi reload cooki se dc day len server
+    });
+</script>
