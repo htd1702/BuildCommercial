@@ -1,4 +1,5 @@
-﻿<style>
+﻿@using Web.Resources.admin
+<style>
     .messageStatusGreen {
         color: green;
     }
@@ -28,7 +29,7 @@
 </div>
 <div class="card">
     <div class="card-header card-header-primary">
-        <h4 class="card-title ">List Product</h4>
+        <h4 class="card-title">@re_Product.ListProduct</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -36,15 +37,15 @@
                 <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>ID</th>
-                        <th>Tên</th>
-                        <th>Gía</th>
-                        <th>Số lượng</th>
-                        <th>Lượt xem</th>
-                        <th>Ngày tạo</th>
-                        <th>Trạng thái</th>
+                        <th>@re_Product.ID</th>
+                        <th>@re_Product.Name</th>
+                        <th>@re_Product.Price</th>
+                        <th>@re_Product.Quantity</th>
+                        <th>@re_Product.View</th>
+                        <th>@re_Product.CreateDate</th>
+                        <th>@re_Product.Status</th>
                         <th class="td-actions text-right">
-                            Thao tác <button class="btn btn-danger" type="button" id="chk_deleteAll" ng-click="deleteAllProduct()"><i class="fa fa-trash"></i></button>
+                            @re_Product.Handling <button class="btn btn-danger" type="button" id="chk_deleteAll" ng-click="deleteAllProduct()"><i class="fa fa-trash"></i></button>
                         </th>
                     </tr>
                 </thead>

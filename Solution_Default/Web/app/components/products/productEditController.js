@@ -13,6 +13,10 @@
             CreatedDate: new Date(),
             Status: true
         }
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
+        }
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.EditProduct = EditProduct;

@@ -222,7 +222,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,20 +261,13 @@
   <ItemGroup>
     <Content Include="app\app.routes.js" />
     <Content Include="app\components\home\homeController.js" />
-    <Content Include="app\components\home\homeView.html" />
-    <Content Include="app\components\products\controller\productAddController.js" />
-    <Content Include="app\components\products\views\productAddView.html" />
-    <Content Include="app\components\products\views\productEditView.html" />
-    <Content Include="app\components\products\controller\productEditController.js" />
-    <Content Include="app\components\products\controller\productListController.js" />
-    <Content Include="app\components\products\views\productListView.html" />
+    <Content Include="app\components\products\productAddController.js" />
+    <Content Include="app\components\products\productEditController.js" />
+    <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\product_categories\productCategories.module.js" />
-    <Content Include="app\components\product_categories\controller\productCategoryAddController.js" />
-    <Content Include="app\components\product_categories\views\productCategoryAddView.html" />
-    <Content Include="app\components\product_categories\controller\productCategoryEditController.js" />
-    <Content Include="app\components\product_categories\views\productCategoryEditView.html" />
-    <Content Include="app\components\product_categories\controller\productCategoryListController.js" />
-    <Content Include="app\components\product_categories\views\productCategoryListView.html" />
+    <Content Include="app\components\product_categories\productCategoryAddController.js" />
+    <Content Include="app\components\product_categories\productCategoryEditController.js" />
+    <Content Include="app\components\product_categories\productCategoryListController.js" />
     <Content Include="app\shared\directives\pageDirective.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\filter\statusFilter.js" />
@@ -3780,6 +3777,7 @@
     <Content Include="Assets\ng-ckeditor\test\directiveOnFormSpec.js" />
     <Content Include="Assets\ng-ckeditor\test\directiveSpec.js" />
     <Content Include="Content\admin\material-dashboard.css" />
+    <Content Include="Content\client\Main.css" />
     <Content Include="Content\client\material-kit.css" />
     <Content Include="Content\plugins\toastr.min.css" />
     <Content Include="img\admin\apple-icon.png" />
@@ -3832,6 +3830,7 @@
     <Content Include="Libs\CKFinder_Watermark.dll" />
     <Content Include="Scripts\admin\material-dashboard.js" />
     <Content Include="Scripts\admin\material-dashboard.min.js" />
+    <Content Include="Scripts\client\Main.js" />
     <Content Include="Scripts\plugins\angular\angular-ui-route.js" />
     <Content Include="Scripts\plugins\bootstrap\bootstrap-material-design.min.js" />
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
@@ -3865,11 +3864,14 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\orders\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Resources\client\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
@@ -3925,9 +3927,17 @@
     <Content Include="Assets\ng-ckeditor\package.json" />
     <Content Include="Assets\ng-ckeditor\README.md" />
     <Content Include="Assets\ng-ckeditor\src\styles\ng-ckeditor.less" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\homeView.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\productCategoryAddView.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\productCategoryEditView.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\productCategoryListView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\productAddView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\productEditView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\productListView.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

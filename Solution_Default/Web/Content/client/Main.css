@@ -1,0 +1,104 @@
+﻿body {
+}
+
+.img-carousel {
+    height: 350px;
+}
+
+.img-content {
+    max-width: 100%;
+    padding: 0;
+}
+
+    .img-content > img {
+        width: 100%;
+    }
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navBarSroll {
+    height: 35px;
+}
+
+.menuSroll {
+    background-color: #242125b0 !important;
+    color: white;
+}
+
+.transition-effect {
+    opacity: 0;
+}
+
+@keyframes contentFromTop {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFromBottom {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFromLeft {
+    0% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/*Effect page*/
+@keyframes contentFromRight {
+    0% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.effectTop {
+    opacity: 1;
+    animation: 0.8s ease-out 0s 1 contentFromTop;
+}
+
+.effectBottom {
+    opacity: 1;
+    animation: 0.8s ease-out 0s 1 contentFromBottom;
+}
+
+.effectLeft {
+    opacity: 1;
+    animation: 0.8s ease-out 0s 1 contentFromLeft;
+}
+
+.effectRight {
+    opacity: 1;
+    animation: 0.8s ease-out 0s 1 contentFromRight;
+}
+/*End Effect page*/
+
+.banner-background {
+    background-image: url(../../img/client/examples/clem-onojegaw.jpg);
+    background-position: 35% -60%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+}
+

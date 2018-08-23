@@ -10,15 +10,15 @@
         //setting config url, page , controller in each function
         $stateProvider.state("product_categories", {
             url: "/product_categories",
-            templateUrl: "/app/components/product_categories/views/productCategoryListView.html",
+            templateUrl: "/Admin/ProductCategory/productCategoryListView",
             controller: "productCategoryListController"
         }).state("add_product_category", {
             url: "/add_product_category",
-            templateUrl: "/app/components/product_categories/views/productCategoryAddView.html",
+            templateUrl: "/Admin/ProductCategory/productCategoryAddView",
             controller: "productCategoryAddController"
         }).state("edit_product_category", {
             url: "/edit_product_category/:id",
-            templateUrl: "/app/components/product_categories/views/productCategoryEditView.html",
+            templateUrl: "/Admin/ProductCategory/productCategoryEditView",
             controller: "productCategoryEditController"
         });
     }
