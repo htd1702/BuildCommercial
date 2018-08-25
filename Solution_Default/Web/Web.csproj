@@ -3938,6 +3938,8 @@
     <Content Include="Areas\Admin\Views\Product\productEditView.cshtml" />
     <Content Include="Areas\Admin\Views\Product\productListView.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Carousel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
