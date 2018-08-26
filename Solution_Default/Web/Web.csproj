@@ -3938,8 +3938,16 @@
     <Content Include="Areas\Admin\Views\Product\productEditView.cshtml" />
     <Content Include="Areas\Admin\Views\Product\productListView.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Shared\_Navbar.cshtml" />
-    <Content Include="Views\Shared\_Carousel.cshtml" />
+    <Content Include="Views\Shared\_viewNavbar.cshtml" />
+    <Content Include="Views\Shared\_viewCarousel.cshtml" />
+    <Content Include="Views\Shared\_sectionCategory.cshtml" />
+    <Content Include="Views\Shared\_sectionIntroduce.cshtml" />
+    <Content Include="Views\Shared\_sectionNews_Lession1.cshtml" />
+    <Content Include="Views\Shared\_sectionNews_Lession2.cshtml" />
+    <Content Include="Views\Shared\_sectionNews_Lession3.cshtml" />
+    <Content Include="Views\Shared\_sectionContact.cshtml" />
+    <Content Include="Views\Shared\_sectionHotProduct.cshtml" />
+    <Content Include="Views\Shared\_ViewFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
