@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -12,10 +8,12 @@ namespace Web.Areas.Admin.Controllers
         {
             return PartialView();
         }
+
         public ActionResult productCategoryEditView()
         {
             return PartialView();
         }
+
         public ActionResult productCategoryListView()
         {
             return PartialView();

@@ -12,11 +12,24 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($stateProvider, $urlRouterProvider) {
-        $stateProvider.state("home", {
-            url: "/admin",
-            templateUrl: "/admin/admin/homeView",
-            controller: "homeController"
-        });
-        $urlRouterProvider.otherwise('/admin');
+        $stateProvider
+            .state("base", {
+                url: "",
+                templateUrl: "/Admin/Home/Base",
+                abstract: true
+            })
+            .state("login", {
+                url: "/login",
+                templateUrl: "/Admin/Account/Login",
+                controller: "loginController",
+                authenticate: false
+            })
+            .state("home", {
+                url: "/",
+                parent: "base",
+                templateUrl: "/Admin/Home/homeView",
+                controller: "homeController"
+            });
+        $urlRouterProvider.otherwise('/login');
     }
 })();

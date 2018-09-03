@@ -1,0 +1,39 @@
+﻿<div class="page-header header-filter" style="background-image: url('../../../../img/client/bg7.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card" style="margin-top:100px;z-index:1;">
+                    <div class="card-header card-header-primary text-center">
+                        <h2 class="card-title">Login</h2>
+                        <div class="social-line">
+                            <a href="#pablo" class="btn btn-just-icon btn-link" style="color:white;">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a href="#pablo" class="btn btn-just-icon btn-link" style="color:white;">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#pablo" class="btn btn-just-icon btn-link" style="color:white;">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <p class="description text-center"><span class="text-danger">Message</span></p>
+                        <div class="form-group">
+                            <label for="txt_email" class="bmd-label-floating"> Email Address *</label>
+                            <input type="email" id="txt_email" class="form-control" ng-model="login.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_password" class="bmd-label-floating"> Password *</label>
+                            <input type="password" id="txt_password" class="form-control" ng-model="login.pass">
+                        </div>
+                    </div>
+                    <div class="card-footer ml-auto mr-auto">
+                        <button type="submit" class="btn btn-rose" ng-click="loginSubmit()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,171 +15,46 @@
     <link href="~/Content/admin/material-dashboard.css" rel="stylesheet" />
     <link href="~/Content/plugins/toastr.min.css" rel="stylesheet" />
 </head>
-<body ng-app="default">
-    <div class="wrapper ">
-        <div class="sidebar" data-color="purple" data-background-color="black" data-image="../../../img/admin/sidebar-1.jpg">
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
-                </a>
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-toggle="collapse" href="#pageProduct" aria-expanded="false">
-                            <i class="material-icons">dashboard</i>
-                            <p>@Web.Resources.admin.re_Product.Product<b class="caret"></b></p>
-                        </a>
-                        <div class="collapse" id="pageProduct">
-                            <ul>
-                                <li>
-                                    <a class="nav-link" ui-sref="products">List Product</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" data-toggle="collapse" href="#pageCategory" aria-expanded="false">
-                            <i class="material-icons">assignment_in</i>
-                            <p>Category<b class="caret"></b></p>
-                        </a>
-                        <div class="collapse" id="pageCategory">
-                            <ul>
-                                <li class="nav-item">
-                                    <a class="nav-link" ui-sref="product_categories">List Category</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./typography.html">
-                            <i class="material-icons">library_books</i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./map.html">
-                            <i class="material-icons">location_ons</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./notifications.html">
-                            <i class="material-icons">notifications</i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                        <span class="navbar-toggler-icon icon-bar"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">notifications</i>
-                                    <span class="notification">5</span>
-                                    <p class="d-lg-none d-md-block">
-                                        Some Actions
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                                    <a class="dropdown-item" href="#">Another Notification</a>
-                                    <a class="dropdown-item" href="#">Another One</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Account
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="http://example.com" id="navbarDropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">language</i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLanguage">
-                                    <a class="dropdown-item" href="" data-lang="en">English</a>
-                                    <a class="dropdown-item" href="" data-lang="fr">France</a>
-                                    <a class="dropdown-item" href="" data-lang="vi">Tiếng Việt</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-            <div class="content">
-                @RenderBody()
-            </div>
-        </div>
-    </div>
 
-    <!--   Core JS Files   -->
-    <script src="~/Scripts/plugins/jquery/jquery.min.js"></script>
-    <script src="~/Scripts/plugins/popper/popper.min.js"></script>
-    <script src="~/Scripts/plugins/bootstrap/bootstrap-material-design.min.js"></script>
-    <script src="~/Scripts/plugins/jquery/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Chartist JS -->
-    <script src="~/Scripts/plugins/chart/chartist.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="~/Scripts/plugins/bootstrap/bootstrap-notify.js"></script>
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="~/Scripts/admin/material-dashboard.min.js"></script>
-    <script src="~/Scripts/plugins/angular/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.19/angular-ui-router.js"></script>
-    <script src="~/Scripts/plugins/toastr/toastr.min.js"></script>
-    <script src="~/Scripts/plugins/bootbox/bootbox.min.js"></script>
-    <script src="~/Assets/ckeditor/ckeditor.js"></script>
-    <script src="~/Assets/ckfinder/ckfinder.js"></script>
-    <script src="~/Scripts/plugins/bootbox/ngBootbox.js"></script>
-    <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
-    <!-- Main JS-->
-    <script src="~/app/shared/modules/default.common.js"></script>
-    <script src="~/app/shared/filter/statusFilter.js"></script>
-    <script src="~/app/shared/services/apiService.js"></script>
-    <script src="~/app/shared/directives/pageDirective.js"></script>
-    <script src="~/app/shared/modules/notificationService.js"></script>
-    <script src="~/app/shared/services/commonService.js"></script>
-    <script src="~/app/components/products/products.module.js"></script>
-    <script src="~/app/components/product_categories/productCategories.module.js"></script>
-    <script src="~/app/app.js"></script>
-    <script src="~/app/components/products/productAddController.js"></script>
-    <script src="~/app/components/products/productEditController.js"></script>
-    <script src="~/app/components/products/productListController.js"></script>
-    <script src="~/app/components/product_categories/productCategoryListController.js"></script>
-    <script src="~/app/components/product_categories/productCategoryAddController.js"></script>
-    <script src="~/app/components/product_categories/productCategoryEditController.js"></script>
-    <script src="~/app/components/home/homeController.js"></script>
+<body ng-app="default" ng-controller="rootController">
+    @RenderBody()
 </body>
 </html>
-<script>
-    $("a[data-lang]").click(function () {
-        var lang = $(this).attr("data-lang");
-        //tinh toan thoi gian cooki ton tai
-        var expires = new Date();
-        expires.setMonth(expires.getMonth() + 1);
-        document.cookie = "Lang=" + lang + ";expires=" + expires.toGMTString() + ";path=/";
-        location.reload(); // khi goi reload cooki se dc day len server
-    });
-</script>
+<!--   Core JS Files   -->
+<script src="~/Scripts/plugins/jquery/jquery.min.js"></script>
+<script src="~/Scripts/plugins/popper/popper.min.js"></script>
+<script src="~/Scripts/plugins/bootstrap/bootstrap-material-design.min.js"></script>
+<script src="~/Scripts/plugins/jquery/perfect-scrollbar.jquery.min.js"></script>
+<!-- Chartist JS -->
+<script src="~/Scripts/plugins/chart/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="~/Scripts/plugins/bootstrap/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="~/Scripts/admin/material-dashboard.min.js"></script>
+<script src="~/Scripts/plugins/angular/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.19/angular-ui-router.js"></script>
+<script src="~/Scripts/plugins/toastr/toastr.min.js"></script>
+<script src="~/Scripts/plugins/bootbox/bootbox.min.js"></script>
+<script src="~/Assets/ckeditor/ckeditor.js"></script>
+<script src="~/Assets/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/plugins/bootbox/ngBootbox.js"></script>
+<script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
+<!-- Main JS-->
+<script src="~/app/shared/modules/default.common.js"></script>
+<script src="~/app/shared/filter/statusFilter.js"></script>
+<script src="~/app/shared/services/apiService.js"></script>
+<script src="~/app/shared/directives/pageDirective.js"></script>
+<script src="~/app/shared/modules/notificationService.js"></script>
+<script src="~/app/shared/services/commonService.js"></script>
+<script src="~/app/components/products/products.module.js"></script>
+<script src="~/app/components/product_categories/productCategories.module.js"></script>
+<script src="~/app/app.js"></script>
+<script src="~/app/components/home/rootController.js"></script>
+<script src="~/app/components/products/productAddController.js"></script>
+<script src="~/app/components/products/productEditController.js"></script>
+<script src="~/app/components/products/productListController.js"></script>
+<script src="~/app/components/product_categories/productCategoryListController.js"></script>
+<script src="~/app/components/product_categories/productCategoryAddController.js"></script>
+<script src="~/app/components/product_categories/productCategoryEditController.js"></script>
+<script src="~/app/components/home/homeController.js"></script>
+<script src="~/app/components/login/loginController.js"></script>

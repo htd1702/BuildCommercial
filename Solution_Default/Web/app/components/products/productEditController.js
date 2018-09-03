@@ -8,6 +8,7 @@
     productEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService"];
 
     function productEditController($scope, apiService, notificationService, $state, $stateParams, commonService) {
+        $scope.moreImages = [];
         //set value model
         $scope.product = {
             CreatedDate: new Date(),
@@ -20,6 +21,8 @@
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.EditProduct = EditProduct;
+        $scope.ChooseImage = ChooseImage;
+        $scope.ChooseImageMore = ChooseImageMore;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSEOTitle($scope.product.Name);
@@ -28,6 +31,7 @@
         function loadProductDetail() {
             apiService.get("/api/product/getid/" + $stateParams.id, null, function (result) {
                 $scope.product = result.data;
+                $scope.moreImages = JSON.parse($scope.product.MoreImages);
             }, function (error) {
                 notificationService.displayError("Lấy id thất bại!");
             });
@@ -42,12 +46,35 @@
         }
         //function add
         function EditProduct() {
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages);
             apiService.put("/api/product/update", $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
                 $state.go("products");
             }, function (error) {
                 notificationService.displayError("Cập nhật thất bại!");
             });
+        }
+        //funcion upload
+        function ChooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.product.Image = filtUrl;
+                });
+            }
+            finder.popup();
+        }
+        //function upload multi img
+        function ChooseImageMore() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.product.ImageMore = filtUrl;
+                    $scope.moreImages.push(filtUrl);
+                    $.unique($scope.moreImages.sort()).sort();
+                });
+            }
+            finder.popup();
         }
         //call method load list categories
         loadProductDetail();

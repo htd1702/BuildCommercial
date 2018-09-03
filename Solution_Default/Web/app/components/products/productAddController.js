@@ -7,6 +7,11 @@
 
     function productAddController($scope, apiService, notificationService, $state, commonService) {
         $scope.categories = [];
+        $scope.moreImages = [];
+        if ($scope.moreImages == "") {
+            $("input[name=imageMore]").show();
+        }
+
         //set value model
         $scope.product = {
             CreatedDate: new Date(),
@@ -21,6 +26,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProduct = AddProduct;
         $scope.ChooseImage = ChooseImage;
+        $scope.ChooseImageMore = ChooseImageMore;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSEOTitle($scope.product.Name);
@@ -29,12 +35,14 @@
         function LoadCategory() {
             apiService.get("/api/productcategory/getallparents", null, function (result) {
                 $scope.categories = result.data;
+                $scope.product.CategoryID = $scope.categories[0].ID;
             }, function () {
                 notificationService.displayError("Load thất bại!");
             });
         }
         //function add
         function AddProduct() {
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages);
             apiService.post("/api/product/create", $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.Name + " thêm thành công!");
                 $state.go("products");
@@ -46,7 +54,22 @@
         function ChooseImage() {
             var finder = new CKFinder();
             finder.selectActionFunction = function (filtUrl) {
-                $scope.product.Image = filtUrl;
+                $scope.$apply(function () {
+                    $scope.product.Image = filtUrl;
+                });
+            }
+            finder.popup();
+        }
+        //function upload multi img
+        function ChooseImageMore() {
+            $("input[name=imageMore]").hide();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.product.ImageMore = filtUrl;
+                    $scope.moreImages.push(filtUrl);
+                    $.unique($scope.moreImages.sort()).sort();
+                });
             }
             finder.popup();
         }

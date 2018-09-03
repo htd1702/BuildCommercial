@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class HomeController : Controller
     {
-        // GET: Admin/Admin
+        // GET: Admin/Home
         public ActionResult Index()
         {
             return View();
         }
 
         public ActionResult homeView()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Base()
         {
             return PartialView();
         }

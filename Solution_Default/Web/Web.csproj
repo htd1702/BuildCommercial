@@ -223,7 +223,8 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -242,17 +243,17 @@
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\admin\re_Product.fr.Designer.cs">
+    <Compile Include="Resources\admin\Product\re_Product.fr.Designer.cs">
       <DependentUpon>re_Product.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\admin\re_Product.vi.Designer.cs">
+    <Compile Include="Resources\admin\Product\re_Product.vi.Designer.cs">
       <DependentUpon>re_Product.vi.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\admin\re_Product.Designer.cs">
+    <Compile Include="Resources\admin\Product\re_Product.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>re_Product.resx</DependentUpon>
@@ -261,6 +262,8 @@
   <ItemGroup>
     <Content Include="app\app.routes.js" />
     <Content Include="app\components\home\homeController.js" />
+    <Content Include="app\components\home\rootController.js" />
+    <Content Include="app\components\login\loginController.js" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productEditController.js" />
     <Content Include="app\components\products\productListController.js" />
@@ -3872,6 +3875,7 @@
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Resources\admin\ProductCategory\" />
     <Folder Include="Resources\client\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
@@ -3929,14 +3933,16 @@
     <Content Include="Assets\ng-ckeditor\src\styles\ng-ckeditor.less" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\homeView.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\productCategoryAddView.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\productCategoryEditView.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\productCategoryListView.cshtml" />
     <Content Include="Areas\Admin\Views\Product\productAddView.cshtml" />
     <Content Include="Areas\Admin\Views\Product\productEditView.cshtml" />
     <Content Include="Areas\Admin\Views\Product\productListView.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\homeView.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Base.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewNavbar.cshtml" />
     <Content Include="Views\Shared\_viewCarousel.cshtml" />
@@ -3968,15 +3974,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\admin\re_Product.fr.resx">
+    <EmbeddedResource Include="Resources\admin\Product\re_Product.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\admin\re_Product.vi.resx">
+    <EmbeddedResource Include="Resources\admin\Product\re_Product.vi.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.vi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\admin\re_Product.resx">
+    <EmbeddedResource Include="Resources\admin\Product\re_Product.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.Designer.cs</LastGenOutput>
     </EmbeddedResource>

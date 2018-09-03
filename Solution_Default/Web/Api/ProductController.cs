@@ -85,7 +85,6 @@ namespace Web.Api
                     var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                     //return status
                     return response;
-
                 });
             }
             else

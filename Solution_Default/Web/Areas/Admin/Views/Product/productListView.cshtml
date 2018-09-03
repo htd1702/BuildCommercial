@@ -1,4 +1,4 @@
-﻿@using Web.Resources.admin
+﻿@using Web.Resources.admin.Product
 <style>
     .messageStatusGreen {
         color: green;
@@ -37,10 +37,12 @@
                 <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>@re_Product.ID</th>
                         <th>@re_Product.Name</th>
                         <th>@re_Product.Price</th>
                         <th>@re_Product.Quantity</th>
+                        <th>@re_Product.PromotionPrice</th>
+                        <th>@re_Product.Warranty</th>
+                        <th>@re_Product.Tags</th>
                         <th>@re_Product.View</th>
                         <th>@re_Product.CreateDate</th>
                         <th>@re_Product.Status</th>
@@ -52,10 +54,12 @@
                 <tbody>
                     <tr ng-repeat="item in products">
                         <td><input type="checkbox" class="chk_allProduct" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
-                        <td>{{item.ID}}</td>
                         <td>{{item.Name}}</td>
                         <td>{{item.Price}}</td>
                         <td>{{item.Quantity}}</td>
+                        <td>{{item.PromotionPrice}}%</td>
+                        <td>{{item.Warranty}}</td>
+                        <td>{{item.Tags}}</td>
                         <td>{{item.ViewCount}}</td>
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
                         <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>

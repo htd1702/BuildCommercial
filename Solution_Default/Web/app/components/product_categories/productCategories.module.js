@@ -8,18 +8,24 @@
 
     function config($stateProvider, $urlRouterProvider) {
         //setting config url, page , controller in each function
-        $stateProvider.state("product_categories", {
-            url: "/product_categories",
-            templateUrl: "/Admin/ProductCategory/productCategoryListView",
-            controller: "productCategoryListController"
-        }).state("add_product_category", {
-            url: "/add_product_category",
-            templateUrl: "/Admin/ProductCategory/productCategoryAddView",
-            controller: "productCategoryAddController"
-        }).state("edit_product_category", {
-            url: "/edit_product_category/:id",
-            templateUrl: "/Admin/ProductCategory/productCategoryEditView",
-            controller: "productCategoryEditController"
-        });
+        $stateProvider
+            .state("product_categories", {
+                url: "/product_categories",
+                parent: "base",
+                templateUrl: "/Admin/ProductCategory/productCategoryListView",
+                controller: "productCategoryListController"
+            })
+            .state("add_product_category", {
+                url: "/add_product_category",
+                parent: "base",
+                templateUrl: "/Admin/ProductCategory/productCategoryAddView",
+                controller: "productCategoryAddController"
+            })
+            .state("edit_product_category", {
+                url: "/edit_product_category/:id",
+                parent: "base",
+                templateUrl: "/Admin/ProductCategory/productCategoryEditView",
+                controller: "productCategoryEditController"
+            });
     }
 })();
