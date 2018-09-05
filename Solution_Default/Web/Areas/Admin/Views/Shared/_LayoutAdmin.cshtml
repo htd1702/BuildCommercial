@@ -12,8 +12,9 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="~/Content/admin/material-dashboard.css" rel="stylesheet" />
     <link href="~/Content/plugins/toastr.min.css" rel="stylesheet" />
+    <link href="~/Assets/angular-loading-bar/build/loading-bar.css" rel="stylesheet" />
+    <link href="~/Content/admin/material-dashboard.css" rel="stylesheet" />
 </head>
 
 <body ng-app="default" ng-controller="rootController">
@@ -25,9 +26,7 @@
 <script src="~/Scripts/plugins/popper/popper.min.js"></script>
 <script src="~/Scripts/plugins/bootstrap/bootstrap-material-design.min.js"></script>
 <script src="~/Scripts/plugins/jquery/perfect-scrollbar.jquery.min.js"></script>
-<!-- Chartist JS -->
 <script src="~/Scripts/plugins/chart/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
 <script src="~/Scripts/plugins/bootstrap/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="~/Scripts/admin/material-dashboard.min.js"></script>
@@ -39,12 +38,17 @@
 <script src="~/Assets/ckfinder/ckfinder.js"></script>
 <script src="~/Scripts/plugins/bootbox/ngBootbox.js"></script>
 <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
+<script src="~/Assets/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="~/Assets/angular-loading-bar/build/loading-bar.min.js"></script>
 <!-- Main JS-->
 <script src="~/app/shared/modules/default.common.js"></script>
 <script src="~/app/shared/filter/statusFilter.js"></script>
 <script src="~/app/shared/services/apiService.js"></script>
 <script src="~/app/shared/directives/pageDirective.js"></script>
-<script src="~/app/shared/modules/notificationService.js"></script>
+<script src="~/app/shared/services/notificationService.js"></script>
+<script src="~/app/shared/services/authData.js"></script>
+<script src="~/app/shared/services/authenticationService.js"></script>
+<script src="~/app/shared/services/loginService.js"></script>
 <script src="~/app/shared/services/commonService.js"></script>
 <script src="~/app/components/products/products.module.js"></script>
 <script src="~/app/components/product_categories/productCategories.module.js"></script>

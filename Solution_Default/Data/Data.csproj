@@ -110,6 +110,10 @@
     <Compile Include="Migrations\201808190719068_AddTagsProduct.Designer.cs">
       <DependentUpon>201808190719068_AddTagsProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809050741336_AddNewAccount.cs" />
+    <Compile Include="Migrations\201809050741336_AddNewAccount.Designer.cs">
+      <DependentUpon>201809050741336_AddNewAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808190719068_AddTagsProduct.resx">
       <DependentUpon>201808190719068_AddTagsProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809050741336_AddNewAccount.resx">
+      <DependentUpon>201809050741336_AddNewAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

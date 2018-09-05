@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
@@ -260,7 +261,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.routes.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\rootController.js" />
     <Content Include="app\components\login\loginController.js" />
@@ -274,9 +274,26 @@
     <Content Include="app\shared\directives\pageDirective.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\filter\statusFilter.js" />
-    <Content Include="app\shared\modules\notificationService.js" />
+    <Content Include="app\shared\services\authData.js" />
+    <Content Include="app\shared\services\authenticationService.js" />
+    <Content Include="app\shared\services\loginService.js" />
+    <Content Include="app\shared\services\notificationService.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\commonService.js" />
+    <Content Include="Assets\angular-loading-bar\build\loading-bar.css" />
+    <Content Include="Assets\angular-loading-bar\build\loading-bar.js" />
+    <Content Include="Assets\angular-loading-bar\build\loading-bar.min.css" />
+    <Content Include="Assets\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="Assets\angular-loading-bar\Gruntfile.js" />
+    <Content Include="Assets\angular-loading-bar\index.js" />
+    <Content Include="Assets\angular-loading-bar\src\loading-bar.css" />
+    <Content Include="Assets\angular-loading-bar\src\loading-bar.js" />
+    <Content Include="Assets\angular-local-storage\demo\demo-app.js" />
+    <Content Include="Assets\angular-local-storage\demo\demo-style.css" />
+    <Content Include="Assets\angular-local-storage\demo\demo.html" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.js" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.min.js" />
+    <Content Include="Assets\angular-local-storage\index.js" />
     <Content Include="Assets\ckeditor\adapters\jquery.js" />
     <Content Include="Assets\ckeditor\ckeditor.js" />
     <Content Include="Assets\ckeditor\config.js" />
@@ -3878,6 +3895,8 @@
     <Folder Include="Resources\admin\ProductCategory\" />
     <Folder Include="Resources\client\" />
     <Folder Include="UploadedFiles\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -3943,6 +3962,27 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\homeView.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Base.cshtml" />
+    <Content Include="Assets\angular-loading-bar\.bower.json" />
+    <Content Include="Assets\angular-loading-bar\bower.json" />
+    <Content Include="Assets\angular-loading-bar\CHANGELOG.md" />
+    <Content Include="Assets\angular-loading-bar\CONTRIBUTING.md" />
+    <Content Include="Assets\angular-loading-bar\ISSUE_TEMPLATE.md" />
+    <Content Include="Assets\angular-loading-bar\LICENSE" />
+    <Content Include="Assets\angular-loading-bar\package.json" />
+    <Content Include="Assets\angular-loading-bar\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Assets\angular-loading-bar\README.md" />
+    <Content Include="Assets\angular-local-storage\.bower.json" />
+    <Content Include="Assets\angular-local-storage\.bowerrc" />
+    <Content Include="Assets\angular-local-storage\.editorconfig" />
+    <Content Include="Assets\angular-local-storage\.gitattributes" />
+    <Content Include="Assets\angular-local-storage\.gitignore" />
+    <Content Include="Assets\angular-local-storage\.travis.yml" />
+    <Content Include="Assets\angular-local-storage\bower.json" />
+    <Content Include="Assets\angular-local-storage\CHANGELOG.md" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.min.js.map" />
+    <Content Include="Assets\angular-local-storage\LICENSE" />
+    <Content Include="Assets\angular-local-storage\package.json" />
+    <Content Include="Assets\angular-local-storage\README.md" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewNavbar.cshtml" />
     <Content Include="Views\Shared\_viewCarousel.cshtml" />

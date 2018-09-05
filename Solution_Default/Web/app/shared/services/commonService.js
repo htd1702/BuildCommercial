@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../scripts/angular.js" />
+﻿/// <reference path="../../../scripts/plugins/angular/angular.min.js" />
 
 (function (app) {
     app.factory("commonService", commonService);
@@ -6,8 +6,9 @@
     function commonService() {
         //method put
         function getSEOTitle(input) {
-            if (input == undefined || input == '')
+            if (input === undefined || input === '') {
                 return '';
+            }
             //Đổi chữ hoa thành chữ thường
             var slug = input.toLowerCase();
 
@@ -37,7 +38,7 @@
         }
 
         return {
-            getSEOTitle: getSEOTitle,
-        }
+            getSEOTitle: getSEOTitle
+        };
     }
 })(angular.module("default.common"));

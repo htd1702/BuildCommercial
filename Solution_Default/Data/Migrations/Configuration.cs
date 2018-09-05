@@ -1,6 +1,9 @@
 ﻿namespace Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Model;
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -18,30 +21,33 @@
             CreateProductCategorySample(context);
             CreateProductSample(context);
             //  This method will be called after migrating to the latest version.
-            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DBContext()));
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DBContext()));
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DBContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DBContext()));
 
-            //var user = new ApplicationUser()
-            //{
-            //    UserName = "hieunt",
-            //    Email = "hieu.n2395@gmail.com",
-            //    EmailConfirmed = true,
-            //    BirthDay = DateTime.Now,
-            //    FullName = "Ngô Trung Hiếu"
-            //};
-            ////create new user
-            //manager.Create(user, "123456");
+            var user = new ApplicationUser()
+            {
+                UserName = "hieunt105",
+                Email = "hieu.n2395@gmail.com",
+                EmailConfirmed = true,
+                BirthDay = DateTime.Now,
+                FullName = "Ngô Trung Hiếu",
+                PhoneNumber = "0938570330",
+                Address = "59/15",
+                LockoutEnabled = true,
+            };
+            //create new user
+            manager.Create(user, "123456");
 
-            ////check role manager
-            //if (!roleManager.Roles.Any())
-            //{
-            //    roleManager.Create(new IdentityRole { Name = "Admin" });
-            //    roleManager.Create(new IdentityRole { Name = "User" });
-            //}
-            ////find email
-            //var adminUser = manager.FindByEmail("hieu.n2395@gmail.com");
+            //check role manager
+            if (!roleManager.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+            //find email
+            var adminUser = manager.FindByEmail("hieu.n2395@gmail.com");
 
-            //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
 
         //create data demo productcategory

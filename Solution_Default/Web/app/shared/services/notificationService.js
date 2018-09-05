@@ -1,4 +1,6 @@
-﻿(function (app) {
+﻿/// <reference path="../../../scripts/plugins/angular/angular.min.js" />
+
+(function (app) {
     app.factory("notificationService", notificationService);
     function notificationService() {
         toastr.options = {

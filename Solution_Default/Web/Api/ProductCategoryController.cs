@@ -15,6 +15,7 @@ using Web.Models;
 namespace Web.Api
 {
     [RoutePrefix("api/productcategory")]
+    [Authorize]
     public class ProductCategoryController : ApiControllerBase
     {
         private IProductCategoryService _productCategoryService;
@@ -22,8 +23,7 @@ namespace Web.Api
         #region Initialize
 
         //khai bao contructor
-        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService)
-            : base(errorService)
+        public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService) : base(errorService)
         {
             this._productCategoryService = productCategoryService;
         }
