@@ -1,22 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <!--Navigation-->
 @Html.Partial("_viewNavbar")
+@Html.Partial("_viewVerticalNav")
 <!--End Navigation-->
 <!--Carousel-->
 @Html.Partial("_viewCarousel")
 <!--End Carousel-->
 <!--Selection main-->
 <div class="main main-raised">
-    @Html.Partial("_sectionIntroduce")
     @Html.Partial("_sectionNews_Lession1")
-    @Html.Partial("_sectionCategory")
     @Html.Partial("_sectionNews_Lession2")
     @Html.Partial("_sectionNews_Lession3")
-    @Html.Partial("_sectionHotProduct")
+    @Html.Partial("_sectionNews_Lession4")
     @Html.Partial("_sectionContact")
 </div>
 <!--EndSelection-->

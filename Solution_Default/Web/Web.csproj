@@ -261,6 +261,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\components\home\baseController.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\rootController.js" />
     <Content Include="app\components\login\loginController.js" />
@@ -3799,6 +3800,7 @@
     <Content Include="Content\admin\material-dashboard.css" />
     <Content Include="Content\client\Main.css" />
     <Content Include="Content\client\material-kit.css" />
+    <Content Include="Content\client\vertical-nav.css" />
     <Content Include="Content\plugins\toastr.min.css" />
     <Content Include="img\admin\apple-icon.png" />
     <Content Include="img\admin\cover.jpg" />
@@ -3814,6 +3816,10 @@
     <Content Include="img\admin\sidebar-3.jpg" />
     <Content Include="img\admin\sidebar-4.jpg" />
     <Content Include="img\client\apple-icon.png" />
+    <Content Include="img\client\background-specialist.jpg" />
+    <Content Include="img\client\banner\banner2.jpeg" />
+    <Content Include="img\client\banner\banner3.jpeg" />
+    <Content Include="img\client\banner\banner1.jpeg" />
     <Content Include="img\client\bg.jpg" />
     <Content Include="img\client\bg2.jpg" />
     <Content Include="img\client\bg3.jpg" />
@@ -3851,6 +3857,8 @@
     <Content Include="Scripts\admin\material-dashboard.js" />
     <Content Include="Scripts\admin\material-dashboard.min.js" />
     <Content Include="Scripts\client\Main.js" />
+    <Content Include="Scripts\client\vertical-nav.js" />
+    <Content Include="Scripts\plugins\angular\angular-translate.min.js" />
     <Content Include="Scripts\plugins\angular\angular-ui-route.js" />
     <Content Include="Scripts\plugins\bootstrap\bootstrap-material-design.min.js" />
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
@@ -3986,14 +3994,13 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewNavbar.cshtml" />
     <Content Include="Views\Shared\_viewCarousel.cshtml" />
-    <Content Include="Views\Shared\_sectionCategory.cshtml" />
-    <Content Include="Views\Shared\_sectionIntroduce.cshtml" />
     <Content Include="Views\Shared\_sectionNews_Lession1.cshtml" />
     <Content Include="Views\Shared\_sectionNews_Lession2.cshtml" />
     <Content Include="Views\Shared\_sectionNews_Lession3.cshtml" />
     <Content Include="Views\Shared\_sectionContact.cshtml" />
-    <Content Include="Views\Shared\_sectionHotProduct.cshtml" />
     <Content Include="Views\Shared\_ViewFooter.cshtml" />
+    <Content Include="Views\Shared\_viewVerticalNav.cshtml" />
+    <Content Include="Views\Shared\_sectionNews_Lession4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

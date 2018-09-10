@@ -1,5 +1,45 @@
-﻿body {
+﻿/*hover img*/
+.hoverEffect {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
 }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: rgba(75,75,75,0.7);
+}
+
+.hoverEffect:hover .overlay {
+    opacity: 1;
+}
+
+.icon-efeect {
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+    .icon-efeect a {
+        color: white;
+    }
+
+        .icon-efeect a:hover {
+            color: deepskyblue;
+        }
 
 .img-carousel {
     height: 350px;
@@ -14,9 +54,6 @@
         width: 100%;
     }
 
-.navbar {
-    margin-bottom: 0px;
-}
 
 .navBarSroll {
     height: 35px;
@@ -100,4 +137,9 @@
     background-repeat: no-repeat;
     height: 500px;
     width: 100%;
+}
+
+.footer-main {
+    background: #222222;
+    color: #777777;
 }

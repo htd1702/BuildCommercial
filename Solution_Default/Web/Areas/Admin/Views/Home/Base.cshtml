@@ -1,4 +1,4 @@
-﻿<div class="wrapper ">
+﻿<div class="wrapper" ng-controller="baseController as translate">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../../../img/admin/sidebar-1.jpg">
         <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text logo-normal">
@@ -34,7 +34,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./map.html">
                         <i class="material-icons">location_ons</i>
-                        <p>Maps</p>
+                        @*<p>Maps</p>*@
+                        <p>{{'Product'|translate}}</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -92,6 +93,9 @@
                                 <a class="dropdown-item" href="" data-lang="fr">France</a>
                                 <a class="dropdown-item" href="" data-lang="vi">Tiếng Việt</a>
                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <select ng-options="language | translate for language in translate.languages" ng-model="translate.language" ng-change="translate.updateLanguage()"></select>
                         </li>
                     </ul>
                 </div>

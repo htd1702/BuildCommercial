@@ -9,7 +9,8 @@
             'default.common',
         ])
         .config(config)
-        .config(configAuthentication);
+        .config(configAuthentication)
+        .config(translations);
     //inject config
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     //function module config
@@ -36,7 +37,7 @@
     }
     //inject configAuthentication
     configAuthentication.$inject = ['$httpProvider'];
-    //function modult configAuthentication
+    //function module configAuthentication
     function configAuthentication($httpProvider) {
         $httpProvider.interceptors.push(function ($q, $location) {
             return {
@@ -61,5 +62,24 @@
                 }
             };
         });
+    }
+    //inject translations
+    translations.$inject = ['$translateProvider'];
+    //function module translations
+    function translations($translateProvider) {
+        $translateProvider
+            .translations('en', {
+                Product: 'Product',
+                Category: 'Category',
+                en: 'English',
+                vi: 'Tiếng Việt'
+            })
+            .translations('vi', {
+                Product: 'Sản phẩm',
+                Category: 'Danh Mục',
+                en: 'English',
+                vi: 'Tiếng Việt'
+            });
+        $translateProvider.preferredLanguage('en');
     }
 })();
