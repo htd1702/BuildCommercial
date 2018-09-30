@@ -1,8 +1,11 @@
 ﻿using Common;
 using Data.Infrastructure;
 using Data.Repositories;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Service
 {
@@ -20,7 +23,11 @@ namespace Service
 
         IEnumerable<Product> GetAllByParentId(int parentId);
 
+        List<Dictionary<string, object>> GetTableRows(DataTable dtData);
+
         Product GetById(int id);
+
+        DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor);
 
         void Save();
     }
@@ -94,6 +101,25 @@ namespace Service
         public Product GetById(int id)
         {
             return _productRepository.GetSingleById(id);
+        }
+
+        public List<Dictionary<string, object>> GetTableRows(DataTable dtData)
+        {
+            return _productRepository.GetTableRows(dtData);
+        }
+
+        public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor)
+        {
+            SqlParameter[] pram = new SqlParameter[10];
+            pram[0] = new SqlParameter("@Categories", SqlDbType.VarChar, 10);
+            pram[0].Value = categories;
+            pram[1] = new SqlParameter("@SortBy", SqlDbType.VarChar, 10);
+            pram[1].Value = sortBy;
+            pram[2] = new SqlParameter("@SortPrice", SqlDbType.VarChar, 10);
+            pram[2].Value = sortPrice;
+            pram[3] = new SqlParameter("@SortColor", SqlDbType.VarChar, 10);
+            pram[3].Value = sortColor;
+            return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
         }
 
         public void Save()

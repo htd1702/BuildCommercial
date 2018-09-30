@@ -40,3 +40,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.csp
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.pdb
+E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Microsoft.ApplicationBlocks.Data.dll

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -147,6 +148,28 @@ namespace Data.Infrastructure
         public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
+        }
+
+        public List<Dictionary<string, object>> GetTableRows(DataTable dtData)
+        {
+            int i = 1;
+            List<Dictionary<string, object>>
+            lstRows = new List<Dictionary<string, object>>();
+            Dictionary<string, object> dictRow = null;
+
+            dtData.Columns.Add("STT", typeof(int));
+            foreach (DataRow dr in dtData.Rows)
+            {
+                dtData.Rows[i - 1]["STT"] = i.ToString();
+                dictRow = new Dictionary<string, object>();
+                foreach (DataColumn col in dtData.Columns)
+                {
+                    dictRow.Add(col.ColumnName, dr[col]);
+                }
+                lstRows.Add(dictRow);
+                i++;
+            }
+            return lstRows;
         }
 
         #endregion Implementation

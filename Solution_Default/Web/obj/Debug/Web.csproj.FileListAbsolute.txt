@@ -293,3 +293,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.Copy
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.ApplicationBlocks.Data.dll

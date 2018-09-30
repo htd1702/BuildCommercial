@@ -1,0 +1,84 @@
+﻿<style>
+    .messageStatusGreen {
+        color: green;
+    }
+
+    .messageStatusRed {
+        color: red;
+    }
+</style>
+<!-- MAIN CONTENT-->
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Từ khóa..." />
+                <ul class="nav" ng-hide="hideSeach" ng-model="hideSeach">
+                    <li class="nav-item" ng-repeat="name in filterName" ng-click="filterSearch(name)">{{name}}</li>
+                </ul>
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success pull-right" ui-sref="add_product_category"><i class="material-icons">add</i></button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">List Product Category</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Alias</th>
+                        <th>Loại</th>
+                        <th>Thứ tự hiển thị</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Người cập nhật</th>
+                        <th>Trạng thái</th>
+                        <th class="td-actions text-right">
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllProductCategories()"><i class="fa fa-trash"></i></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in productCategories">
+                        <td><input type="checkbox" class="chk_allProductCategories" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
+                        <td>{{item.ID}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Alias}}</td>
+                        <td>{{showParentName(item.ParentID, productCategories)}}</td>
+                        <td>{{item.DisplayOrder}}</td>
+                        <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{item.CreatedBy}}</td>
+                        <td>{{item.UpdatedDate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{item.UpdatedBy}}</td>
+                        <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_product_category({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" ng-click="deleteProductCategory(item.ID)">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

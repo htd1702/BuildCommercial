@@ -176,3 +176,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.c
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.pdb
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.ApplicationBlocks.Data.dll

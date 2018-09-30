@@ -82,3 +82,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.Co
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AddNewAccount.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\bin\Debug\Microsoft.ApplicationBlocks.Data.dll

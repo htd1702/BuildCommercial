@@ -1,0 +1,82 @@
+﻿<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Add</h4>
+        <p class="card-category">Complete</p>
+    </div>
+    <div class="card-body">
+        <form class="form-horizontal" novalidate name="frmAddProductCategory" role="form" ng-submit="AddProductCategory()">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Tên danh mục</label>
+                    <input type="text" class="form-control" ng-change="GetSeoTitle()" ng-model="productCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên danh mục...">
+                    <span ng-hide="frmAddProductCategory.name.$error.maxlength" ng-show="frmAddProductCategory.name.$invalid" class="text-danger">Bạn chưa nhập tên danh mục</span>
+                    <span ng-show="frmAddProductCategory.name.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="alias">Tiêu đề SEO</label>
+                    <input type="text" required placeholder="Nhập tiêu đề SEO..." class="form-control" ng-model="productCategory.Alias" name="alias">
+                    <span ng-show="frmAddProductCategory.alias.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="displayOrder">Thứ tự hiển thị</label>
+                    <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="form-control" min="0" ng-model="productCategory.DisplayOrder" name="displayOrder">
+                    <span ng-show="frmAddProductCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="image">Hình</label>
+                    <input type="text" class="form-control" ng-model="productCategory.Image" name="image">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="parentId">Danh mục</label>
+                    <select name="parentId" ng-model="productCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
+                        <option value="">Loại danh mục</option>
+                    </select>
+                    <input type="hidden" name="parentId" ng-model="productCategory.ParentID" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Mô tả</label>
+                <textarea rows="2" placeholder="Nội dung..." class="form-control" ng-maxlength="600" ng-model="productCategory.Description" name="description"></textarea>
+                <span class="text-danger" ng-show="frmAddProductCategory.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+            </div>
+            <div class="form-group">
+                <label for="metaKeyword">Meta Keyword</label>
+                <input type="text" required placeholder="Nhập Meta Keyword..." class="form-control" ng-model="productCategory.MetaKeyword" name="metaKeyword">
+                <span ng-show="frmAddProductCategory.metaKeyword.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
+            </div>
+            <div class="form-group">
+                <label for="metaDescription">Meta Description</label>
+                <textarea rows="4" placeholder="Nhập Meta Description..." ng-maxlength="600" class="form-control" ng-model="productCategory.MetaDescription" name="metaDescription"></textarea>
+                <span class="text-danger" ng-show="frmAddProductCategory.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="productCategory.Status" ng-model="productCategory.Status"> Kích hoạt
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="productCategory.HomeFlag" ng-model="productCategory.HomeFlag"> Hiển thị trang chủ
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-6">
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="product_categories"><i class="fa fa-ban"></i> Back</button>
+                </div>
+                <div class="col col-md-6">
+                    <button type="submit" ng-disabled="frmAddProductCategory.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

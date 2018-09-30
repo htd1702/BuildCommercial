@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace Data.Infrastructure
@@ -36,5 +37,7 @@ namespace Data.Infrastructure
         int Count(Expression<Func<T, bool>> where);
 
         bool CheckContains(Expression<Func<T, bool>> predicate);
+
+        List<Dictionary<string, object>> GetTableRows(DataTable dtData);
     }
 }

@@ -6,7 +6,7 @@
         [
             'default.products',
             'default.product_categories',
-            'default.common',
+            'default.common'
         ])
         .config(config)
         .config(configAuthentication)
@@ -18,19 +18,19 @@
         $stateProvider
             .state("base", {
                 url: "",
-                templateUrl: "/Admin/Home/Base",
+                templateUrl: "/app/components/home/views/Base.html",
                 abstract: true
             })
             .state("login", {
                 url: "/login",
-                templateUrl: "/Admin/Account/Login",
+                templateUrl: "/app/components/login/views/Login.html",
                 controller: "loginController",
                 authenticate: false
             })
             .state("home", {
-                url: "/home",
+                url: "/admin",
                 parent: "base",
-                templateUrl: "/Admin/Home/homeView",
+                templateUrl: "/app/components/home/views/homeView.html",
                 controller: "homeController"
             });
         $urlRouterProvider.otherwise('/login');
