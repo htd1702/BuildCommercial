@@ -15,17 +15,21 @@ namespace Web.Models
 
         public int CategoryID { set; get; }
 
+        public string Size { set; get; }
+
+        public string Color { set; get; }
+
         public string Image { set; get; }
 
         public string MoreImages { set; get; }
 
         [Required]
-        public decimal Price { set; get; }
+        public double Price { set; get; }
 
-        public decimal? PromotionPrice { set; get; }
+        public int PromotionPrice { set; get; }
 
         [Required]
-        public int? Quantity { set; get; }
+        public int Quantity { set; get; }
 
         public int? Warranty { set; get; }
 
@@ -56,6 +60,6 @@ namespace Web.Models
         [Required]
         public bool Status { set; get; }
 
-        public virtual ProductCategoryViewModel ProductCategory { set; get; }
+        public virtual ProductCategoryViewModel ProductCategories { set; get; }
     }
 }

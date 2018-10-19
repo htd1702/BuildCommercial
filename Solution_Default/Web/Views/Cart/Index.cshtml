@@ -1,0 +1,61 @@
+﻿@using Model.Model;
+<ul class="header-cart-wrapitem w-full">
+    @foreach (Product p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
+    {
+        <li class="header-cart-item flex-w flex-t m-b-12">
+            <div class="header-cart-item-img" data-id="@p.ID">
+                <img src="@p.Image" alt="IMG">
+            </div>
+
+            <div class="header-cart-item-txt p-t-8">
+                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                    @p.Name
+                </a>
+
+                <span class="header-cart-item-info">
+                    @p.Quantity x @Html.FormatValue(p.Price, "{0:C}")
+                </span>
+            </div>
+        </li>
+    }
+</ul>
+
+<div class="w-full">
+    <div class="header-cart-total w-full p-tb-40">
+        Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")
+    </div>
+
+    <div class="header-cart-buttons flex-w w-full">
+        <a href="/Cart/ViewCart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+            View Cart
+        </a>
+
+        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+            Check Out
+        </a>
+    </div>
+</div>
+
+<script>
+    //remove shopping cart
+    $(".header-cart-item-img").click(function () {
+        var pid = $(this).attr("data-id");
+        $.ajax({
+            url: "/Cart/Remove",
+            data: { id: pid },
+            type: "post",
+            async: false,
+            success: function (response) {
+                $(".shopping-cart-des").attr("data-notify", response.Count);
+                $(".shopping-cart-mobi").attr("data-notify", response.Count);
+            }
+        });
+        $.ajax({
+            url: "/Cart/Index",
+            async: false,
+            success: function (response) {
+                $("#page_ShoppingCart").html(response);
+            }
+        });
+    });
+</script>

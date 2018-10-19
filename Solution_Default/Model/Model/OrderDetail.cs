@@ -16,10 +16,12 @@ namespace Model.Model
 
         public int Quantitty { set; get; }
 
+        public double UnitPrice { set; get; }
+
         [ForeignKey("OrderID")]
-        public virtual Order Order { set; get; }
+        public virtual Order Orders { set; get; }
 
         [ForeignKey("ProductID")]
-        public virtual Product Product { set; get; }
+        public virtual Product Products { set; get; }
     }
 }

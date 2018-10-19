@@ -5,13 +5,13 @@
     //notificationService message thông báo
     //$state: trỏ đến page
     //$stateParams: set param
-    productEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService"];
+    productEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService", "authData"];
 
-    function productEditController($scope, apiService, notificationService, $state, $stateParams, commonService) {
+    function productEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
         $scope.moreImages = [];
         //set value model
         $scope.product = {
-            CreatedDate: new Date(),
+            UpdatedDate: new Date(),
             Status: true
         }
         $scope.editorOptions = {
@@ -46,6 +46,8 @@
         }
         //function add
         function EditProduct() {
+            $scope.product.UpdatedBy = authData.authenticationData.userName;
+            $scope.product.UpdatedDate = $scope.product.UpdatedDate;
             $scope.product.MoreImages = JSON.stringify($scope.moreImages);
             apiService.put("/api/product/update", $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");

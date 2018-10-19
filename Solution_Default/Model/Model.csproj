@@ -77,13 +77,11 @@
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\ProductDetail.cs" />
+    <Compile Include="Model\List.cs" />
     <Compile Include="Model\Error.cs" />
-    <Compile Include="Model\Footer.cs" />
-    <Compile Include="Model\Menu.cs" />
-    <Compile Include="Model\MenuGroup.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
-    <Compile Include="Model\Page.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Model\PostCategory.cs" />
     <Compile Include="Model\PostTag.cs" />

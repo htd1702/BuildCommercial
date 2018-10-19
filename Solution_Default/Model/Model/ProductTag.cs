@@ -16,9 +16,9 @@ namespace Model.Model
         public string TagID { set; get; }
 
         [ForeignKey("ProductID")]
-        public virtual Product Product { set; get; }
+        public virtual Product Products { set; get; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tag { set; get; }
+        public virtual Tag Tags { set; get; }
     }
 }

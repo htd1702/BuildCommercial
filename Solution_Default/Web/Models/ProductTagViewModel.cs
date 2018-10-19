@@ -6,8 +6,8 @@
 
         public string TagID { set; get; }
 
-        public virtual ProductViewModel Product { set; get; }
+        public virtual ProductViewModel Products { set; get; }
 
-        public virtual TagViewModel Tag { set; get; }
+        public virtual TagViewModel Tags { set; get; }
     }
 }

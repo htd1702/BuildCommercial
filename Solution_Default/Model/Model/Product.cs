@@ -22,17 +22,21 @@ namespace Model.Model
         [Required]
         public int CategoryID { set; get; }
 
+        public string Color { set; get; }
+
+        public string Size { set; get; }
+
         [MaxLength(256)]
         public string Image { set; get; }
 
         [Column(TypeName = "xml")]
         public string MoreImages { set; get; }
 
-        public decimal Price { set; get; }
+        public double Price { set; get; }
 
-        public decimal? PromotionPrice { set; get; }
+        public int PromotionPrice { set; get; }
 
-        public int? Quantity { set; get; }
+        public int Quantity { set; get; }
 
         public int? Warranty { set; get; }
 
@@ -50,6 +54,6 @@ namespace Model.Model
         public string Tags { set; get; }
 
         [ForeignKey("CategoryID")]
-        public virtual ProductCategory ProductCategory { set; get; }
+        public virtual ProductCategory ProductCategories { set; get; }
     }
 }

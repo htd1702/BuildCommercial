@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Model.Model;
 using Service;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -24,15 +26,33 @@ namespace Web.Api
         }
 
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request, string keyword, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listCategory = _postCategoryService.GetAll();
-                //Mapp data
-                var listCategoryVM = Mapper.Map<List<PostCategory>>(listCategory);
-                //status http
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                int totalRow = 0;
+                var model = _postCategoryService.GetAll(keyword);
+                //count model
+                totalRow = model.Count();
+                //sap xep giam dan
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(query);
+                //create pageination and set value
+                var paginationSet = new PaginationSet<PostCategoryViewModel>()
+                {
+                    //item = data response
+                    Items = responseData,
+                    //current page
+                    Page = page,
+                    //count page
+                    TotalCount = totalRow,
+                    //làm tròn
+                    TotalPages = (int)(Math.Ceiling((decimal)totalRow / pageSize))
+                };
+                //check status
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
                 return response;
             });
         }

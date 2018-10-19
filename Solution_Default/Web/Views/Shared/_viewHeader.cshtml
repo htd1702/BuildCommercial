@@ -1,4 +1,5 @@
-﻿<header>
+﻿@using Web.Resources.Product
+<header>
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
@@ -10,20 +11,24 @@
 
                 <div class="right-top-bar flex-w h-full">
                     @*<a href="#" class="flex-c-m trans-04 p-lr-25">
-                        Help & FAQs
-                    </a>*@
+                            Help & FAQs
+                        </a>*@
 
                     <a href="#" class="flex-c-m trans-04 p-lr-25">
                         My Account
                     </a>
 
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
+                    <a href="#" id="changeLang" data-lang="en" class="flex-c-m trans-04 p-lr-25">
                         EN
                     </a>
 
+                    <a href="#" id="changeLang" data-lang="vi" class="flex-c-m trans-04 p-lr-25">
+                        VN
+                    </a>
+
                     @*<a href="#" class="flex-c-m trans-04 p-lr-25">
-                        USD
-                    </a>*@
+                            USD
+                        </a>*@
                 </div>
             </div>
         </div>
@@ -32,7 +37,7 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="javascript:void(0)" class="logo-main">
+                <a href="/" class="logo-main">
                     Adelade
                 </a>
 
@@ -40,7 +45,7 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li>
-                            <a href="#section-main">Product</a>
+                            <a href="#section-main">@re_Product.Product</a>
                         </li>
 
                         <li class="label1" data-label1="hot">
@@ -67,7 +72,7 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart shopping-cart-des" data-notify="@Web.Infrastructure.Core.ShoppingCart.Cart.Count">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
@@ -92,7 +97,7 @@
                 <i class="zmdi zmdi-search"></i>
             </div>
 
-            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart shopping-cart-mobi" data-notify="data-notify=" @Web.Infrastructure.Core.ShoppingCart.Cart.Count "">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
 
@@ -108,7 +113,6 @@
             </span>
         </div>
     </div>
-
 
     <!-- Menu Mobile -->
     <div class="menu-mobile">

@@ -15,6 +15,33 @@
     <link href="~/Content/plugins/toastr.min.css" rel="stylesheet" />
     <link href="~/Assets/angular-loading-bar/build/loading-bar.css" rel="stylesheet" />
     <link href="~/Content/admin/material-dashboard.css" rel="stylesheet" />
+    <style>
+        .text-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+            .text-control:focus {
+                color: #464a4c;
+                background-color: #fff;
+                border-color: #5cb3fd;
+                outline: 0;
+            }
+    </style>
 </head>
 
 <body ng-app="default" ng-controller="rootController">
@@ -54,6 +81,9 @@
 <script src="~/app/shared/services/commonService.js"></script>
 <script src="~/app/components/products/controller/products.module.js"></script>
 <script src="~/app/components/product_categories/controller/productCategories.module.js"></script>
+<script src="~/app/components/posts/controller/post.module.js"></script>
+<script src="~/app/components/post_categories/controller/postCategories.module.js"></script>
+<script src="~/app/components/product_details/controller/productDetails.module.js"></script>
 <script src="~/app/app.js"></script>
 <script src="~/app/components/home/controller/rootController.js"></script>
 <script src="~/app/components/products/controller/productAddController.js"></script>
@@ -62,6 +92,13 @@
 <script src="~/app/components/product_categories/controller/productCategoryListController.js"></script>
 <script src="~/app/components/product_categories/controller/productCategoryAddController.js"></script>
 <script src="~/app/components/product_categories/controller/productCategoryEditController.js"></script>
+<script src="~/app/components/posts/controller/postListController.js"></script>
+<script src="~/app/components/posts/controller/postAddController.js"></script>
+<script src="~/app/components/posts/controller/postEditController.js"></script>
+<script src="~/app/components/post_categories/controller/postCategoryListController.js"></script>
+<script src="~/app/components/post_categories/controller/postCategoryAddController.js"></script>
+<script src="~/app/components/post_categories/controller/postCategoryEditController.js"></script>
+<script src="~/app/components/product_details/controller/productDetailListController.js"></script>
 <script src="~/app/components/home/controller/homeController.js"></script>
 <script src="~/app/components/login/controller/loginController.js"></script>
 <script src="~/app/components/home/controller/baseController.js"></script>

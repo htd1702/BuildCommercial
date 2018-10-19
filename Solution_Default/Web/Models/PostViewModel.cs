@@ -39,7 +39,7 @@ namespace Web.Models
 
         public bool Status { set; get; }
 
-        public virtual PostCategoryViewModel PostCategory { set; get; }
+        public virtual PostCategoryViewModel PostCategories { set; get; }
 
         public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
     }

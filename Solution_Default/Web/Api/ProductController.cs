@@ -111,9 +111,6 @@ namespace Web.Api
                     Product newProduct = new Product();
                     //Call method add product in folder extensions
                     newProduct.UpdateProduct(productVM);
-                    //Set date
-                    newProduct.CreatedDate = DateTime.Now;
-                    newProduct.UpdatedDate = DateTime.Now;
                     //Add data
                     _productService.Add(newProduct);
                     //Save change
@@ -146,8 +143,6 @@ namespace Web.Api
                     Product dbProduct = _productService.GetById(productVM.ID);
                     //Call method add product in folder extensions
                     dbProduct.UpdateProduct(productVM);
-                    //Set date
-                    dbProduct.UpdatedDate = DateTime.Now;
                     //Add data
                     _productService.Update(dbProduct);
                     //Save change

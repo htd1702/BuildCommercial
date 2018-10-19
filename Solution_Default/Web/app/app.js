@@ -6,6 +6,9 @@
         [
             'default.products',
             'default.product_categories',
+            'default.posts',
+            'default.post_categories',
+            'default.product_details',
             'default.common'
         ])
         .config(config)
@@ -70,13 +73,25 @@
         $translateProvider
             .translations('en', {
                 Product: 'Product',
+                ProductDetail: 'Product Detail',
                 Category: 'Category',
+                Post: 'Post',
+                PostCategory: 'Post Category',
+                Statistical: 'Statistical',
+                Color: 'Color',
+                Size: 'Size',
                 en: 'English',
                 vi: 'Tiếng Việt'
             })
             .translations('vi', {
                 Product: 'Sản phẩm',
+                ProductDetail: 'Chi tiết sản phẩm',
                 Category: 'Danh Mục',
+                Post: 'Tin',
+                PostCategory: 'Loại tin',
+                Statistical: 'Thống kê',
+                Color: 'Màu sắc',
+                Size: 'Kích thước',
                 en: 'English',
                 vi: 'Tiếng Việt'
             });

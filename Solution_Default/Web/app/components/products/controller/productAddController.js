@@ -3,9 +3,9 @@
     //apiService tầng service gọi get post put delete
     //notificationService message thông báo
     //$state : trỏ đến page
-    productAddController.$inject = ["$scope", "apiService", "notificationService", "$state", "commonService"];
+    productAddController.$inject = ["$scope", "apiService", "notificationService", "$state", "commonService", "authData"];
 
-    function productAddController($scope, apiService, notificationService, $state, commonService) {
+    function productAddController($scope, apiService, notificationService, $state, commonService, authData) {
         $scope.categories = [];
         $scope.moreImages = [];
         if ($scope.moreImages == "") {
@@ -16,12 +16,12 @@
         $scope.product = {
             CreatedDate: new Date(),
             Status: true
-        }
+        };
         //setting ckeditor
         $scope.editorOptions = {
             lang: 'en',
             height: '120px'
-        }
+        };
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProduct = AddProduct;
@@ -44,6 +44,9 @@
         function AddProduct() {
             $scope.product.Description = $scope.product.Content;
             $scope.product.MoreImages = JSON.stringify($scope.moreImages);
+            $scope.product.CreatedBy = authData.authenticationData.userName;
+            $scope.product.UpdatedBy = $scope.product.CreatedBy;
+            $scope.product.UpdatedDate = $scope.product.CreatedDate;
             apiService.post("/api/product/create", $scope.product, function (result) {
                 notificationService.displaySuccess(result.data.Name + " thêm thành công!");
                 $state.go("products");
@@ -58,7 +61,7 @@
                 $scope.$apply(function () {
                     $scope.product.Image = filtUrl;
                 });
-            }
+            };
             finder.popup();
         }
         //function upload multi img
@@ -71,7 +74,7 @@
                     $scope.moreImages.push(filtUrl);
                     $.unique($scope.moreImages.sort()).sort();
                 });
-            }
+            };
             finder.popup();
         }
         //call method load list categories

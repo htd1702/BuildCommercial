@@ -1,0 +1,99 @@
+﻿<style>
+    .padding-check {
+        padding: 7px;
+    }
+
+    .form-check {
+        margin-top: 15px !important;
+    }
+
+    .edit-form-check {
+        margin-bottom: 0px !important;
+    }
+
+    .form-size {
+        margin-bottom: 5px;
+    }
+</style>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Add</h4>
+        <p class="card-category">Complete</p>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="categoryID">Loại</label>
+                <select name="categoryID" ng-model="category" ng-options="option.ID as option.Name for option in categories" ng-change="changeCategory(category)" class="custom-select"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="productCategoryID">Loại sản phẩm</label>
+                <select name="productCategoryID" ng-model="product_category" ng-options="option.ID as option.Name for option in productCategories" ng-change="changeProductCategory(product_category)" class="custom-select"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="productID">Sẩn phẩm</label>
+                <select name="productID" ng-model="product" ng-options="option.ID as option.Name for option in products" class="custom-select"></select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <div class="form-check" style="margin-top:0px !important;bottom:5px;">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" ng-model="selectAllColor" ng-click="toggleAllColor()"> Màu sắc
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+                <div ng-repeat="color in listColor">
+                    <div class="row form-size">
+                        <div class="col-md-2">
+                            <div class="form-check edit-form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="chkColor" ng-checked="selectAllColor" data-id="{{color.ID}}"> {{color.Name}}
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" max="300" min="0" class="text-control" name="quantity" data-quantity="{{color.ID}}">
+                        </div>
+                        <!--<div class="col-md-5">
+                            <input type="text" class="text-control" name="imageMore" id="img_More" ng-model="ImageMore[$index]" >
+                        </div>
+                        <div class="col-md-5">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImageMore($index)">Upload</button>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-check" style="margin-top:0px !important;bottom:5px;">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" ng-model="selectAllSize"> Kích thước
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+                <div ng-repeat="size in listSize">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="chkSize" ng-checked="selectAllSize" data-id="{{size.ID}}"> {{size.Name}}
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-6">
+                <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="AddProductDetail(product)"><i class="fa fa-dot-circle-o"></i> Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

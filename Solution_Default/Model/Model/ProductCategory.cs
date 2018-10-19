@@ -24,6 +24,7 @@ namespace Model.Model
         public string Description { set; get; }
 
         public int? ParentID { set; get; }
+
         public int? DisplayOrder { set; get; }
 
         [MaxLength(256)]

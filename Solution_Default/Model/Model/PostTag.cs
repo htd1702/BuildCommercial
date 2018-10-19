@@ -16,9 +16,9 @@ namespace Model.Model
         public string TagID { set; get; }
 
         [ForeignKey("PostID")]
-        public virtual Post Post { set; get; }
+        public virtual Post Posts { set; get; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tag { set; get; }
+        public virtual Tag Tags { set; get; }
     }
 }

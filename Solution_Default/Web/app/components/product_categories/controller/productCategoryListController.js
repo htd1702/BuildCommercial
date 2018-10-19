@@ -18,25 +18,8 @@
         $scope.deleteProductCategory = deleteProductCategory;
         $scope.complateKeyWord = complateKeyWord;
         $scope.filterSearch = filterSearch;
-        $scope.deleteProductCategory = deleteProductCategory;
         $scope.deleteAllProductCategories = deleteAllProductCategories;
         $scope.showParentName = showParentName;
-        //method delete
-        function deleteProductCategory(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
-                var config = {
-                    params: {
-                        id: id
-                    }
-                }
-                apiService.delete("/api/productcategory/delete", config, function () {
-                    notificationService.displaySuccess("Xóa thành công!");
-                    search();
-                }, function () {
-                    notificationService.displayError("Xóa không thành công!");
-                });
-            });
-        }
         //method get product cate
         function getProductCategories(page) {
             page = page || 0;
@@ -92,7 +75,7 @@
                     params: {
                         id: id
                     }
-                }
+                };
                 apiService.delete("/api/productcategory/delete", config, function () {
                     notificationService.displaySuccess("Xóa thành công!");
                     search();

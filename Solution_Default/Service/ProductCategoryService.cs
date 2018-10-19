@@ -21,6 +21,8 @@ namespace Service
 
         ProductCategory GetById(int id);
 
+        IEnumerable<ProductCategory> GetCategoryByTake(int take);
+
         void Save();
     }
 
@@ -66,6 +68,11 @@ namespace Service
         public ProductCategory GetById(int id)
         {
             return _productCategoryRepository.GetSingleById(id);
+        }
+
+        public IEnumerable<ProductCategory> GetCategoryByTake(int take)
+        {
+            return _productCategoryRepository.GetCategoryByTake(take);
         }
 
         public void Save()

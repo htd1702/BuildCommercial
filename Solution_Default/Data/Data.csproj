@@ -90,45 +90,43 @@
     <Compile Include="Migrations\201807161150461_InitialDB.Designer.cs">
       <DependentUpon>201807161150461_InitialDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807211514339_AddErrorTable.cs" />
-    <Compile Include="Migrations\201807211514339_AddErrorTable.Designer.cs">
-      <DependentUpon>201807211514339_AddErrorTable.cs</DependentUpon>
+    <Compile Include="Migrations\201810131446384_RemoveCustomer.cs" />
+    <Compile Include="Migrations\201810131446384_RemoveCustomer.Designer.cs">
+      <DependentUpon>201810131446384_RemoveCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807281504496_Intergrate-AspnetIdentity.cs" />
-    <Compile Include="Migrations\201807281504496_Intergrate-AspnetIdentity.Designer.cs">
-      <DependentUpon>201807281504496_Intergrate-AspnetIdentity.cs</DependentUpon>
+    <Compile Include="Migrations\201810140232177_AddNewTableProductDetails.cs" />
+    <Compile Include="Migrations\201810140232177_AddNewTableProductDetails.Designer.cs">
+      <DependentUpon>201810140232177_AddNewTableProductDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807311441558_ChangeKey.cs" />
-    <Compile Include="Migrations\201807311441558_ChangeKey.Designer.cs">
-      <DependentUpon>201807311441558_ChangeKey.cs</DependentUpon>
+    <Compile Include="Migrations\201810151529122_AddMoreImgProductDetail.cs" />
+    <Compile Include="Migrations\201810151529122_AddMoreImgProductDetail.Designer.cs">
+      <DependentUpon>201810151529122_AddMoreImgProductDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808121100255_AddQuantityProduct.cs" />
-    <Compile Include="Migrations\201808121100255_AddQuantityProduct.Designer.cs">
-      <DependentUpon>201808121100255_AddQuantityProduct.cs</DependentUpon>
+    <Compile Include="Migrations\201810171534524_editProduct.cs" />
+    <Compile Include="Migrations\201810171534524_editProduct.Designer.cs">
+      <DependentUpon>201810171534524_editProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808121102520_ChangeAttriQuantityProduct.cs" />
-    <Compile Include="Migrations\201808121102520_ChangeAttriQuantityProduct.Designer.cs">
-      <DependentUpon>201808121102520_ChangeAttriQuantityProduct.cs</DependentUpon>
+    <Compile Include="Migrations\201810190211389_AlterTableProduct.cs" />
+    <Compile Include="Migrations\201810190211389_AlterTableProduct.Designer.cs">
+      <DependentUpon>201810190211389_AlterTableProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808190719068_AddTagsProduct.cs" />
-    <Compile Include="Migrations\201808190719068_AddTagsProduct.Designer.cs">
-      <DependentUpon>201808190719068_AddTagsProduct.cs</DependentUpon>
+    <Compile Include="Migrations\201810190309494_AlterTableOrder.cs" />
+    <Compile Include="Migrations\201810190309494_AlterTableOrder.Designer.cs">
+      <DependentUpon>201810190309494_AlterTableOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809050741336_AddNewAccount.cs" />
-    <Compile Include="Migrations\201809050741336_AddNewAccount.Designer.cs">
-      <DependentUpon>201809050741336_AddNewAccount.cs</DependentUpon>
+    <Compile Include="Migrations\201810190445211_AlterTableProudct-1.cs" />
+    <Compile Include="Migrations\201810190445211_AlterTableProudct-1.Designer.cs">
+      <DependentUpon>201810190445211_AlterTableProudct-1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
-    <Compile Include="Repositories\FooterRepository.cs" />
-    <Compile Include="Repositories\MenuGroupRepository.cs" />
-    <Compile Include="Repositories\MenuRepository.cs" />
+    <Compile Include="Repositories\ProductDetailRepository.cs" />
     <Compile Include="Repositories\OrderDetailRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="Repositories\PageRepository.cs" />
     <Compile Include="Repositories\PostCategoryRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\ListRepository.cs" />
     <Compile Include="Repositories\PostTagRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
@@ -157,26 +155,26 @@
     <EmbeddedResource Include="Migrations\201807161150461_InitialDB.resx">
       <DependentUpon>201807161150461_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807211514339_AddErrorTable.resx">
-      <DependentUpon>201807211514339_AddErrorTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810131446384_RemoveCustomer.resx">
+      <DependentUpon>201810131446384_RemoveCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807281504496_Intergrate-AspnetIdentity.resx">
-      <DependentUpon>201807281504496_Intergrate-AspnetIdentity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810140232177_AddNewTableProductDetails.resx">
+      <DependentUpon>201810140232177_AddNewTableProductDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807311441558_ChangeKey.resx">
-      <DependentUpon>201807311441558_ChangeKey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810151529122_AddMoreImgProductDetail.resx">
+      <DependentUpon>201810151529122_AddMoreImgProductDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808121100255_AddQuantityProduct.resx">
-      <DependentUpon>201808121100255_AddQuantityProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810171534524_editProduct.resx">
+      <DependentUpon>201810171534524_editProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808121102520_ChangeAttriQuantityProduct.resx">
-      <DependentUpon>201808121102520_ChangeAttriQuantityProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810190211389_AlterTableProduct.resx">
+      <DependentUpon>201810190211389_AlterTableProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808190719068_AddTagsProduct.resx">
-      <DependentUpon>201808190719068_AddTagsProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810190309494_AlterTableOrder.resx">
+      <DependentUpon>201810190309494_AlterTableOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809050741336_AddNewAccount.resx">
-      <DependentUpon>201809050741336_AddNewAccount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810190445211_AlterTableProudct-1.resx">
+      <DependentUpon>201810190445211_AlterTableProudct-1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

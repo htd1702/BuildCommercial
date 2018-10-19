@@ -60,6 +60,7 @@ namespace Data.Infrastructure
             return dbSet.Remove(entity);
         }
 
+        //Delete multi
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
@@ -67,11 +68,13 @@ namespace Data.Infrastructure
                 dbSet.Remove(obj);
         }
 
+        //Get by id
         public virtual T GetSingleById(int id)
         {
             return dbSet.Find(id);
         }
 
+        //Get many
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, string includes)
         {
             return dbSet.Where(where).ToList();

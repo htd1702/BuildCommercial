@@ -8,25 +8,25 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">Tên danh mục</label>
-                    <input type="text" class="form-control" ng-change="GetSeoTitle()" ng-model="productCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên danh mục...">
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="productCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên danh mục...">
                     <span ng-hide="frmAddProductCategory.name.$error.maxlength" ng-show="frmAddProductCategory.name.$invalid" class="text-danger">Bạn chưa nhập tên danh mục</span>
                     <span ng-show="frmAddProductCategory.name.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="alias">Tiêu đề SEO</label>
-                    <input type="text" required placeholder="Nhập tiêu đề SEO..." class="form-control" ng-model="productCategory.Alias" name="alias">
+                    <input type="text" required placeholder="Nhập tiêu đề SEO..." class="text-control" ng-model="productCategory.Alias" name="alias">
                     <span ng-show="frmAddProductCategory.alias.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="displayOrder">Thứ tự hiển thị</label>
-                    <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="form-control" min="0" ng-model="productCategory.DisplayOrder" name="displayOrder">
+                    <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="text-control" min="0" ng-model="productCategory.DisplayOrder" name="displayOrder">
                     <span ng-show="frmAddProductCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="image">Hình</label>
-                    <input type="text" class="form-control" ng-model="productCategory.Image" name="image">
+                    <input type="text" class="text-control" ng-model="productCategory.Image" name="image">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="parentId">Danh mục</label>
@@ -38,17 +38,17 @@
             </div>
             <div class="form-group">
                 <label for="description">Mô tả</label>
-                <textarea rows="2" placeholder="Nội dung..." class="form-control" ng-maxlength="600" ng-model="productCategory.Description" name="description"></textarea>
+                <textarea rows="2" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="productCategory.Description" name="description"></textarea>
                 <span class="text-danger" ng-show="frmAddProductCategory.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
             </div>
             <div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>
-                <input type="text" required placeholder="Nhập Meta Keyword..." class="form-control" ng-model="productCategory.MetaKeyword" name="metaKeyword">
+                <input type="text" required placeholder="Nhập Meta Keyword..." class="text-control" ng-model="productCategory.MetaKeyword" name="metaKeyword">
                 <span ng-show="frmAddProductCategory.metaKeyword.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
             </div>
             <div class="form-group">
                 <label for="metaDescription">Meta Description</label>
-                <textarea rows="4" placeholder="Nhập Meta Description..." ng-maxlength="600" class="form-control" ng-model="productCategory.MetaDescription" name="metaDescription"></textarea>
+                <textarea rows="4" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="productCategory.MetaDescription" name="metaDescription"></textarea>
                 <span class="text-danger" ng-show="frmAddProductCategory.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
             </div>
             <div class="form-group">

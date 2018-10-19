@@ -29,6 +29,8 @@ namespace Service
 
         DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor);
 
+        IEnumerable<Product> ListProductByCategory(int id);
+
         void Save();
     }
 
@@ -120,6 +122,11 @@ namespace Service
             pram[3] = new SqlParameter("@SortColor", SqlDbType.VarChar, 10);
             pram[3].Value = sortColor;
             return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
+        }
+
+        public IEnumerable<Product> ListProductByCategory(int id)
+        {
+            return this._productRepository.ListProductByCategory(id);
         }
 
         public void Save()

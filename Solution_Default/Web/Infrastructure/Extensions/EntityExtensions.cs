@@ -95,5 +95,37 @@ namespace Web.Infrastructure.Extensions
             product.MetaDescription = productVM.MetaDescription;
             product.Status = productVM.Status;
         }
+
+        //Set value mmapp product
+        public static void UpdateList(this List list, ListViewModel listVM)
+        {
+            list.ID = listVM.ID;
+            list.Name = listVM.Name;
+            list.Alias = listVM.Alias;
+            list.Description = listVM.Description;
+            list.CreatedDate = listVM.CreatedDate;
+            list.CreatedBy = listVM.CreatedBy;
+            list.UpdatedDate = listVM.UpdatedDate;
+            list.UpdatedBy = listVM.UpdatedBy;
+            list.Type = listVM.Type;
+        }
+
+        public static void UpdateProductDetail(this ProductDetail productDetail, ProductDetailViewModel productDetailVM, int type)
+        {
+            if (type == 2) {
+                productDetail.ID = productDetailVM.ID;
+            }
+            productDetail.ProductID = productDetailVM.ProductID;
+            productDetail.ColorID = productDetailVM.ColorID;
+            productDetail.SizeID = productDetailVM.SizeID;
+            productDetail.Quantity = productDetailVM.Quantity;
+            productDetail.Type = productDetailVM.Type;
+            //productDetail.Description = productDetailVM.Description;
+            productDetail.CreatedDate = productDetailVM.CreatedDate;
+            productDetail.CreatedBy = productDetailVM.CreatedBy;
+            productDetail.UpdatedDate = productDetailVM.UpdatedDate;
+            productDetail.UpdatedBy = productDetailVM.UpdatedBy;
+            //productDetail.MoreImages = productDetailVM.MoreImages;
+        }
     }
 }

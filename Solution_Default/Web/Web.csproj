@@ -217,6 +217,9 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\PostController.cs" />
+    <Compile Include="Api\ListController.cs" />
+    <Compile Include="Api\ProductDetailController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
     <Compile Include="Api\ProductTagController.cs" />
@@ -228,34 +231,42 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
+    <Compile Include="Infrastructure\Core\ShoppingCart.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\OrderDetailViewModel.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
+    <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\admin\Product\re_Product.fr.Designer.cs">
+    <Compile Include="Resources\Product\re_Product.fr.Designer.cs">
       <DependentUpon>re_Product.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\admin\Product\re_Product.vi.Designer.cs">
+    <Compile Include="Resources\Product\re_Product.vi.Designer.cs">
       <DependentUpon>re_Product.vi.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\admin\Product\re_Product.Designer.cs">
+    <Compile Include="Resources\Product\re_Product.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>re_Product.resx</DependentUpon>
@@ -266,9 +277,26 @@
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
     <Content Include="app\components\login\controller\loginController.js" />
+    <Content Include="app\components\posts\controller\post.module.js" />
+    <Content Include="app\components\posts\controller\postAddController.js" />
+    <Content Include="app\components\posts\controller\postEditController.js" />
+    <Content Include="app\components\posts\controller\postListController.js" />
+    <Content Include="app\components\posts\views\postAddView.html" />
+    <Content Include="app\components\posts\views\postEditView.html" />
+    <Content Include="app\components\posts\views\postListView.html" />
+    <Content Include="app\components\post_categories\controller\postCategories.module.js" />
+    <Content Include="app\components\post_categories\controller\postCategoryAddController.js" />
+    <Content Include="app\components\post_categories\controller\postCategoryListController.js" />
+    <Content Include="app\components\post_categories\controller\postCategoryEditController.js" />
+    <Content Include="app\components\post_categories\views\postCategoryEditView.html" />
+    <Content Include="app\components\post_categories\views\postCategoryAddView.html" />
+    <Content Include="app\components\post_categories\views\postCategoryListView.html" />
     <Content Include="app\components\products\controller\productAddController.js" />
     <Content Include="app\components\products\controller\productEditController.js" />
     <Content Include="app\components\products\controller\productListController.js" />
+    <Content Include="app\components\product_details\controller\productDetails.module.js" />
+    <Content Include="app\components\product_details\controller\productDetailListController.js" />
+    <Content Include="app\components\product_details\views\productDetailListView.html" />
     <Content Include="app\components\product_categories\controller\productCategories.module.js" />
     <Content Include="app\components\product_categories\controller\productCategoryAddController.js" />
     <Content Include="app\components\product_categories\controller\productCategoryEditController.js" />
@@ -3997,8 +4025,10 @@
     <Content Include="Libs\Microsoft.ApplicationBlocks.Data.dll" />
     <Content Include="Scripts\admin\material-dashboard.min.js" />
     <Content Include="Scripts\client\cozastore.js" />
+    <Content Include="Scripts\client\main-module.js" />
     <Content Include="Scripts\client\Main.js" />
     <Content Include="Scripts\client\map-custom.js" />
+    <Content Include="Scripts\client\shopping-cart.js" />
     <Content Include="Scripts\client\slick-custom.js" />
     <Content Include="Scripts\plugins\angular\angular-translate.min.js" />
     <Content Include="Scripts\plugins\angular\angular-ui-route.js" />
@@ -4063,11 +4093,12 @@
     <Folder Include="app\components\orders\views\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
-    <Folder Include="Resources\admin\ProductCategory\" />
-    <Folder Include="Resources\client\" />
+    <Folder Include="Resources\ProductCategory\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\ProductCategory\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
@@ -4251,7 +4282,6 @@
     <Content Include="AppSettings.config" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewHeader.cshtml" />
-    <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Shared\_sectionSlider.cshtml" />
     <Content Include="Views\Shared\_viewBanner.cshtml" />
     <Content Include="Views\Shared\_viewFooter.cshtml" />
@@ -4259,7 +4289,11 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Client\About.cshtml" />
     <Content Include="Views\Client\News.cshtml" />
-    <Content Include="Views\Client\ShoppingCart.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\ProductCategoryDetail.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_viewCart.cshtml" />
+    <Content Include="Views\Cart\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -4280,15 +4314,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\admin\Product\re_Product.fr.resx">
+    <EmbeddedResource Include="Resources\Product\re_Product.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\admin\Product\re_Product.vi.resx">
+    <EmbeddedResource Include="Resources\Product\re_Product.vi.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.vi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\admin\Product\re_Product.resx">
+    <EmbeddedResource Include="Resources\Product\re_Product.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.Designer.cs</LastGenOutput>
     </EmbeddedResource>

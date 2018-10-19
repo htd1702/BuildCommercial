@@ -23,20 +23,19 @@
     <link href="~/Content/client/cozastore.css" rel="stylesheet" />
     <link href="~/Content/client/Main.css" rel="stylesheet" />
 </head>
-<body class="animsition">
+<body class="animsition" ng-app="app_client">
     <!-- Header -->
     @Html.Partial("_viewHeader")
-    <!-- Cart -->
-    @Html.Partial("_viewCart")
-    <!-- Slider -->
-    @Html.Partial("_sectionSlider")
     <!--Main-->
     @RenderBody()
     <!-- Footer -->
     @*@Html.Partial("_viewFooter")*@
     @{Html.RenderAction("_viewFooter", "Client");}
     <!--Details-->
-    @Html.Partial("_viewDetails")
+    <div id="view-details"></div>
+    @*@{ Html.RenderAction("_viewDetails", "Client");}*@
+    <!--Cart-->
+    @Html.Partial("_viewCart")
     <!-- Back to top -->
     <div class="btn-back-to-top" id="myBtn">
         <span class="symbol-btn-back-to-top">
@@ -50,14 +49,65 @@
 <script src="~/Assets/client/vendor/bootstrap/js/popper.js"></script>
 <script src="~/Assets/client/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="~/Assets/client/vendor/select2/select2.min.js"></script>
+<script>
+    $(".js-select2").each(function () {
+        $(this).select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $(this).next('.dropDownSelect2')
+        });
+    })
+</script>
 <script src="~/Assets/client/vendor/daterangepicker/moment.min.js"></script>
 <script src="~/Assets/client/vendor/daterangepicker/daterangepicker.js"></script>
 <script src="~/Assets/client/vendor/slick/slick.min.js"></script>
 <script src="~/Scripts/client/slick-custom.js"></script>
 <script src="~/Assets/client/vendor/parallax100/parallax100.js"></script>
+<script>
+    $('.parallax100').parallax100();
+</script>
 <script src="~/Assets/client/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script>
+    $('.gallery-lb').each(function () { // the containers for all your galleries
+        $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image',
+            gallery: {
+                enabled: true
+            },
+            mainClass: 'mfp-fade'
+        });
+    });
+</script>
 <script src="~/Assets/client/vendor/isotope/isotope.pkgd.min.js"></script>
 <script src="~/Assets/client/vendor/sweetalert/sweetalert.min.js"></script>
 <script src="~/Assets/client/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+    $('.js-pscroll').each(function () {
+        $(this).css('position', 'relative');
+        $(this).css('overflow', 'hidden');
+        var ps = new PerfectScrollbar(this, {
+            wheelSpeed: 1,
+            scrollingThreshold: 1000,
+            wheelPropagation: false,
+        });
+
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
+</script>
 <script src="~/Scripts/client/cozastore.js"></script>
+<script src="~/Scripts/plugins/angular/angular.min.js"></script>
 <script src="~/Scripts/client/Main.js"></script>
+<script src="~/Scripts/client/shopping-cart.js"></script>
+<script src="~/Scripts/client/main-module.js"></script>
+<script>
+    $("#changeLang[data-lang]").click(function () {
+        var lang = $(this).attr("data-lang");
+        //tinh toan thoi gian cooki ton tai
+        var expires = new Date();
+        expires.setMonth(expires.getMonth() + 1);
+        document.cookie = "Lang=" + lang + ";expires=" + expires.toGMTString() + ";path=/";
+        location.reload(); // khi goi reload cooki se dc day len server
+    });
+</script>

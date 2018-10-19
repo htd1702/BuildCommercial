@@ -39,7 +39,7 @@ namespace Model.Model
         public int? ViewCount { set; get; }
 
         [ForeignKey("CategoryID")]
-        public virtual PostCategory PostCategory { set; get; }
+        public virtual PostCategory PostCategories { set; get; }
 
         public virtual IEnumerable<PostTag> PostTags { set; get; }
     }

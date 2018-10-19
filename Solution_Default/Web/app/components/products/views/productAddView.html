@@ -11,7 +11,7 @@
                         ProductName
                         <span ng-hide="frmAddproduct.name.$error.maxlength" ng-show="frmAddproduct.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="form-control" ng-change="GetSeoTitle()" ng-model="product.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên sản phẩm...">
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="product.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên sản phẩm...">
                     <span ng-show="frmAddproduct.name.$error.maxlength" class="text-danger">Tên sảm phẩm tối đa 40 ký tự</span>
                 </div>
                 <div class="form-group col-md-4">
@@ -19,7 +19,7 @@
                         SeoTitle
                         <span class="text-danger" ng-show="frmAddproduct.alias.$invalid"> *</span>
                     </label>
-                    <input type="text" required placeholder="Nhập tiêu đề SEO..." class="form-control" ng-model="product.Alias" name="alias">
+                    <input type="text" required placeholder="Nhập tiêu đề SEO..." class="text-control" ng-model="product.Alias" name="alias">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="parentId">Category</label>
@@ -33,25 +33,25 @@
                         Price
                         <span class="text-danger" ng-show="frmAddproduct.price.$invalid"> *</span>
                     </label>
-                    <input type="number" required placeholder="Nhập giá..." class="form-control" min="0" ng-model="product.Price" name="price">
+                    <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Price" name="price">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="promotionPrice">
                         PromotionPrice
                         <span class="text-danger" ng-show="frmAddproduct.promotionPrice.$invalid"> *</span>
                     </label>
-                    <input type="number" required placeholder="Nhập giá khuyến mãi..." class="form-control" min="0" max="75" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
+                    <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="75" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="quantity">
                         Quantity
                         <span ng-show="frmAddproduct.quantity.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="number" required class="form-control" min="0" ng-model="product.Quantity" name="quantity" placeholder="Nhập số lượng...">
+                    <input type="number" required class="text-control" min="0" ng-model="product.Quantity" name="quantity" placeholder="Nhập số lượng...">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="warranty">Warranty</label>
-                    <input type="number" required class="form-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month">
+                    <input type="number" required class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month">
                 </div>
             </div>
             <div class="form-row">
@@ -60,22 +60,22 @@
                         MetaKeyword
                         <span ng-show="frmAddproduct.metaKeyword.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" required placeholder="Nhập Meta Keyword..." class="form-control" ng-model="product.MetaKeyword" name="metaKeyword">
+                    <input type="text" required placeholder="Nhập Meta Keyword..." class="text-control" ng-model="product.MetaKeyword" name="metaKeyword">
                 </div>
                 <div class="form-group col-md-5">
                     <label for="metaDescription">
                         MetaDescription
                     </label>
-                    <input type="text" placeholder="Nhập Meta Description..." ng-maxlength="600" class="form-control" ng-model="product.MetaDescription" name="metaDescription" />
+                    <input type="text" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="product.MetaDescription" name="metaDescription" />
                     <span class="text-danger" ng-show="frmAddproduct.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="viewCount">View</label>
-                    <input type="number" required class="form-control" min="0" ng-model="product.ViewCount" name="viewCount">
+                    <input type="number" required class="text-control" min="0" ng-model="product.ViewCount" name="viewCount">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="tags">Tags<span ng-show="frmAddproduct.tags.$invalid" class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" min="0" ng-model="product.Tags" name="tags">
+                    <input type="text" class="text-control" min="0" ng-model="product.Tags" name="tags">
                 </div>
             </div>
             <div class="form-row">
@@ -84,7 +84,7 @@
                         Image
                         <span ng-show="frmAddproduct.image.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="form-control" ng-model="product.Image" name="image" required>
+                    <input type="text" class="text-control" ng-model="product.Image" name="image" required>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
                     </div>
@@ -99,7 +99,7 @@
                             <img ng-src="{{img}}" class="img-content" style="width:4.5em" />
                         </li>
                     </ul>
-                    <input type="text" class="form-control" ng-model="product.ImageMore" name="imageMore" style="display:none" required>
+                    <input type="text" class="text-control" ng-model="product.ImageMore" name="imageMore" style="display:none" required>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImageMore()">Upload</button>
                     </div>
@@ -107,7 +107,7 @@
             </div>
             <div class="form-row">
                 <label for="description">Description</label>
-                <textarea placeholder="Nội dung..." class="form-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="product.Content" name="content"></textarea>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="product.Content" name="content"></textarea>
                 <span class="text-danger" ng-show="frmAddproduct.content.$error.maxlength">Nội dung không được quá 600 ký tự</span>
             </div>
             <div class="form-row">

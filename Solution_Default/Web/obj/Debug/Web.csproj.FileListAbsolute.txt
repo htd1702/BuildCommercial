@@ -282,9 +282,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.WindowsS
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.Web.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csprojAssemblyReference.cache
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.admin.Product.re_Product.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.admin.Product.re_Product.fr.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.admin.Product.re_Product.vi.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.GenerateResource.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\fr\Web.resources.dll
@@ -294,3 +291,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.ApplicationBlocks.Data.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.vi.resources
