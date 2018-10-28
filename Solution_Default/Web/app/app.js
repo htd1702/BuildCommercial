@@ -8,7 +8,8 @@
             'default.product_categories',
             'default.posts',
             'default.post_categories',
-            'default.product_details',
+            'default.orders',
+            'default.orderDetails',
             'default.common'
         ])
         .config(config)
@@ -80,6 +81,8 @@
                 Statistical: 'Statistical',
                 Color: 'Color',
                 Size: 'Size',
+                Order: 'Order',
+                OrderDetail: 'Order Detail',
                 en: 'English',
                 vi: 'Tiếng Việt'
             })
@@ -92,6 +95,8 @@
                 Statistical: 'Thống kê',
                 Color: 'Màu sắc',
                 Size: 'Kích thước',
+                Order: 'Hóa đơn',
+                OrderDetail: 'Chi tiết hóa đơn',
                 en: 'English',
                 vi: 'Tiếng Việt'
             });

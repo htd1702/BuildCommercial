@@ -22,6 +22,6 @@ namespace Model.Model
         public virtual Order Orders { set; get; }
 
         [ForeignKey("ProductID")]
-        public virtual Product Products { set; get; }
+        public virtual ProductDetail ProductDetails { set; get; }
     }
 }

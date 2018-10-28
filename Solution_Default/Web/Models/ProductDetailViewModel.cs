@@ -29,5 +29,9 @@ namespace Web.Models
         public string UpdatedBy { set; get; }
 
         public virtual ProductViewModel Products { set; get; }
+
+        public virtual ColorViewModel Colors { set; get; }
+
+        public virtual SizeViewModel Sizes { set; get; }
     }
 }

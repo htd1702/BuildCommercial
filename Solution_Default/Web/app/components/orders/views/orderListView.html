@@ -1,0 +1,61 @@
+﻿<style>
+    .messageStatusGreen {
+        color: green;
+    }
+
+    .messageStatusRed {
+        color: red;
+    }
+</style>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">List Order</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
+                        <th>Tên khách hàng</th>
+                        <th>Địa chỉ</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Tổng giá trị</th>
+                        <th>Mô tả</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày đặt hàng</th>
+                        <th class="td-actions text-right">
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllOrders()"><i class="fa fa-trash"></i></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in orders">
+                        <td><input type="checkbox" class="chk_allOrders" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
+                        <td>{{item.CustomerName}}</td>
+                        <td>{{item.Address}}</td>
+                        <td>{{item.Email}}</td>
+                        <td>{{item.Phone}}</td>
+                        <td>{{item.Total}}</td>
+                        <td>{{item.CustomerMessage}}</td>
+                        <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
+                        <td>{{item.OrderDate | date:"dd/MM/yyyy"}}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_order({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" ng-click="deleteOrder(item.ID)">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

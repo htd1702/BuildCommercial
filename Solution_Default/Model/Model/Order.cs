@@ -14,15 +14,7 @@ namespace Model.Model
 
         [Required]
         [MaxLength(50)]
-        public string Username { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string LastName { get; set; }
+        public string CustomerName { get; set; }
 
         [Required]
         [MaxLength(256)]
@@ -38,16 +30,14 @@ namespace Model.Model
 
         public decimal Total { get; set; }
 
+        public DateTime OrderDate { set; get; }
+
         [Required]
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
         [MaxLength(256)]
         public string PaymentMethod { set; get; }
-
-        public DateTime? CreatedDate { set; get; }
-
-        public string CreatedBy { set; get; }
 
         public string PaymentStatus { set; get; }
 

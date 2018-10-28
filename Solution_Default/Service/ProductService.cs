@@ -34,7 +34,7 @@ namespace Service
         void Save();
     }
 
-    internal class ProductService : IProductService
+    public class ProductService : IProductService
     {
         private IProductRepository _productRepository;
         private ITagRepository _tagRepository;

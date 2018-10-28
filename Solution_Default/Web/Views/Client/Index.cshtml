@@ -15,7 +15,7 @@
 <!-- Slider -->
 @Html.Partial("_sectionSlider")
 <!-- Banner -->
-@Html.Partial("_viewBanner")
+@Html.Partial("_viewParent")
 <section class="section-main transition-effect" id="section-main" ng-controller="ProductController">
     <div class="container">
         <div class="p-b-10">
@@ -25,31 +25,7 @@
         </div>
 
         <div class="flex-w flex-sb-m p-b-52">
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1 btn-category" data-filter="*" data-type="0">
-                    All Products
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 btn-category" data-filter=".women" data-type="1">
-                    Women
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 btn-category" data-filter=".men" data-type="2">
-                    Men
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 btn-category" data-filter=".bag" data-type="3">
-                    Bag
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 btn-category" data-filter=".shoes" data-type="4">
-                    Shoes
-                </button>
-
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 btn-category" data-filter=".watches" data-type="5">
-                    Watches
-                </button>
-            </div>
+            @Html.Action("_viewCategory", "ProductCategory")
 
             <div class="flex-w flex-c-m m-tb-10">
                 <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
@@ -173,63 +149,13 @@
                         </div>
 
                         <ul id="sort-color">
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #222;">
+                            <li ng-repeat="c in listColors" class="p-b-6">
+                                <span class="fs-15 lh-12 m-r-6 {{c.Name}}">
                                     <i class="zmdi zmdi-circle"></i>
                                 </span>
 
-                                <a class="filter-link stext-106 trans-04" data-row-3="1">
-                                    Black
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-                                    <i class="zmdi zmdi-circle"></i>
-                                </span>
-
-                                <a class="filter-link stext-106 trans-04" data-row-3="2">
-                                    Blue
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-                                    <i class="zmdi zmdi-circle"></i>
-                                </span>
-
-                                <a class="filter-link stext-106 trans-04" data-row-3="3">
-                                    Grey
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-                                    <i class="zmdi zmdi-circle"></i>
-                                </span>
-
-                                <a class="filter-link stext-106 trans-04" data-row-3="4">
-                                    Green
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-                                    <i class="zmdi zmdi-circle"></i>
-                                </span>
-
-                                <a class="filter-link stext-106 trans-04" data-row-3="5">
-                                    Red
-                                </a>
-                            </li>
-
-                            <li class="p-b-6">
-                                <span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-                                    <i class="zmdi zmdi-circle-o"></i>
-                                </span>
-
-                                <a class="filter-link stext-106 trans-04" data-row-3="6">
-                                    White
+                                <a class="filter-link stext-106 trans-04" data-row-3="{{c.ID}}" ng-click="btnColor($index, $event, c.ID)">
+                                    {{c.Name}}
                                 </a>
                             </li>
                         </ul>
@@ -261,6 +187,8 @@
                                 Crafts
                             </a>
                         </div>
+                        <br />
+                        <button class="btn btn-info size-105" id="btnSearch">Search</button>
                     </div>
                 </div>
             </div>
@@ -270,7 +198,7 @@
             <div class="col-md-3" ng-repeat="p in products">
                 <div class="block2-pic hov-img0">
                     <img ng-src="{{p.Image}}" alt="IMG-PRODUCT">
-                    <a href="/Client/Details/{{p.ID}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                    <a href="/Client/Details/{{p.ID}}" data-id="{{p.ID}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
                         Quick View
                     </a>
                     @*<button class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" ng-click="btnDetails(p.ID)">Quick View</button>*@
@@ -294,13 +222,14 @@
                     </div>
                 </div>
             </div>
+            <input style="display:none" type="text" value="8" id="txt_PageSize" />
         </div>
 
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45" style="padding-top:0px;margin-bottom:50px;">
-            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+            <button class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" id="btnLoadMoreProduct">
                 Load More
-            </a>
+            </button>
         </div>
     </div>
 </section>

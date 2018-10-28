@@ -5,6 +5,7 @@
     using Model.Model;
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -18,15 +19,13 @@
         //Create data demo
         protected override void Seed(Data.DBContext context)
         {
-            CreateProductCategorySample(context);
-            CreateProductSample(context);
             //  This method will be called after migrating to the latest version.
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DBContext()));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DBContext()));
 
             var user = new ApplicationUser()
             {
-                UserName = "hieunt105",
+                UserName = "hieunt",
                 Email = "hieu.n2395@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
@@ -84,5 +83,6 @@
                 context.SaveChanges();
             }
         }
+
     }
 }

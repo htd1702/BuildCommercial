@@ -1,0 +1,28 @@
+﻿@using Model
+@using System.Data;
+@*<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+        <ul class="main-menu">
+            <li class="active-menu" ng-repeat="p in parents">
+                <button name="btnParent" ng-click="btnParent($index, $event, p.ID)" data-type="{{p.ID}}">{{p.Name}}</button>
+                <ul class="sub-menu">
+                    <li><a href="/">Category 1</a></li>
+                    <li><a href="/">Category 2</a></li>
+                    <li><a href="/">Category 3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>*@
+
+<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+    <ul class="main-menu">
+        @foreach (DataRow row in Model.Rows)
+        {
+            <li class="active-menu">
+                <button name="btnParent" data-id="@row["ID"]" ng-click="btnParent(@row["ID"])">@row["Name"]</button>
+                <ul class="sub-menu">
+                    <li><a href="/" data-id="@row["CategoryID"]">@row["CategoryName"]</a></li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

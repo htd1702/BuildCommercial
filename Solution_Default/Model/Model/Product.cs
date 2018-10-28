@@ -12,6 +12,10 @@ namespace Model.Model
         public int ID { set; get; }
 
         [Required]
+        [MaxLength(15)]
+        public string Code { set; get; }
+
+        [Required]
         [MaxLength(256)]
         public string Name { set; get; }
 
@@ -21,10 +25,6 @@ namespace Model.Model
 
         [Required]
         public int CategoryID { set; get; }
-
-        public string Color { set; get; }
-
-        public string Size { set; get; }
 
         [MaxLength(256)]
         public string Image { set; get; }

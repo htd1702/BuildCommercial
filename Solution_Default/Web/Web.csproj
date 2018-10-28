@@ -215,10 +215,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\OrderDetailController.cs" />
+    <Compile Include="Api\OrderController.cs" />
+    <Compile Include="Api\SizeController.cs" />
     <Compile Include="Api\HomeController.cs" />
+    <Compile Include="Api\ColorController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
-    <Compile Include="Api\ListController.cs" />
     <Compile Include="Api\ProductDetailController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
@@ -233,6 +236,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -244,12 +248,13 @@
     <Compile Include="Infrastructure\Core\ShoppingCart.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ColorViewModel.cs" />
+    <Compile Include="Models\SizeViewModel.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
-    <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
@@ -277,6 +282,14 @@
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
     <Content Include="app\components\login\controller\loginController.js" />
+    <Content Include="app\components\order_details\controller\orderDetailListController.js" />
+    <Content Include="app\components\order_details\controller\orderDetails.module.js" />
+    <Content Include="app\components\order_details\views\orderDetailListView.html" />
+    <Content Include="app\components\orders\controller\orders.module.js" />
+    <Content Include="app\components\orders\controller\orderEditController.js" />
+    <Content Include="app\components\orders\controller\orderListController.js" />
+    <Content Include="app\components\orders\views\orderEditView.html" />
+    <Content Include="app\components\orders\views\orderListView.html" />
     <Content Include="app\components\posts\controller\post.module.js" />
     <Content Include="app\components\posts\controller\postAddController.js" />
     <Content Include="app\components\posts\controller\postEditController.js" />
@@ -294,9 +307,6 @@
     <Content Include="app\components\products\controller\productAddController.js" />
     <Content Include="app\components\products\controller\productEditController.js" />
     <Content Include="app\components\products\controller\productListController.js" />
-    <Content Include="app\components\product_details\controller\productDetails.module.js" />
-    <Content Include="app\components\product_details\controller\productDetailListController.js" />
-    <Content Include="app\components\product_details\views\productDetailListView.html" />
     <Content Include="app\components\product_categories\controller\productCategories.module.js" />
     <Content Include="app\components\product_categories\controller\productCategoryAddController.js" />
     <Content Include="app\components\product_categories\controller\productCategoryEditController.js" />
@@ -3935,6 +3945,9 @@
     <Content Include="img\client\banner-07.jpg" />
     <Content Include="img\client\banner-08.jpg" />
     <Content Include="img\client\banner-09.jpg" />
+    <Content Include="img\client\Banner.jpg" />
+    <Content Include="img\client\Banner2.jpg" />
+    <Content Include="img\client\Banner3.jpg" />
     <Content Include="img\client\banner\banner2.jpeg" />
     <Content Include="img\client\banner\banner3.jpeg" />
     <Content Include="img\client\banner\banner1.jpeg" />
@@ -4089,13 +4102,12 @@
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\components\orders\controller\" />
-    <Folder Include="app\components\orders\views\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
+    <Folder Include="Views\Color\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\ProductCategory\" />
@@ -4283,9 +4295,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewHeader.cshtml" />
     <Content Include="Views\Shared\_sectionSlider.cshtml" />
-    <Content Include="Views\Shared\_viewBanner.cshtml" />
+    <Content Include="Views\Shared\_viewParent.cshtml" />
     <Content Include="Views\Shared\_viewFooter.cshtml" />
-    <Content Include="Views\Shared\_viewDetails.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Client\About.cshtml" />
     <Content Include="Views\Client\News.cshtml" />
@@ -4294,6 +4305,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\Shared\_viewCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using Service;
+﻿using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Web.Controllers
@@ -24,25 +23,27 @@ namespace Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor)
+        [HttpPost]
+        public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor, int pageSize)
         {
             try
             {
-                //var resolveRequest = HttpContext.Request;
-                //resolveRequest.InputStream.Seek(0, SeekOrigin.Begin);
-                //var jsonString = new StreamReader(resolveRequest.InputStream).ReadToEnd();
-                //dynamic obj = JValue.Parse(jsonString);
-                if (categories == "1")
-                    categories = "%";
-                if (sortPrice == "0")
-                    categories = "%";
                 List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+                //check params
+                if (categories == "0" || categories == null)
+                    categories = "%";
+                if (sortBy == "0" || sortBy == null)
+                    sortBy = "%";
+                if (sortColor == "0" || sortColor == null)
+                    sortColor = "%";
                 DataTable dt = _productService.ListProduct(categories, sortBy, sortPrice, sortColor);
-                list = _productService.GetTableRows(dt);
-                var jsonResult = Json(list, JsonRequestBehavior.AllowGet);
-                jsonResult.MaxJsonLength = Int32.MaxValue;
-                return jsonResult;
+                if (dt.Rows.Count > 0)
+                {
+                    //Get data by take
+                    var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(pageSize).CopyToDataTable();
+                    list = _productService.GetTableRows(model);
+                }
+                return Json(list, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

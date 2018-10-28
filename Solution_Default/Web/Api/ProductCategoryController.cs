@@ -76,6 +76,20 @@ namespace Web.Api
             });
         }
 
+        [Route("getallparentbytype")]
+        [HttpGet]
+        public HttpResponseMessage GetAllByType(HttpRequestMessage request, int type)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _productCategoryService.GetCategoriyByType(type);
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
         [Route("getid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetId(HttpRequestMessage request, int id)

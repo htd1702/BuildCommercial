@@ -1,10 +1,23 @@
 ﻿$(function () {
     //add shopping cart
     $(".js-addcart-detail").click(function () {
+        //get attribute
         var pid = $(this).attr("data-add-to-cart");
+        var colorID = $("#ddl_color option:selected").val();
+        var sizeID = $("#ddl_size option:selected").val();
+        //check size and code is not null
+        if (colorID == 0) {
+            alert("Vui lòng chọn màu sắc khi thêm vào giỏ");
+            return;
+        }
+        if (sizeID == 0) {
+            alert("Vui lòng chọn kích thước khi thêm vào giỏ");
+            return;
+        }
+        //call funtion load count and total
         $.ajax({
             url: "/Cart/Add",
-            data: { id: pid },
+            data: { id: pid, colorID: colorID, sizeID: sizeID },
             type: "post",
             async: false,
             success: function (response) {
@@ -13,28 +26,32 @@
             }
         });
     });
-
+    //function up cart
     $(".btn-num-product-up").click(function () {
+        //get attribute
         var pid = $(this).attr("data-update-cart");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
-        var tr = $(this).parents("tr");
+        //call funtion load count and total
         $.ajax({
             url: "/Cart/Update",
             data: { id: pid, newqty: qty },
             type: "post",
             success: function (response) {
+                //set value atti in count and total
                 $(".shopping-cart-des").attr("data-notify", response.Count);
                 $(".shopping-cart-mobi").attr("data-notify", response.Count);
                 //cap nhat thanh tien cua san pham
-                tr.find("td:eq(5)").html(response.Total);
+                $("#spanTotal").html(response.Total);
             }
         });
     });
-
+    //funtion down cart
     $(".btn-num-product-down").click(function () {
+        //get attribute
         var pid = $(this).attr("data-update-cart");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
         var tr = $(this).parents("tr");
+        //check count = 0 => remove product cart
         if (qty == 0) {
             if (confirm("Bạn có muốn xóa sản phẩm này ra khỏi giỏ hàng không?")) {
                 $.ajax({
@@ -46,6 +63,7 @@
                         $(".shopping-cart-des").attr("data-notify", response.Count);
                         $(".shopping-cart-mobi").attr("data-notify", response.Count);
                         $(tr).remove();
+                        $("#spanTotal").html(response.Total);
                     }
                 });
                 $.ajax({
@@ -57,6 +75,7 @@
                 });
             }
         }
+        //check count #0 return list cart
         else {
             $.ajax({
                 url: "/Cart/Update",
@@ -66,7 +85,7 @@
                     $(".shopping-cart-des").attr("data-notify", response.Count);
                     $(".shopping-cart-mobi").attr("data-notify", response.Count);
                     //cap nhat thanh tien cua san pham
-                    tr.find("td:eq(5)").html(response.Total);
+                    $("#spanTotal").html(response.Total);
                 }
             });
         }

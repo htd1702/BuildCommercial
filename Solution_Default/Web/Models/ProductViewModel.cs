@@ -8,16 +8,15 @@ namespace Web.Models
         public int ID { set; get; }
 
         [Required]
+        public string Code { set; get; }
+
+        [Required]
         public string Name { set; get; }
 
         [Required]
         public string Alias { set; get; }
 
         public int CategoryID { set; get; }
-
-        public string Size { set; get; }
-
-        public string Color { set; get; }
 
         public string Image { set; get; }
 

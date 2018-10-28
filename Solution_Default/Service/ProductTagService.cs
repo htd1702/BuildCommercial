@@ -23,7 +23,7 @@ namespace Service
         void Save();
     }
 
-    internal class ProductTagService : IProductTagService
+    public class ProductTagService : IProductTagService
     {
         private IProductTagRepository _productTagRepository;
         private IUnitOfWork _unitOfWork;

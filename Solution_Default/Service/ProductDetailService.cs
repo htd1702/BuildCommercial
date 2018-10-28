@@ -1,7 +1,10 @@
 ﻿using Data.Infrastructure;
 using Data.Repositories;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Service
 {
@@ -9,22 +12,18 @@ namespace Service
     {
         ProductDetail Add(ProductDetail ProductDetail);
 
-        void Update(ProductDetail ProductDetail);
-
-        ProductDetail Delete(int id);
-
-        IEnumerable<ProductDetail> GetAll();
-
         IEnumerable<ProductCategory> GetCategories();
 
         IEnumerable<ProductCategory> GetProductCategories(int idCategory);
 
-        ProductDetail GetById(int id);
+        int DeleteProductDetail(int id);
+
+        DataTable Get_ListProductBySizeColor(int id, int type);
 
         void Save();
     }
 
-    internal class ProductDetailService : IProductDetailService
+    public class ProductDetailService : IProductDetailService
     {
         private IProductDetailRepository _productDetailRepository;
         private IUnitOfWork _unitOfWork;
@@ -38,21 +37,6 @@ namespace Service
         public ProductDetail Add(ProductDetail ProductDetail)
         {
             return _productDetailRepository.Add(ProductDetail);
-        }
-
-        public ProductDetail Delete(int id)
-        {
-            return _productDetailRepository.Delete(id);
-        }
-
-        public IEnumerable<ProductDetail> GetAll()
-        {
-            return _productDetailRepository.GetAll();
-        }
-
-        public ProductDetail GetById(int id)
-        {
-            return _productDetailRepository.GetSingleById(id);
         }
 
         public IEnumerable<ProductCategory> GetCategories()
@@ -70,9 +54,26 @@ namespace Service
             _unitOfWork.Commit();
         }
 
-        public void Update(ProductDetail ProductDetail)
+        public int DeleteProductDetail(int id)
         {
-            _productDetailRepository.Update(ProductDetail);
+            int result = 0;
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
+            pram[0].Value = id;
+            pram[1] = new SqlParameter("@Result", SqlDbType.Int, 4);
+            pram[1].Direction = ParameterDirection.Output;
+            SqlHelper.ExecuteNonQuery(_productDetailRepository.connectString, CommandType.StoredProcedure, "dbo.DeleteProductDetailByProduct", pram);
+            return result = int.Parse(pram[1].Value.ToString());
+        }
+
+        public DataTable Get_ListProductBySizeColor(int id, int type)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
+            pram[0].Value = id;
+            pram[1] = new SqlParameter("@Type", SqlDbType.Int, 4);
+            pram[1].Value = type;
+            return SqlHelper.ExecuteDataset(_productDetailRepository.connectString, CommandType.StoredProcedure, "dbo.Get_ListProductBySizeColor", pram).Tables[0];
         }
     }
 }

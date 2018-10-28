@@ -42,12 +42,6 @@ namespace Web.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult Banner()
-        {
-            return PartialView();
-        }
-
-        [ChildActionOnly]
         public ActionResult Cart()
         {
             return PartialView();

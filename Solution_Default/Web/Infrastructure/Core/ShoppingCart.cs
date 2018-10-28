@@ -11,6 +11,8 @@ namespace Web.Infrastructure.Core
         //public DBContext db = new DBContext();
         public List<Product> Items = new List<Product>();
 
+        public List<ProductDetail> ItemDetails = new List<ProductDetail>();
+
         public static ShoppingCart Cart
         {
             get
@@ -25,7 +27,7 @@ namespace Web.Infrastructure.Core
             }
         }
 
-        public void Add(int ID)
+        public void Add(int ID, int colorID, int sizeID)
         {
             try
             {
@@ -36,9 +38,15 @@ namespace Web.Infrastructure.Core
             {
                 using (var dbc = new DBContext())//giai~ phong dbc
                 {
+                    //find product
                     var Item = dbc.Products.Find(ID);
                     Item.Quantity = 1;
+                    //add list cart product
                     Items.Add(Item);
+                    //find productdetails
+                    var ItemDetail = dbc.ProductDetails.FirstOrDefault(x => x.ProductID == ID && x.ColorID == colorID && x.SizeID == sizeID);
+                    //add product detail
+                    ItemDetails.Add(ItemDetail);
                 }
             }
         }

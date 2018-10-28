@@ -68,10 +68,19 @@ namespace Web.Infrastructure.Extensions
             productCategory.Status = productCategoryVM.Status;
         }
 
-        //Set value mmapp product
-        public static void UpdateProduct(this Product product, ProductViewModel productVM)
+        //Set value mapp product
+        public static void UpdateProduct(this Product product, ProductViewModel productVM, int type)
         {
-            product.ID = productVM.ID;
+            if (type == 1)
+            {
+                product.CreatedDate = productVM.CreatedDate;
+                product.CreatedBy = productVM.CreatedBy;
+            }
+            else
+            {
+                product.ID = productVM.ID;
+            }
+            product.Code = productVM.Code;
             product.Name = productVM.Name;
             product.Alias = productVM.Alias;
             product.CategoryID = productVM.CategoryID;
@@ -87,8 +96,6 @@ namespace Web.Infrastructure.Extensions
             product.HotFlag = productVM.HotFlag;
             product.ViewCount = productVM.ViewCount;
             product.Tags = productVM.Tags;
-            product.CreatedDate = productVM.CreatedDate;
-            product.CreatedBy = productVM.CreatedBy;
             product.UpdatedDate = productVM.UpdatedDate;
             product.UpdatedBy = productVM.UpdatedBy;
             product.MetaKeyword = productVM.MetaKeyword;
@@ -96,23 +103,11 @@ namespace Web.Infrastructure.Extensions
             product.Status = productVM.Status;
         }
 
-        //Set value mmapp product
-        public static void UpdateList(this List list, ListViewModel listVM)
-        {
-            list.ID = listVM.ID;
-            list.Name = listVM.Name;
-            list.Alias = listVM.Alias;
-            list.Description = listVM.Description;
-            list.CreatedDate = listVM.CreatedDate;
-            list.CreatedBy = listVM.CreatedBy;
-            list.UpdatedDate = listVM.UpdatedDate;
-            list.UpdatedBy = listVM.UpdatedBy;
-            list.Type = listVM.Type;
-        }
-
+        //Set value mapp product detail
         public static void UpdateProductDetail(this ProductDetail productDetail, ProductDetailViewModel productDetailVM, int type)
         {
-            if (type == 2) {
+            if (type == 2)
+            {
                 productDetail.ID = productDetailVM.ID;
             }
             productDetail.ProductID = productDetailVM.ProductID;
@@ -126,6 +121,59 @@ namespace Web.Infrastructure.Extensions
             productDetail.UpdatedDate = productDetailVM.UpdatedDate;
             productDetail.UpdatedBy = productDetailVM.UpdatedBy;
             //productDetail.MoreImages = productDetailVM.MoreImages;
+        }
+
+        //Set value mmapp product
+        public static void UpdateColor(this Color color, ColorViewModel colorVM)
+        {
+            color.ID = colorVM.ID;
+            color.Name = colorVM.Name;
+            color.NameVN = colorVM.NameVN;
+            color.Alias = colorVM.Alias;
+            color.Description = colorVM.Description;
+            color.CreatedDate = colorVM.CreatedDate;
+            color.CreatedBy = colorVM.CreatedBy;
+            color.UpdatedDate = colorVM.UpdatedDate;
+            color.UpdatedBy = colorVM.UpdatedBy;
+        }
+
+        //Set value mmapp product
+        public static void UpdateSize(this Size size, SizeViewModel sizeVM)
+        {
+            size.ID = sizeVM.ID;
+            size.Name = sizeVM.Name;
+            size.NameVN = sizeVM.NameVN;
+            size.Alias = sizeVM.Alias;
+            size.Description = sizeVM.Description;
+            size.CreatedDate = sizeVM.CreatedDate;
+            size.CreatedBy = sizeVM.CreatedBy;
+            size.UpdatedDate = sizeVM.UpdatedDate;
+            size.UpdatedBy = sizeVM.UpdatedBy;
+        }
+
+        //Set value mmapp order
+        public static void UpdateOrder(this Order order, OrderViewModel orderVM)
+        {
+            order.ID = orderVM.ID;
+            order.CustomerName = orderVM.CustomerName;
+            order.Address = orderVM.Address;
+            order.Email = orderVM.Email;
+            order.Phone = orderVM.Phone;
+            order.Total = orderVM.Total;
+            order.CustomerMessage = orderVM.CustomerMessage;
+            order.PaymentMethod = orderVM.PaymentMethod;
+            order.OrderDate = orderVM.OrderDate;
+            order.PaymentStatus = orderVM.PaymentStatus;
+            order.Status = orderVM.Status;
+        }
+
+        //Set value mmapp order detail
+        public static void UpdateOrderDetail(this OrderDetail orderDetail, OrderDetailViewModel orderDetailVM)
+        {
+            orderDetail.OrderID = orderDetailVM.OrderID;
+            orderDetail.ProductID = orderDetailVM.ProductID;
+            orderDetail.Quantitty = orderDetailVM.Quantitty;
+            orderDetail.UnitPrice = orderDetailVM.UnitPrice;
         }
     }
 }

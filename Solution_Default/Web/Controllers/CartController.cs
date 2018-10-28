@@ -17,9 +17,9 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(int Id)
+        public JsonResult Add(int Id, int colorID, int sizeID)
         {
-            ShoppingCart.Cart.Add(Id);
+            ShoppingCart.Cart.Add(Id, colorID, sizeID);
             var response = new
             {
                 Count = ShoppingCart.Cart.Count,
@@ -36,6 +36,7 @@ namespace Web.Controllers
             var response = new
             {
                 Count = ShoppingCart.Cart.Count,
+                Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
                 //Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0")
             };
             return Json(response);
@@ -49,7 +50,6 @@ namespace Web.Controllers
             {
                 Count = ShoppingCart.Cart.Count,
                 Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
-
                 //Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
                 //ItemAmount = ShoppingCart.Cart.getItemAmount(Id).ToString("c")
             };

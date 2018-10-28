@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderDetailService.cs" />
+    <Compile Include="OrderService.cs" />
+    <Compile Include="SizeService.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="ColorService.cs" />
     <Compile Include="PostCategoryService.cs" />
-    <Compile Include="ListService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="ProductDetailService.cs" />
     <Compile Include="ProductCategoryService.cs" />

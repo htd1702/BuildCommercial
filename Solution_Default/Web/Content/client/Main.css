@@ -76,9 +76,34 @@
     animation: 0.8s ease-out 0s 1 contentFromRight;
 }
 
-
 .item-coz {
     position: relative;
     left: 0;
     top: 0;
+}
+
+/*-------Color-------*/
+
+.Black {
+    color: #222;
+}
+
+.Blue {
+    color: #4272d7;
+}
+
+.Grey {
+    color: #b3b3b3;
+}
+
+.Green {
+    color: #00ad5f;
+}
+
+.Red {
+    color: #fa4251;
+}
+
+.White {
+    color: white;
 }

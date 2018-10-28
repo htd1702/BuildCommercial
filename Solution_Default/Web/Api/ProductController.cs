@@ -19,11 +19,13 @@ namespace Web.Api
     public class ProductController : ApiControllerBase
     {
         private IProductService _productService;
+        private IProductDetailService _productDetailService;
 
         //Contructor
-        public ProductController(IErrorService errorService, IProductService productService) : base(errorService)
+        public ProductController(IErrorService errorService, IProductService productService, IProductDetailService productDetailService) : base(errorService)
         {
             this._productService = productService;
+            this._productDetailService = productDetailService;
         }
 
         [Route("getall")]
@@ -95,7 +97,7 @@ namespace Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVM)
+        public HttpResponseMessage Create(HttpRequestMessage request, object obj)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -108,15 +110,70 @@ namespace Web.Api
                 }
                 else
                 {
+                    ProductDetail newProductDetail = new ProductDetail();
+                    ProductDetailViewModel newProductDetailVM = new ProductDetailViewModel();
+                    ProductViewModel productVM = new ProductViewModel();
                     Product newProduct = new Product();
+                    JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+                    dynamic dynamicObj = jsonSerializer.Deserialize<dynamic>(obj.ToString());
+                    var listColor = dynamicObj["colorList"];
+                    var listSize = dynamicObj["sizeList"];
+                    var listQuantity = dynamicObj["quantityList"];
+                    productVM.Name = dynamicObj["Name"];
+                    productVM.Code = dynamicObj["Code"];
+                    productVM.Alias = dynamicObj["Alias"];
+                    productVM.CategoryID = dynamicObj["CategoryID"];
+                    productVM.Image = dynamicObj["Image"];
+                    productVM.MoreImages = dynamicObj["MoreImages"];
+                    productVM.Price = dynamicObj["Price"];
+                    productVM.PromotionPrice = dynamicObj["PromotionPrice"];
+                    productVM.Quantity = 0;
+                    productVM.Warranty = dynamicObj["Warranty"];
+                    productVM.Description = dynamicObj["Description"];
+                    productVM.Content = dynamicObj["Content"];
+                    productVM.ViewCount = dynamicObj["ViewCount"];
+                    productVM.Tags = dynamicObj["Tags"];
+                    productVM.CreatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
+                    productVM.CreatedBy = dynamicObj["CreatedBy"];
+                    productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
+                    productVM.UpdatedBy = dynamicObj["UpdatedBy"];
+                    productVM.MetaKeyword = dynamicObj["MetaKeyword"];
+                    productVM.MetaDescription = dynamicObj["MetaDescription"];
+                    productVM.HomeFlag = dynamicObj["HomeFlag"];
+                    productVM.HotFlag = dynamicObj["HotFlag"];
+                    productVM.Status = dynamicObj["Status"];
                     //Call method add product in folder extensions
-                    newProduct.UpdateProduct(productVM);
+                    newProduct.UpdateProduct(productVM, 1);
                     //Add data
                     _productService.Add(newProduct);
                     //Save change
                     _productService.Save();
                     //Mapping data to dataView
                     var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
+                    //check list color > 0
+                    if (listColor.Length > 0)
+                    {
+                        for (int i = 0; i < listColor.Length; i++)
+                        {
+                            //Call method add product category in folder extensions
+                            newProductDetailVM.ColorID = int.Parse(listColor[i].ToString());
+                            newProductDetailVM.Quantity = int.Parse(listQuantity[i].ToString());
+                            for (int j = 0; j < listSize.Length; j++)
+                            {
+                                newProductDetailVM.ProductID = responseData.ID;
+                                newProductDetailVM.SizeID = int.Parse(listSize[j].ToString());
+                                newProductDetailVM.CreatedBy = productVM.CreatedBy;
+                                newProductDetailVM.CreatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
+                                newProductDetailVM.UpdatedBy = productVM.UpdatedBy;
+                                newProductDetailVM.UpdatedDate = newProductDetailVM.CreatedDate;
+                                newProductDetail.UpdateProductDetail(newProductDetailVM, 1);
+                                //Add data
+                                _productDetailService.Add(newProductDetail);
+                                //Save change
+                                _productDetailService.Save();
+                            }
+                        }
+                    }
                     //Check request
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
@@ -127,7 +184,7 @@ namespace Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, ProductViewModel productVM)
+        public HttpResponseMessage Update(HttpRequestMessage request, object obj)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -140,17 +197,76 @@ namespace Web.Api
                 }
                 else
                 {
-                    Product dbProduct = _productService.GetById(productVM.ID);
-                    //Call method add product in folder extensions
-                    dbProduct.UpdateProduct(productVM);
-                    //Add data
-                    _productService.Update(dbProduct);
-                    //Save change
-                    _productService.Save();
-                    //Mapping data to dataView
-                    var responseData = Mapper.Map<Product, ProductViewModel>(dbProduct);
-                    //Check request
-                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                    ProductDetail newProductDetail = new ProductDetail();
+                    ProductDetailViewModel newProductDetailVM = new ProductDetailViewModel();
+                    ProductViewModel productVM = new ProductViewModel();
+                    Product newProduct = new Product();
+                    JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+                    dynamic dynamicObj = jsonSerializer.Deserialize<dynamic>(obj.ToString());
+                    newProduct = _productService.GetById(dynamicObj["ID"]);
+                    var listColor = dynamicObj["colorList"];
+                    var listSize = dynamicObj["sizeList"];
+                    var listQuantity = dynamicObj["quantityList"];
+                    productVM.ID = dynamicObj["ID"];
+                    productVM.Name = dynamicObj["Name"];
+                    productVM.Code = dynamicObj["Code"];
+                    productVM.Alias = dynamicObj["Alias"];
+                    productVM.CategoryID = dynamicObj["CategoryID"];
+                    productVM.Image = dynamicObj["Image"];
+                    productVM.MoreImages = dynamicObj["MoreImages"];
+                    productVM.Price = dynamicObj["Price"];
+                    productVM.PromotionPrice = dynamicObj["PromotionPrice"];
+                    productVM.Quantity = 0;
+                    productVM.Warranty = dynamicObj["Warranty"];
+                    productVM.Description = dynamicObj["Description"];
+                    productVM.Content = dynamicObj["Content"];
+                    productVM.ViewCount = dynamicObj["ViewCount"];
+                    productVM.Tags = dynamicObj["Tags"];
+                    productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
+                    productVM.UpdatedBy = dynamicObj["UpdatedBy"];
+                    productVM.MetaKeyword = dynamicObj["MetaKeyword"];
+                    productVM.MetaDescription = dynamicObj["MetaDescription"];
+                    productVM.HomeFlag = dynamicObj["HomeFlag"];
+                    productVM.HotFlag = dynamicObj["HotFlag"];
+                    productVM.Status = dynamicObj["Status"];
+                    int result = _productDetailService.DeleteProductDetail(productVM.ID);
+                    if (result > 0)
+                    {
+                        //Call method add product in folder extensions
+                        newProduct.UpdateProduct(productVM, 2);
+                        //Update data
+                        _productService.Update(newProduct);
+                        //Save change
+                        _productService.Save();
+                        //Mapping data to dataView
+                        var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
+                        //check list color
+                        if (listColor.Length > 0)
+                        {
+                            for (int i = 0; i < listColor.Length; i++)
+                            {
+                                //Call method add product category in folder extensions
+                                newProductDetailVM.ColorID = int.Parse(listColor[i].ToString());
+                                newProductDetailVM.Quantity = int.Parse(listQuantity[i].ToString());
+                                for (int j = 0; j < listSize.Length; j++)
+                                {
+                                    newProductDetailVM.ProductID = productVM.ID;
+                                    newProductDetailVM.SizeID = int.Parse(listSize[j].ToString());
+                                    newProductDetailVM.CreatedBy = productVM.UpdatedBy;
+                                    newProductDetailVM.CreatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
+                                    newProductDetailVM.UpdatedBy = productVM.UpdatedBy;
+                                    newProductDetailVM.UpdatedDate = newProductDetailVM.CreatedDate;
+                                    newProductDetail.UpdateProductDetail(newProductDetailVM, 1);
+                                    //Add data
+                                    _productDetailService.Add(newProductDetail);
+                                    //Save change
+                                    _productDetailService.Save();
+                                }
+                            }
+                        }
+                        //Check request
+                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                    }
                 }
                 return response;
             });
@@ -174,7 +290,7 @@ namespace Web.Api
                     }
                     else
                     {
-                        //Delete
+                        //Delete product
                         var reponse = _productService.Delete(id);
                         //Save change
                         _productService.Save();

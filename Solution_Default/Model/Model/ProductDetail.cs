@@ -38,5 +38,11 @@ namespace Model.Model
 
         [ForeignKey("ProductID")]
         public virtual Product Products { set; get; }
+
+        [ForeignKey("ColorID")]
+        public virtual Color Colors { set; get; }
+
+        [ForeignKey("SizeID")]
+        public virtual Size Sizes { set; get; }
     }
 }

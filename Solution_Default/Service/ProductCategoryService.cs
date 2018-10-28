@@ -1,7 +1,9 @@
 ﻿using Data.Infrastructure;
 using Data.Repositories;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Service
 {
@@ -23,10 +25,14 @@ namespace Service
 
         IEnumerable<ProductCategory> GetCategoryByTake(int take);
 
+        IEnumerable<ProductCategory> GetCategoriyByType(int type);
+
+        DataTable GetCategoryByParent();
+
         void Save();
     }
 
-    internal class ProductCategoryService : IProductCategoryService
+    public class ProductCategoryService : IProductCategoryService
     {
         private IProductCategoryRepository _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
@@ -68,6 +74,16 @@ namespace Service
         public ProductCategory GetById(int id)
         {
             return _productCategoryRepository.GetSingleById(id);
+        }
+
+        public IEnumerable<ProductCategory> GetCategoriyByType(int type)
+        {
+            return _productCategoryRepository.getCategoryByType(type);
+        }
+
+        public DataTable GetCategoryByParent()
+        {
+            return SqlHelper.ExecuteDataset(_productCategoryRepository.connectString, CommandType.StoredProcedure, "dbo.GetCategoryByParent").Tables[0];
         }
 
         public IEnumerable<ProductCategory> GetCategoryByTake(int take)

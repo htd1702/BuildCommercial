@@ -3,7 +3,6 @@ using Model.Model;
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -15,7 +14,6 @@ using Web.Models;
 namespace Web.Api
 {
     [RoutePrefix("api/productdetail")]
-    [Authorize]
     public class ProductDetailController : ApiControllerBase
     {
         private IProductDetailService _productDetailService;
@@ -33,72 +31,7 @@ namespace Web.Api
 
         #endregion Initialize
 
-        [Route("getall")]
-        [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                int totalRow = 0;
-                var model = _productDetailService.GetAll();
-                //count model
-                totalRow = model.Count();
-                //sap xep giam dan
-                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
-                //mapp data
-                var responseData = Mapper.Map<IEnumerable<ProductDetail>, IEnumerable<ProductDetailViewModel>>(query);
-                //create pageination and set value
-                var paginationSet = new PaginationSet<ProductDetailViewModel>()
-                {
-                    //item = data response
-                    Items = responseData,
-                    //current page
-                    Page = page,
-                    //count page
-                    TotalCount = totalRow,
-                    //làm tròn
-                    TotalPages = (int)(Math.Ceiling((decimal)totalRow / pageSize))
-                };
-                //check status
-                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
-                return response;
-            });
-        }
-
-        [Route("getallparents")]
-        [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                var model = _productDetailService.GetAll();
-                //mapp data
-                var responseData = Mapper.Map<IEnumerable<ProductDetail>, IEnumerable<ProductDetailViewModel>>(model);
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
-        }
-
-        [Route("getid/{id:int}")]
-        [HttpGet]
-        public HttpResponseMessage GetId(HttpRequestMessage request, int id)
-        {
-            if (id > 0)
-            {
-                return CreateHttpResponse(request, () =>
-                {
-                    var model = _productDetailService.GetById(id);
-                    //mapp data
-                    var responseData = Mapper.Map<ProductDetail, ProductDetailViewModel>(model);
-                    //check status
-                    var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                    //return status
-                    return response;
-                });
-            }
-            else
-                return request.CreateResponse(HttpStatusCode.BadRequest);
-        }
+        #region Method ProductDetail
 
         [Route("create")]
         [HttpPost]
@@ -154,103 +87,6 @@ namespace Web.Api
             });
         }
 
-        [Route("update")]
-        [HttpPut]
-        [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, ProductDetailViewModel productDetailVM)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                //check issue
-                if (!ModelState.IsValid)
-                {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    ProductDetail dbProductDetail = _productDetailService.GetById(productDetailVM.ID);
-                    //Call method add product category in folder extensions
-                    dbProductDetail.UpdateProductDetail(productDetailVM, 2);
-                    //Set date
-                    dbProductDetail.UpdatedDate = DateTime.Now;
-                    //Add data
-                    _productDetailService.Update(dbProductDetail);
-                    //Save change
-                    _productDetailService.Save();
-                    //Mapping data to dataView
-                    var responseData = Mapper.Map<ProductDetail, ProductDetailViewModel>(dbProductDetail);
-                    //Check request
-                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
-                }
-                return response;
-            });
-        }
-
-        [Route("delete")]
-        [HttpDelete]
-        [AllowAnonymous]
-        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
-        {
-            if (id > 0)
-            {
-                return CreateHttpResponse(request, () =>
-                {
-                    HttpResponseMessage response = null;
-                    //check issue
-                    if (!ModelState.IsValid)
-                    {
-                        //get status
-                        response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                    }
-                    else
-                    {
-                        //Delete
-                        var reponse = _productDetailService.Delete(id);
-                        //Save change
-                        _productDetailService.Save();
-                        //Mapping data to dataView
-                        var responseData = Mapper.Map<ProductDetail, ProductDetailViewModel>(reponse);
-                        //Check request
-                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
-                    }
-                    return response;
-                });
-            }
-            else
-                return request.CreateResponse(HttpStatusCode.BadRequest);
-        }
-
-        [Route("deletemulti")]
-        [HttpDelete]
-        [AllowAnonymous]
-        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listId)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                //check issue
-                if (!ModelState.IsValid)
-                {
-                    //get status
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listProductDetail = new JavaScriptSerializer().Deserialize<List<int>>(listId);
-                    foreach (var id in listProductDetail)
-                    {
-                        _productDetailService.Delete(id);
-                    }
-                    //Save change
-                    _productDetailService.Save();
-                    //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, listProductDetail.Count);
-                }
-                return response;
-            });
-        }
-
         [Route("getlistcategory")]
         [HttpGet]
         public HttpResponseMessage LoadListCategory(HttpRequestMessage request, int id, int type)
@@ -280,5 +116,19 @@ namespace Web.Api
                 }
             });
         }
+
+        [Route("getlistproductbysizecolor")]
+        [HttpGet]
+        public HttpResponseMessage Get_ListProductBySizeColor(HttpRequestMessage request, int id, int type)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _productDetailService.Get_ListProductBySizeColor(id, type);
+                var response = request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            });
+        }
+
+        #endregion Method ProductDetail
     }
 }

@@ -25,8 +25,14 @@
                     <span ng-show="frmAddProductCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="image">Hình</label>
-                    <input type="text" class="text-control" ng-model="productCategory.Image" name="image">
+                    <label for="image">
+                        Image
+                        <span ng-show="frmAddProductCategory.image.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="productCategory.Image" name="image" required>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="parentId">Danh mục</label>

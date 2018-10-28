@@ -9,13 +9,7 @@ namespace Web.Models
         public int ID { set; get; }
 
         [Required]
-        public string Username { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
+        public string CustomerName { get; set; }
 
         [Required]
         public string Address { set; get; }
@@ -28,13 +22,11 @@ namespace Web.Models
 
         public decimal Total { get; set; }
 
+        public DateTime OrderDate { set; get; }
+
         public string CustomerMessage { set; get; }
 
         public string PaymentMethod { set; get; }
-
-        public DateTime? CreatedDate { set; get; }
-
-        public string CreatedBy { set; get; }
 
         public string PaymentStatus { set; get; }
 

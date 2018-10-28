@@ -22,6 +22,6 @@ namespace Web.Models
 
         public virtual OrderViewModel Orders { set; get; }
 
-        public virtual ProductViewModel Products { set; get; }
+        public virtual ProductDetailViewModel ProductDetails { set; get; }
     }
 }

@@ -16,6 +16,7 @@
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProductCategory = AddProductCategory;
+        $scope.ChooseImage = ChooseImage;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSEOTitle($scope.productCategory.Name);
@@ -41,6 +42,16 @@
             }, function (error) {
                 notificationService.displayError("Thêm mới thất bại!");
             });
+        }
+        //funcion upload
+        function ChooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.productCategory.Image = filtUrl;
+                });
+            };
+            finder.popup();
         }
         //call method load parent
         LoadParentCategory();
