@@ -1,15 +1,17 @@
 ﻿using Data.Infrastructure;
 using Data.Repositories;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Service
 {
     public interface IPostCategoryService
     {
-        PostCategory Add(PostCategory postCategory);
+        PostCategory Add(PostCategory PostCategory);
 
-        void Update(PostCategory postCategory);
+        void Update(PostCategory PostCategory);
 
         PostCategory Delete(int id);
 
@@ -17,9 +19,15 @@ namespace Service
 
         IEnumerable<PostCategory> GetAll(string keyword);
 
-        IEnumerable<PostCategory> GetAllByParentID(int parentId);
+        IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
-        PostCategory GetId(int id);
+        PostCategory GetById(int id);
+
+        IEnumerable<PostCategory> GetCategoryByTake(int take);
+
+        IEnumerable<PostCategory> GetCategoriyByType(int type);
+
+        DataTable GetPostCategoryByParent();
 
         void Save();
     }
@@ -35,9 +43,9 @@ namespace Service
             this._unitOfWork = unitOfWork;
         }
 
-        public PostCategory Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory PostCategory)
         {
-            return _postCategoryRepository.Add(postCategory);
+            return _postCategoryRepository.Add(PostCategory);
         }
 
         public PostCategory Delete(int id)
@@ -58,14 +66,29 @@ namespace Service
                 return _postCategoryRepository.GetAll();
         }
 
-        public IEnumerable<PostCategory> GetAllByParentID(int parentId)
+        public IEnumerable<PostCategory> GetAllByParentId(int parentId)
         {
             return _postCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
         }
 
-        public PostCategory GetId(int id)
+        public PostCategory GetById(int id)
         {
             return _postCategoryRepository.GetSingleById(id);
+        }
+
+        public IEnumerable<PostCategory> GetCategoriyByType(int type)
+        {
+            return _postCategoryRepository.getCategoryByType(type);
+        }
+
+        public DataTable GetPostCategoryByParent()
+        {
+            return SqlHelper.ExecuteDataset(_postCategoryRepository.connectString, CommandType.StoredProcedure, "dbo.GetPostCategoryByParent").Tables[0];
+        }
+
+        public IEnumerable<PostCategory> GetCategoryByTake(int take)
+        {
+            return _postCategoryRepository.GetCategoryByTake(take);
         }
 
         public void Save()
@@ -73,9 +96,9 @@ namespace Service
             _unitOfWork.Commit();
         }
 
-        public void Update(PostCategory postCategory)
+        public void Update(PostCategory PostCategory)
         {
-            _postCategoryRepository.Update(postCategory);
+            _postCategoryRepository.Update(PostCategory);
         }
     }
 }

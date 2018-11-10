@@ -1,8 +1,11 @@
-﻿using Service;
+﻿using AutoMapper;
+using Model.Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -22,14 +25,6 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        //List category
-        public ActionResult _viewCategory()
-        {
-            DataTable dt = new DataTable();
-            dt = _productCategoryService.GetCategoryByParent();
-            return PartialView(dt);
         }
 
         [HttpGet]
@@ -58,6 +53,12 @@ namespace Web.Controllers
             {
                 throw ex;
             }
+        }
+
+        public ActionResult _viewParent()
+        {
+            ViewBag.ListCategory = _productCategoryService.GetCategoryByTake(3);
+            return PartialView();
         }
     }
 }

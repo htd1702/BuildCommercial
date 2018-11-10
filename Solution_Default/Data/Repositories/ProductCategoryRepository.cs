@@ -12,7 +12,7 @@ namespace Data.Repositories
 
         IEnumerable<ProductCategory> GetCategoryByTake(int take);
 
-        IEnumerable<ProductCategory> getCategoryByType(int type);
+        IEnumerable<ProductCategory> GetCategoryByType(int type);
 
         string connectString { get; }
     }
@@ -34,12 +34,14 @@ namespace Data.Repositories
             return this.DbContext.ProductCategorys.OrderBy(x => x.DisplayOrder).Take(take).ToList();
         }
 
-        public IEnumerable<ProductCategory> getCategoryByType(int type)
+        public IEnumerable<ProductCategory> GetCategoryByType(int type)
         {
             if (type == 1)
                 return DbContext.ProductCategorys.Where(c => c.ParentID == 0).ToList();
-            else
+            else if (type == 2)
                 return DbContext.ProductCategorys.Where(c => c.ParentID != 0).ToList();
+            else
+                return DbContext.ProductCategorys.OrderByDescending(c => c.Name).ToList();
         }
 
         string IProductCategoryRepository.connectString { get => ConfigurationManager.ConnectionStrings["BuildingConnection"].ConnectionString; }

@@ -78,7 +78,7 @@ namespace Service
 
         public IEnumerable<ProductCategory> GetCategoriyByType(int type)
         {
-            return _productCategoryRepository.getCategoryByType(type);
+            return _productCategoryRepository.GetCategoryByType(type);
         }
 
         public DataTable GetCategoryByParent()

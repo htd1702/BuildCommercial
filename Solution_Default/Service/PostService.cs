@@ -7,23 +7,19 @@ namespace Service
 {
     public interface IPostService
     {
-        void Add(Post post);
+        Post Add(Post Post);
 
-        void Update(Post post);
+        void Update(Post Post);
 
-        void Delete(int id);
+        Post Delete(int id);
 
         IEnumerable<Post> GetAll();
 
-        IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetAll(string keyword);
 
-        Post GetByID(int id);
+        Post GetById(int id);
 
-        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
-
-        IEnumerable<Post> GetAllByCategoryPaging(int categoryId, string tag, int page, int pageSize, out int totalRow);
-
-        void SaveChange();
+        void Save();
     }
 
     public class PostService : IPostService
@@ -31,59 +27,48 @@ namespace Service
         private IPostRepository _postRepository;
         private IUnitOfWork _unitOfWork;
 
-        //Khởi tạo contructor
-        //Mỗi Global khởi tạo có Service thì sẽ khởi tạo 2 biến này
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
-            //Truyền 2 param nội tại để gán cho 2 biến toàn cục để tiện tương tác cho tất cả các method
             this._postRepository = postRepository;
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Post post)
+        public Post Add(Post Post)
         {
-            _postRepository.Add(post);
+            return _postRepository.Add(Post);
         }
 
-        public void Delete(int id)
+        public Post Delete(int id)
         {
-            _postRepository.Delete(id);
+            return _postRepository.Delete(id);
         }
 
         public IEnumerable<Post> GetAll()
         {
-            return _postRepository.GetAll(new string[] { "PostCategory" });
+            return _postRepository.GetAll();
         }
 
-        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, string tag, int page, int pageSize, out int totalRow)
+        public IEnumerable<Post> GetAll(string keyword)
         {
-            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
+            if (!string.IsNullOrEmpty(keyword))
+                return _postRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _postRepository.GetAll();
         }
 
-        public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
-        {
-            //Select all post by tag
-            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
-        }
-
-        public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
-        {
-            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
-        }
-
-        public Post GetByID(int id)
+        public Post GetById(int id)
         {
             return _postRepository.GetSingleById(id);
         }
 
-        public void SaveChange()
+        public void Save()
         {
             _unitOfWork.Commit();
         }
 
-        public void Update(Post post)
+        public void Update(Post Post)
         {
-            _postRepository.Update(post);
+            _postRepository.Update(Post);
         }
     }
 }

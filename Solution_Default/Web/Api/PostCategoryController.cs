@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using Web.Infrastructure.Core;
 using Web.Infrastructure.Extensions;
 using Web.Models;
@@ -14,20 +15,24 @@ using Web.Models;
 namespace Web.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         private IPostCategoryService _postCategoryService;
 
-        //Page cần thiết 1 errorservice nên child cũng cần truyền
-        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) :
-            base(errorService)
+        #region Initialize
+
+        //khai bao contructor
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) : base(errorService)
         {
             this._postCategoryService = postCategoryService;
         }
 
+        #endregion Initialize
+
         [Route("getall")]
         [HttpGet]
-        public HttpResponseMessage Get(HttpRequestMessage request, string keyword, int page, int pageSize)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -57,74 +62,181 @@ namespace Web.Api
             });
         }
 
-        [Route("add")]
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
+        [Route("getallparents")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _postCategoryService.GetAll();
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("getallparentbytype")]
+        [HttpGet]
+        public HttpResponseMessage GetAllByType(HttpRequestMessage request, int type)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _postCategoryService.GetCategoriyByType(type);
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("getid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetId(HttpRequestMessage request, int id)
+        {
+            if (id > 0)
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _postCategoryService.GetById(id);
+                    //mapp data
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(model);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("create")]
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage Create(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                //check issue
+                if (!ModelState.IsValid)
                 {
-                    //check request http
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    //get status
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    PostCategory postCategory = new PostCategory();
-                    //call update method
-                    postCategory.UpdatePostCategory(postCategoryVM);
-                    //call add method
-                    var category = _postCategoryService.Add(postCategory);
-                    //save change
+                    PostCategory newPostCategory = new PostCategory();
+                    //Call method add product category in folder extensions
+                    newPostCategory.UpdatePostCategory(postCategoryVM);
+                    //Set date
+                    newPostCategory.CreatedDate = DateTime.Now;
+                    //Add data
+                    _postCategoryService.Add(newPostCategory);
+                    //Save change
                     _postCategoryService.Save();
-                    //status request
-                    response = request.CreateResponse(HttpStatusCode.Created, category);
+                    //Mapping data to dataView
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(newPostCategory);
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
                 return response;
             });
         }
 
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                //check issue
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    //get id postCategory
-                    var postCategoryDB = _postCategoryService.GetId(postCategoryVM.ID);
-                    //call update method
-                    postCategoryDB.UpdatePostCategory(postCategoryVM);
-                    _postCategoryService.Update(postCategoryDB);
-                    //save change
+                    PostCategory dbPostCategory = _postCategoryService.GetById(postCategoryVM.ID);
+                    //Call method add product category in folder extensions
+                    dbPostCategory.UpdatePostCategory(postCategoryVM);
+                    //Set date
+                    dbPostCategory.UpdatedDate = DateTime.Now;
+                    //Add data
+                    _postCategoryService.Update(dbPostCategory);
+                    //Save change
                     _postCategoryService.Save();
-                    //status request
-                    response = request.CreateResponse(HttpStatusCode.OK);
+                    //Mapping data to dataView
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(dbPostCategory);
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
                 return response;
             });
         }
 
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            if (id > 0)
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    HttpResponseMessage response = null;
+                    //check issue
+                    if (!ModelState.IsValid)
+                    {
+                        //get status
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                    }
+                    else
+                    {
+                        //Delete
+                        var reponse = _postCategoryService.Delete(id);
+                        //Save change
+                        _postCategoryService.Save();
+                        //Mapping data to dataView
+                        var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(reponse);
+                        //Check request
+                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                    }
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listId)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                //check issue
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    //get status
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    _postCategoryService.Delete(id);
+                    var listPostCategory = new JavaScriptSerializer().Deserialize<List<int>>(listId);
+                    foreach (var id in listPostCategory)
+                    {
+                        _postCategoryService.Delete(id);
+                    }
+                    //Save change
                     _postCategoryService.Save();
-
-                    response = request.CreateResponse(HttpStatusCode.OK);
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.OK, listPostCategory.Count);
                 }
                 return response;
             });

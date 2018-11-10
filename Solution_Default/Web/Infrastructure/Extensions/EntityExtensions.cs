@@ -27,7 +27,7 @@ namespace Web.Infrastructure.Extensions
         }
 
         //Set value mapp post
-        public static void UpdatePost(this Post post, Post postVM)
+        public static void UpdatePost(this Post post, PostViewModel postVM)
         {
             post.ID = postVM.ID;
             post.Name = postVM.Name;

@@ -47,13 +47,45 @@ namespace Web.Controllers
             return PartialView();
         }
 
-        public ActionResult ProductCategoryDetail(string id)
+        public ActionResult About()
         {
-            if (string.IsNullOrEmpty(id))
-                id = "0";
-            var model = _productService.ListProductByCategory(int.Parse(id));
-            var listProduct = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(model);
-            return View(listProduct);
+            return View();
+        }
+
+        public ActionResult Blog()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult _viewFooter()
+        {
+            ViewBag.Parent = _productCategoryService.GetCategoriyByType(1);
+            ViewBag.Category = _productCategoryService.GetCategoriyByType(2);
+            return PartialView();
+        }
+
+        public ActionResult _viewProduct()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Main()
+        {
+            return PartialView();
+        }
+
+        public ActionResult ProductCategoryDetail(string name, int id)
+        {
+            ViewBag.Name = name;
+            ViewBag.ID = id;
+            return PartialView();
         }
 
         public ActionResult Details(string id)
@@ -76,28 +108,9 @@ namespace Web.Controllers
             return View(listProduct);
         }
 
-        public ActionResult About()
+        public ActionResult Search(string keyword)
         {
-            return View();
-        }
-
-        public ActionResult News()
-        {
-            return View();
-        }
-
-        [ChildActionOnly]
-        public ActionResult _viewFooter()
-        {
-            var model = _productCategoryService.GetAll();
-            var listCategory = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
-            return PartialView(listCategory);
-        }
-
-        [ChildActionOnly]
-        public ActionResult Main()
-        {
-            return PartialView();
+            return View("ProductCategoryDetail");
         }
     }
 }

@@ -35,9 +35,22 @@ namespace Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var model = _productService.GetAll();
+                model = model.OrderBy(x => x.Code).ToList();
                 //mapp data
                 var reponseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(model);
                 var reponse = request.CreateResponse(HttpStatusCode.OK, reponseData);
+                return reponse;
+            });
+        }
+
+        [Route("getindex")]
+        [HttpGet]
+        public HttpResponseMessage GetIndex(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                string index = _productService.GetCodeIndexProduct();
+                var reponse = request.CreateResponse(HttpStatusCode.OK, index);
                 return reponse;
             });
         }
@@ -53,7 +66,7 @@ namespace Web.Api
                 //count model
                 totalRow = model.Count();
                 //sap xep giam dan
-                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+                var query = model.OrderByDescending(x => x.Code).Skip(page * pageSize).Take(pageSize);
                 //mapp data
                 var responseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(query);
                 //create pageination and set value

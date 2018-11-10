@@ -294,3 +294,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.Application
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.fr.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.vi.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.vi.resources

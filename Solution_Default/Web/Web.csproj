@@ -238,6 +238,8 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PostCategoryController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,6 +263,21 @@
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Home\re_Home.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_Home.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Home\re_Home.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_Home.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Home\re_Home.vi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_Home.vi.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Product\re_Product.fr.Designer.cs">
       <DependentUpon>re_Product.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3905,11 +3922,12 @@
     <Content Include="Assets\ng-ckeditor\test\directiveOnFormSpec.js" />
     <Content Include="Assets\ng-ckeditor\test\directiveSpec.js" />
     <Content Include="Content\admin\material-dashboard.css" />
-    <Content Include="Content\client\cozastore.css" />
+    <Content Include="Content\client\main-default.css" />
     <Content Include="Content\client\Main.css" />
     <Content Include="Content\client\util.css" />
     <Content Include="Content\fonts\Montserrat\OFL.txt" />
     <Content Include="Content\fonts\PlayfairDisplay\OFL.txt" />
+    <Content Include="Content\plugins\jquery-ui.css" />
     <Content Include="Content\plugins\toastr.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -4037,7 +4055,7 @@
     <Content Include="Libs\CKFinder_Watermark.dll" />
     <Content Include="Libs\Microsoft.ApplicationBlocks.Data.dll" />
     <Content Include="Scripts\admin\material-dashboard.min.js" />
-    <Content Include="Scripts\client\cozastore.js" />
+    <Content Include="Scripts\client\main-default.js" />
     <Content Include="Scripts\client\main-module.js" />
     <Content Include="Scripts\client\Main.js" />
     <Content Include="Scripts\client\map-custom.js" />
@@ -4046,6 +4064,7 @@
     <Content Include="Scripts\plugins\angular\angular-translate.min.js" />
     <Content Include="Scripts\plugins\angular\angular-ui-route.js" />
     <Content Include="Scripts\plugins\bootstrap\bootstrap-material-design.min.js" />
+    <Content Include="Scripts\plugins\jquery\jquery-ui.js" />
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
     <Content Include="Scripts\plugins\popper\popper.min.js" />
     <Content Include="Global.asax" />
@@ -4104,14 +4123,15 @@
   <ItemGroup>
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
+    <Folder Include="Resources\About\" />
+    <Folder Include="Resources\Blog\" />
+    <Folder Include="Resources\Contact\" />
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
     <Folder Include="Views\Color\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Order\" />
-    <Folder Include="Views\ProductCategory\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\components\products\controller\products.module.js" />
@@ -4295,17 +4315,22 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewHeader.cshtml" />
     <Content Include="Views\Shared\_sectionSlider.cshtml" />
-    <Content Include="Views\Shared\_viewParent.cshtml" />
     <Content Include="Views\Shared\_viewFooter.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Client\About.cshtml" />
-    <Content Include="Views\Client\News.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\ProductCategoryDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
-    <Content Include="Views\Shared\_viewCategory.cshtml" />
+    <Content Include="Views\Shared\_viewProduct.cshtml" />
+    <Content Include="Views\Client\Blog.cshtml" />
+    <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
+    <Content Include="Views\Post\_viewPost.cshtml" />
+    <Content Include="Views\Post\_viewPostDetails.cshtml" />
+    <Content Include="Views\Client\Contact.cshtml" />
+    <Content Include="Views\ProductCategory\_viewParent.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -4326,6 +4351,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Home\re_Home.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Home.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Home\re_Home.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Home.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Home\re_Home.vi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Home.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Product\re_Product.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.fr.Designer.cs</LastGenOutput>

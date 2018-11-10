@@ -15,7 +15,7 @@ using Web.Models;
 
 namespace Web.Api
 {
-    [RoutePrefix("api/orders")]
+    [RoutePrefix("api/order")]
     [Authorize]
     public class OrderController : ApiControllerBase
     {

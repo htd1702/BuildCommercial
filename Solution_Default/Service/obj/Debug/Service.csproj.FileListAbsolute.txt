@@ -25,7 +25,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Common.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Model.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\EntityFramework.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Common.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Data.pdb
@@ -33,7 +32,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Data.dll.co
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Model.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Model.dll.config
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\EntityFramework.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.csprojAssemblyReference.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
