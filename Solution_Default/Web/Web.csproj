@@ -68,6 +68,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -233,10 +236,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PostCategoryController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -251,6 +258,8 @@
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\ColorViewModel.cs" />
+    <Compile Include="Models\ContactDetailViewModel.cs" />
+    <Compile Include="Models\ExternalLoginListViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
@@ -4310,27 +4319,32 @@
     <Content Include="Content\fonts\Poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="Content\fonts\Poppins\Poppins-Thin.ttf" />
     <Content Include="Content\fonts\Poppins\Poppins-ThinItalic.ttf" />
-    <Content Include="ConnectionStrings.config" />
+    <Content Include="ConnectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AppSettings.config" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_viewHeader.cshtml" />
     <Content Include="Views\Shared\_sectionSlider.cshtml" />
     <Content Include="Views\Shared\_viewFooter.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Client\About.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\ProductCategoryDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
     <Content Include="Views\Shared\_viewProduct.cshtml" />
-    <Content Include="Views\Client\Blog.cshtml" />
     <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
     <Content Include="Views\Post\_viewPost.cshtml" />
     <Content Include="Views\Post\_viewPostDetails.cshtml" />
-    <Content Include="Views\Client\Contact.cshtml" />
     <Content Include="Views\ProductCategory\_viewParent.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Client\Form_SendMail.html" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

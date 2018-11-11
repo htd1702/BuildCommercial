@@ -20,6 +20,7 @@ namespace Web.Mappings
             Mapper.CreateMap<Order, OrderViewModel>();
             Mapper.CreateMap<OrderDetail, OrderDetailViewModel>();
             Mapper.CreateMap<ProductDetail, ProductDetailViewModel>();
+            Mapper.CreateMap<ContactDetail, ContactDetailViewModel>();
         }
     }
 }

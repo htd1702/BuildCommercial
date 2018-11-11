@@ -108,6 +108,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Val
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Optimization.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Mvc.dll
@@ -116,9 +117,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Owin.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.WebHost.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\AutoMapper.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
@@ -128,7 +129,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.Razor.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Razor.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Newtonsoft.Json.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.Deployment.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Common.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Data.pdb
@@ -156,9 +157,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.WebHost.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\AutoMapper.xml
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.Mvc.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.xml
@@ -167,7 +168,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Net
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Razor.xml
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\fr\Web.resources.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\vi\Web.resources.dll
@@ -176,4 +177,5 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.c
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.xml

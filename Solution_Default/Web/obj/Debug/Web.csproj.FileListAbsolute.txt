@@ -150,7 +150,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\Microsoft.DiaS
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\VBCSCompiler.exe
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Collections.Immutable.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Reflection.Metadata.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\EntityFramework.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\ApplicationInsights.config
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Web.dll.config
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Web.dll
@@ -177,13 +176,11 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Diagnos
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.Compression.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.Pipes.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.AccessControl.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Claims.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Principal.Windows.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
@@ -213,6 +210,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.PerfCoun
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.WindowsServer.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.ApplicationBlocks.Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.ApplicationInsights.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AspNet.Identity.Core.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
@@ -253,6 +251,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.Integration.M
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.Integration.WebApi.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Autofac.Integration.WebApi.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\AutoMapper.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\EntityFramework.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\EntityFramework.SqlServer.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AspNet.Identity.Core.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -282,6 +281,12 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.WindowsS
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.AI.Web.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csprojAssemblyReference.cache
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.vi.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.vi.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.GenerateResource.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\fr\Web.resources.dll
@@ -290,10 +295,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.Copy
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Microsoft.ApplicationBlocks.Data.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.fr.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Product.re_Product.vi.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.fr.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.Resources.Home.re_Home.vi.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.xml

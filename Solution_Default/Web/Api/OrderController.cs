@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Common;
 using Data;
 using Model.Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -151,6 +153,15 @@ namespace Web.Api
                         //Add data
                         int result = _orderDetailService.Add(newOrderDetail);
                     }
+                    string content = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Views/Client/Form_SendMail.html"));
+                    content = content.Replace("{{CustomerName}}", orderVM.CustomerName);
+                    content = content.Replace("{{Phone}}", orderVM.Phone);
+                    content = content.Replace("{{Email}}", orderVM.Email);
+                    content = content.Replace("{{Address}}", orderVM.Address);
+                    content = content.Replace("{{Total}}", orderVM.Total.ToString());
+                    var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+                    new MailHelper().SendMail(orderVM.Email, "New order", content);
+                    new MailHelper().SendMail(toEmail, "New order", content);
                     //Check request
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }

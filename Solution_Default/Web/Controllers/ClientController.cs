@@ -47,21 +47,6 @@ namespace Web.Controllers
             return PartialView();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Blog()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         [ChildActionOnly]
         public ActionResult _viewFooter()
         {
@@ -106,11 +91,6 @@ namespace Web.Controllers
             List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listProduct.MoreImages);
             ViewBag.MoreImgs = listImgs;
             return View(listProduct);
-        }
-
-        public ActionResult Search(string keyword)
-        {
-            return View("ProductCategoryDetail");
         }
     }
 }

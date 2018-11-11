@@ -78,6 +78,7 @@
     <Compile Include="Abstract\IAuditable.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Color.cs" />
+    <Compile Include="Model\ContactDetail.cs" />
     <Compile Include="Model\Size.cs" />
     <Compile Include="Model\ProductDetail.cs" />
     <Compile Include="Model\Error.cs" />
