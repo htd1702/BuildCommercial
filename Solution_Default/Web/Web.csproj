@@ -4033,6 +4033,7 @@
     <Content Include="img\client\gallery-08.jpg" />
     <Content Include="img\client\gallery-09.jpg" />
     <Content Include="img\client\icons\favicon.png" />
+    <Content Include="img\client\icons\hot-icon.gif" />
     <Content Include="img\client\icons\icon-close.png" />
     <Content Include="img\client\icons\icon-close2.png" />
     <Content Include="img\client\icons\icon-email.png" />

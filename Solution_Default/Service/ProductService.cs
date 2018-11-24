@@ -1,12 +1,9 @@
 ﻿using Common;
-using Data;
 using Data.Infrastructure;
 using Data.Repositories;
-using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace Service
@@ -54,7 +51,6 @@ namespace Service
         private ITagRepository _tagRepository;
         private IProductTagRepository _productTagRepository;
         private IUnitOfWork _unitOfWork;
-        private DBContext db = new DBContext();
 
         public ProductService(IProductRepository productRepository, IProductTagRepository productTagRepository, ITagRepository tagRepository, IUnitOfWork unitOfWork)
         {
@@ -122,12 +118,7 @@ namespace Service
 
         public string GetCodeIndexProduct()
         {
-            string index = "";
-            SqlParameter[] pram = new SqlParameter[10];
-            pram[0] = new SqlParameter("@Index", SqlDbType.VarChar, 10);
-            pram[0].Direction = ParameterDirection.Output;
-            SqlHelper.ExecuteNonQuery(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetIndex_Product", pram);
-            return index = pram[0].Value.ToString();
+            return _productRepository.GetCodeIndexProduct();
         }
 
         public IEnumerable<Product> GetLastest(int top)
@@ -147,23 +138,12 @@ namespace Service
 
         public List<string> ListNameProduct(string keyword)
         {
-            return db.Products.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword) || p.Code.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return _productRepository.ListNameProduct(keyword);
         }
 
         public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor, string parentID)
         {
-            SqlParameter[] pram = new SqlParameter[10];
-            pram[0] = new SqlParameter("@Categories", SqlDbType.VarChar, 10);
-            pram[0].Value = categories;
-            pram[1] = new SqlParameter("@SortBy", SqlDbType.VarChar, 10);
-            pram[1].Value = sortBy;
-            pram[2] = new SqlParameter("@SortPrice", SqlDbType.VarChar, 10);
-            pram[2].Value = sortPrice;
-            pram[3] = new SqlParameter("@SortColor", SqlDbType.VarChar, 10);
-            pram[3].Value = sortColor;
-            pram[4] = new SqlParameter("@ParentID", SqlDbType.VarChar, 10);
-            pram[4].Value = parentID;
-            return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
+            return _productRepository.ListProduct(categories, sortBy, sortPrice, sortColor, parentID);
         }
 
         public IEnumerable<Product> ListProductByCategory(int id)
@@ -200,18 +180,12 @@ namespace Service
 
         public DataTable ListProductByKeyword(string keyword)
         {
-            SqlParameter[] pram = new SqlParameter[10];
-            pram[0] = new SqlParameter("@Alias", SqlDbType.VarChar, 50);
-            pram[0].Value = keyword;
-            return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListProductByKeyword", pram).Tables[0];
+            return _productRepository.ListProductByKeyword(keyword);
         }
 
         public DataTable ListRelatedProduct(string id)
         {
-            SqlParameter[] pram = new SqlParameter[5];
-            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
-            pram[0].Value = id;
-            return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListRelatedProduct", pram).Tables[0];
+            return _productRepository.ListRelatedProduct(id);
         }
 
         public void Save()

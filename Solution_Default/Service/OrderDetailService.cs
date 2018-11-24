@@ -1,10 +1,7 @@
 ﻿using Data.Infrastructure;
 using Data.Repositories;
-using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Service
 {
@@ -36,21 +33,7 @@ namespace Service
 
         public int Add(OrderDetail orderDetail)
         {
-            //return _orderDetailRepository.Add(OrderDetail);
-            int result = 0;
-            SqlParameter[] pram = new SqlParameter[10];
-            pram[0] = new SqlParameter("@ProductID", SqlDbType.Int, 4);
-            pram[0].Value = orderDetail.ProductID;
-            pram[1] = new SqlParameter("@OrderID", SqlDbType.Int, 4);
-            pram[1].Value = orderDetail.OrderID;
-            pram[2] = new SqlParameter("@Quantity", SqlDbType.Int, 4);
-            pram[2].Value = orderDetail.Quantitty;
-            pram[3] = new SqlParameter("@UnitPrice", SqlDbType.Float, 4);
-            pram[3].Value = orderDetail.UnitPrice;
-            pram[4] = new SqlParameter("@Result", SqlDbType.Int, 4);
-            pram[4].Direction = ParameterDirection.Output;
-            SqlHelper.ExecuteNonQuery(_orderDetailRepository.connectString, CommandType.StoredProcedure, "dbo.CreateOrderDetail", pram);
-            return result = int.Parse(pram[4].Value.ToString());
+            return _orderDetailRepository.AddOrder(orderDetail);
         }
 
         public OrderDetail Delete(int id)

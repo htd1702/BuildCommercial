@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in sizes">
+                    <tr ng-repeat="item in sizes | orderBy: 'Name'">
                         <td><input type="checkbox" class="chk_allSizes" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.Name}}</td>
                         <td>{{item.NameVN}}</td>

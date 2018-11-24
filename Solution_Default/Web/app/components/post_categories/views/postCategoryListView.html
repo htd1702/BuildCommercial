@@ -34,9 +34,9 @@
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>Tên</th>
-                        <th>Alias</th>
-                        <th>Loại</th>
-                        <th>Thứ tự hiển thị</th>
+                        <!--<th>Alias</th>-->
+                        <!--<th>Loại</th>-->
+                        <!--<th>Thứ tự hiển thị</th>-->
                         <th>Ngày tạo</th>
                         <th>Người tạo</th>
                         <th>Ngày cập nhật</th>
@@ -48,12 +48,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in postCategories">
+                    <tr ng-repeat="item in postCategories | orderBy: 'Name'">
                         <td><input type="checkbox" class="chk_allPostCategories" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.Name}}</td>
-                        <td>{{item.Alias}}</td>
-                        <td>{{showParentName(item.ParentID, postCategories)}}</td>
-                        <td>{{item.DisplayOrder}}</td>
+                        <!--<td>{{item.Alias}}</td>-->
+                        <!--<td>{{showParentName(item.ParentID, postCategories)}}</td>-->
+                        <!--<td>{{item.DisplayOrder}}</td>-->
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
                         <td>{{item.CreatedBy}}</td>
                         <td>{{item.UpdatedDate | date:"dd/MM/yyyy"}}</td>

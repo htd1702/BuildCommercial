@@ -1,7 +1,9 @@
 ﻿using Data.Infrastructure;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 
 namespace Data.Repositories
@@ -14,15 +16,18 @@ namespace Data.Repositories
 
         IEnumerable<PostCategory> getCategoryByType(int type);
 
-        string connectString { get; }
+        DataTable GetPostCategoryByParent();
+
+        List<string> ListNamePostCategory(string keyword);
     }
 
     public class PostCategoryRepository : RepositoryBase<PostCategory>, IPostCategoryRepository
     {
+        private string connectString = ConfigurationManager.ConnectionStrings["BuildingConnection"].ConnectionString;
+
         public PostCategoryRepository(IDbFactory dbFactory) : base(dbFactory)
         { }
 
-        //Single
         public IEnumerable<PostCategory> GetByAlias(string alias)
         {
             return this.DbContext.PostCategorys.Where(x => x.Alias == alias);
@@ -41,6 +46,14 @@ namespace Data.Repositories
                 return DbContext.PostCategorys.Where(c => c.ParentID != 0).ToList();
         }
 
-        string IPostCategoryRepository.connectString { get => ConfigurationManager.ConnectionStrings["BuildingConnection"].ConnectionString; }
+        public DataTable GetPostCategoryByParent()
+        {
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetPostCategoryByParent").Tables[0];
+        }
+
+        public List<string> ListNamePostCategory(string keyword)
+        {
+            return this.DbContext.PostCategorys.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+        }
     }
 }

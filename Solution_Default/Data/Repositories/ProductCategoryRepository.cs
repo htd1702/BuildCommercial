@@ -1,7 +1,9 @@
 ﻿using Data.Infrastructure;
+using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 
 namespace Data.Repositories
@@ -14,7 +16,9 @@ namespace Data.Repositories
 
         IEnumerable<ProductCategory> GetCategoryByType(int type);
 
-        string connectString { get; }
+        List<string> ListNameCategory(string keyword);
+
+        DataTable GetCategoryByParent();
     }
 
     public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
@@ -23,7 +27,8 @@ namespace Data.Repositories
         {
         }
 
-        //Single
+        private string connectString = ConfigurationManager.ConnectionStrings["BuildingConnection"].ConnectionString;
+
         public IEnumerable<ProductCategory> GetByAlias(string alias)
         {
             return this.DbContext.ProductCategorys.Where(x => x.Alias == alias);
@@ -44,6 +49,14 @@ namespace Data.Repositories
                 return DbContext.ProductCategorys.OrderByDescending(c => c.Name).ToList();
         }
 
-        string IProductCategoryRepository.connectString { get => ConfigurationManager.ConnectionStrings["BuildingConnection"].ConnectionString; }
+        public List<string> ListNameCategory(string keyword)
+        {
+            return this.DbContext.ProductCategorys.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+        }
+
+        public DataTable GetCategoryByParent()
+        {
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetCategoryByParent").Tables[0];
+        }
     }
 }

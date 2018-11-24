@@ -1,10 +1,8 @@
 ﻿using Data.Infrastructure;
 using Data.Repositories;
-using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace Service
 {
@@ -56,24 +54,12 @@ namespace Service
 
         public int DeleteProductDetail(int id)
         {
-            int result = 0;
-            SqlParameter[] pram = new SqlParameter[5];
-            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
-            pram[0].Value = id;
-            pram[1] = new SqlParameter("@Result", SqlDbType.Int, 4);
-            pram[1].Direction = ParameterDirection.Output;
-            SqlHelper.ExecuteNonQuery(_productDetailRepository.connectString, CommandType.StoredProcedure, "dbo.DeleteProductDetailByProduct", pram);
-            return result = int.Parse(pram[1].Value.ToString());
+            return _productDetailRepository.DeleteProductDetail(id);
         }
 
         public DataTable Get_ListProductBySizeColor(int id, int type)
         {
-            SqlParameter[] pram = new SqlParameter[5];
-            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
-            pram[0].Value = id;
-            pram[1] = new SqlParameter("@Type", SqlDbType.Int, 4);
-            pram[1].Value = type;
-            return SqlHelper.ExecuteDataset(_productDetailRepository.connectString, CommandType.StoredProcedure, "dbo.Get_ListProductBySizeColor", pram).Tables[0];
+            return _productDetailRepository.Get_ListProductBySizeColor(id, type);
         }
     }
 }

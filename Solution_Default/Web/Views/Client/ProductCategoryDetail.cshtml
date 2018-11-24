@@ -76,28 +76,31 @@
                     <div class="row product-grid">
                         <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="p in products | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" pagin-directive="ngRepeatFinished">
                             <div class="block2-pic hov-img0">
+
                                 <img ng-src="{{p.Image}}" alt="IMG-PRODUCT">
                                 <a href="/Client/Details/{{p.ID}}" data-id="{{p.ID}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
                                     Quick View
                                 </a>
+
                             </div>
                             <div class="block2-txt flex-w flex-t p-t-14" style="margin-bottom:40px;">
                                 <div class="block2-txt-child1 flex-col-l">
+
                                     <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         {{p.Name}}
                                     </a>
 
                                     <span class="stext-105 cl3">
-                                        <span style="text-decoration:line-through">${{p.Price}}</span> - ${{(p.Price - (p.Price * p.PromotionPrice)/100)}}
+                                        <span style="text-decoration:line-through">${{p.Price}}</span> - ${{(p.Price - (p.Price * p.PromotionPrice)/100)}} vnđ
                                     </span>
                                 </div>
 
-                                <div class="block2-txt-child2 flex-r p-t-3">
-                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                        <img class="icon-heart1 dis-block trans-04" src="~/img/client/icons/icon-heart-01.png" alt="ICON">
-                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="~/img/client/icons/icon-heart-02.png" alt="ICON">
-                                    </a>
-                                </div>
+                                @*<div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04" src="~/img/client/icons/icon-heart-01.png" alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="~/img/client/icons/icon-heart-02.png" alt="ICON">
+                                        </a>
+                                    </div>*@
                             </div>
                             <div id="imgSale">
                                 <img ng-show="p.PromotionPrice > 0" src="~/img/client/icons/sale.png" />
@@ -107,6 +110,7 @@
                         <input style="display:none" type="text" value="0" id="txt_Parent" />
                         <input style="display:none" type="text" value="0" id="txt_Category" />
                     </div>
+
                     <div class="flex-c-m flex-w w-full p-t-38">
                         <a href class="flex-c-m how-pagination1 trans-04 m-all-7" ng-class="prevPageDisabled()" ng-click="prevPage()"><</a>
 

@@ -31,7 +31,7 @@
                     <span ng-show="frmAddPostCategory.nameFr.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
                 </div>
             </div>
-            <div class="form-row">
+            <!--<div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="parentId">Danh mục</label>
                     <select name="parentId" ng-model="postCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
@@ -45,11 +45,6 @@
                     <span ng-show="frmAddPostCategory.alias.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="displayOrder">Thứ tự hiển thị</label>
-                    <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="text-control" min="0" ng-model="postCategory.DisplayOrder" name="displayOrder">
-                    <span ng-show="frmAddPostCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
-                </div>
-                <div class="form-group col-md-4">
                     <label for="image">
                         Image
                     </label>
@@ -58,7 +53,12 @@
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
                     </div>
                 </div>
-            </div>
+                <div class="form-group col-md-4">
+                    <label for="displayOrder">Thứ tự hiển thị</label>
+                    <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="text-control" min="0" ng-model="postCategory.DisplayOrder" name="displayOrder">
+                    <span ng-show="frmAddPostCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
+                </div>
+            </div>-->
             <div class="form-group">
                 <label for="description">Mô tả</label>
                 <textarea rows="3" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="postCategory.Description" name="description"></textarea>

@@ -294,8 +294,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\vi\Web.resource
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Debug\Web.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.xml

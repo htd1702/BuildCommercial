@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in orders">
+                    <tr ng-repeat="item in orders | orderBy: 'OrderDate'">
                         <td><input type="checkbox" class="chk_allOrders" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.CustomerName}}</td>
                         <td>{{item.Address}}</td>

@@ -8,6 +8,8 @@ namespace Data.Repositories
     public interface IPostRepository : IRepository<Post>
     {
         IEnumerable<Post> GetAllByTag(string tag, int pagIndex, int pageSize, out int totalRow);
+
+        List<string> ListNamePost(string keyword);
     }
 
     public class PostRepository : RepositoryBase<Post>, IPostRepository
@@ -15,7 +17,6 @@ namespace Data.Repositories
         public PostRepository(IDbFactory dbFactory) : base(dbFactory)
         { }
 
-        //Lấy danh sách post by tag
         public IEnumerable<Post> GetAllByTag(string tag, int pagIndex, int pageSize, out int totalRow)
         {
             var query = from p in DbContext.Posts
@@ -29,6 +30,11 @@ namespace Data.Repositories
             //page khi ban next
             query = query.Skip((pagIndex - 1) * pageSize).Take(pageSize);
             return query;
+        }
+
+        public List<string> ListNamePost(string keyword)
+        {
+            return this.DbContext.Posts.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
     }
 }

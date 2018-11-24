@@ -1,9 +1,7 @@
-﻿using Data;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using Data.Repositories;
 using Model.Model;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Service
 {
@@ -30,7 +28,6 @@ namespace Service
     {
         private IColorRepository _colorRepository;
         private IUnitOfWork _unitOfWork;
-        private DBContext db = new DBContext();
 
         public ColorService(IColorRepository colorRepository, IUnitOfWork unitOfWork)
         {
@@ -68,7 +65,7 @@ namespace Service
 
         public List<string> ListNameColor(string keyword)
         {
-            return db.Colors.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return _colorRepository.ListNameColor(keyword);
         }
 
         public void Save()

@@ -1,11 +1,8 @@
-﻿using Data;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using Data.Repositories;
-using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace Service
 {
@@ -40,7 +37,6 @@ namespace Service
     {
         private IProductCategoryRepository _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
-        private DBContext db = new DBContext();
 
         public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork)
         {
@@ -88,7 +84,7 @@ namespace Service
 
         public DataTable GetCategoryByParent()
         {
-            return SqlHelper.ExecuteDataset(_productCategoryRepository.connectString, CommandType.StoredProcedure, "dbo.GetCategoryByParent").Tables[0];
+            return _productCategoryRepository.GetCategoryByParent();
         }
 
         public IEnumerable<ProductCategory> GetCategoryByTake(int take)
@@ -98,7 +94,7 @@ namespace Service
 
         public List<string> ListNameCategory(string keyword)
         {
-            return db.ProductCategorys.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return _productCategoryRepository.ListNameCategory(keyword);
         }
 
         public void Save()
