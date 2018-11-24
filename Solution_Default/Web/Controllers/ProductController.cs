@@ -23,6 +23,12 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult HotProduct()
+        {
+            var model = _productService.GetHotProduct(10);
+            return PartialView(model);
+        }
+
         [HttpPost]
         public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor, int parentID, int pageSize)
         {
@@ -95,13 +101,22 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        public JsonResult ListHotProduct(int top)
+        {
+            var model = _productService.GetHotProduct(top);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult SearchProduct(string keyword)
         {
             string key = keyword.ToLower().Replace(" ", "-");
             List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
             DataTable dt = _productService.ListProductByKeyword(key);
-            var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(8).CopyToDataTable();
-            list = _productService.GetTableRows(model);
+            if (dt.Rows.Count > 0) {
+                var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(8).CopyToDataTable();
+                list = _productService.GetTableRows(model);
+            }
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }

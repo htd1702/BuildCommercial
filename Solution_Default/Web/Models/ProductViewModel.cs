@@ -11,7 +11,16 @@ namespace Web.Models
         public string Code { set; get; }
 
         [Required]
+        [MaxLength(256)]
         public string Name { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameVN { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameFr { set; get; }
 
         [Required]
         public string Alias { set; get; }

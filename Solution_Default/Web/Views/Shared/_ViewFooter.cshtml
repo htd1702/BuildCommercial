@@ -1,7 +1,7 @@
 ﻿<footer class="bg3 p-t-75 p-b-32">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-lg-3 p-b-50">
+            <div class="col-xs-6 col-sm-6 col-lg-3 p-b-50" style="padding-left:40px !important">
                 <h4 class="stext-301 cl0 p-b-30">
                     Parents
                 </h4>
@@ -10,14 +10,14 @@
                     <ul>
                         <li class="p-b-10">
                             <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                @item.Name
+                                @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
                             </a>
                         </li>
                     </ul>
                 }
             </div>
 
-            <div class="col-sm-6 col-lg-3 p-b-50">
+            <div class="col-xs-6 col-sm-6 col-lg-3 p-b-50" style="padding-left:40px !important">
                 <h4 class="stext-301 cl0 p-b-30">
                     Categories
                 </h4>
@@ -27,7 +27,7 @@
                     <ul>
                         <li class="p-b-10">
                             <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                @item.Name
+                                @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
                             </a>
                         </li>
                     </ul>
@@ -40,7 +40,7 @@
                 </h4>
 
                 <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    Tòa nhà FPT Tân Thuận, Lô L29B-31B—33B, đường số 8, KCX Tân Thuận, phường Tân Thuận Đông, quận 7, Thành phố Hồ Chí Minh, Việt Nam
                 </p>
 
                 <div class="p-t-27">
@@ -103,7 +103,7 @@
 
             <p class="stext-107 cl6 txt-center">
                 Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <script>document.write(new Date().getFullYear());</script> All rights reserved
             </p>
         </div>
     </div>

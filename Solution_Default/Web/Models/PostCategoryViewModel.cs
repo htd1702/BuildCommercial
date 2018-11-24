@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.Models
 {
@@ -7,7 +8,17 @@ namespace Web.Models
     {
         public int ID { set; get; }
 
+        [Required]
+        [MaxLength(256)]
         public string Name { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameVN { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameFr { set; get; }
 
         public string Alias { set; get; }
 

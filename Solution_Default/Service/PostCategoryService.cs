@@ -1,9 +1,11 @@
-﻿using Data.Infrastructure;
+﻿using Data;
+using Data.Infrastructure;
 using Data.Repositories;
 using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Service
 {
@@ -27,6 +29,8 @@ namespace Service
 
         IEnumerable<PostCategory> GetCategoriyByType(int type);
 
+        List<string> ListNamePostCategory(string keyword);
+
         DataTable GetPostCategoryByParent();
 
         void Save();
@@ -36,6 +40,7 @@ namespace Service
     {
         private IPostCategoryRepository _postCategoryRepository;
         private IUnitOfWork _unitOfWork;
+        private DBContext db = new DBContext();
 
         public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork)
         {
@@ -89,6 +94,11 @@ namespace Service
         public IEnumerable<PostCategory> GetCategoryByTake(int take)
         {
             return _postCategoryRepository.GetCategoryByTake(take);
+        }
+
+        public List<string> ListNamePostCategory(string keyword)
+        {
+            return db.PostCategorys.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
         public void Save()

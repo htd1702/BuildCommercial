@@ -7,11 +7,11 @@
         var sizeID = $("#ddl_size option:selected").val();
         //check size and code is not null
         if (colorID == 0) {
-            alert("Vui lòng chọn màu sắc khi thêm vào giỏ");
+            swal("Thất bại!", "Vui lòng chọn màu sắc khi thêm vào giỏ!", "error");
             return;
         }
         if (sizeID == 0) {
-            alert("Vui lòng chọn kích thước khi thêm vào giỏ");
+            swal("Thất bại!", "Vui lòng chọn kích thước khi thêm vào giỏ!", "error");
             return;
         }
         //call funtion load count and total
@@ -23,6 +23,7 @@
             success: function (response) {
                 $(".shopping-cart-des").attr("data-notify", response.Count);
                 $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                swal("Thành công", "Thêm vào giỏ hàng thành công!", "success");
             }
         });
     });

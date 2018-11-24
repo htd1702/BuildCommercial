@@ -17,6 +17,14 @@ namespace Model.Model
         public string Name { set; get; }
 
         [Required]
+        [MaxLength(256)]
+        public string NameVN { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameFr { set; get; }
+
+        [Required]
         [Column(TypeName = "varchar")]
         [MaxLength(256)]
         public string Alias { set; get; }

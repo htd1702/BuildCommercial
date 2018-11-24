@@ -64,7 +64,7 @@
                                 </tr>
                             }
                             <tr>
-                                <td colspan="5">
+                                <td colspan="5" style="padding-right:10px;">
                                     <span class="pull-right">
                                         <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")</span>
                                     </span>
@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                <div class="flex-w flex-t p-t-15 p-b-30">
                     <div>
                         <p class="stext-111 cl6 p-t-2">
                             There are no shipping methods available. Please double check your address, or contact us if you need any help.
@@ -148,7 +148,10 @@
     </div>
 </form>
 
+<div class="loading-img-waiting" style="display:none"></div>
+
 <script>
+    //click order
     $("#btnCheckOut").click(function () {
         var listProductID = [];
         var listPrice = [];
@@ -188,19 +191,19 @@
         };
 
         if (obj.customerName == undefined || obj.customerName == "") {
-            alert("Vui lòng nhập họ tên!");
+            swal("Thất bại!", "Vui lòng họ tên!", "error");
             return;
         }
         if (obj.customerEmail == undefined || obj.customerEmail == "") {
-            alert("Vui lòng nhập email!");
+            swal("Thất bại!", "Vui lòng nhập email!", "error");
             return;
         }
         if (obj.customerAddress == undefined || obj.customerAddress == "") {
-            alert("Vui lòng nhập địa chỉ!");
+            swal("Thất bại!", "Vui lòng nhập địa chỉ!", "error");
             return;
         }
         if (obj.customerPhomeNumber == undefined || obj.customerPhomeNumber == "") {
-            alert("Vui lòng nhập số điện thoại!");
+            swal("Thất bại!", "Vui lòng nhập số điện thoại!", "error");
             return;
         }
         $.ajax({
@@ -209,9 +212,34 @@
             type: "POST",
             dataType: "JSON",
             data: JSON.stringify(obj),
-            async: false,
+            beforeSend: function () { $(".loading-img-waiting").addClass("loading").css("display", "block"); },
+            complete: function () { $(".loading-img-waiting").removeClass("loading").css("display", "none"); },
             success: function (data) {
-                swal(obj.customerName, "Bạn đã đặt hàng thành công!", "success");
+                swal(obj.customerName, "Bạn đã đặt hàng thành công!", "success").then((result) => {
+                    for (var i = 0; i < listProductID.length; i++) {
+                        $.ajax({
+                            url: "/Cart/Remove",
+                            data: { id: parseInt(listProductID[i]) },
+                            type: "post",
+                            async: false,
+                            success: function (response) {
+                                $(".shopping-cart-des").attr("data-notify", response.Count);
+                                $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            }
+                        });
+                        $.ajax({
+                            url: "/Cart/Index",
+                            async: false,
+                            success: function (response) {
+                                $("#page_ShoppingCart").html(response);
+                            }
+                        });
+                    }
+                    window.location.href = "/";
+                });
+            },
+            error: function (error) {
+                console.log(error);
             }
         });
     });

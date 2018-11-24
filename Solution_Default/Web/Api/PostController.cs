@@ -97,6 +97,25 @@ namespace Web.Api
                 return request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
+        [Route("getname")]
+        [HttpGet]
+        public HttpResponseMessage GetName(HttpRequestMessage request, string term)
+        {
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _postService.ListNamePost(term);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, model);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]

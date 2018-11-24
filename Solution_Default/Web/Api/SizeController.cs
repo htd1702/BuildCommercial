@@ -3,7 +3,6 @@ using Model.Model;
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,19 +19,48 @@ namespace Web.Api
     public class SizeController : ApiControllerBase
     {
         private ISizeService _sizeService;
-        private IProductService _productService;
 
         #region Initialize
 
         //khai bao contructor
-        public SizeController(IErrorService errorService, ISizeService sizeService, IProductService productService)
-            : base(errorService)
+        public SizeController(IErrorService errorService, ISizeService sizeService) : base(errorService)
         {
             this._sizeService = sizeService;
-            this._productService = productService;
         }
 
         #endregion Initialize
+
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var model = _sizeService.GetAll(keyword);
+                //count model
+                totalRow = model.Count();
+                //sap xep giam dan
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<Size>, IEnumerable<SizeViewModel>>(query);
+                //create pageination and set value
+                var paginationSet = new PaginationSet<SizeViewModel>()
+                {
+                    //item = data response
+                    Items = responseData,
+                    //current page
+                    Page = page,
+                    //count page
+                    TotalCount = totalRow,
+                    //làm tròn
+                    TotalPages = (int)(Math.Ceiling((decimal)totalRow / pageSize))
+                };
+                //check status
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
 
         [Route("getall")]
         [HttpGet]
@@ -61,6 +89,25 @@ namespace Web.Api
                     var responseData = Mapper.Map<Size, SizeViewModel>(model);
                     //check status
                     var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("getname")]
+        [HttpGet]
+        public HttpResponseMessage GetName(HttpRequestMessage request, string term)
+        {
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _sizeService.ListNameSize(term);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, model);
                     //return status
                     return response;
                 });
@@ -173,7 +220,7 @@ namespace Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string sizeId)
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listId)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -186,15 +233,15 @@ namespace Web.Api
                 }
                 else
                 {
-                    var sizeSize = new JavaScriptSerializer().Deserialize<List<int>>(sizeId);
-                    foreach (var id in sizeSize)
+                    var listSize = new JavaScriptSerializer().Deserialize<List<int>>(listId);
+                    foreach (var id in listSize)
                     {
                         _sizeService.Delete(id);
                     }
                     //Save change
                     _sizeService.Save();
                     //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, sizeSize.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listSize.Count);
                 }
                 return response;
             });

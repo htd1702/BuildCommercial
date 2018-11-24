@@ -1,0 +1,60 @@
+﻿<!-- MAIN CONTENT-->
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success pull-right" ui-sref="add_color"><i class="material-icons">add</i></button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">List Color</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
+                        <th>Tên</th>
+                        <th>Tên VN</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
+                        <th class="td-actions text-right">
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllColors()"><i class="fa fa-trash"></i></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in colors">
+                        <td><input type="checkbox" class="chk_allColors" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.NameVN}}</td>
+                        <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{item.CreatedBy}}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_color({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" ng-click="deleteColor(item.ID)">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="11"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

@@ -11,7 +11,7 @@
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true
-        }
+        };
         //create funtion
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.EditProductCategory = EditProductCategory;

@@ -21,6 +21,14 @@ namespace Model.Model
 
         [Required]
         [MaxLength(256)]
+        public string NameVN { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string NameFr { set; get; }
+
+        [Required]
+        [MaxLength(256)]
         public string Alias { set; get; }
 
         [Required]

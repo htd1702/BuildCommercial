@@ -15,6 +15,7 @@ var app = angular.module("app_client", ['ngRoute', 'ngAnimate']).directive('pagi
 });
 app.controller("ProductController", ProductController);
 app.controller("ShoppingCartController", ShoppingCartController);
+app.controller("PostController", PostController);
 //---------------------------FILTER---------------------------------//
 app.filter('offset', function () {
     return function (input, start) {
@@ -63,6 +64,17 @@ function ProductController($scope, $http) {
             alert('Error');
         });
     }
+    function LoadCategoryByParent(id) {
+        return $http({
+            url: "/ProductCategory/GetCategoryByParent",
+            method: "GET",
+            params: { id: id }
+        }).then(function (response) {
+            $scope.childCategory = response.data;
+        }, function (error) {
+            alert('Error');
+        });
+    }
     //function load list product
     function LoadProduct(categories, sortBy, sortPrice, sortColor, parentID, pageSize) {
         if (window.location.href.length < 30) {
@@ -86,7 +98,8 @@ function ProductController($scope, $http) {
                 var url = window.location.href;
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 id = id.substring(id.lastIndexOf('=') + 1);
-
+                //get cate
+                LoadCategoryByParent(id);
                 return $http({
                     method: 'POST',
                     url: '/Product/LoadListProductByCategory',
@@ -228,7 +241,23 @@ function ProductController($scope, $http) {
             var countSize = $("#txt_PageSize").val();
             if (countSize >= len)
                 $("#txt_PageSize").val(len);
-            $(".product-grid").fadeIn("slow");
+        });
+    });
+    //function search
+    $("#txt_KeywordProductCategory").blur(function () {
+        var keyword = $(this).val();
+        keyword = changeStamped(keyword);
+        return $http({
+            method: 'POST',
+            url: '/Product/SearchProduct',
+            async: false,
+            data: { keyword: keyword }
+        }).then(function (response) {
+            $scope.products = response.data;
+            var len = response.data.length;
+            var countSize = $("#txt_PageSize").val();
+            if (countSize >= len)
+                $("#txt_PageSize").val(len);
         });
     });
     //load menu cate
@@ -336,4 +365,24 @@ function ShoppingCartController($scope, $http) {
         LoadColor(id, "#ddl_color");
         LoadSize(id, "#ddl_size");
     });
+}
+
+//Post 
+PostController.$inject = ["$scope", "$http"];
+function PostController($scope, $http) {
+    $scope.posts = [];
+    $scope.ListHotProduct = ListHotProduct;
+    function ListHotProduct(top) {
+        $.ajax({
+            url: "/Product/ListHotProduct",
+            type: "POST",
+            dataType: "JSON",
+            async: false,
+            data: { top: top },
+            success: function (data) {
+                $scope.posts = data;
+            }
+        });
+    }
+    ListHotProduct(4);
 }

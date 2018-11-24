@@ -26,7 +26,7 @@ namespace Web
             routes.MapRoute(
                name: "Blog",
                url: "tin-tuc",
-               defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional },
+               defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional },
                namespaces: new string[] { "Web.Controllers" }
            );
 

@@ -25,6 +25,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsof
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Optimization.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Http.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Facebook.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.AspNet.Identity.Owin.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Security.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Owin.dll
@@ -32,9 +33,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Security.OAuth.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Http.WebHost.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\AutoMapper.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Host.SystemWeb.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.Integration.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.Integration.WebApi.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Host.SystemWeb.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Net.Http.Formatting.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Web.Infrastructure.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.WebPages.dll
@@ -66,16 +67,17 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsof
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Optimization.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Mvc.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Http.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Facebook.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.AspNet.Identity.Owin.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Security.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Security.OAuth.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.Http.WebHost.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\AutoMapper.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Host.SystemWeb.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.Integration.Mvc.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.Integration.WebApi.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Autofac.Integration.WebApi.xml
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\Microsoft.Owin.Host.SystemWeb.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Net.Http.Formatting.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.WebPages.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Release\System.Web.WebPages.Razor.xml

@@ -3,7 +3,6 @@ using Model.Model;
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,19 +19,48 @@ namespace Web.Api
     public class ColorController : ApiControllerBase
     {
         private IColorService _colorService;
-        private IProductService _productService;
 
         #region Initialize
 
         //khai bao contructor
-        public ColorController(IErrorService errorService, IColorService colorService, IProductService productService)
-            : base(errorService)
+        public ColorController(IErrorService errorService, IColorService colorService) : base(errorService)
         {
             this._colorService = colorService;
-            this._productService = productService;
         }
 
         #endregion Initialize
+
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var model = _colorService.GetAll(keyword);
+                //count model
+                totalRow = model.Count();
+                //sap xep giam dan
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<Color>, IEnumerable<ColorViewModel>>(query);
+                //create pageination and set value
+                var paginationSet = new PaginationSet<ColorViewModel>()
+                {
+                    //item = data response
+                    Items = responseData,
+                    //current page
+                    Page = page,
+                    //count page
+                    TotalCount = totalRow,
+                    //làm tròn
+                    TotalPages = (int)(Math.Ceiling((decimal)totalRow / pageSize))
+                };
+                //check status
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
 
         [Route("getall")]
         [HttpGet]
@@ -61,6 +89,25 @@ namespace Web.Api
                     var responseData = Mapper.Map<Color, ColorViewModel>(model);
                     //check status
                     var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("getname")]
+        [HttpGet]
+        public HttpResponseMessage GetName(HttpRequestMessage request, string term)
+        {
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _colorService.ListNameColor(term);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, model);
                     //return status
                     return response;
                 });
@@ -173,7 +220,7 @@ namespace Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string colorId)
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listId)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -186,15 +233,15 @@ namespace Web.Api
                 }
                 else
                 {
-                    var colorColor = new JavaScriptSerializer().Deserialize<List<int>>(colorId);
-                    foreach (var id in colorColor)
+                    var listColor = new JavaScriptSerializer().Deserialize<List<int>>(listId);
+                    foreach (var id in listColor)
                     {
                         _colorService.Delete(id);
                     }
                     //Save change
                     _colorService.Save();
                     //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, colorColor.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listColor.Count);
                 }
                 return response;
             });

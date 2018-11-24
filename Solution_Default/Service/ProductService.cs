@@ -37,6 +37,8 @@ namespace Service
 
         DataTable ListProductByKeyword(string keyword);
 
+        DataTable ListRelatedProduct(string id);
+
         IEnumerable<Product> ListProductByCategory(int id);
 
         List<string> ListNameProduct(string keyword);
@@ -169,11 +171,6 @@ namespace Service
             return this._productRepository.ListProductByCategory(id);
         }
 
-        public void Save()
-        {
-            _unitOfWork.Commit();
-        }
-
         public void Update(Product Product)
         {
             _productRepository.Update(Product);
@@ -207,6 +204,19 @@ namespace Service
             pram[0] = new SqlParameter("@Alias", SqlDbType.VarChar, 50);
             pram[0].Value = keyword;
             return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListProductByKeyword", pram).Tables[0];
+        }
+
+        public DataTable ListRelatedProduct(string id)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
+            pram[0].Value = id;
+            return SqlHelper.ExecuteDataset(_productRepository.connectString, CommandType.StoredProcedure, "dbo.GetListRelatedProduct", pram).Tables[0];
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
         }
     }
 }

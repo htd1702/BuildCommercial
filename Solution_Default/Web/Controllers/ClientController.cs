@@ -3,6 +3,7 @@ using Data;
 using Model.Model;
 using Service;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -61,6 +62,13 @@ namespace Web.Controllers
         }
 
         [ChildActionOnly]
+        public ActionResult _viewHeader()
+        {
+            ViewBag.ParentCategory = _productCategoryService.GetCategoriyByType(1);
+            return PartialView();
+        }
+
+        [ChildActionOnly]
         public ActionResult Main()
         {
             return PartialView();
@@ -87,9 +95,14 @@ namespace Web.Controllers
             cookie.Values[id.ToString()] = id.ToString();
             Response.Cookies.Add(cookie);
             var cookieId = cookie.Values.AllKeys.Select(k => int.Parse(k)).ToList();
+            //get view
             ViewBag.Views = db.Products.Where(p => cookieId.Contains(p.ID));
             List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listProduct.MoreImages);
             ViewBag.MoreImgs = listImgs;
+            //get product by category
+            DataTable dt = _productService.ListRelatedProduct(id);
+            if (dt.Rows.Count > 0)
+                ViewBag.ProductCagtegory = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(9).ToList();
             return View(listProduct);
         }
     }

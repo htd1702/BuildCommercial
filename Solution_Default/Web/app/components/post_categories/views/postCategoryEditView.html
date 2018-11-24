@@ -6,19 +6,44 @@
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmEditPostCategory" role="form" ng-submit="EditPostCategory()">
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="name">Tên danh mục</label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên danh mục...">
-                    <span ng-hide="frmEditPostCategory.name.$error.maxlength" ng-show="frmEditPostCategory.name.$invalid" class="text-danger">Bạn chưa nhập tên danh mục</span>
+                <div class="form-group col-md-4">
+                    <label for="name">
+                        Post Name
+                        <span ng-hide="frmEditPostCategory.name.$error.maxlength" ng-show="frmEditPostCategory.name.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
                     <span ng-show="frmEditPostCategory.name.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
+                    <label for="nameVN">
+                        Post Name VN
+                        <span ng-hide="frmEditPostCategory.nameVN.$error.maxlength" ng-show="frmEditPostCategory.nameVN.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="postCategory.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
+                    <span ng-show="frmEditPostCategory.nameVN.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="nameFr">
+                        Post Name Frank
+                        <span ng-hide="frmEditPostCategory.nameFr.$error.maxlength" ng-show="frmEditPostCategory.nameFr.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="postCategory.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
+                    <span ng-show="frmEditPostCategory.nameFr.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="parentId">Danh mục</label>
+                    <select name="parentId" ng-model="postCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
+                        <option value="">Loại danh mục</option>
+                    </select>
+                    <input type="hidden" name="parentId" ng-model="postCategory.ParentID" />
+                </div>
+                <div class="form-group col-md-4" style="display:none;">
                     <label for="alias">Tiêu đề SEO</label>
                     <input type="text" required placeholder="Nhập tiêu đề SEO..." class="text-control" ng-model="postCategory.Alias" name="alias">
                     <span ng-show="frmEditPostCategory.alias.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="displayOrder">Thứ tự hiển thị</label>
                     <input type="number" required placeholder="Nhập thứ tự hiển thị..." class="text-control" min="0" ng-model="postCategory.DisplayOrder" name="displayOrder">
@@ -33,20 +58,13 @@
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
                     </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="parentId">Danh mục</label>
-                    <select name="parentId" ng-model="postCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
-                        <option value="">Loại danh mục</option>
-                    </select>
-                    <input type="hidden" name="parentId" ng-model="postCategory.ParentID" />
-                </div>
             </div>
             <div class="form-group">
                 <label for="description">Mô tả</label>
-                <textarea rows="2" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="postCategory.Description" name="description"></textarea>
+                <textarea rows="3" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="postCategory.Description" name="description"></textarea>
                 <span class="text-danger" ng-show="frmEditPostCategory.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>
                 <input type="text" required placeholder="Nhập Meta Keyword..." class="text-control" ng-model="postCategory.MetaKeyword" name="metaKeyword">
                 <span ng-show="frmEditPostCategory.metaKeyword.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
@@ -55,9 +73,9 @@
                 <label for="metaDescription">Meta Description</label>
                 <textarea rows="4" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="postCategory.MetaDescription" name="metaDescription"></textarea>
                 <span class="text-danger" ng-show="frmEditPostCategory.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
+            </div>-->
+            <div class="form-row">
+                <div class="form-check col-3">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" name="status" ng-checked="postCategory.Status" ng-model="postCategory.Status"> Kích hoạt
                         <span class="form-check-sign">
@@ -65,7 +83,7 @@
                         </span>
                     </label>
                 </div>
-                <div class="form-check">
+                <div class="form-check col-3">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="postCategory.HomeFlag" ng-model="postCategory.HomeFlag"> Hiển thị trang chủ
                         <span class="form-check-sign">
@@ -74,7 +92,7 @@
                     </label>
                 </div>
             </div>
-            <div class="row form-group">
+            <div class="form-row">
                 <div class="col col-md-6">
                     <button class="btn btn-danger btn-sm pull-left" ui-sref="post_categories"><i class="fa fa-ban"></i> Back</button>
                 </div>

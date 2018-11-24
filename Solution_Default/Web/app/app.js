@@ -9,6 +9,8 @@
             'default.posts',
             'default.post_categories',
             'default.orders',
+            'default.colors',
+            'default.sizes',
             'default.orderDetails',
             'default.common'
         ])
@@ -84,7 +86,8 @@
                 Order: 'Order',
                 OrderDetail: 'Order Detail',
                 en: 'English',
-                vi: 'Tiếng Việt'
+                vi: 'Tiếng Việt',
+                fr: 'French'
             })
             .translations('vi', {
                 Product: 'Sản phẩm',
@@ -98,7 +101,23 @@
                 Order: 'Hóa đơn',
                 OrderDetail: 'Chi tiết hóa đơn',
                 en: 'English',
-                vi: 'Tiếng Việt'
+                vi: 'Tiếng Việt',
+                fr: 'French'
+            })
+            .translations('fr', {
+                Product: 'Product',
+                ProductDetail: 'Product Detail',
+                Category: 'Category',
+                Post: 'Post',
+                PostCategory: 'Post Category',
+                Statistical: 'Statistical',
+                Color: 'Color',
+                Size: 'Size',
+                Order: 'Order',
+                OrderDetail: 'Order Detail',
+                en: 'English',
+                vi: 'Tiếng Việt',
+                fr: 'French'
             });
         $translateProvider.preferredLanguage('en');
     }

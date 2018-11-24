@@ -1,15 +1,31 @@
 ﻿<div ng-controller="ProductController">
     <div class="flex-w flex-sb-m p-b-52">
         <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-            <ul class="main-menu">
-                <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0">
-                    <a class="hov1 stext-106 m-r-20" style="font-size:18px;" name="btnParent" ng-click="btnParent(parent.ID, parent.ParentID)" data-category="{{parent.ID}}" data-parent="{{parent.ParentID}}">{{parent.Name}}</a>
-                    <ul class="sub-menu">
-                        <li class="active-menu" ng-repeat="childParent in parentCategory" ng-if="childParent.ParentID==parent.ID">
-                            <a class="hov1 stext-106 m-r-20" style="font-size:18px;" name="btnParent" ng-click="btnParent(childParent.ID, childParent.ParentID)" data-category="{{childParent.ID}}" data-parent="{{childParent.ParentID}}">{{childParent.Name}}</a>
+            <ul class="child-menu">
+                @{
+                    if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                    {
+                        <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0">
+                            <a class="hov1 stext-106 m-r-20" style="font-size:18px;" name="btnParent" ng-click="btnParent(parent.ID, parent.ParentID)" data-category="{{parent.ID}}" data-parent="{{parent.ParentID}}">{{parent.NameVN}}</a>
+                            <ul class="sub-menu">
+                                <li class="active-menu" ng-repeat="childParent in parentCategory" ng-if="childParent.ParentID==parent.ID">
+                                    <a class="hov1 stext-106 m-r-20" style="font-size:15px;" name="btnParent" ng-click="btnParent(childParent.ID, childParent.ParentID)" data-category="{{childParent.ID}}" data-parent="{{childParent.ParentID}}">{{childParent.NameVN}}</a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
+                    }
+                    else
+                    {
+                        <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0">
+                            <a class="hov1 stext-106 m-r-20" style="font-size:18px;" name="btnParent" ng-click="btnParent(parent.ID, parent.ParentID)" data-category="{{parent.ID}}" data-parent="{{parent.ParentID}}">{{parent.Name}}</a>
+                            <ul class="sub-menu">
+                                <li class="active-menu" ng-repeat="childParent in parentCategory" ng-if="childParent.ParentID==parent.ID">
+                                    <a class="hov1 stext-106 m-r-20" style="font-size:15px;" name="btnParent" ng-click="btnParent(childParent.ID, childParent.ParentID)" data-category="{{childParent.ID}}" data-parent="{{childParent.ParentID}}">{{childParent.Name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                }
             </ul>
         </div>
 
@@ -165,7 +181,7 @@
     </div>
 
     <div class="row product-grid">
-        <div class="col-md-3" ng-repeat="p in products">
+        <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="p in products">
             <div class="block2-pic hov-img0">
                 <img ng-src="{{p.Image}}" alt="IMG-PRODUCT">
                 <a href="/Client/Details/{{p.ID}}" data-id="{{p.ID}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
@@ -179,7 +195,7 @@
                     </a>
 
                     <span class="stext-105 cl3">
-                        ${{p.Price}}
+                        <span style="text-decoration:line-through">${{p.Price}}</span> - ${{(p.Price - (p.Price * p.PromotionPrice)/100)}}
                     </span>
                 </div>
 
@@ -189,6 +205,10 @@
                         <img class="icon-heart2 dis-block trans-04 ab-t-l" src="~/img/client/icons/icon-heart-02.png" alt="ICON">
                     </a>
                 </div>
+            </div>
+
+            <div id="imgSale">
+                <img ng-show="p.PromotionPrice > 0" src="~/img/client/icons/sale.png" />
             </div>
         </div>
         <input style="display:none" type="text" value="8" id="txt_PageSize" />

@@ -17,7 +17,6 @@
         $scope.search = search;
         $scope.deleteProductCategory = deleteProductCategory;
         $scope.complateKeyWord = complateKeyWord;
-        $scope.filterSearch = filterSearch;
         $scope.deleteAllProductCategories = deleteAllProductCategories;
         $scope.showParentName = showParentName;
         //method get product cate
@@ -51,22 +50,8 @@
         //autocomplete
         function complateKeyWord(string) {
             if (string != "") {
-                $scope.hideSeach = false;
-                var output = [];
-                angular.forEach($scope.productCategories, function (value) {
-                    if (value.Name.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
-                        output.push(value.Name);
-                    }
-                });
-                $scope.filterName = output;
+                apiService.autocomplete("/api/productcategory/getname", "#txt_search");
             }
-            else
-                $scope.hideSeach = true;
-        }
-        //search keyword in model
-        function filterSearch(string) {
-            $scope.keyword = string;
-            $scope.hideSeach = true;
         }
         //method delete
         function deleteProductCategory(id) {

@@ -26,7 +26,7 @@ namespace Web.Controllers
 
         public ActionResult _viewPostCategory()
         {
-            var model = db.PostCategorys.OrderByDescending(c => c.Name).ToList();
+            var model = db.PostCategorys.Where(p => p.Status == true).OrderByDescending(c => c.Name).ToList();
             return PartialView(model);
         }
 

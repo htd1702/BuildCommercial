@@ -1,10 +1,9 @@
-﻿using Data.Infrastructure;
+﻿using Data;
+using Data.Infrastructure;
 using Data.Repositories;
-using Microsoft.ApplicationBlocks.Data;
 using Model.Model;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 
 namespace Service
 {
@@ -18,7 +17,11 @@ namespace Service
 
         IEnumerable<Color> GetAll();
 
+        IEnumerable<Color> GetAll(string keyword);
+
         Color GetById(int id);
+
+        List<string> ListNameColor(string keyword);
 
         void Save();
     }
@@ -27,6 +30,7 @@ namespace Service
     {
         private IColorRepository _colorRepository;
         private IUnitOfWork _unitOfWork;
+        private DBContext db = new DBContext();
 
         public ColorService(IColorRepository colorRepository, IUnitOfWork unitOfWork)
         {
@@ -49,9 +53,22 @@ namespace Service
             return _colorRepository.GetAll();
         }
 
+        public IEnumerable<Color> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+                return _colorRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _colorRepository.GetAll();
+        }
+
         public Color GetById(int id)
         {
             return _colorRepository.GetSingleById(id);
+        }
+
+        public List<string> ListNameColor(string keyword)
+        {
+            return db.Colors.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
         public void Save()

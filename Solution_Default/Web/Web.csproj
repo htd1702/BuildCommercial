@@ -103,6 +103,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -220,9 +226,9 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\OrderDetailController.cs" />
     <Compile Include="Api\OrderController.cs" />
+    <Compile Include="Api\ColorController.cs" />
     <Compile Include="Api\SizeController.cs" />
     <Compile Include="Api\HomeController.cs" />
-    <Compile Include="Api\ColorController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
     <Compile Include="Api\ProductDetailController.cs" />
@@ -239,7 +245,6 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
@@ -304,6 +309,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\components\colors\controller\colos.module.js" />
+    <Content Include="app\components\colors\controller\colorAddController.js" />
+    <Content Include="app\components\colors\controller\colorEditController.js" />
+    <Content Include="app\components\colors\controller\colorListController.js" />
+    <Content Include="app\components\colors\views\colorAddView.html" />
+    <Content Include="app\components\colors\views\colorEditView.html" />
+    <Content Include="app\components\colors\views\colorListView.html" />
     <Content Include="app\components\home\controller\baseController.js" />
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
@@ -337,6 +349,13 @@
     <Content Include="app\components\product_categories\controller\productCategoryAddController.js" />
     <Content Include="app\components\product_categories\controller\productCategoryEditController.js" />
     <Content Include="app\components\product_categories\controller\productCategoryListController.js" />
+    <Content Include="app\components\sizes\controller\sizeAddController.js" />
+    <Content Include="app\components\sizes\controller\sizeEditController.js" />
+    <Content Include="app\components\sizes\controller\sizeListController.js" />
+    <Content Include="app\components\sizes\controller\sizes.module.js" />
+    <Content Include="app\components\sizes\views\sizeAddView.html" />
+    <Content Include="app\components\sizes\views\sizeEditView.html" />
+    <Content Include="app\components\sizes\views\sizeListView.html" />
     <Content Include="app\shared\directives\pageDirective.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\filter\statusFilter.js" />
@@ -3936,6 +3955,7 @@
     <Content Include="Content\client\util.css" />
     <Content Include="Content\fonts\Montserrat\OFL.txt" />
     <Content Include="Content\fonts\PlayfairDisplay\OFL.txt" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins\jquery-ui.css" />
     <Content Include="Content\plugins\toastr.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -3972,12 +3992,19 @@
     <Content Include="img\client\banner-07.jpg" />
     <Content Include="img\client\banner-08.jpg" />
     <Content Include="img\client\banner-09.jpg" />
-    <Content Include="img\client\Banner.jpg" />
-    <Content Include="img\client\Banner2.jpg" />
-    <Content Include="img\client\Banner3.jpg" />
+    <Content Include="img\client\banner\About-1.jpg" />
+    <Content Include="img\client\banner\About-2.jpg" />
+    <Content Include="img\client\banner\banner-01.jpg" />
+    <Content Include="img\client\banner\banner-02.jpg" />
+    <Content Include="img\client\banner\banner-03.jpg" />
+    <Content Include="img\client\banner\banner-04.jpg" />
+    <Content Include="img\client\banner\banner-05.jpg" />
+    <Content Include="img\client\banner\banner-06.jpg" />
     <Content Include="img\client\banner\banner2.jpeg" />
     <Content Include="img\client\banner\banner3.jpeg" />
     <Content Include="img\client\banner\banner1.jpeg" />
+    <Content Include="img\client\banner\News-1.jpg" />
+    <Content Include="img\client\banner\News-2.jpg" />
     <Content Include="img\client\bg-01.jpg" />
     <Content Include="img\client\bg-02.jpg" />
     <Content Include="img\client\blog-01.jpg" />
@@ -4021,6 +4048,8 @@
     <Content Include="img\client\icons\logo-01.png" />
     <Content Include="img\client\icons\logo-02.png" />
     <Content Include="img\client\icons\pin.png" />
+    <Content Include="img\client\icons\Rip-loading.gif" />
+    <Content Include="img\client\icons\sale.png" />
     <Content Include="img\client\item-cart-01.jpg" />
     <Content Include="img\client\item-cart-02.jpg" />
     <Content Include="img\client\item-cart-03.jpg" />
@@ -4130,6 +4159,7 @@
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\components\banner\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="Resources\About\" />
@@ -4138,9 +4168,7 @@
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
-    <Folder Include="Views\Color\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\components\products\controller\products.module.js" />
@@ -4335,16 +4363,17 @@
     <Content Include="Views\Cart\ViewCart.cshtml" />
     <Content Include="Views\Shared\_viewProduct.cshtml" />
     <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
-    <Content Include="Views\Post\_viewPost.cshtml" />
     <Content Include="Views\Post\_viewPostDetails.cshtml" />
     <Content Include="Views\ProductCategory\_viewParent.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Client\Form_SendMail.html" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\_viewPosts.cshtml" />
+    <Content Include="Views\Product\HotProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

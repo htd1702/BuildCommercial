@@ -11,6 +11,8 @@ namespace Web.Infrastructure.Extensions
         {
             postCategory.ID = postCategoryVM.ID;
             postCategory.Name = postCategoryVM.Name;
+            postCategory.NameVN = postCategoryVM.Name;
+            postCategory.NameFr = postCategoryVM.Name;
             postCategory.Alias = postCategoryVM.Alias;
             postCategory.Description = postCategoryVM.Description;
             postCategory.ParentID = postCategoryVM.ParentID;
@@ -31,6 +33,8 @@ namespace Web.Infrastructure.Extensions
         {
             post.ID = postVM.ID;
             post.Name = postVM.Name;
+            post.NameVN = postVM.NameVN;
+            post.NameFr = postVM.NameFr;
             post.Alias = postVM.Alias;
             post.Description = postVM.Description;
             post.CategoryID = postVM.CategoryID;
@@ -53,6 +57,8 @@ namespace Web.Infrastructure.Extensions
         {
             productCategory.ID = productCategoryVM.ID;
             productCategory.Name = productCategoryVM.Name;
+            productCategory.NameVN = productCategoryVM.NameVN;
+            productCategory.NameFr = productCategoryVM.NameFr;
             productCategory.Alias = productCategoryVM.Alias;
             productCategory.Description = productCategoryVM.Description;
             productCategory.ParentID = productCategoryVM.ParentID;
@@ -82,6 +88,8 @@ namespace Web.Infrastructure.Extensions
             }
             product.Code = productVM.Code;
             product.Name = productVM.Name;
+            product.NameVN = productVM.NameVN;
+            product.NameFr = productVM.NameFr;
             product.Alias = productVM.Alias;
             product.CategoryID = productVM.CategoryID;
             product.Image = productVM.Image;

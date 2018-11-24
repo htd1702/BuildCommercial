@@ -1,7 +1,9 @@
-﻿using Data.Infrastructure;
+﻿using Data;
+using Data.Infrastructure;
 using Data.Repositories;
 using Model.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service
 {
@@ -19,6 +21,8 @@ namespace Service
 
         Post GetById(int id);
 
+        List<string> ListNamePost(string keyword);
+
         void Save();
     }
 
@@ -26,6 +30,7 @@ namespace Service
     {
         private IPostRepository _postRepository;
         private IUnitOfWork _unitOfWork;
+        private DBContext db = new DBContext();
 
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
@@ -59,6 +64,11 @@ namespace Service
         public Post GetById(int id)
         {
             return _postRepository.GetSingleById(id);
+        }
+
+        public List<string> ListNamePost(string keyword)
+        {
+            return db.Posts.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
         public void Save()

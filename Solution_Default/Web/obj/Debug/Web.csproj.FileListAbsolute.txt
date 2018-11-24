@@ -299,3 +299,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.File
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\Facebook.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\PagedList.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\PagedList.Mvc.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\PagedList.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\PagedList.Mvc.xml

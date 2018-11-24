@@ -55,6 +55,20 @@ namespace Web.Controllers
             }
         }
 
+        [HttpGet]
+        public JsonResult GetCategoryByParent(int id)
+        {
+            try
+            {
+                var list = _productCategoryService.GetAllByParentId(id);
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public ActionResult _viewParent()
         {
             ViewBag.ListCategory = _productCategoryService.GetCategoryByTake(3);

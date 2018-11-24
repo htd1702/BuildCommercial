@@ -86,6 +86,25 @@ namespace Web.Api
             });
         }
 
+        [Route("getname")]
+        [HttpGet]
+        public HttpResponseMessage GetName(HttpRequestMessage request, string term)
+        {
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _productService.ListNameProduct(term);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, model);
+                    //return status
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
         [Route("getid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetId(HttpRequestMessage request, int id)
@@ -133,6 +152,8 @@ namespace Web.Api
                     var listSize = dynamicObj["sizeList"];
                     var listQuantity = dynamicObj["quantityList"];
                     productVM.Name = dynamicObj["Name"];
+                    productVM.NameVN = dynamicObj["NameVN"];
+                    productVM.NameFr = dynamicObj["NameFr"];
                     productVM.Code = dynamicObj["Code"];
                     productVM.Alias = dynamicObj["Alias"];
                     productVM.CategoryID = dynamicObj["CategoryID"];
@@ -150,8 +171,8 @@ namespace Web.Api
                     productVM.CreatedBy = dynamicObj["CreatedBy"];
                     productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     productVM.UpdatedBy = dynamicObj["UpdatedBy"];
-                    productVM.MetaKeyword = dynamicObj["MetaKeyword"];
-                    productVM.MetaDescription = dynamicObj["MetaDescription"];
+                    productVM.MetaKeyword = "";
+                    productVM.MetaDescription = "";
                     productVM.HomeFlag = dynamicObj["HomeFlag"];
                     productVM.HotFlag = dynamicObj["HotFlag"];
                     productVM.Status = dynamicObj["Status"];
@@ -222,6 +243,8 @@ namespace Web.Api
                     var listQuantity = dynamicObj["quantityList"];
                     productVM.ID = dynamicObj["ID"];
                     productVM.Name = dynamicObj["Name"];
+                    productVM.NameVN = dynamicObj["NameVN"];
+                    productVM.NameFr = dynamicObj["NameFr"];
                     productVM.Code = dynamicObj["Code"];
                     productVM.Alias = dynamicObj["Alias"];
                     productVM.CategoryID = dynamicObj["CategoryID"];
@@ -237,8 +260,8 @@ namespace Web.Api
                     productVM.Tags = dynamicObj["Tags"];
                     productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     productVM.UpdatedBy = dynamicObj["UpdatedBy"];
-                    productVM.MetaKeyword = dynamicObj["MetaKeyword"];
-                    productVM.MetaDescription = dynamicObj["MetaDescription"];
+                    productVM.MetaKeyword = "";
+                    productVM.MetaDescription = "";
                     productVM.HomeFlag = dynamicObj["HomeFlag"];
                     productVM.HotFlag = dynamicObj["HotFlag"];
                     productVM.Status = dynamicObj["Status"];

@@ -8,10 +8,10 @@
 
         translate.language = 'en';
 
-        translate.languages = ['en', 'vi'];
+        translate.languages = ['en', 'vi', 'fr'];
 
-        translate.updateLanguage = function () {
-            $translate.use(translate.language);
+        translate.updateLanguage = function (index) {
+            $translate.use(translate.languages[index]);
         };
     }
 })(angular.module('default'));

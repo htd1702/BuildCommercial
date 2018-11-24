@@ -295,7 +295,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .header-v2 .wrap-menu-desktop {
     background-color: #fff;
-    top: 0;
+    /*top: 0;*/
 }
 
 .header-v3 .wrap-menu-desktop {
@@ -375,8 +375,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     }
 
         .main-menu > li > a {
-            font-family: Poppins-Medium;
-            font-size: 14px;
+            font-family: Roboto,Helvetica,Arial,sans-serif;
+            font-size: 16px;
             color: #333;
             padding: 5px 0px;
             transition: all 0.4s;
@@ -990,7 +990,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
     .header-cart-item-img::after {
         content: '\e870';
-        font-family: Roboto,Helvetica,Arial,sans-serif;
+        font-family: Linearicons-Free;
         font-size: 16px;
         display: -webkit-box;
         display: -webkit-flex;
@@ -2387,6 +2387,7 @@ input.num-product {
 [ L-Text >= 26 ]*/
 .ltext-101 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-weight: bold;
     font-size: 28px;
     line-height: 1.2857;
 }
@@ -2395,6 +2396,7 @@ input.num-product {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 28px;
     line-height: 1.1;
+    font-weight: bold;
 }
 
 .ltext-103 {
@@ -2402,6 +2404,7 @@ input.num-product {
     font-size: 36px;
     line-height: 1.1;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .ltext-104 {
@@ -2409,36 +2412,42 @@ input.num-product {
     font-size: 60px;
     line-height: 1.1;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .ltext-105 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 50px;
     line-height: 1.1;
+    font-weight: bold;
 }
 
 .ltext-106 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 36px;
     line-height: 1.2;
+    font-weight: bold;
 }
 
 .ltext-107 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 1.1;
+    font-weight: bold;
 }
 
 .ltext-108 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 1.3846;
+    font-weight: bold;
 }
 
 .ltext-109 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 36px;
     line-height: 1.2;
+    font-weight: bold;
 }
 
 
@@ -2448,12 +2457,14 @@ input.num-product {
     font-size: 60px;
     line-height: 1.1;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .ltext-202 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     font-size: 28px;
     line-height: 1.2857;
+    font-weight: bold;
 }
 
 

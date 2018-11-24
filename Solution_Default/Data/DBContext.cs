@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Model.Model;
+using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace Data

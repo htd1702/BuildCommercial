@@ -4,12 +4,16 @@
 }
 <style>
     #page_ProductCategory {
-        margin-top: 100px;
+        margin-top: 50px;
     }
 
     .active {
         background-color: grey;
         color: white;
+    }
+
+    .bor18:last-child {
+        border-bottom: none !important;
     }
 </style>
 <section class="section-main" id="page_ProductCategory" ng-controller="ProductController">
@@ -23,6 +27,7 @@
         <a class="stext-109 cl8 hov-cl1 trans-04">
             Category
         </a>
+
         <hr />
     </div>
     <section class="bg0 p-t-30 p-b-20">
@@ -38,29 +43,29 @@
                             </button>
                         </div>
 
-                        <div class="p-t-40">
-                            <h4 class="mtext-112 cl2 p-b-33">
-                                Parents
-                            </h4>
+                        @*<div class="p-t-40">
+                                <h4 class="mtext-112 cl2 p-b-33">
+                                    Parents
+                                </h4>
 
-                            <ul ng-repeat="menu in SiteMenu | filter:{ParentID : 0}">
-                                <li class="bor18">
-                                    <button ng-click="btnParent(menu.ID, menu.ParentID)" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-                                        {{menu.Name}}
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
+                                <ul ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0">
+                                    <li class="bor18">
+                                        <button ng-click="btnParent(parent.ID, parent.ParentID)" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                            {{parent.Name}}
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>*@
 
                         <div class="p-t-40">
                             <h4 class="mtext-112 cl2 p-b-33">
                                 Categories
                             </h4>
 
-                            <ul ng-if="menu.ParentID != 0" ng-repeat="menu in SiteMenu">
+                            <ul ng-if="childParent.ParentID != 0" ng-repeat="childParent in childCategory">
                                 <li class="bor18">
-                                    <button ng-click="btnParent(menu.ID, menu.ParentID)" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-                                        {{menu.Name}}
+                                    <button ng-click="btnParent(childParent.ID, childParent.ParentID)" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        {{childParent.Name}}
                                     </button>
                                 </li>
                             </ul>
@@ -69,7 +74,7 @@
                 </div>
                 <div class="col-md-8 col-lg-9 p-b-80">
                     <div class="row product-grid">
-                        <div class="col-md-3" ng-repeat="p in products | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" pagin-directive="ngRepeatFinished">
+                        <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="p in products | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" pagin-directive="ngRepeatFinished">
                             <div class="block2-pic hov-img0">
                                 <img ng-src="{{p.Image}}" alt="IMG-PRODUCT">
                                 <a href="/Client/Details/{{p.ID}}" data-id="{{p.ID}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
@@ -83,7 +88,7 @@
                                     </a>
 
                                     <span class="stext-105 cl3">
-                                        ${{p.Price}}
+                                        <span style="text-decoration:line-through">${{p.Price}}</span> - ${{(p.Price - (p.Price * p.PromotionPrice)/100)}}
                                     </span>
                                 </div>
 
@@ -94,6 +99,9 @@
                                     </a>
                                 </div>
                             </div>
+                            <div id="imgSale">
+                                <img ng-show="p.PromotionPrice > 0" src="~/img/client/icons/sale.png" />
+                            </div>
                         </div>
                         <input style="display:none" type="text" value="8" id="txt_PageSize" />
                         <input style="display:none" type="text" value="0" id="txt_Parent" />
@@ -102,9 +110,7 @@
                     <div class="flex-c-m flex-w w-full p-t-38">
                         <a href class="flex-c-m how-pagination1 trans-04 m-all-7" ng-class="prevPageDisabled()" ng-click="prevPage()"><</a>
 
-                        <a href class="flex-c-m how-pagination1 trans-04 m-all-7" ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-                            {{n+1}}
-                        </a>
+                        <a href class="flex-c-m how-pagination1 trans-04 m-all-7" ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">{{n+1}}</a>
 
                         <a href class="flex-c-m how-pagination1 trans-04 m-all-7" ng-class="nextPageDisabled()" ng-click="nextPage()">></a>
                     </div>
@@ -113,4 +119,3 @@
         </div>
     </section>
 </section>
-

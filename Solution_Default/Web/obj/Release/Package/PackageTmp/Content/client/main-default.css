@@ -295,7 +295,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .header-v2 .wrap-menu-desktop {
     background-color: #fff;
-    top: 0;
+    /*top: 0;*/
 }
 
 .header-v3 .wrap-menu-desktop {
@@ -990,7 +990,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
     .header-cart-item-img::after {
         content: '\e870';
-        font-family: Roboto,Helvetica,Arial,sans-serif;
+        font-family: Linearicons-Free;
         font-size: 16px;
         display: -webkit-box;
         display: -webkit-flex;
@@ -2386,57 +2386,57 @@ input.num-product {
 /*//////////////////////////////////////////////////////////////////
 [ L-Text >= 26 ]*/
 .ltext-101 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 28px;
     line-height: 1.2857;
 }
 
 .ltext-102 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 28px;
     line-height: 1.1;
 }
 
 .ltext-103 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 36px;
     line-height: 1.1;
     text-transform: uppercase;
 }
 
 .ltext-104 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 60px;
     line-height: 1.1;
     text-transform: uppercase;
 }
 
 .ltext-105 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 50px;
     line-height: 1.1;
 }
 
 .ltext-106 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 36px;
     line-height: 1.2;
 }
 
 .ltext-107 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 30px;
     line-height: 1.1;
 }
 
 .ltext-108 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 26px;
     line-height: 1.3846;
 }
 
 .ltext-109 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 36px;
     line-height: 1.2;
 }
@@ -2444,14 +2444,14 @@ input.num-product {
 
 /*---------------------------------------------*/
 .ltext-201 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 60px;
     line-height: 1.1;
     text-transform: uppercase;
 }
 
 .ltext-202 {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Poppins-Bold;
     font-size: 28px;
     line-height: 1.2857;
 }

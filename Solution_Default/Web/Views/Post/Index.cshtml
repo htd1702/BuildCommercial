@@ -1,14 +1,61 @@
-﻿
+﻿<add name="BuildingConnection" connectionString="Data Source=112.78.2.94;Initial Catalog=aled9559_Aledale;User ID=aled9559_hieunt;password=Nhan@1992;" providerName="System.Data.SqlClient" />
+
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
+<script src="~/Scripts/plugins/jquery/jquery.min.js"></script>
+<div class="container" style="margin-top:30px;">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
+            Home
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
 
-<section class="bg0 p-t-62 p-b-60" style="margin-top:40px;">
+        <a href="/Client/Blog" class="stext-109 cl8 hov-cl1 trans-04">
+            Blog
+        </a>
+    </div>
+</div>
+<section class="bg0 p-t-20 p-b-60" ng-controller="PostController">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-9 p-b-80">
-                @Html.Action("_viewPost", "Post")
+                <div class="p-r-45 p-r-0-lg">
+                    <!-- Load posst -->
+                    <div id="pageing-post"></div>
+                    <!-- Pagination -->
+                    <div class="panel-footer">
+                        <ul class="flex-l-m flex-w w-full p-t-10 m-lr--7 pager">
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+                                    <
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Pagination -->
+                    @*<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
+                            <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
+                                1
+                            </a>
+
+                            <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
+                                2
+                            </a>
+                        </div>*@
+                </div>
             </div>
 
             <div class="col-md-4 col-lg-3 p-b-80">
@@ -29,50 +76,18 @@
                         </h4>
 
                         <ul>
-                            <li class="flex-w flex-t p-b-30">
-                                <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                    <img src="~/img/client/product-min-01.jpg" alt="PRODUCT">
+                            <li class="flex-w flex-t p-b-30" ng-repeat="p in posts">
+                                <a href="/Client/Details/{{p.ID}}" class="wrao-pic-w hov-ovelay1 m-r-20" style="width:80px;">
+                                    <img ng-src="{{p.Image}}" alt="PRODUCT" style="max-width:80px;">
                                 </a>
 
                                 <div class="size-215 flex-col-t p-t-8">
-                                    <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                        White Shirt With Pleat Detail Back
+                                    <a href="/Client/Details/{{p.ID}}" class="stext-116 cl8 hov-cl1 trans-04">
+                                        {{p.Name}}
                                     </a>
 
                                     <span class="stext-116 cl6 p-t-20">
-                                        $19.00
-                                    </span>
-                                </div>
-                            </li>
-
-                            <li class="flex-w flex-t p-b-30">
-                                <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                    <img src="~/img/client/product-min-02.jpg" alt="PRODUCT">
-                                </a>
-
-                                <div class="size-215 flex-col-t p-t-8">
-                                    <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                        Converse All Star Hi Black Canvas
-                                    </a>
-
-                                    <span class="stext-116 cl6 p-t-20">
-                                        $39.00
-                                    </span>
-                                </div>
-                            </li>
-
-                            <li class="flex-w flex-t p-b-30">
-                                <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                    <img src="~/img/client/product-min-03.jpg" alt="PRODUCT">
-                                </a>
-
-                                <div class="size-215 flex-col-t p-t-8">
-                                    <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                        Nixon Porter Leather Watch In Tan
-                                    </a>
-
-                                    <span class="stext-116 cl6 p-t-20">
-                                        $17.00
+                                        ${{p.Price}}
                                     </span>
                                 </div>
                             </li>
@@ -216,3 +231,61 @@
     </div>
 </section>
 
+<script>
+    pageNo = 0;
+    pageSize = 3;
+    pageCount = 5;
+    function loadPage() {
+        $.ajax({
+            url: "/Post/GetListPostPaging",
+            data: { PageNo: pageNo, PageSize: pageSize },
+            success: function (response) {
+                $("#pageing-post").html(response);
+            }
+        });
+    }
+    loadPage();
+    $(function () {
+        $.ajax({
+            url: "/Post/GetPagePostCount",
+            data: { PageSize: pageSize },
+            success: function (response) {
+                pageCount = response;
+            }
+        });
+
+        loadPage();
+
+        $(".pager a:eq(0)").click(function () {
+            pageNo = 0;
+            loadPage();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+
+        $(".pager a:eq(1)").click(function () {
+            if (pageNo > 0) {
+                pageNo--;
+                loadPage();
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+            return false;
+        });
+
+        $(".pager a:eq(2)").click(function () {
+            if (pageNo < pageCount - 1) {
+                pageNo++;
+                loadPage();
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+            return false;
+        });
+
+        $(".pager a:eq(3)").click(function () {
+            pageNo = pageCount - 1;
+            loadPage();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+    });
+</script>

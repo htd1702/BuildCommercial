@@ -88,7 +88,7 @@
         $(arrowMainMenu[i]).on('click', function () {
             $(this).parent().find('.sub-menu-m').slideToggle();
             $(this).toggleClass('turn-arrow-main-menu-m');
-        })
+        });
     }
 
     $(window).resize(function () {

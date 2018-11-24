@@ -1,7 +1,12 @@
 ﻿@using Web.Resources.Product
-<header>
+@using Model.Model
+@using Data;
+@{
+    DBContext db = new DBContext();
+}
+<header class="header-v2">
     <!-- Header desktop -->
-    <div class="container-menu-desktop">
+    <div class="container-menu-desktop trans-03">
         <!-- Topbar -->
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
@@ -39,6 +44,23 @@
                     <ul class="main-menu">
                         <li>
                             <a href="/CLient/ProductCategoryDetail/0">Shop</a>
+                            <ul class="sub-menu">
+                                @foreach (ProductCategory c in ViewBag.ParentCategory)
+                                {
+                                    var Item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                    <li>
+                                        <a href="/CLient/ProductCategoryDetail/?name=@c.Name&id=@c.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? c.NameVN : c.Name)</a>
+                                        <ul class="sub-menu">
+                                            @foreach (var cate in Item)
+                                            {
+                                                <li>
+                                                    <a href="/CLient/ProductCategoryDetail/?name=@cate.Name&id=@cate.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? cate.NameVN : cate.Name)</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
                         </li>
 
                         <li>
@@ -51,6 +73,10 @@
 
                         <li>
                             <a href="/lien-he">Contact</a>
+                        </li>
+
+                        <li class="label1" data-label1="Hot">
+                            <a href="/CLient/ProductCategoryDetail/0">Sale</a>
                         </li>
                     </ul>
                 </div>
@@ -136,36 +162,24 @@
         </ul>
 
         <ul class="main-menu-m">
-            <li>
-                <a href="index.html">Home</a>
-                <ul class="sub-menu-m">
-                    <li><a href="index.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </span>
+            <li class="label1" data-label1="Hot">
+                <a href="/CLient/ProductCategoryDetail/0">Shop</a>
             </li>
 
             <li>
-                <a href="product.html">Shop</a>
+                <a href="/tin-tuc">Blog</a>
             </li>
 
             <li>
-                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+                <a href="/gioi-thieu">About</a>
             </li>
 
             <li>
-                <a href="blog.html">Blog</a>
+                <a href="/lien-he">Contact</a>
             </li>
 
             <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
+                <a href="/CLient/ProductCategoryDetail/0">Sale</a>
             </li>
         </ul>
     </div>

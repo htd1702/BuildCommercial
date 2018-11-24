@@ -1,6 +1,6 @@
 ﻿<div class="card">
     <div class="card-header card-header-primary">
-        <h4 class="card-title">Add Post Category</h4>
+        <h4 class="card-title">Add Post</h4>
         <p class="card-category">Complete</p>
     </div>
     <div class="card-body">
@@ -8,16 +8,32 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">
-                        PostName
-                        <span ng-hide="frmAddpost.name.$error.maxlength" ng-show="frmAddpost.name.$invalid" class="text-danger"> *</span>
+                        Post Name
+                        <span ng-hide="frmAddPost.name.$error.maxlength" ng-show="frmAddPost.name.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="post.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddpost.name.$error.maxlength" class="text-danger">Tên sảm phẩm tối đa 40 ký tự</span>
+                    <span ng-show="frmAddPost.name.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
                 </div>
                 <div class="form-group col-md-4">
+                    <label for="nameVN">
+                        Post Name VN
+                        <span ng-hide="frmAddPost.nameVN.$error.maxlength" ng-show="frmAddPost.nameVN.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="post.nameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
+                    <span ng-show="frmAddPost.nameVN.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="nameFr">
+                        Post Name Frank
+                        <span ng-hide="frmAddPost.nameFr.$error.maxlength" ng-show="frmAddPost.nameFr.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="post.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
+                    <span ng-show="frmAddPost.nameFr.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                </div>
+                <div class="form-group col-md-3" style="display:none;">
                     <label for="alias">
                         SeoTitle
-                        <span class="text-danger" ng-show="frmAddpost.alias.$invalid"> *</span>
+                        <span class="text-danger" ng-show="frmAddPost.alias.$invalid"> *</span>
                     </label>
                     <input type="text" required placeholder="Nhập tiêu đề SEO..." class="text-control" ng-model="post.Alias" name="alias">
                 </div>
@@ -26,26 +42,26 @@
                     <select name="categoryID" ng-model="post.CategoryID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select"></select>
                     <input type="hidden" name="categoryID" ng-model="post.CategoryID" />
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
+                    <label for="viewCount">
+                        View
+                    </label>
+                    <input type="number" required class="text-control" min="0" ng-model="post.ViewCount" name="viewCount">
+                </div>
+                <div class="form-group col-md-4">
                     <label for="image">
                         Image
-                        <span ng-show="frmAddpost.image.$invalid" class="text-danger"> *</span>
+                        <span ng-show="frmAddPost.image.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" class="text-control" ng-model="post.Image" name="image" required>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="viewCount">
-                        View
-                    </label>
-                    <input type="number" required class="text-control" min="0" ng-model="post.ViewCount" name="viewCount">
-                </div>
-                <div class="form-group col-md-6">
+                <!--<div class="form-group col-md-6">
                     <label for="metaKeyword">
                         MetaKeyword
-                        <span ng-show="frmAddpost.metaKeyword.$invalid" class="text-danger"> *</span>
+                        <span ng-show="frmAddPost.metaKeyword.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" required placeholder="Nhập Meta Keyword..." class="text-control" ng-model="post.MetaKeyword" name="metaKeyword">
                 </div>
@@ -54,18 +70,18 @@
                         MetaDescription
                     </label>
                     <input type="text" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="post.MetaDescription" name="metaDescription" />
-                    <span class="text-danger" ng-show="frmAddpost.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
-                </div>
+                    <span class="text-danger" ng-show="frmAddPost.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                </div>-->
                 <div class="form-group col-md-12">
                     <label for="description">Description</label>
                     <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="post.Content" name="content"></textarea>
-                    <span class="text-danger" ng-show="frmAddpost.content.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                    <span class="text-danger" ng-show="frmAddPost.content.$error.maxlength">Nội dung không được quá 600 ký tự</span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="status" ng-checked="post.Status" ng-model="post.Status"> Active
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="post.Status" ng-model="post.Status"> Active Post
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -73,7 +89,7 @@
                 </div>
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="post.HomeFlag" ng-model="post.HomeFlag"> ShowHomePage
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="post.HomeFlag" ng-model="post.HomeFlag"> Show Home
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -81,14 +97,14 @@
                 </div>
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="post.HotFlag" ng-model="post.HotFlag"> HotProduct
+                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="post.HotFlag" ng-model="post.HotFlag"> Hot Post
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
                     </label>
                 </div>
             </div>
-            <div class="row form-group">
+            <div class="form-row">
                 <div class="col col-md-6">
                     <button class="btn btn-danger btn-sm pull-left" ui-sref="posts"><i class="fa fa-ban"></i> Back</button>
                 </div>

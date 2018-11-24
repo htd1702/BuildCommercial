@@ -22,6 +22,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Model\bin\Release\Microsoft.O
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\bin\Release\Microsoft.Owin.Security.Cookies.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\bin\Release\Microsoft.Owin.Security.OAuth.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\bin\Release\Newtonsoft.Json.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.csprojAssemblyReference.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.dll
