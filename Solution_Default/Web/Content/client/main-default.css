@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------
-Project:  
-Version:  
-Last change:  
+Project:
+Version:
+Last change:
 Assigned to:  Le Xuan Bach
 Primary use:  Company
 -------------------------------------------------------------------*/
@@ -19,10 +19,10 @@ Primary use:  Company
 /*------------------------------------------------------------------
 [COLOR CODES]
 
-# Text Color      :  
-# Primary Color 01:  
-# Primary Color 02:   
-# Primary Color 03:  
+# Text Color      :
+# Primary Color 01:
+# Primary Color 02:
+# Primary Color 03:
 
 ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
@@ -33,8 +33,6 @@ Title           : 18px/1.6 '', Arial, sans-serif;
 Paragrap        : 18px/1.6 '', Arial, sans-serif;
 Input, textarea : 14px/1.6 '', Arial, sans-serif;
 -------------------------------------------------------------------*/
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
@@ -74,7 +72,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     src: url('../fonts/Poppins/Poppins-SemiBold.ttf');
 }
 
-
 /*---------------------------------------------*/
 @font-face {
     font-family: PlayfairDisplay-Regular;
@@ -97,7 +94,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
 
@@ -118,10 +114,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .slick-slide {
     outline: none !important;
 }
-
-
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ LOADDING ]*/
@@ -202,7 +194,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     }
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ Header ]*/
 
@@ -231,7 +222,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     height: 124px;
 }
 
-
 /*==================================================================
 [ Top bar ]*/
 .top-bar {
@@ -246,7 +236,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     line-height: 1.8;
     color: #b2b2b2;
 }
-
 
 /*---------------------------------------------*/
 .right-top-bar a {
@@ -266,15 +255,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
         color: #6c7ae0;
     }
 
-
 /*---------------------------------------------*/
 .topbar-mobile li {
     padding: 8px 20px;
     border-top: 1px solid rgba(255,255,255,0.05);
     background-color: #222;
 }
-
-
 
 /*==================================================================
 [ Menu ]*/
@@ -308,7 +294,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     background-color: #fff;
 }
 
-
 /*---------------------------------------------*/
 .limiter-menu-desktop {
     height: 100%;
@@ -320,8 +305,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     align-items: center;
     background-color: transparent;
 }
-
-
 
 /*------------------------------------------------------------------
 [ Logo ]*/
@@ -340,8 +323,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
         max-width: 100%;
         max-height: 100%;
     }
-
-
 
 /*------------------------------------------------------------------
 [ Menu ]*/
@@ -492,7 +473,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     cursor: pointer;
 }
 
-
 /*---------------------------------------------*/
 .icon-header-noti::after {
     content: attr(data-notify);
@@ -515,7 +495,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .wrap-header-mobile .wrap-icon-header {
     flex-grow: unset;
 }
-
 
 /*------------------------------------------------------------------
 [ Modal search ]*/
@@ -611,7 +590,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     }
 }
 
-
 /*==================================================================
 [ Fixed menu desktop ]*/
 
@@ -642,8 +620,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu > li.active-menu > a {
     color: #6c7ae0;
 }
-
-
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 [ Header Mobile ]*/
@@ -686,8 +662,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
         bottom: 0;
         margin: auto;
     }
-
-
 
 /*------------------------------------------------------------------
 [ btn show menu ]*/
@@ -736,16 +710,20 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu-m {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #717fe0;
+    background-color: #282828;
 }
 
     .main-menu-m > li > a {
         font-family: Roboto,Helvetica,Arial,sans-serif;
         font-size: 14px;
-        color: white;
+        color: #d4d4d4;
         line-height: 2.8;
         padding: 8px 20px 8px 20px;
     }
+
+        .main-menu-m > li > a:hover {
+            color: #717fe0;
+        }
 
     .main-menu-m > li {
         color: white;
@@ -810,7 +788,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
         display: none;
     }
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Sidebar ]*/
@@ -902,7 +879,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     .item-gallery:hover:after {
         opacity: 1;
     }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Header cart ]*/
@@ -1056,7 +1032,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     }
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ Restyle Select2 ]*/
 
@@ -1121,7 +1096,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     .rs1-select2 .select2-container--default .select2-selection--single .select2-selection__arrow:hover:after {
         color: #6c7ae0;
     }
-
 
 /*------------------------------------------------------------------
 [ Dropdown option ]*/
@@ -1199,8 +1173,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     .rs2-select2 .select2-container--default .select2-selection--single .select2-selection__arrow::after {
         content: "\f0d7";
     }
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Slick1 ]*/
@@ -1365,7 +1337,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     }
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ Slick2 ]*/
 
@@ -1414,7 +1385,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
         left: 0px;
     }
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Slick3 ]*/
@@ -1498,8 +1468,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .slick3-dots .slick-active .slick3-dot-overlay {
     border-color: #ccc;
 }
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ RS Magnific-Popup ]*/
@@ -1587,7 +1555,6 @@ button.mfp-close {
     opacity: 0;
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ Tab01 ]*/
 .tab01 .nav-tabs {
@@ -1630,8 +1597,6 @@ button.mfp-close {
         color: #333;
         border-color: #797979;
     }
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ RS sweet alert ]*/
@@ -1685,7 +1650,6 @@ button.mfp-close {
 .swal-footer {
     margin-top: 0;
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Filter ]*/
@@ -1787,8 +1751,6 @@ button.mfp-close {
     }
 }
 
-
-
 /*//////////////////////////////////////////////////////////////////
 [ Num Product ]*/
 .wrap-num-product {
@@ -1869,7 +1831,6 @@ input.num-product {
         visibility: visible;
         opacity: 1;
     }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Modal1 ]*/
@@ -1979,8 +1940,6 @@ input.num-product {
         color: #555;
         line-height: 1.6;
     }
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Block1 ]*/
@@ -2124,8 +2083,6 @@ input.num-product {
         top: 42px;
         left: 12px;
     }
-
-
 
 /*==================================================================
     TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
@@ -2289,7 +2246,6 @@ input.num-product {
     line-height: 1.666667;
 }
 
-
 /*---------------------------------------------*/
 .stext-301 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
@@ -2297,7 +2253,6 @@ input.num-product {
     line-height: 1.6;
     text-transform: uppercase;
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ M-Text 16 - 25 ]*/
@@ -2382,7 +2337,6 @@ input.num-product {
     text-transform: uppercase;
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ L-Text >= 26 ]*/
 .ltext-101 {
@@ -2450,7 +2404,6 @@ input.num-product {
     font-weight: bold;
 }
 
-
 /*---------------------------------------------*/
 .ltext-201 {
     font-family: Roboto,Helvetica,Arial,sans-serif;
@@ -2467,13 +2420,9 @@ input.num-product {
     font-weight: bold;
 }
 
-
-
-
 /*==================================================================
-    SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE 
+    SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE SIZE
 ==================================================================*/
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Size ]*/
@@ -2676,8 +2625,6 @@ input.num-product {
     max-width: 286px;
 }
 
-
-
 /*//////////////////////////////////////////////////////////////////
 [ Height ]*/
 .size-301 {
@@ -2692,9 +2639,8 @@ input.num-product {
     height: 390px;
 }
 
-
 /*==================================================================
-   BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND 
+   BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND BACKGROUND
 ==================================================================*/
 .bg-none {
     background-color: transparent;
@@ -2756,9 +2702,6 @@ input.num-product {
     background-position: center center;
     background-repeat: no-repeat;
 }
-
-
-
 
 /*==================================================================
        BORDER BORDER  BORDER  BORDER  BORDER  BORDER  BORDER  BORDER
@@ -2858,9 +2801,8 @@ input.num-product {
     border-radius: 2px;
 }
 
-
 /*==================================================================
- HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW 
+ HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW HOW
 ==================================================================*/
 .plh0::-webkit-input-placeholder {
     color: #999999;
@@ -2983,7 +2925,6 @@ input.num-product {
     border-color: #797979;
 }
 
-
 /*---------------------------------------------*/
 .wrap-input1 {
     position: relative;
@@ -3007,7 +2948,6 @@ input.num-product {
 .input1:focus + .focus-input1 {
     width: 100%;
 }
-
 
 /*---------------------------------------------*/
 .how-pagination1 {
@@ -3094,8 +3034,6 @@ input.num-product {
     left: 10px;
 }
 
-
-
 /*---------------------------------------------*/
 .how-itemcart1 {
     width: 60px;
@@ -3173,8 +3111,6 @@ input.num-product {
     right: -21px;
 }
 
-
-
 /*==================================================================
       PSEUDO PSEUDO PSEUDO PSEUDO PSEUDO PSEUDO PSEUDO PSEUDO PSEUDO
 ==================================================================*/
@@ -3196,9 +3132,6 @@ input.num-product {
 .focus-in0:focus:-ms-input-placeholder {
     color: transparent;
 }
-
-
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Hover ]*/
@@ -3276,7 +3209,6 @@ input.num-product {
     border-color: #717fe0;
 }
 
-
 /*---------------------------------------------*/
 .hov-ovelay1 {
     position: relative;
@@ -3302,7 +3234,6 @@ input.num-product {
         opacity: 1;
     }
 
-
 /*---------------------------------------------*/
 .hov1:hover {
     color: #333;
@@ -3322,9 +3253,6 @@ input.num-product {
     .hov3:hover {
         opacity: 1;
     }
-
-
-
 
 /*==================================================================
   RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE
@@ -3398,9 +3326,7 @@ input.num-product {
     }
 
     /*---------------------------------------------*/
-
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ LG ]*/
@@ -3481,7 +3407,6 @@ input.num-product {
     }
 }
 
-
 /*//////////////////////////////////////////////////////////////////
 [ MD ]*/
 @media (max-width: 767px) {
@@ -3554,7 +3479,6 @@ input.num-product {
         width: 100%;
     }
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ SM ]*/
@@ -3647,7 +3571,6 @@ input.num-product {
         padding-left: 60px;
     }
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ SSM ]*/

@@ -113,6 +113,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Optimization.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Owin.dll
@@ -120,9 +121,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.dl
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.WebHost.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\AutoMapper.dll
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.Mvc.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Net.Http.Formatting.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Web.Infrastructure.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.dll
@@ -154,16 +155,17 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Optimization.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Mvc.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.Http.WebHost.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\AutoMapper.xml
+E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.Mvc.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Autofac.Integration.WebApi.xml
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Net.Http.Formatting.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.xml
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\System.Web.WebPages.Razor.xml
@@ -177,5 +179,3 @@ E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.c
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\obj\Debug\UnitTest.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\UnitTest\bin\Debug\Facebook.xml

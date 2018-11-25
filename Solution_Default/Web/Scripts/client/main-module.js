@@ -14,6 +14,8 @@ var app = angular.module("app_client", ['ngRoute', 'ngAnimate']).directive('pagi
     }
 });
 app.controller("ProductController", ProductController);
+app.controller("ProductSaleController", ProductSaleController);
+app.controller("NewProductController", NewProductController);
 app.controller("ShoppingCartController", ShoppingCartController);
 app.controller("PostController", PostController);
 //---------------------------FILTER---------------------------------//
@@ -23,6 +25,24 @@ app.filter('offset', function () {
         return input.slice(start);
     };
 });
+//funcion change Stamped
+function changeStamped(str) {
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+    str = str.replace(/Đ/g, "D");
+    return str;
+}
 //------------------------------------------------------------------//
 //page product
 ProductController.$inject = ["$scope", "$http"];
@@ -34,24 +54,6 @@ function ProductController($scope, $http) {
     $scope.parentCategory = [];
     $scope.postCategories = [];
     $scope.btnDetails = btnDetails;
-    //funcion change Stamped
-    function changeStamped(str) {
-        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-        str = str.replace(/đ/g, "d");
-        str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
-        str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
-        str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
-        str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
-        str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
-        str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
-        str = str.replace(/Đ/g, "D");
-        return str;
-    }
     //load menu category
     function LoadSiteMenuCategory() {
         return $http({
@@ -64,6 +66,7 @@ function ProductController($scope, $http) {
             alert('Error');
         });
     }
+    //load category parent by id
     function LoadCategoryByParent(id) {
         return $http({
             url: "/ProductCategory/GetCategoryByParent",
@@ -125,7 +128,7 @@ function ProductController($scope, $http) {
     //function load list details
     function btnDetails(id) {
         $.ajax({
-            url: "/Client/Details",
+            url: "/Product/Details",
             async: false,
             data: { id: id },
             success: function (data) {
@@ -270,6 +273,7 @@ function ProductController($scope, $http) {
     LoadPostCategories();
     //load list product
     LoadProduct(0, 0, 0, 0, 0, 8);
+    //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
             var rangeSize = 3;
@@ -388,3 +392,204 @@ function PostController($scope, $http) {
     }
     ListHotProduct(4);
 }
+
+//Product Sale
+ProductSaleController.$inject = ["$scope", "$http"];
+function ProductSaleController($scope, $http) {
+    var count = 0;
+    $scope.currentPage = 0;
+    $scope.itemsPerPage = 8;
+    $scope.productSales = [];
+    $scope.parentCategory = [];
+    $scope.LoadListSaleProduct = LoadListSaleProduct;
+    //funtion load list sale product
+    function LoadListSaleProduct() {
+        return $http({
+            method: 'GET',
+            url: '/Product/ListProductDiscount',
+            async: false,
+        }).then(function (response) {
+            $scope.productSales = response.data;
+        });
+    }
+    //load menu category
+    function LoadSiteMenuCategory() {
+        return $http({
+            url: "/ProductCategory/GetCategoryByType",
+            method: "GET",
+            params: { type: 3 }
+        }).then(function (response) {
+            $scope.parentCategory = response.data;
+        }, function (error) {
+            alert('Error');
+        });
+    }
+    //function click change parent
+    $scope.btnParent = function (id, parentID) {
+        if (parentID == undefined)
+            parentID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProductByCategory',
+            async: false,
+            data: { categories: id, parentID: parentID },
+        }).then(function (response) {
+            $scope.productSales = response.data;
+        });
+    };
+    //call funtion load list sale product
+    LoadListSaleProduct();
+    //load menu cate
+    LoadSiteMenuCategory();
+    //paging
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+        $scope.range = function () {
+            var rangeSize = 3;
+            var ret = [];
+            var start;
+
+            start = $scope.currentPage;
+            if (start > $scope.pageCount() - rangeSize) {
+                start = $scope.pageCount() - rangeSize + 1;
+                if (start < 0)
+                    start = 0;
+            }
+
+            for (var i = start; i < start + rangeSize; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.prevPageDisabled = function () {
+            return $scope.currentPage == 0 ? "disabled" : "";
+        };
+
+        $scope.pageCount = function () {
+            var count = Math.ceil($scope.productSales.length / $scope.itemsPerPage) - 1;
+            return count;
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pageCount()) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.nextPageDisabled = function () {
+            var countMax = $scope.pageCount();
+            return $scope.currentPage == countMax ? "disabled" : "";
+        };
+
+        $scope.setPage = function (n) {
+            $scope.currentPage = n;
+        };
+    });
+}
+
+//New Product
+NewProductController.$inject = ["$scope", "$http"];
+function NewProductController($scope, $http) {
+    var count = 0;
+    $scope.currentPage = 0;
+    $scope.itemsPerPage = 8;
+    $scope.productNew = [];
+    $scope.parentCategory = [];
+    $scope.LoadListNewProduct = LoadListNewProduct;
+    //funtion load list sale product
+    function LoadListNewProduct() {
+        return $http({
+            method: 'GET',
+            url: '/Product/ListNewProduct',
+            async: false,
+        }).then(function (response) {
+            $scope.productNew = response.data;
+        });
+    }
+    //load menu category
+    function LoadSiteMenuCategory() {
+        return $http({
+            url: "/ProductCategory/GetCategoryByType",
+            method: "GET",
+            params: { type: 3 }
+        }).then(function (response) {
+            $scope.parentCategory = response.data;
+        }, function (error) {
+            alert('Error');
+        });
+    }
+    //function click change parent
+    $scope.btnParent = function (id, parentID) {
+        if (parentID == undefined)
+            parentID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProductByCategory',
+            async: false,
+            data: { categories: id, parentID: parentID },
+        }).then(function (response) {
+            $scope.productNew = response.data;
+        });
+    };
+    //call funtion load list sale product
+    LoadListNewProduct();
+    //load menu cate
+    LoadSiteMenuCategory();
+    //paging
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+        $scope.range = function () {
+            var rangeSize = 3;
+            var ret = [];
+            var start;
+
+            start = $scope.currentPage;
+            if (start > $scope.pageCount() - rangeSize) {
+                start = $scope.pageCount() - rangeSize + 1;
+                if (start < 0)
+                    start = 0;
+            }
+
+            for (var i = start; i < start + rangeSize; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.prevPageDisabled = function () {
+            return $scope.currentPage == 0 ? "disabled" : "";
+        };
+
+        $scope.pageCount = function () {
+            var count = Math.ceil($scope.productNew.length / $scope.itemsPerPage) - 1;
+            return count;
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pageCount()) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.nextPageDisabled = function () {
+            var countMax = $scope.pageCount();
+            return $scope.currentPage == countMax ? "disabled" : "";
+        };
+
+        $scope.setPage = function (n) {
+            $scope.currentPage = n;
+        };
+    });
+}
+

@@ -1,9 +1,15 @@
-﻿using Service;
+﻿using AutoMapper;
+using Data;
+using Model.Model;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -23,10 +29,46 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult SaleProduct()
+        {
+            return View();
+        }
+
+        public ActionResult NewProduct()
+        {
+            return View();
+        }
+
         public ActionResult HotProduct()
         {
             var model = _productService.GetHotProduct(10);
             return PartialView(model);
+        }
+
+        public ActionResult Details(string id)
+        {
+            DBContext db = new DBContext();
+            if (string.IsNullOrEmpty(id))
+                id = "0";
+            var model = _productService.GetById(int.Parse(id));
+            var listProduct = Mapper.Map<Product, ProductViewModel>(model);
+            var cookie = Request.Cookies["Views"];
+            if (cookie == null)
+            {
+                cookie = new HttpCookie("Views");
+            }
+            cookie.Values[id.ToString()] = id.ToString();
+            Response.Cookies.Add(cookie);
+            var cookieId = cookie.Values.AllKeys.Select(k => int.Parse(k)).ToList();
+            //get view
+            ViewBag.Views = db.Products.Where(p => cookieId.Contains(p.ID));
+            List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listProduct.MoreImages);
+            ViewBag.MoreImgs = listImgs;
+            //get product by category
+            DataTable dt = _productService.ListRelatedProduct(id);
+            if (dt.Rows.Count > 0)
+                ViewBag.ProductCagtegory = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(9).ToList();
+            return View(listProduct);
         }
 
         [HttpPost]
@@ -113,11 +155,26 @@ namespace Web.Controllers
             string key = keyword.ToLower().Replace(" ", "-");
             List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
             DataTable dt = _productService.ListProductByKeyword(key);
-            if (dt.Rows.Count > 0) {
+            if (dt.Rows.Count > 0)
+            {
                 var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(8).CopyToDataTable();
                 list = _productService.GetTableRows(model);
             }
             return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListProductDiscount()
+        {
+            var model = _productService.ListProductDiscount();
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListNewProduct()
+        {
+            var model = _productService.ListNewProduct();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

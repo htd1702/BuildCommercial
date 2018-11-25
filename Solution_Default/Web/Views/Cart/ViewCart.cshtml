@@ -1,9 +1,6 @@
 ﻿@using Model.Model
 @using Data;
 @{
-    DBContext db = new DBContext();
-}
-@{
     ViewBag.Title = "ShoppingCart";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
@@ -23,15 +20,9 @@
                                 <th class="column-5">Quantity</th>
                             </tr>
 
-                            @foreach (Product p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
+                            @foreach (Web.Infrastructure.Core.InfoCart p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
                             {
                                 <tr class="table_row">
-                                    @{
-                                        var colorID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).ColorID;
-                                        var sizeID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).SizeID;
-                                        var colorName = db.Colors.FirstOrDefault(c => c.ID == colorID).Name;
-                                        var sizeName = db.Sizes.FirstOrDefault(s => s.ID == sizeID).Name;
-                                    }
                                     <td class="column-1">
                                         <div class="how-itemcart1">
                                             <img src="@p.Image" alt="IMG">
@@ -40,7 +31,7 @@
                                     <td class="column-2">
                                         <span class="spanNameProduct" data-id="@p.ID">@p.Name</span>
                                         <br />
-                                        <span class="spanSizeColor" data-size="@sizeID" data-color="@colorID">@colorName, @sizeName</span>
+                                        <span class="spanSizeColor" data-size="@p.SizeID" data-color="@p.ColorID">@p.ColorName, @p.SizeName</span>
                                     </td>
                                     <td class="column-3">
                                         <span class="spanPrice" data-price="@p.Price">@Html.FormatValue(p.Price, "{0:C}")</span>

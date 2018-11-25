@@ -21,7 +21,13 @@ namespace Data.Repositories
 
         DataTable ListRelatedProduct(string id);
 
+        DataTable ListCartProduct(string id, string colorID, string sizeID);
+
         List<string> ListNameProduct(string keyword);
+
+        IEnumerable<Product> ListProductDiscount();
+
+        IEnumerable<Product> ListNewProduct();
     }
 
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
@@ -82,6 +88,28 @@ namespace Data.Repositories
         public List<string> ListNameProduct(string keyword)
         {
             return this.DbContext.Products.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword) || p.Code.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+        }
+
+        public IEnumerable<Product> ListProductDiscount()
+        {
+            return this.DbContext.Products.Where(p => p.Status == true && p.PromotionPrice > 0).OrderByDescending(p => p.PromotionPrice).ToList();
+        }
+
+        public IEnumerable<Product> ListNewProduct()
+        {
+            return this.DbContext.Products.Where(p => p.Status == true).OrderByDescending(p => p.CreatedDate).ToList();
+        }
+
+        public DataTable ListCartProduct(string id, string colorID, string sizeID)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
+            pram[0].Value = id;
+            pram[1] = new SqlParameter("@ColorID", SqlDbType.Int, 4);
+            pram[1].Value = colorID;
+            pram[2] = new SqlParameter("@SizeID", SqlDbType.Int, 4);
+            pram[2].Value = sizeID;
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListCartProduct", pram).Tables[0];
         }
     }
 }

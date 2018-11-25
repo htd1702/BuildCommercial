@@ -31,22 +31,22 @@ namespace Data.Repositories
 
         public IEnumerable<ProductCategory> GetByAlias(string alias)
         {
-            return this.DbContext.ProductCategorys.Where(x => x.Alias == alias);
+            return this.DbContext.ProductCategorys.Where(x => x.Alias == alias && x.Status == true);
         }
 
         public IEnumerable<ProductCategory> GetCategoryByTake(int take)
         {
-            return this.DbContext.ProductCategorys.OrderBy(x => x.DisplayOrder).Take(take).ToList();
+            return this.DbContext.ProductCategorys.Where(x => x.Status == true).OrderBy(x => x.CreatedDate).Take(take).ToList();
         }
 
         public IEnumerable<ProductCategory> GetCategoryByType(int type)
         {
             if (type == 1)
-                return DbContext.ProductCategorys.Where(c => c.ParentID == 0).ToList();
+                return DbContext.ProductCategorys.Where(c => c.ParentID == 0 && c.Status == true).OrderBy(x => x.Name).ToList();
             else if (type == 2)
-                return DbContext.ProductCategorys.Where(c => c.ParentID != 0).ToList();
+                return DbContext.ProductCategorys.Where(c => c.ParentID != 0 && c.Status == true).OrderBy(x => x.Name).ToList();
             else
-                return DbContext.ProductCategorys.OrderByDescending(c => c.Name).ToList();
+                return DbContext.ProductCategorys.Where(x => x.Status == true).OrderByDescending(c => c.Name).ToList();
         }
 
         public List<string> ListNameCategory(string keyword)

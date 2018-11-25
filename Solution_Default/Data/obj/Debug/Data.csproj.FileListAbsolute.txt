@@ -76,9 +76,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migration
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AlterOrder.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AlterOrderDetail.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AddNewTableContact.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AlterTable.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.GenerateResource.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AlterTable.resources

@@ -4357,8 +4357,8 @@
     <Content Include="Views\Shared\_sectionSlider.cshtml" />
     <Content Include="Views\Shared\_viewFooter.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Client\Details.cshtml" />
-    <Content Include="Views\Client\ProductCategoryDetail.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\ProductCategory\ProductCategoryDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
@@ -4375,6 +4375,8 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\_viewPosts.cshtml" />
     <Content Include="Views\Product\HotProduct.cshtml" />
+    <Content Include="Views\Product\SaleProduct.cshtml" />
+    <Content Include="Views\Product\NewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

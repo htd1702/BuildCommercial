@@ -22,6 +22,10 @@ namespace Service
 
         IEnumerable<Product> GetAllByParentId(int parentId);
 
+        IEnumerable<Product> ListProductDiscount();
+
+        IEnumerable<Product> ListNewProduct();
+
         List<Dictionary<string, object>> GetTableRows(DataTable dtData);
 
         Product GetById(int id);
@@ -35,6 +39,8 @@ namespace Service
         DataTable ListProductByKeyword(string keyword);
 
         DataTable ListRelatedProduct(string id);
+
+        DataTable ListCartProduct(string id, string colorID, string sizeID);
 
         IEnumerable<Product> ListProductByCategory(int id);
 
@@ -191,6 +197,21 @@ namespace Service
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<Product> ListProductDiscount()
+        {
+            return _productRepository.ListProductDiscount();
+        }
+
+        public IEnumerable<Product> ListNewProduct()
+        {
+            return _productRepository.ListNewProduct();
+        }
+
+        public DataTable ListCartProduct(string id, string colorID, string sizeID)
+        {
+            return _productRepository.ListCartProduct(id, colorID, sizeID);
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using AutoMapper;
-using Model.Model;
-using Service;
+﻿using Service;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Web.Mvc;
-using Web.Models;
 
 namespace Web.Controllers
 {
@@ -25,6 +20,13 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult ProductCategoryDetail(string name, int id)
+        {
+            ViewBag.Name = name;
+            ViewBag.ID = id;
+            return PartialView();
         }
 
         [HttpGet]

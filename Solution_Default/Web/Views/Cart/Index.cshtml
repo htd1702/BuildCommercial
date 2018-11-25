@@ -1,10 +1,5 @@
-﻿@using Model.Model;
-@using Data;
-@{
-    DBContext db = new DBContext();
-}
-<ul class="header-cart-wrapitem w-full">
-    @foreach (Product p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
+﻿<ul class="header-cart-wrapitem w-full">
+    @foreach (Web.Infrastructure.Core.InfoCart p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
     {
         <li class="header-cart-item flex-w flex-t m-b-12">
             <div class="header-cart-item-img" data-id="@p.ID">
@@ -12,17 +7,10 @@
             </div>
 
             <div class="header-cart-item-txt p-t-8" style="padding:0;margin-top:-20px;">
-                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                    @{
-                        var colorID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).ColorID;
-                        var sizeID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).SizeID;
-                        var colorName = db.Colors.FirstOrDefault(c => c.ID == colorID).Name;
-                        var sizeName = db.Sizes.FirstOrDefault(s => s.ID == sizeID).Name;
-                    }
-                </a>
+                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"></a>
                 <span>@p.Name</span>
                 <br />
-                <span>@colorName,@sizeName</span>
+                <span>@p.ColorName,@p.SizeName</span>
                 <span class="header-cart-item-info">
                     @p.Quantity x @Html.FormatValue(p.Price, "{0:C}")
                 </span>
