@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "ProductCategoryDetail";
-    Layout = "~/Views/Shared/_LayoutClient.cshtml";
-}
-<style>
+﻿<style>
     #page_ProductCategory {
         margin-top: 50px;
     }
@@ -16,7 +12,8 @@
         border-bottom: none !important;
     }
 </style>
-<section class="section-main" id="page_ProductCategory" ng-controller="ProductController">
+
+<section class="section-main" id="page_ProductCategory" ng-controller="ProductCategoryController">
     <div class="container">
         <hr />
         <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
@@ -26,8 +23,12 @@
 
         <a class="stext-109 cl8 hov-cl1 trans-04">
             Category
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
+        <a class="stext-109 cl8 hov-cl1 trans-04">
+            @ViewBag.Name
+        </a>
         <hr />
     </div>
     <section class="bg0 p-t-30 p-b-20">
@@ -42,20 +43,6 @@
                                 <i class="zmdi zmdi-search"></i>
                             </button>
                         </div>
-
-                        @*<div class="p-t-40">
-                                <h4 class="mtext-112 cl2 p-b-33">
-                                    Parents
-                                </h4>
-
-                                <ul ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0">
-                                    <li class="bor18">
-                                        <button ng-click="btnParent(parent.ID, parent.ParentID)" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-                                            {{parent.Name}}
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>*@
 
                         <div class="p-t-40">
                             <h4 class="mtext-112 cl2 p-b-33">
@@ -74,7 +61,7 @@
                 </div>
                 <div class="col-md-8 col-lg-9 p-b-80">
                     <div class="row product-grid">
-                        <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="p in products | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" pagin-directive="ngRepeatFinished">
+                        <div class="col-xs-6 col-sm-3 col-md-3" ng-repeat="p in productCategories | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" pagin-directive="ngRepeatFinished">
                             <div class="block2-pic hov-img0">
 
                                 <img ng-src="{{p.Image}}" alt="IMG-PRODUCT">
@@ -90,9 +77,14 @@
                                         {{p.Name}}
                                     </a>
 
-                                    <span class="stext-105 cl3">
+                                    <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
                                         <span style="text-decoration:line-through">${{p.Price}}</span> - ${{(p.Price - (p.Price * p.PromotionPrice)/100)}} vnđ
                                     </span>
+
+                                    <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
+                                        ${{p.Price}} vnđ
+                                    </span>
+
                                 </div>
 
                                 @*<div class="block2-txt-child2 flex-r p-t-3">
@@ -106,9 +98,8 @@
                                 <img ng-show="p.PromotionPrice > 0" src="~/img/client/icons/sale.png" />
                             </div>
                         </div>
-                        <input style="display:none" type="text" value="8" id="txt_PageSize" />
-                        <input style="display:none" type="text" value="0" id="txt_Parent" />
-                        <input style="display:none" type="text" value="0" id="txt_Category" />
+                        <input style="display:none" type="text" value="@ViewBag.ID" id="txt_CategoryID" />
+                        <input style="display:none" type="text" value="@ViewBag.ParentID" id="txt_ParentID" />
                     </div>
 
                     <div class="flex-c-m flex-w w-full p-t-38">
@@ -122,4 +113,10 @@
             </div>
         </div>
     </section>
-</section>
+</section>@{
+    ViewBag.Title = "ProductByCategory";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+
+

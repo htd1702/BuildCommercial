@@ -36,7 +36,6 @@
                                 <span ng-hide="frmAddproduct.name.$error.maxlength" ng-show="frmAddproduct.name.$invalid" class="text-danger"> *</span>
                             </label>
                             <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="product.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên sản phẩm...">
-                            <span ng-show="frmAddproduct.name.$error.maxlength" class="text-danger">Tên sản phẩm tối đa 40 ký tự</span>
                         </div>
                         <div class="form-group col-md-4" style="display:none">
                             <label for="alias">
@@ -51,7 +50,6 @@
                                 <span class="text-danger" ng-show="frmAddproduct.nameVN.$invalid"> *</span>
                             </label>
                             <input type="text" class="text-control" ng-model="product.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tên sản phẩm...">
-                            <span ng-show="frmAddproduct.nameVN.$error.maxlength" class="text-danger">Tên sản phẩm tối đa 40 ký tự</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nameFr">
@@ -59,12 +57,10 @@
                                 <span class="text-danger" ng-show="frmAddproduct.nameFr.$invalid"> *</span>
                             </label>
                             <input type="text" class="text-control" ng-model="product.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tên sản phẩm...">
-                            <span ng-show="frmAddproduct.nameFr.$error.maxlength" class="text-danger">Tên sản phẩm tối đa 40 ký tự</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="code">
                                 Code
-                                <span class="text-danger" ng-show="frmAddproduct.price.$invalid"> *</span>
                             </label>
                             <input type="text" required placeholder="Nhập mã sản phẩm..." class="text-control" ng-model="product.Code" name="code" readonly="readonly">
                         </div>
@@ -92,18 +88,37 @@
                                 Price
                                 <span class="text-danger" ng-show="frmAddproduct.price.$invalid"> *</span>
                             </label>
-                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Price" name="price">
+                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Price" ng-change="changePrice()" name="price" >
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="scale">
+                                Scale
+                                <span class="text-danger" ng-show="frmAddproduct.scale.$invalid"> *</span>
+                            </label>
+                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Scale" ng-change="changeScale()" name="scale">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="priceVN">
+                                Price VN
+                            </label>
+                            <input type="number" placeholder="Nhập giá..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="priceFr">
+                                Price Frenk
+                            </label>
+                            <input type="number" placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
+                        </div>
+                        <div class="form-group col-md-4">
                             <label for="promotionPrice">
                                 PromotionPrice
                                 <span class="text-danger" ng-show="frmAddproduct.promotionPrice.$invalid"> *</span>
                             </label>
-                            <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="75" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
+                            <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="100" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="warranty">Warranty</label>
-                            <input type="number" required class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month">
+                            <input type="number" class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month">
                         </div>
                         <!--<div class="form-group col-md-6">
                             <label for="metaKeyword">
@@ -123,7 +138,7 @@
                             <label for="viewCount">
                                 View
                             </label>
-                            <input type="number" required class="text-control" min="0" ng-model="product.ViewCount" name="viewCount">
+                            <input type="number" class="text-control" min="0" ng-model="product.ViewCount" name="viewCount">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="image">

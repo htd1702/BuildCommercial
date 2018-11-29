@@ -3,6 +3,11 @@
 @using Data;
 @{
     DBContext db = new DBContext();
+    string cookieLang = "";
+    if (Request.Cookies["Lang"] != null)
+    {
+        cookieLang = Request.Cookies["Lang"].Value;
+    }
 }
 <header class="header-v2">
     <!-- Header desktop -->
@@ -20,10 +25,15 @@
                         EN
                     </a>
 
+                    <a href="#" id="changeLang" data-lang="fr" class="flex-c-m trans-04 p-lr-25">
+                        FR
+                    </a>
+
                     <a href="#" id="changeLang" data-lang="vi" class="flex-c-m trans-04 p-lr-25">
                         VN
                     </a>
 
+                    <input type="text" hidden value="@cookieLang" id="cookieLang" />
                     @*<a href="#" class="flex-c-m trans-04 p-lr-25">
                             USD
                         </a>*@
@@ -47,18 +57,18 @@
                         </li>
 
                         <li>
-                            <a href="/ProductCategory/ProductCategoryDetail/0">Shop</a>
+                            <a href="/Product/ProductByCategory/0">Shop</a>
                             <ul class="sub-menu">
                                 @foreach (ProductCategory c in ViewBag.ParentCategory)
                                 {
                                     var Item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
                                     <li>
-                                        <a href="/ProductCategory/ProductCategoryDetail/?name=@c.Name&id=@c.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? c.NameVN : c.Name)</a>
+                                        <a href="/Product/ProductByCategory/?name=@c.Name&parentID=@c.ParentID&id=@c.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? c.NameVN : c.Name)</a>
                                         <ul class="sub-menu">
                                             @foreach (var cate in Item)
                                             {
                                                 <li>
-                                                    <a href="/ProductCategory/ProductCategoryDetail/?name=@cate.Name&id=@cate.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? cate.NameVN : cate.Name)</a>
+                                                    <a href="/Product/ProductByCategory/?name=@cate.Name&parentID=@cate.ParentID&id=@cate.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? cate.NameVN : cate.Name)</a>
                                                 </li>
                                             }
                                         </ul>
@@ -171,7 +181,7 @@
             </li>
 
             <li>
-                <a href="/ProductCategory/ProductCategoryDetail/0">Shop</a>
+                <a href="/Product/ProductByCategory/0">Shop</a>
             </li>
 
             <li>

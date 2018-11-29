@@ -5,6 +5,7 @@
         var pid = $(this).attr("data-add-to-cart");
         var colorID = $("#ddl_color option:selected").val();
         var sizeID = $("#ddl_size option:selected").val();
+        var lang = $("#cookieLang").val();
         //check size and code is not null
         if (colorID == 0) {
             swal("Thất bại!", "Vui lòng chọn màu sắc khi thêm vào giỏ!", "error");
@@ -17,7 +18,7 @@
         //call funtion load count and total
         $.ajax({
             url: "/Cart/Add",
-            data: { id: pid, colorID: colorID, sizeID: sizeID },
+            data: { id: pid, colorID: colorID, sizeID: sizeID, lang: lang },
             type: "post",
             async: false,
             success: function (response) {
@@ -32,10 +33,11 @@
         //get attribute
         var pid = $(this).attr("data-update-cart");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
+        var lang = $("#cookieLang").val();
         //call funtion load count and total
         $.ajax({
             url: "/Cart/Update",
-            data: { id: pid, newqty: qty },
+            data: { id: pid, newqty: qty, lang: lang },
             type: "post",
             success: function (response) {
                 //set value atti in count and total

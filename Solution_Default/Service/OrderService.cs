@@ -2,6 +2,7 @@
 using Data.Repositories;
 using Model.Model;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Service
 {
@@ -18,6 +19,8 @@ namespace Service
         Order GetById(int id);
 
         void Save();
+
+        DataTable ListOrderDetail(string id);
     }
 
     public class OrderService : IOrderService
@@ -59,6 +62,11 @@ namespace Service
         public void Update(Order Order)
         {
             _orderRepository.Update(Order);
+        }
+
+        public DataTable ListOrderDetail(string id)
+        {
+            return _orderRepository.ListOrderDetail(id);
         }
     }
 }

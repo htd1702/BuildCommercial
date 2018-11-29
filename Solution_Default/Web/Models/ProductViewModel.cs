@@ -34,6 +34,14 @@ namespace Web.Models
         [Required]
         public double Price { set; get; }
 
+        [Required]
+        public double PriceVN { set; get; }
+
+        [Required]
+        public double PriceFr { set; get; }
+
+        public double Scale { set; get; }
+
         public int PromotionPrice { set; get; }
 
         [Required]

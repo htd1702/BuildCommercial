@@ -34,7 +34,19 @@
                                         <span class="spanSizeColor" data-size="@p.SizeID" data-color="@p.ColorID">@p.ColorName, @p.SizeName</span>
                                     </td>
                                     <td class="column-3">
-                                        <span class="spanPrice" data-price="@p.Price">@Html.FormatValue(p.Price, "{0:C}")</span>
+
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <span class="spanPrice" data-price="@p.Price">@Html.FormatValue(p.PriceVN, "{0:C}")</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <span class="spanPrice" data-price="@p.Price">@p.PriceFr</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="spanPrice" data-price="@p.Price">$@p.Price</span>
+                                        }
                                     </td>
                                     <td class="column-4">
                                         <span class="spanPromotion" data-promotion="@p.PromotionPrice">@p.PromotionPrice%</span>
@@ -57,7 +69,18 @@
                             <tr>
                                 <td colspan="5" style="padding-right:10px;">
                                     <span class="pull-right">
-                                        <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")</span>
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
+                                        }
+                                        else
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")</span>
+                                        }
                                     </span>
                                 </td>
                             </tr>

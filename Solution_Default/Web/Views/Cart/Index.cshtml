@@ -11,9 +11,24 @@
                 <span>@p.Name</span>
                 <br />
                 <span>@p.ColorName,@p.SizeName</span>
-                <span class="header-cart-item-info">
-                    @p.Quantity x @Html.FormatValue(p.Price, "{0:C}")
-                </span>
+                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                {
+                    <span class="header-cart-item-info">
+                        @p.Quantity x @Html.FormatValue(p.PriceVN, "{0:C}")
+                    </span>
+                }
+                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                {
+                    <span class="header-cart-item-info">
+                        @p.Quantity x @p.PriceFr
+                    </span>
+                }
+                else
+                {
+                    <span class="header-cart-item-info">
+                        @p.Quantity x $@p.Price
+                    </span>
+                }
             </div>
         </li>
     }
@@ -21,7 +36,18 @@
 
 <div class="w-full">
     <div class="header-cart-total w-full p-tb-40">
-        Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")
+        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+        {
+            <span>Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
+        }
+        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+        {
+            <span>Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
+        }
+        else
+        {
+            <span>Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")</span>
+        }
     </div>
 
     <div class="header-cart-buttons flex-w w-full">

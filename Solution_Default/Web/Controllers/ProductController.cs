@@ -39,6 +39,14 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult ProductByCategory(string name, int parentID, int id)
+        {
+            ViewBag.Name = name;
+            ViewBag.ParentID = parentID;
+            ViewBag.ID = id;
+            return View();
+        }
+
         public ActionResult HotProduct()
         {
             var model = _productService.GetHotProduct(10);

@@ -3955,7 +3955,6 @@
     <Content Include="Content\client\util.css" />
     <Content Include="Content\fonts\Montserrat\OFL.txt" />
     <Content Include="Content\fonts\PlayfairDisplay\OFL.txt" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins\jquery-ui.css" />
     <Content Include="Content\plugins\toastr.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -4033,7 +4032,6 @@
     <Content Include="img\client\gallery-08.jpg" />
     <Content Include="img\client\gallery-09.jpg" />
     <Content Include="img\client\icons\favicon.png" />
-    <Content Include="img\client\icons\hot-icon.gif" />
     <Content Include="img\client\icons\icon-close.png" />
     <Content Include="img\client\icons\icon-close2.png" />
     <Content Include="img\client\icons\icon-email.png" />
@@ -4050,7 +4048,6 @@
     <Content Include="img\client\icons\logo-02.png" />
     <Content Include="img\client\icons\pin.png" />
     <Content Include="img\client\icons\Rip-loading.gif" />
-    <Content Include="img\client\icons\sale.png" />
     <Content Include="img\client\item-cart-01.jpg" />
     <Content Include="img\client\item-cart-02.jpg" />
     <Content Include="img\client\item-cart-03.jpg" />
@@ -4167,6 +4164,8 @@
     <Folder Include="Resources\Blog\" />
     <Folder Include="Resources\Contact\" />
     <Folder Include="Resources\ProductCategory\" />
+    <Folder Include="Resources\ProductDetail\" />
+    <Folder Include="Resources\Shop\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
     <Folder Include="Views\Home\" />
@@ -4358,7 +4357,6 @@
     <Content Include="Views\Shared\_viewFooter.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\ProductCategory\ProductCategoryDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
@@ -4377,6 +4375,7 @@
     <Content Include="Views\Product\HotProduct.cshtml" />
     <Content Include="Views\Product\SaleProduct.cshtml" />
     <Content Include="Views\Product\NewProduct.cshtml" />
+    <Content Include="Views\Product\ProductByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

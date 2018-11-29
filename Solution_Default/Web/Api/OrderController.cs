@@ -6,6 +6,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -264,6 +265,42 @@ namespace Web.Api
                 }
                 return response;
             });
+        }
+
+        [Route("getorderdetail")]
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage GetListOrderDetail(HttpRequestMessage request, int id)
+        {
+            if (id > 0)
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    HttpResponseMessage response = null;
+                    //check issue
+                    if (!ModelState.IsValid)
+                    {
+                        //get status
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                    }
+                    else
+                    {
+                        DataTable dt = new DataTable();
+                        List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+                        dt = _orderService.ListOrderDetail(id.ToString());
+                        if (dt.Rows.Count > 0)
+                        {
+                            //Get data by take
+                            var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).CopyToDataTable();
+                            list = _productService.GetTableRows(model);
+                        }
+                        response = request.CreateResponse(HttpStatusCode.Created, list);
+                    }
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
         }
     }
 }

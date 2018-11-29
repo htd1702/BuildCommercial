@@ -1,7 +1,5 @@
 ﻿using Data;
 using Microsoft.ApplicationBlocks.Data;
-using Model.Model;
-using Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -36,6 +34,8 @@ namespace Web.Infrastructure.Core
         public string ColorName { get; set; }
         public int SizeID { get; set; }
         public string SizeName { get; set; }
+        public double PriceVN { get; set; }
+        public double PriceFr { get; set; }
     }
 
     public class ShoppingCart
@@ -143,6 +143,60 @@ namespace Web.Infrastructure.Core
         }
 
         public int Count
+        {
+            get
+            {
+                var count = Items.Sum(p => p.Quantity);
+                return count;
+            }
+        }
+
+        public double AmountVN
+        {
+            get
+            {
+                var amount = Items.Sum(p => ((p.PriceVN * p.Quantity) - ((p.PriceVN * p.Quantity) * p.PromotionPrice)) / 100);
+                return amount;
+            }
+        }
+
+        public double TotalVN
+        {
+            get
+            {
+                var total = Items.Sum(p => (p.PriceVN * p.Quantity) - (((p.PriceVN * p.PromotionPrice) / 100) * p.Quantity));
+                return total;
+            }
+        }
+
+        public int CountVN
+        {
+            get
+            {
+                var count = Items.Sum(p => p.Quantity);
+                return count;
+            }
+        }
+
+        public double AmountFr
+        {
+            get
+            {
+                var amount = Items.Sum(p => ((p.PriceFr * p.Quantity) - ((p.PriceFr * p.Quantity) * p.PromotionPrice)) / 100);
+                return amount;
+            }
+        }
+
+        public double TotalFr
+        {
+            get
+            {
+                var total = Items.Sum(p => (p.PriceFr * p.Quantity) - (((p.PriceFr * p.PromotionPrice) / 100) * p.Quantity));
+                return total;
+            }
+        }
+
+        public int CountFr
         {
             get
             {

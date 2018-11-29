@@ -83,9 +83,7 @@ namespace Web.Infrastructure.Extensions
                 product.CreatedBy = productVM.CreatedBy;
             }
             else
-            {
                 product.ID = productVM.ID;
-            }
             product.Code = productVM.Code;
             product.Name = productVM.Name;
             product.NameVN = productVM.NameVN;
@@ -95,6 +93,9 @@ namespace Web.Infrastructure.Extensions
             product.Image = productVM.Image;
             product.MoreImages = productVM.MoreImages;
             product.Price = productVM.Price;
+            product.PriceVN = productVM.PriceVN;
+            product.PriceFr = productVM.PriceFr;
+            product.Scale = productVM.Scale;
             product.PromotionPrice = productVM.PromotionPrice;
             product.Quantity = productVM.Quantity;
             product.Warranty = productVM.Warranty;

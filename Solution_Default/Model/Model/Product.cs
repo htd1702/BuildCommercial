@@ -39,8 +39,14 @@ namespace Model.Model
 
         [Column(TypeName = "xml")]
         public string MoreImages { set; get; }
-
+        
         public double Price { set; get; }
+
+        public double PriceVN { set; get; }
+
+        public double PriceFr { set; get; }
+
+        public double Scale { set; get; }
 
         public int PromotionPrice { set; get; }
 

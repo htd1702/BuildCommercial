@@ -82,3 +82,5 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.Co
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.pdb
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AddNewPriceProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AddScaleProduct.resources

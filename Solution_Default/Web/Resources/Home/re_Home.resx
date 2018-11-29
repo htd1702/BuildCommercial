@@ -117,4 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ProductOverview" xml:space="preserve">
+    <value>PRODUCT OVERVIEW</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="ProductOverview1" xml:space="preserve">
+    <value>Filter</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="ProductOverview2" xml:space="preserve">
+    <value>Search</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="ProductOverview3" xml:space="preserve">
+    <value>Sort By</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="ProductOverview4" xml:space="preserve">
+    <value>Price</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="ProductOverview5" xml:space="preserve">
+    <value>Color</value>
+    <comment>ProductOverview</comment>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Shop</value>
+    <comment>head menu</comment>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>PARENTS</value>
+    <comment>footer</comment>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>CATEGORIES</value>
+    <comment>footer</comment>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>GET IN TOUCH</value>
+    <comment>footer</comment>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>NEWSLETTER</value>
+    <comment>footer</comment>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Copyright © 2018 All rights reserved</value>
+    <comment>footer</comment>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Tags</value>
+    <comment>ProductOverview</comment>
+  </data>
 </root>

@@ -15,40 +15,67 @@
 
                     @foreach (var p in Model)
                     {
-                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                    <img src="@p.Image" alt="IMG-PRODUCT">
+                    <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                <img src="@p.Image" alt="IMG-PRODUCT">
 
-                                    <a href="/Product/Details/@p.ID" data-id="p.ID" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
-                                        Quick View
-                                    </a>
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            @p.Name
-                                        </a>
-
-                                        <span class="stext-105 cl3">
-                                            <span style="text-decoration:line-through">@string.Format("{0:#,##0}", p.Price) vnđ</span> - @string.Format("{0:#,##0}", p.Price - (p.Price * p.PromotionPrice) / 100) vnđ
-                                        </span>
-                                    </div>
-
-                                    @*<div class="block2-txt-child2 flex-r p-t-3">
-                                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                <img class="icon-heart1 dis-block trans-04" src="~/img/client/icons/icon-heart-01.png" alt="ICON">
-                                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="~/img/client/icons/icon-heart-02.png" alt="ICON">
-                                            </a>
-                                        </div>*@
-                                </div>
+                                <a href="/Product/Details/@p.ID" data-id="p.ID" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
+                                    Quick View
+                                </a>
                             </div>
-                            <div id="imgHot">
-                                <img src="~/img/client/icons/hot-icon.gif" />
+
+                            <div class="block2-txt flex-w flex-t p-t-14">
+                                <div class="block2-txt-child1 flex-col-l ">
+                                    <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        @p.Name
+                                    </a>
+
+                                    @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                    {
+                                        if (p.PromotionPrice > 0)
+                                        {
+                                            <span class="stext-105 cl3">
+                                                <span style="text-decoration:line-through">@string.Format("{0:#,##0}", p.PriceVN) vnđ</span> - @string.Format("{0:#,##0}", p.PriceVN - (p.PriceVN * p.PromotionPrice) / 100) vnđ
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="stext-105 cl3">
+                                                @string.Format("{0:#,##0}", p.PriceVN) vnđ
+                                            </span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (p.PromotionPrice > 0)
+                                        {
+                                            <span class="stext-105 cl3">
+                                                <span style="text-decoration:line-through">$@string.Format("{0:#,##0}", p.Price)</span> - $@string.Format("{0:#,##0}", p.Price - (p.Price * p.PromotionPrice) / 100)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="stext-105 cl3">
+                                                $@string.Format("{0:#,##0}", p.Price)
+                                            </span>
+                                        }
+                                    }
+
+                                </div>
+
                             </div>
                         </div>
+                        @if (int.Parse(p.PromotionPrice.ToString()) == 0 && p.HotFlag == true)
+                        {
+                            <span class="hot-product-icon">Hot</span>
+                        }
+                        else
+                        {
+                            <span ng-show="@int.Parse(p.PromotionPrice.ToString()) > 0" class="sale">@p.PromotionPrice%</span>
+                        }
+                    </div>
                     }
                 </div>
             </div>

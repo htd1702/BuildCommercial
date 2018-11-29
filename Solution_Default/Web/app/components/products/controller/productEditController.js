@@ -16,6 +16,9 @@
         $scope.EditProduct = EditProduct;
         $scope.ChooseImage = ChooseImage;
         $scope.ChooseImageMore = ChooseImageMore;
+        $scope.changePrice = changePrice;
+        $scope.changeScale = changeScale;
+
         //set value model
         $scope.product = {
             UpdatedDate: new Date(),
@@ -109,6 +112,14 @@
                 });
             }
             finder.popup();
+        }
+        //function change price
+        function changePrice() {
+            $scope.product.PriceFr = $scope.product.Price;
+        }
+        //function change scale
+        function changeScale() {
+            $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
         }
         //call method load list categories
         LoadListColor();

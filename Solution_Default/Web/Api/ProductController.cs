@@ -160,6 +160,9 @@ namespace Web.Api
                     productVM.Image = dynamicObj["Image"];
                     productVM.MoreImages = dynamicObj["MoreImages"];
                     productVM.Price = dynamicObj["Price"];
+                    productVM.PriceVN = dynamicObj["PriceVN"];
+                    productVM.PriceFr = dynamicObj["PriceFr"];
+                    productVM.Scale = dynamicObj["Scale"];
                     productVM.PromotionPrice = dynamicObj["PromotionPrice"];
                     productVM.Quantity = 0;
                     productVM.Warranty = dynamicObj["Warranty"];
@@ -251,6 +254,9 @@ namespace Web.Api
                     productVM.Image = dynamicObj["Image"];
                     productVM.MoreImages = dynamicObj["MoreImages"];
                     productVM.Price = dynamicObj["Price"];
+                    productVM.PriceVN = dynamicObj["PriceVN"];
+                    productVM.PriceFr = dynamicObj["PriceFr"];
+                    productVM.Scale = dynamicObj["Scale"];
                     productVM.PromotionPrice = dynamicObj["PromotionPrice"];
                     productVM.Quantity = 0;
                     productVM.Warranty = dynamicObj["Warranty"];

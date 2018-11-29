@@ -4,11 +4,12 @@
     //notificationService message thông báo
     //$ngBootbox show modelbox
     //$filter liberty
-    orderListController.$inject = ["$scope", "apiService", "notificationService", "$ngBootbox", "$filter"];
+    orderListController.$inject = ["$scope", "apiService", "notificationService", "$ngBootbox", "$filter", "$http"];
 
-    function orderListController($scope, apiService, notificationService, $ngBootbox, $filter) {
+    function orderListController($scope, apiService, notificationService, $ngBootbox, $filter, $http) {
         //scope binding
         $scope.orders = [];
+        $scope.orderDetails = [];
         $scope.keyword = "";
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -16,6 +17,7 @@
         $scope.getOrders = getOrders;
         $scope.deleteOrder = deleteOrder;
         $scope.deleteAllOrders = deleteAllOrders;
+        $scope.loadListDetailsOrder = loadListDetailsOrder;
         //method get product cate
         function getOrders(page) {
             page = page || 0;
@@ -75,6 +77,17 @@
                 });
             }, function () {
                 console.log('Load productcategory failed.');
+            });
+        }
+        //function loadListDetailsOrder
+        function loadListDetailsOrder(id) {
+            return $http({
+                method: 'POST',
+                url: '/api/order/getorderdetail',
+                async: false,
+                params: { id: id }
+            }).then(function (response) {
+                $scope.orderDetails = response.data;
             });
         }
         //call getproduct

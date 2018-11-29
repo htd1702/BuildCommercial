@@ -22,13 +22,6 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult ProductCategoryDetail(string name, int id)
-        {
-            ViewBag.Name = name;
-            ViewBag.ID = id;
-            return PartialView();
-        }
-
         [HttpGet]
         public JsonResult GetCategoryByTake(int take)
         {

@@ -17,16 +17,39 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(int Id, int colorID, int sizeID)
+        public JsonResult Add(int Id, int colorID, int sizeID, string lang)
         {
             ShoppingCart.Cart.Add(Id, colorID, sizeID);
-            var response = new
+            if (lang == "vi")
             {
-                Count = ShoppingCart.Cart.Count,
-                Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
-                Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
-            };
-            return Json(response);
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.CountVN,
+                    Amount = ShoppingCart.Cart.AmountVN.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.TotalVN.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
+            else if (lang == "fr")
+            {
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.CountFr,
+                    Amount = ShoppingCart.Cart.AmountFr.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.TotalFr.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
+            else
+            {
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.Count,
+                    Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
         }
 
         [HttpPost]
@@ -43,17 +66,39 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(int Id, int newQty)
+        public JsonResult Update(int Id, int newQty, string lang)
         {
             ShoppingCart.Cart.Update(Id, newQty);
-            var response = new
+            if (lang == "vi")
             {
-                Count = ShoppingCart.Cart.Count,
-                Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
-                //Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
-                //ItemAmount = ShoppingCart.Cart.getItemAmount(Id).ToString("c")
-            };
-            return Json(response);
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.CountVN,
+                    Amount = ShoppingCart.Cart.AmountVN.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.TotalVN.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
+            else if (lang == "fr")
+            {
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.CountFr,
+                    Amount = ShoppingCart.Cart.AmountFr.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.TotalFr.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
+            else
+            {
+                var response = new
+                {
+                    Count = ShoppingCart.Cart.Count,
+                    Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
+                    Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
+                };
+                return Json(response);
+            }
         }
 
         public ActionResult Clear(int id)
