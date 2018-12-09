@@ -1,8 +1,8 @@
 ﻿@using Model.Model
+@using Web.Resources.ShopingCart
+@using Web.Resources.Product
+@using Web.Resources.Home
 @using Data;
-@{
-    DBContext db = new DBContext();
-}
 @{
     ViewBag.Title = "ShoppingCart";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
@@ -11,52 +11,86 @@
 <form class="bg0 p-t-75 p-b-85">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="wrap-table-shopping-cart">
                     <table class="table-shopping-cart" style="min-width:0">
-                        <tbody>
+                        <thead>
                             <tr class="table_head">
-                                <th class="column-1">Product</th>
+                                <th class="column-1">@re_Product.ProductName</th>
                                 <th class="column-2"></th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Discount</th>
-                                <th class="column-5">Quantity</th>
+                                <th class="column-2">@re_Product.Code</th>
+                                <th class="column-3">@re_Product.Price</th>
+                                <th class="column-4">@re_Home.Discount</th>
+                                <th class="column-5">@re_Product.Quantity</th>
                             </tr>
-
-                            @foreach (Product p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
+                        </thead>
+                        <tbody>
+                            @foreach (Web.Infrastructure.Core.InfoCart p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
                             {
                                 <tr class="table_row">
-                                    @{
-                                        var colorID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).ColorID;
-                                        var sizeID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).SizeID;
-                                        var colorName = db.Colors.FirstOrDefault(c => c.ID == colorID).Name;
-                                        var sizeName = db.Sizes.FirstOrDefault(s => s.ID == sizeID).Name;
-                                    }
                                     <td class="column-1">
-                                        <div class="how-itemcart1">
+                                        <div class="how-itemcart1" data-id="@p.ID" data-color="@p.ColorID" data-size="@p.SizeID">
                                             <img src="@p.Image" alt="IMG">
                                         </div>
                                     </td>
                                     <td class="column-2">
-                                        <span class="spanNameProduct" data-id="@p.ID">@p.Name</span>
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <span class="spanNameProduct" data-id="@p.ID">@p.NameVN</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <span class="spanNameProduct" data-id="@p.ID">@p.NameFr</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="spanNameProduct" data-id="@p.ID">@p.Name</span>
+                                        }
                                         <br />
-                                        <span class="spanSizeColor" data-size="@sizeID" data-color="@colorID">@colorName, @sizeName</span>
+                                        <span class="spanSizeColor" data-size="@p.SizeID" data-color="@p.ColorID">@p.ColorName, @p.SizeName</span>
+                                    </td>
+                                    <td class="column-2">
+
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <span>@p.Code</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <span>@p.Code</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@p.Code</span>
+                                        }
                                     </td>
                                     <td class="column-3">
-                                        <span class="spanPrice" data-price="@p.Price">@Html.FormatValue(p.Price, "{0:C}")</span>
+
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <span class="spanPrice" data-price="@p.PriceVN">@Html.FormatValue(p.PriceVN, "{0:C}")</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <span class="spanPrice" data-price="@p.PriceFr">@p.PriceFr</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="spanPrice" data-price="@p.Price">$@string.Format("{0:#,##0.00}", p.Price)</span>
+                                        }
                                     </td>
                                     <td class="column-4">
                                         <span class="spanPromotion" data-promotion="@p.PromotionPrice">@p.PromotionPrice%</span>
                                     </td>
                                     <td class="column-2">
                                         <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-update-cart="@p.ID">
+                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-update-cart="@p.ID" data-size="@p.SizeID" data-color="@p.ColorID">
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
                                             </div>
 
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" data-update-cart="@p.ID" name="number-pro" value="@p.Quantity">
+                                            <input class="mtext-104 cl3 txt-center num-product" type="number" data-update-cart="@p.ID" data-size="@p.SizeID" data-color="@p.ColorID" name="number-pro" value="@p.Quantity">
 
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" data-update-cart="@p.ID">
+                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" data-update-cart="@p.ID" data-size="@p.SizeID" data-color="@p.ColorID">
                                                 <i class="fs-16 zmdi zmdi-plus"></i>
                                             </div>
                                         </div>
@@ -64,9 +98,34 @@
                                 </tr>
                             }
                             <tr>
-                                <td colspan="5" style="padding-right:10px;">
+                                <td colspan="6" style="padding-right:10px;height:50px;">
                                     <span class="pull-right">
-                                        <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")</span>
+                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
+                                        }
+                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
+                                        }
+                                        else
+                                        {
+                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">$@string.Format("{0:#,##0.00}", Web.Infrastructure.Core.ShoppingCart.Cart.Total)</span>
+                                        }
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="height:50px;">
+                                    <span class="pull-left">
+                                        <a href="@Session["ShoppingUrl"]" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 btn-primary" style="min-width:110px;height:30px;font-size:13px;">
+                                            @re_ShopingCart.ShopingMore
+                                        </a>
+                                    </span>
+                                    <span class="pull-right">
+                                        <a href="/check-out" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 btn-success" style="min-width:110px;height:30px;font-size:13px;">
+                                            @re_ShopingCart.CheckOut
+                                        </a>
                                     </span>
                                 </td>
                             </tr>
@@ -88,158 +147,53 @@
                         </div>
                     </div>*@
             </div>
-
-            <div class="col-md-5">
-                <h4 class="mtext-109 cl2 p-b-30">
-                    Cart Totals
-                </h4>
-
-                <div class="flex-w flex-t bor12 p-b-13">
-                    <div class="size-209">
-                        <span class="stext-110 cl2">
-                            <span>
-                                Shipping: {{customerName}}
-                            </span>
-                            <br />
-                            <span>
-                                {{customerAddress}}
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="flex-w flex-t p-t-15 p-b-30">
-                    <div>
-                        <p class="stext-111 cl6 p-t-2">
-                            There are no shipping methods available. Please double check your address, or contact us if you need any help.
-                        </p>
-
-                        <div class="p-t-15">
-                            <span class="stext-112 cl8">
-                                Calculate Shipping
-                            </span>
-
-                            <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerName" type="text" id="customerName" name="customerName" placeholder="Name">
-                            </div>
-
-                            <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerEmail" type="email" id="customerEmail" name="customerEmail" placeholder="Email">
-                            </div>
-
-                            <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerAddress" type="text" id="customerAddress" name="customerAddress" placeholder="Address">
-                            </div>
-
-                            <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerPhomeNumber" type="text" id="customerPhomeNumber" name="customerPhomeNumber" placeholder="Phone number">
-                            </div>
-
-                            <div class="bor8 bg0 m-b-12">
-                                <textarea class="stext-111 cl8 plh3 size-111 p-lr-15" id="customerMessage" name="customerMessage" placeholder="Description"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="btnCheckOut">Proceed to Checkout</button>
-            </div>
         </div>
     </div>
 </form>
 
-<div class="loading-img-waiting" style="display:none"></div>
-
 <script>
-    //click order
-    $("#btnCheckOut").click(function () {
-        var listProductID = [];
-        var listPrice = [];
-        var listPromotion = [];
-        var listQuantity = [];
-        var listSize = [];
-        var listColor = [];
-        var customerName = $("#customerName").val();
-        var customerEmail = $("#customerEmail").val();
-        var customerAddress = $("#customerAddress").val();
-        var customerPhomeNumber = $("#customerPhomeNumber").val();
-        var customerMessage = $("#customerMessage").val();
-        var total = $("#spanTotal").attr("data-total");
-        var len = $(".spanNameProduct").length;
-        for (var i = 0; i < len; i++) {
-            listProductID.push($(".spanNameProduct").eq(i).attr("data-id"));
-            listPrice.push($(".spanPrice").eq(i).attr("data-price"));
-            listPromotion.push($(".spanPromotion").eq(i).attr("data-promotion"));
-            listQuantity.push($("input[name='number-pro']").eq(i).val());
-            listSize.push($(".spanSizeColor").eq(i).attr("data-size"));
-            listColor.push($(".spanSizeColor").eq(i).attr("data-color"));
-        }
-
-        var obj = {
-            listProductID: listProductID,
-            listPrice: listPrice,
-            listPromotion: listPromotion,
-            listQuantity: listQuantity,
-            listSize: listSize,
-            listColor: listColor,
-            customerName: customerName,
-            customerEmail: customerEmail,
-            customerAddress: customerAddress,
-            customerPhomeNumber: customerPhomeNumber,
-            total: total,
-            customerMessage: customerMessage
-        };
-
-        if (obj.customerName == undefined || obj.customerName == "") {
-            swal("Thất bại!", "Vui lòng họ tên!", "error");
-            return;
-        }
-        if (obj.customerEmail == undefined || obj.customerEmail == "") {
-            swal("Thất bại!", "Vui lòng nhập email!", "error");
-            return;
-        }
-        if (obj.customerAddress == undefined || obj.customerAddress == "") {
-            swal("Thất bại!", "Vui lòng nhập địa chỉ!", "error");
-            return;
-        }
-        if (obj.customerPhomeNumber == undefined || obj.customerPhomeNumber == "") {
-            swal("Thất bại!", "Vui lòng nhập số điện thoại!", "error");
-            return;
-        }
-        $.ajax({
-            url: "/api/order/Create",
-            contentType: "application/json; charset=utf-8",
-            type: "POST",
-            dataType: "JSON",
-            data: JSON.stringify(obj),
-            beforeSend: function () { $(".loading-img-waiting").addClass("loading").css("display", "block"); },
-            complete: function () { $(".loading-img-waiting").removeClass("loading").css("display", "none"); },
-            success: function (data) {
-                swal(obj.customerName, "Bạn đã đặt hàng thành công!", "success").then((result) => {
-                    for (var i = 0; i < listProductID.length; i++) {
-                        $.ajax({
-                            url: "/Cart/Remove",
-                            data: { id: parseInt(listProductID[i]) },
-                            type: "post",
-                            async: false,
-                            success: function (response) {
-                                $(".shopping-cart-des").attr("data-notify", response.Count);
-                                $(".shopping-cart-mobi").attr("data-notify", response.Count);
-                            }
-                        });
-                        $.ajax({
-                            url: "/Cart/Index",
-                            async: false,
-                            success: function (response) {
-                                $("#page_ShoppingCart").html(response);
-                            }
-                        });
-                    }
-                    window.location.href = "/";
+    //click remove
+    $(".how-itemcart1").click(function () {
+        var pid = $(this).attr("data-id");
+        var colorID = $(this).attr("data-color");
+        var sizeID = $(this).attr("data-size");
+        var tr = $(this).parents("tr");
+        var lang = $("#cookieLang").val();
+        //check count = 0 => remove product cart
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to remove this product from your shopping cart?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("Success", {
+                    icon: "success",
+                }).then(function () {
+                    $.ajax({
+                        url: "/Cart/Remove",
+                        data: { id: pid, colorID: colorID, sizeID: sizeID },
+                        type: "post",
+                        async: false,
+                        success: function (response) {
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            $(tr).remove();
+                            if (lang == "en" || lang == "")
+                                $("#spanTotal").html("$" + response.Total);
+                            else
+                                $("#spanTotal").html(response.Total);
+                        }
+                    });
+                    $.ajax({
+                        url: "/Cart/Index",
+                        async: false,
+                        success: function (response) {
+                            $("#page_ShoppingCart").html(response);
+                        }
+                    });
                 });
-            },
-            error: function (error) {
-                console.log(error);
             }
         });
     });

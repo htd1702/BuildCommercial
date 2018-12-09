@@ -20,6 +20,8 @@ namespace Model.Model
 
         public int Quantity { set; get; }
 
+        public int Inventory { set; get; }
+
         public int Type { set; get; }
 
         [Column(TypeName = "xml")]

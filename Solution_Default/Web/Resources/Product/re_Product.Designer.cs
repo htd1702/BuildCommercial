@@ -19,7 +19,7 @@ namespace Web.Resources.Product {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class re_Product {
@@ -79,11 +79,38 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ADD TO CART.
+        /// </summary>
+        public static string AddToCart {
+            get {
+                return ResourceManager.GetString("AddToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string Category {
             get {
                 return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -151,11 +178,29 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quantity remaining.
+        /// </summary>
+        public static string Inventory {
+            get {
+                return ResourceManager.GetString("Inventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List Product.
         /// </summary>
         public static string ListProduct {
             get {
                 return ResourceManager.GetString("ListProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load More.
+        /// </summary>
+        public static string LoadMore {
+            get {
+                return ResourceManager.GetString("LoadMore", resourceCulture);
             }
         }
         
@@ -192,6 +237,24 @@ namespace Web.Resources.Product {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Product.
+        /// </summary>
+        public static string NewProduct {
+            get {
+                return ResourceManager.GetString("NewProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out of stock.
+        /// </summary>
+        public static string OutOfStock {
+            get {
+                return ResourceManager.GetString("OutOfStock", resourceCulture);
             }
         }
         
@@ -241,6 +304,15 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Related Products.
+        /// </summary>
+        public static string RelatedProducts {
+            get {
+                return ResourceManager.GetString("RelatedProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seo Title.
         /// </summary>
         public static string SeoTitle {
@@ -255,6 +327,15 @@ namespace Web.Resources.Product {
         public static string ShowHomePage {
             get {
                 return ResourceManager.GetString("ShowHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        public static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
             }
         }
         

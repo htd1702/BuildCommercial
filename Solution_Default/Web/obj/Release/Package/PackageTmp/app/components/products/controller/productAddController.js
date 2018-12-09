@@ -16,6 +16,9 @@
         $scope.ChooseImage = ChooseImage;
         $scope.ChooseImageMore = ChooseImageMore;
         $scope.GetIndexCode = GetIndexCode();
+        $scope.changePrice = changePrice;
+        $scope.changeScale = changeScale;
+
         if ($scope.moreImages == "") {
             $("input[name=imageMore]").show();
         }
@@ -134,6 +137,14 @@
             apiService.get('/api/product/getindex', null, function (result) {
                 $scope.product.Code = result.data;
             });
+        }
+        //function change price
+        function changePrice() {
+            $scope.product.PriceFr = $scope.product.Price;
+        }
+        //function change scale
+        function changeScale() {
+            $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
         }
         //call method load list categories
         LoadCategory();

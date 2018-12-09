@@ -1887,7 +1887,7 @@ input.num-product {
     }
 
     .table-shopping-cart .column-1 {
-        width: 133px;
+        width: 135px;
         padding-left: 50px;
     }
 
@@ -1914,15 +1914,15 @@ input.num-product {
     }
 
     .table-shopping-cart .table_row {
-        height: 185px;
+        height: 130px;
     }
 
         .table-shopping-cart .table_row td {
-            padding-bottom: 20px;
+            padding-bottom: 0px;
         }
 
             .table-shopping-cart .table_row td.column-1 {
-                padding-bottom: 30px;
+                padding-bottom: 0px;
             }
 
     .table-shopping-cart .table_head th {
@@ -1983,6 +1983,7 @@ input.num-product {
 /*---------------------------------------------*/
 .block1-txt:hover {
     background-color: rgba(103,117,214,0.8);
+    /*background-color: rgba(250, 218, 94, 0.82);*/
 }
 
     .block1-txt:hover .block1-txt-child2 {
@@ -3048,7 +3049,7 @@ input.num-product {
 
     .how-itemcart1::after {
         content: '\e870';
-        font-family: Roboto,Helvetica,Arial,sans-serif;
+        font-family: Linearicons-Free;
         font-size: 16px;
         display: -webkit-box;
         display: -webkit-flex;
@@ -3176,8 +3177,8 @@ input.num-product {
 
 /*---------------------------------------------*/
 .hov-btn1:hover {
-    border-color: #222;
-    background-color: #222;
+    border-color: #eec60a;
+    background-color: #eec60a;
     color: #fff;
 }
 

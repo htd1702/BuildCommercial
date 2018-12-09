@@ -4,6 +4,7 @@
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="fb:app_id" content="1893282497375694" />
     @*<link rel="icon" type="image/png" href="~/img/client/icons/favicon.png" />*@
     <link href="https://fonts.googleapis.com/css?family=Cookie|Roboto|Material+Icons" rel="stylesheet">
 
@@ -24,6 +25,7 @@
     <link href="~/Content/client/main-default.css" rel="stylesheet" />
     <link href="~/Content/client/Main.css" rel="stylesheet" />
 </head>
+
 <body class="animsition" ng-app="app_client">
     <!-- Header -->
     @{Html.RenderAction("_viewHeader", "Client");}
@@ -42,8 +44,10 @@
             <i class="zmdi zmdi-chevron-up"></i>
         </span>
     </div>
+    <div id="fb-root"></div>
 </body>
 </html>
+
 <script src="~/Assets/client/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/plugins/jquery/jquery-ui.js"></script>
 <script src="~/Assets/client/vendor/animsition/js/animsition.min.js"></script>
@@ -114,12 +118,12 @@
         location.reload(); // khi goi reload cooki se dc day len server
     });
     //function Autocomplete
-    function Autocomplete(html) {
+    function Autocomplete(html, url) {
         $(html).autocomplete({
             minLength: 0,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Product/ListNameProduct",
+                    url: url,
                     dataType: "JSON",
                     data: {
                         term: request.term
@@ -139,8 +143,17 @@
             }
         });
     }
-    Autocomplete("#txt_Keyword");
-    Autocomplete("#txt_KeywordProductCategory");
-    Autocomplete("#txt_KeywordProductSale");
-    Autocomplete("#txt_KeywordProductNew");
+    Autocomplete("#txt_Keyword", "/Product/ListNameProduct");
+    Autocomplete("#txt_KeywordProductCategory", "/Product/ListNameProduct");
+    Autocomplete("#txt_KeywordProductSale", "/Product/ListNameProduct");
+    Autocomplete("#txt_KeywordProductNew", "/Product/ListNameProduct");
+    Autocomplete("#txt_KeywordPost", "/Post/ListNamePost");
 </script>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=198953267200135&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

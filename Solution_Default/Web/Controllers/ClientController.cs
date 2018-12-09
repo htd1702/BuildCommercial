@@ -7,11 +7,13 @@ namespace Web.Controllers
     {
         private IProductCategoryService _productCategoryService;
         private IProductService _productService;
+        private IBannerService _bannerService;
 
-        public ClientController(IProductCategoryService productCategoryService, IProductService productService)
+        public ClientController(IProductCategoryService productCategoryService, IProductService productService, IBannerService bannerService)
         {
             _productCategoryService = productCategoryService;
             _productService = productService;
+            _bannerService = bannerService;
         }
 
         // GET: Client
@@ -27,15 +29,16 @@ namespace Web.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult Slider()
+        public ActionResult Cart()
         {
             return PartialView();
         }
 
         [ChildActionOnly]
-        public ActionResult Cart()
+        public ActionResult _sectionSlider()
         {
-            return PartialView();
+            var model = _bannerService.ListBannerByType(1);
+            return PartialView(model);
         }
 
         [ChildActionOnly]

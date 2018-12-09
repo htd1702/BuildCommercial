@@ -69,7 +69,7 @@ namespace Web.Infrastructure.Core
             }
             catch
             {
-                using (var dbc = new DBContext())//giai~ phong dbc
+                using (var dbc = new DBContext())
                 {
                     var Item = ListCartProduct(ID.ToString(), colorID.ToString(), sizeID.ToString());
                     if (Item.Rows.Count > 0)
@@ -107,15 +107,15 @@ namespace Web.Infrastructure.Core
             }
         }
 
-        public void Remove(int ID)
+        public void Remove(int ID, int colorID, int sizeID)
         {
-            var Item = Items.Single(p => p.ID == ID);
+            var Item = Items.Single(p => p.ID == ID && p.ColorID == colorID && p.SizeID == sizeID);
             Items.Remove(Item);
         }
 
-        public void Update(int ID, int newQuantity)
+        public void Update(int ID, int newQuantity, int colorID, int sizeID)
         {
-            var Item = Items.Single(p => p.ID == ID);
+            var Item = Items.Single(p => p.ID == ID && p.ColorID == colorID && p.SizeID == sizeID);
             Item.Quantity = newQuantity;
         }
 

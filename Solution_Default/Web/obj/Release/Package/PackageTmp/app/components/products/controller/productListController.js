@@ -13,6 +13,13 @@
         $scope.search = search;
         $scope.deleteProduct = deleteProduct;
         $scope.deleteAllProduct = deleteAllProduct;
+        $scope.complateKeyWord = complateKeyWord;
+        //autocomplete
+        function complateKeyWord(string) {
+            if (string != "") {
+                apiService.autocomplete("/api/product/getname", "#txt_search");
+            }
+        }
         //method search
         function search() {
             getProduct();
@@ -26,7 +33,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 20
+                    pageSize: 10
                 }
             }
             //call apiService url,params,success,error

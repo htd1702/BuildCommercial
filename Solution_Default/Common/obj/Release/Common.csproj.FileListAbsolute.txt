@@ -3,3 +3,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Common\bin\Release\Common.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Common\obj\Release\Common.csproj.CoreCompileInputs.cache
 E:\Studys\Project\BuildCommercial\Solution_Default\Common\obj\Release\Common.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Common\obj\Release\Common.pdb
+E:\Studys\Project\BuildCommercial\Solution_Default\Common\obj\Release\Common.csprojAssemblyReference.cache

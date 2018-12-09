@@ -117,10 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>ADD TO CART</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>CreateDate</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditProduct" xml:space="preserve">
+    <value>Edit Product</value>
+  </data>
+  <data name="Handling" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="HotProduct" xml:space="preserve">
+    <value>Hot Product</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Quantity remaining</value>
+  </data>
   <data name="ListProduct" xml:space="preserve">
-    <value>ListProduct_Fr</value>
+    <value>List Product</value>
+  </data>
+  <data name="LoadMore" xml:space="preserve">
+    <value>Load More</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Meta Description</value>
+  </data>
+  <data name="MetaKeyword" xml:space="preserve">
+    <value>Meta Keyword</value>
+  </data>
+  <data name="MoreImages" xml:space="preserve">
+    <value>More Images</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewProduct" xml:space="preserve">
+    <value>New Product</value>
+  </data>
+  <data name="OutOfStock" xml:space="preserve">
+    <value>Out of stock</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
   </data>
   <data name="Product" xml:space="preserve">
-    <value>Product_Fr</value>
+    <value>Product</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="PromotionPrice" xml:space="preserve">
+    <value>Promotion Price</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="RelatedProducts" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="SeoTitle" xml:space="preserve">
+    <value>Seo Title</value>
+  </data>
+  <data name="ShowHomePage" xml:space="preserve">
+    <value>Show Home Page</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Warranty" xml:space="preserve">
+    <value>Warranty</value>
   </data>
 </root>

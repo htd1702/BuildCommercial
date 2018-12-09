@@ -41,3 +41,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.csproj.
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AlterTable.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AddNewPriceProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AddScaleProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewTableBanner.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewInventoryProduct.resources

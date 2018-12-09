@@ -6,7 +6,40 @@
     .messageStatusRed {
         color: red;
     }
+
+    #content-model {
+        width: 1300px;
+        overflow-x: no-display;
+    }
+
+    .modal-lg {
+        margin-left: 2.2rem;
+        margin-top: 6rem;
+    }
+
+    @media (max-width: 1300px) {
+        #content-model {
+            width: 1300px;
+        }
+
+        .modal-lg {
+            overflow-x: scroll;
+            margin: 1.5rem;
+        }
+    }
 </style>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card">
     <div class="card-header card-header-primary">
         <h4 class="card-title ">List Order</h4>
@@ -18,11 +51,9 @@
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>Tên khách hàng</th>
-                        <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
-                        <th>Tổng giá trị</th>
-                        <th>Mô tả</th>
+                        <th>Địa chỉ</th>
                         <th>Trạng thái</th>
                         <th>Ngày đặt hàng</th>
                         <th class="td-actions text-right">
@@ -31,14 +62,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in orders">
+                    <tr ng-repeat="item in orders | orderBy: 'OrderDate'">
                         <td><input type="checkbox" class="chk_allOrders" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
-                        <td>{{item.CustomerName}}</td>
-                        <td>{{item.Address}}</td>
+                        <td><a style="cursor:pointer;color:red" data-toggle="modal" data-target=".model-order" ng-click="loadListDetailsOrder(item.ID)">{{item.CustomerName}}</a></td>
                         <td>{{item.Email}}</td>
                         <td>{{item.Phone}}</td>
-                        <td>{{item.Total}}</td>
-                        <td>{{item.CustomerMessage}}</td>
+                        <td>{{item.Address}}</td>
                         <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
                         <td>{{item.OrderDate | date:"dd/MM/yyyy"}}</td>
                         <td class="td-actions text-right">
@@ -51,11 +80,65 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="12"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                        <td colspan="12">
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getOrders(page)"></pager-directive>
+                            <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<!-- END MAIN CONTENT-->
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg model-order" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="content-model">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Order Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class=" text-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Order date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="odetails in orderDetails">
+                            <td>{{odetails.CustomerName}}</td>
+                            <td>{{odetails.Email}}</td>
+                            <td>{{odetails.Phone}}</td>
+                            <td>{{odetails.Address}}</td>
+                            <td><img ng-src="{{odetails.Image}}" style="width:60px;height:75px;" /></td>
+                            <td>{{odetails.ProductName}}</td>
+                            <td>{{odetails.ColorName}}</td>
+                            <td>{{odetails.SizeName}}</td>
+                            <td>{{odetails.Quantitty}}</td>
+                            <td>{{odetails.Total}}</td>
+                            <td>{{odetails.CustomerMessage}}</td>
+                            <td><span ng-class="{'messageStatusRed': odetails.Status == false,'messageStatusGreen': odetails.Status == true}">{{odetails.Status | statusFilter}}</span></td>
+                            <td>{{odetails.OrderDate | date:"dd/MM/yyyy"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

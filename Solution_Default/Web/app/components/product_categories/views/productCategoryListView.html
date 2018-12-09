@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="input-group">
-                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in productCategories | orderBy: 'Name'">
+                    <tr ng-repeat="item in productCategories | orderBy: 'CreatedDate':true">
                         <td><input type="checkbox" class="chk_allProductCategories" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.Name}}</td>
                         <td>{{showParentName(item.ParentID, productCategories)}}</td>
@@ -67,7 +67,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="11"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                        <td colspan="12">
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getProductCategories(page)"></pager-directive>
+                            <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>

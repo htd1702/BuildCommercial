@@ -120,68 +120,80 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>CATEGORIES</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="Featured" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>GET IN TOUCH</value>
+  </data>
+  <data name="HighToLow" xml:space="preserve">
+    <value>Price: High to Low</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="LowToHigh" xml:space="preserve">
+    <value>Price: Low to High</value>
+  </data>
   <data name="New" xml:space="preserve">
     <value>New</value>
   </data>
-  <data name="ProductOverview" xml:space="preserve">
-    <value>PRODUCT OVERVIEW</value>
-    <comment>ProductOverview</comment>
+  <data name="NewsLetter" xml:space="preserve">
+    <value>NEWSLETTER</value>
   </data>
-  <data name="ProductOverview1" xml:space="preserve">
-    <value>Filter</value>
-    <comment>ProductOverview</comment>
+  <data name="Parents" xml:space="preserve">
+    <value>PARENTS</value>
   </data>
-  <data name="ProductOverview2" xml:space="preserve">
-    <value>Search</value>
-    <comment>ProductOverview</comment>
-  </data>
-  <data name="ProductOverview3" xml:space="preserve">
-    <value>Sort By</value>
-    <comment>ProductOverview</comment>
-  </data>
-  <data name="ProductOverview4" xml:space="preserve">
+  <data name="Price" xml:space="preserve">
     <value>Price</value>
-    <comment>ProductOverview</comment>
   </data>
-  <data name="ProductOverview5" xml:space="preserve">
-    <value>Color</value>
-    <comment>ProductOverview</comment>
+  <data name="ProductOverview" xml:space="preserve">
+    <value>Product Overview</value>
+  </data>
+  <data name="QuickView" xml:space="preserve">
+    <value>Quick View</value>
   </data>
   <data name="Sale" xml:space="preserve">
     <value>Sale</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="Shop" xml:space="preserve">
     <value>Shop</value>
     <comment>head menu</comment>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>PARENTS</value>
-    <comment>footer</comment>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort By</value>
   </data>
-  <data name="String2" xml:space="preserve">
-    <value>CATEGORIES</value>
-    <comment>footer</comment>
+  <data name="StoreOverview" xml:space="preserve">
+    <value>Store Overview</value>
   </data>
-  <data name="String3" xml:space="preserve">
-    <value>GET IN TOUCH</value>
-    <comment>footer</comment>
-  </data>
-  <data name="String4" xml:space="preserve">
-    <value>NEWSLETTER</value>
-    <comment>footer</comment>
-  </data>
-  <data name="String5" xml:space="preserve">
-    <value>Copyright © 2018 All rights reserved</value>
-    <comment>footer</comment>
-  </data>
-  <data name="String6" xml:space="preserve">
-    <value>Tags</value>
-    <comment>ProductOverview</comment>
+  <data name="TopRate" xml:space="preserve">
+    <value>Top Rate</value>
   </data>
 </root>

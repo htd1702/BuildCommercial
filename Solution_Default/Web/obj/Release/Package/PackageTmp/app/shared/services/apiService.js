@@ -62,12 +62,36 @@
                 }
             });
         }
+        //auto complete
+        function autocomplete(url, html) {
+            $(html).autocomplete({
+                minLength: 0,
+                source: function (request, response) {
+                    return $http({
+                        url: url,
+                        method: "GET",
+                        params: { term: request.term }
+                    }).then(function (res) {
+                        response(res.data);
+                    });
+                },
+                focus: function (event, ui) {
+                    $(html).val(ui.item.label);
+                    return false;
+                },
+                select: function (event, ui) {
+                    $(html).val(ui.item.label);
+                    return false;
+                }
+            });
+        }
         //return function
         return {
             get: get,
             post: post,
             put: put,
-            delete: del
+            delete: del,
+            autocomplete: autocomplete
         };
     }
 })(angular.module("default.common"));

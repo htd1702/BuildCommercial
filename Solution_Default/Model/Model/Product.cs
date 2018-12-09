@@ -1,4 +1,5 @@
 ﻿using Model.Abstract;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -69,5 +70,7 @@ namespace Model.Model
 
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategories { set; get; }
+
+        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
     }
 }

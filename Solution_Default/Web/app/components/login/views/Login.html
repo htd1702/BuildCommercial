@@ -6,12 +6,12 @@
     }
 </style>
 
-<div class="page-admin-header" style="background-color:orange;">
+<div class="page-admin-header" style="background-image:url('../../../../img/admin/bg3.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                 <form role="form" method="post" ng-submit="loginSubmit()">
-                    <div class="card" style="margin-top:100px;z-index:1;">
+                    <div class="card" style="margin-top:120px;z-index:1;">
                         <div class="card-header card-header-primary text-center">
                             <h2 class="card-title">Login</h2>
                             <div class="social-line">
@@ -29,11 +29,11 @@
                         <br />
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="txt_email" class="bmd-label-floating"> Email Address *</label>
+                                <label for="txt_email" class="bmd-label-floating"> Account:</label>
                                 <input type="text" id="txt_email" class="form-control" ng-model="loginData.userName">
                             </div>
                             <div class="form-group">
-                                <label for="txt_password" class="bmd-label-floating"> Password *</label>
+                                <label for="txt_password" class="bmd-label-floating"> Password:</label>
                                 <input type="password" id="txt_password" class="form-control" ng-model="loginData.password">
                             </div>
                         </div>

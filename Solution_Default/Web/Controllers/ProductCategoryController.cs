@@ -66,7 +66,7 @@ namespace Web.Controllers
 
         public ActionResult _viewParent()
         {
-            ViewBag.ListCategory = _productCategoryService.GetCategoryByTake(3);
+            ViewBag.ListCategory = _productCategoryService.GetCategoryShowHome(3);
             return PartialView();
         }
     }

@@ -1,31 +1,42 @@
-﻿@using Model.Model;
-@using Data;
-@{
-    DBContext db = new DBContext();
-}
+﻿@using Web.Resources.ShopingCart
 <ul class="header-cart-wrapitem w-full">
-    @foreach (Product p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
+    @foreach (Web.Infrastructure.Core.InfoCart p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
     {
         <li class="header-cart-item flex-w flex-t m-b-12">
-            <div class="header-cart-item-img" data-id="@p.ID">
+            <div class="header-cart-item-img" data-id="@p.ID" data-color="@p.ColorID" data-size="@p.SizeID">
                 <img src="@p.Image" alt="IMG">
             </div>
 
             <div class="header-cart-item-txt p-t-8" style="padding:0;margin-top:-20px;">
-                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                    @{
-                        var colorID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).ColorID;
-                        var sizeID = db.ProductDetails.FirstOrDefault(d => d.ProductID == p.ID).SizeID;
-                        var colorName = db.Colors.FirstOrDefault(c => c.ID == colorID).Name;
-                        var sizeName = db.Sizes.FirstOrDefault(s => s.ID == sizeID).Name;
-                    }
-                </a>
-                <span>@p.Name</span>
-                <br />
-                <span>@colorName,@sizeName</span>
-                <span class="header-cart-item-info">
-                    @p.Quantity x @Html.FormatValue(p.Price, "{0:C}")
-                </span>
+                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04"></a>
+
+                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                {
+                    <span>@p.NameVN</span>
+                    <br />
+                    <span>@p.ColorName,@p.SizeName</span>
+                    <span class="header-cart-item-info">
+                        @p.Quantity x @Html.FormatValue(p.PriceVN, "{0:C}")
+                    </span>
+                }
+                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                {
+                    <span>@p.NameFr</span>
+                    <br />
+                    <span>@p.ColorName,@p.SizeName</span>
+                    <span class="header-cart-item-info">
+                        @p.Quantity x @p.PriceFr
+                    </span>
+                }
+                else
+                {
+                    <span>@p.Name</span>
+                    <br />
+                    <span>@p.ColorName,@p.SizeName</span>
+                    <span class="header-cart-item-info">
+                        @p.Quantity x $@string.Format("{0:#,##0.00}", p.Price)
+                    </span>
+                }
             </div>
         </li>
     }
@@ -33,16 +44,27 @@
 
 <div class="w-full">
     <div class="header-cart-total w-full p-tb-40">
-        Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.Total, "{0:C}")
+        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+        {
+            <span>Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
+        }
+        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+        {
+            <span>Total: @Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
+        }
+        else
+        {
+            <span>Total: $@string.Format("{0:#,##0.00}", Web.Infrastructure.Core.ShoppingCart.Cart.Total)</span>
+        }
     </div>
 
     <div class="header-cart-buttons flex-w w-full">
-        <a href="/Cart/ViewCart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-            View Cart
+        <a href="/view-cart" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10 btn-info">
+            @re_ShopingCart.ViewCart
         </a>
 
-        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-            Check Out
+        <a href="/check-out" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 m-b-10 btn-success">
+            @re_ShopingCart.CheckOut
         </a>
     </div>
 </div>
@@ -51,27 +73,43 @@
     //remove shopping cart
     $(".header-cart-item-img").click(function () {
         var pid = $(this).attr("data-id");
-        $.ajax({
-            url: "/Cart/Remove",
-            data: { id: pid },
-            type: "post",
-            async: false,
-            success: function (response) {
-                $(".shopping-cart-des").attr("data-notify", response.Count);
-                $(".shopping-cart-mobi").attr("data-notify", response.Count);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-        $.ajax({
-            url: "/Cart/Index",
-            async: false,
-            success: function (response) {
-                $("#page_ShoppingCart").html(response);
-            },
-            error: function (error) {
-                console.log(error);
+        var colorID = $(this).attr("data-color");
+        var sizeID = $(this).attr("data-size");
+        swal({
+            title: "Are you sure?",
+            text: "Bạn muốn xóa sản phẩm này ra khỏi giỏ hàng không?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("Success", {
+                    icon: "success",
+                }).then(function () {
+                    $.ajax({
+                        url: "/Cart/Remove",
+                        data: { id: pid, colorID: colorID, sizeID: sizeID },
+                        type: "post",
+                        async: false,
+                        success: function (response) {
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                    $.ajax({
+                        url: "/Cart/Index",
+                        async: false,
+                        success: function (response) {
+                            $("#page_ShoppingCart").html(response);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                });
             }
         });
     });

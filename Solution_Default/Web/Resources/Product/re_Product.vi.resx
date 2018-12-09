@@ -123,8 +123,17 @@
   <data name="AddProduct" xml:space="preserve">
     <value>Thêm sản phẩm</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Thêm Vào Giỏ</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Mã</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Màu sắc</value>
   </data>
   <data name="CreateDate" xml:space="preserve">
     <value>Ngày tạo</value>
@@ -147,8 +156,14 @@
   <data name="Image" xml:space="preserve">
     <value>Hình ảnh</value>
   </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Số lượng còn</value>
+  </data>
   <data name="ListProduct" xml:space="preserve">
     <value>Danh Sách Sản Phẩm</value>
+  </data>
+  <data name="LoadMore" xml:space="preserve">
+    <value>Hiển thị thêm</value>
   </data>
   <data name="MetaDescription" xml:space="preserve">
     <value>Meta Description</value>
@@ -161,6 +176,12 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
+  </data>
+  <data name="NewProduct" xml:space="preserve">
+    <value>Sản phẩm mới</value>
+  </data>
+  <data name="OutOfStock" xml:space="preserve">
+    <value>Hết hàng</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Gía</value>
@@ -177,11 +198,17 @@
   <data name="Quantity" xml:space="preserve">
     <value>Số lượng</value>
   </data>
+  <data name="RelatedProducts" xml:space="preserve">
+    <value>Sản phẩm liên quan</value>
+  </data>
   <data name="SeoTitle" xml:space="preserve">
     <value>Tiêu đề SEO</value>
   </data>
   <data name="ShowHomePage" xml:space="preserve">
     <value>Hiển thị trang chủ</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Kích cỡ</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tình trạng</value>

@@ -16,11 +16,15 @@ namespace Service
 
         IEnumerable<Order> GetAll();
 
+        IEnumerable<Order> GetAll(string keyword);
+
         Order GetById(int id);
 
         void Save();
 
         DataTable ListOrderDetail(string id);
+
+        List<string> ListNameOrder(string keyword);
     }
 
     public class OrderService : IOrderService
@@ -67,6 +71,19 @@ namespace Service
         public DataTable ListOrderDetail(string id)
         {
             return _orderRepository.ListOrderDetail(id);
+        }
+
+        public List<string> ListNameOrder(string keyword)
+        {
+            return _orderRepository.ListNameOrder(keyword);
+        }
+
+        public IEnumerable<Order> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+                return _orderRepository.GetMulti(p => p.CustomerName.Contains(keyword) || p.Email.Contains(keyword) || p.Phone.Contains(keyword));
+            else
+                return _orderRepository.GetAll();
         }
     }
 }

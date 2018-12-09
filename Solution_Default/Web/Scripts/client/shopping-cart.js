@@ -8,11 +8,11 @@
         var lang = $("#cookieLang").val();
         //check size and code is not null
         if (colorID == 0) {
-            swal("Thất bại!", "Vui lòng chọn màu sắc khi thêm vào giỏ!", "error");
+            swal("Faild!", "Please select color when adding to cart!", "error");
             return;
         }
         if (sizeID == 0) {
-            swal("Thất bại!", "Vui lòng chọn kích thước khi thêm vào giỏ!", "error");
+            swal("Faild!", "Please select size when adding to cart!", "error");
             return;
         }
         //call funtion load count and total
@@ -24,7 +24,7 @@
             success: function (response) {
                 $(".shopping-cart-des").attr("data-notify", response.Count);
                 $(".shopping-cart-mobi").attr("data-notify", response.Count);
-                swal("Thành công", "Thêm vào giỏ hàng thành công!", "success");
+                swal("Success", "Add to cart successfully!", "success");
             }
         });
     });
@@ -32,19 +32,24 @@
     $(".btn-num-product-up").click(function () {
         //get attribute
         var pid = $(this).attr("data-update-cart");
+        var colorID = $(this).attr("data-color");
+        var sizeID = $(this).attr("data-size");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
         var lang = $("#cookieLang").val();
         //call funtion load count and total
         $.ajax({
             url: "/Cart/Update",
-            data: { id: pid, newqty: qty, lang: lang },
+            data: { id: pid, newqty: qty, lang: lang, colorID: colorID, sizeID: sizeID },
             type: "post",
             success: function (response) {
                 //set value atti in count and total
                 $(".shopping-cart-des").attr("data-notify", response.Count);
                 $(".shopping-cart-mobi").attr("data-notify", response.Count);
                 //cap nhat thanh tien cua san pham
-                $("#spanTotal").html(response.Total);
+                if (lang == "en" || lang == "")
+                    $("#spanTotal").html("$" + response.Total);
+                else
+                    $("#spanTotal").html(response.Total);
             }
         });
     });
@@ -52,43 +57,64 @@
     $(".btn-num-product-down").click(function () {
         //get attribute
         var pid = $(this).attr("data-update-cart");
+        var colorID = $(this).attr("data-color");
+        var sizeID = $(this).attr("data-size");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
         var tr = $(this).parents("tr");
+        var lang = $("#cookieLang").val();
         //check count = 0 => remove product cart
         if (qty == 0) {
-            if (confirm("Bạn có muốn xóa sản phẩm này ra khỏi giỏ hàng không?")) {
-                $.ajax({
-                    url: "/Cart/Remove",
-                    data: { id: pid },
-                    type: "post",
-                    async: false,
-                    success: function (response) {
-                        $(".shopping-cart-des").attr("data-notify", response.Count);
-                        $(".shopping-cart-mobi").attr("data-notify", response.Count);
-                        $(tr).remove();
-                        $("#spanTotal").html(response.Total);
-                    }
-                });
-                $.ajax({
-                    url: "/Cart/Index",
-                    async: false,
-                    success: function (response) {
-                        $("#page_ShoppingCart").html(response);
-                    }
-                });
-            }
+            swal({
+                title: "Are you sure?",
+                text: "Do you want to remove this product from your shopping cart?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    swal("Success", {
+                        icon: "success",
+                    }).then(function () {
+                        $.ajax({
+                            url: "/Cart/Remove",
+                            data: { id: pid, colorID: colorID, sizeID: sizeID },
+                            type: "post",
+                            async: false,
+                            success: function (response) {
+                                $(".shopping-cart-des").attr("data-notify", response.Count);
+                                $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                                $(tr).remove();
+                                if (lang == "en" || lang == "")
+                                    $("#spanTotal").html("$" + response.Total);
+                                else
+                                    $("#spanTotal").html(response.Total);
+                            }
+                        });
+                        $.ajax({
+                            url: "/Cart/Index",
+                            async: false,
+                            success: function (response) {
+                                $("#page_ShoppingCart").html(response);
+                            }
+                        });
+                    });
+                }
+            });
         }
         //check count #0 return list cart
         else {
             $.ajax({
                 url: "/Cart/Update",
-                data: { id: pid, newqty: qty },
+                data: { id: pid, newqty: qty, lang: lang, colorID: colorID, sizeID: sizeID },
                 type: "post",
                 success: function (response) {
                     $(".shopping-cart-des").attr("data-notify", response.Count);
                     $(".shopping-cart-mobi").attr("data-notify", response.Count);
                     //cap nhat thanh tien cua san pham
-                    $("#spanTotal").html(response.Total);
+                    if (lang == "en" || lang == "")
+                        $("#spanTotal").html("$" + response.Total);
+                    else
+                        $("#spanTotal").html(response.Total);
                 }
             });
         }

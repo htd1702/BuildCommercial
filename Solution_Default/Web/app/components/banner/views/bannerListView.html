@@ -1,0 +1,61 @@
+﻿<!-- MAIN CONTENT-->
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-success pull-right" ui-sref="add_banner"><i class="material-icons">add</i></button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">List Banner</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
+                        <th>Tên</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
+                        <th class="td-actions text-right">
+                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllBanners()"><i class="fa fa-trash"></i></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in banners | orderBy: 'Name'">
+                        <td><input type="checkbox" class="chk_allBanners" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{item.CreatedBy}}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_banner({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" ng-click="deleteBanner(item.ID)">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12">
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getBanners(page)"></pager-directive>
+                            <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

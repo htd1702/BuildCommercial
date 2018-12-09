@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Data;
 using Model.Model;
 using Service;
 using System;
@@ -16,11 +15,12 @@ namespace Web.Controllers
     public class ProductController : Controller
     {
         private IProductService _productService;
-
+        private IBannerService _bannerService;
         //contructor
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IBannerService bannerService)
         {
             _productService = productService;
+            _bannerService = bannerService;
         }
 
         // GET: Product
@@ -31,56 +31,74 @@ namespace Web.Controllers
 
         public ActionResult SaleProduct()
         {
+            Session["ShoppingUrl"] = "/sale-product";
+            ViewBag.BannerImage = _bannerService.ListBannerByType(2);
             return View();
         }
 
         public ActionResult NewProduct()
         {
+            Session["ShoppingUrl"] = "/new-product";
             return View();
         }
 
         public ActionResult ProductByCategory(string name, int parentID, int id)
         {
+            Session["ShoppingUrl"] = "/Product/ProductByCategory/?name=" + name + "&parentID=" + parentID.ToString() + "&id=" + id.ToString();
             ViewBag.Name = name;
             ViewBag.ParentID = parentID;
             ViewBag.ID = id;
             return View();
         }
 
-        public ActionResult HotProduct()
+        public ActionResult ProductOverView()
         {
-            var model = _productService.GetHotProduct(10);
-            return PartialView(model);
+            ViewBag.ProductFeatured = _productService.ListStoreOverview(2).AsEnumerable().Take(10).ToList();
+            ViewBag.ProductSale = _productService.ListStoreOverview(3).AsEnumerable().Take(10).ToList();
+            ViewBag.ProductRate = _productService.ListStoreOverview(1).AsEnumerable().Take(10).ToList();
+            return PartialView();
         }
 
         public ActionResult Details(string id)
         {
-            DBContext db = new DBContext();
+            Session["ShoppingUrl"] = "/product-details/" + id;
+            int viewNow = 0;
             if (string.IsNullOrEmpty(id))
                 id = "0";
             var model = _productService.GetById(int.Parse(id));
             var listProduct = Mapper.Map<Product, ProductViewModel>(model);
-            var cookie = Request.Cookies["Views"];
-            if (cookie == null)
-            {
-                cookie = new HttpCookie("Views");
-            }
-            cookie.Values[id.ToString()] = id.ToString();
-            Response.Cookies.Add(cookie);
-            var cookieId = cookie.Values.AllKeys.Select(k => int.Parse(k)).ToList();
+            viewNow = int.Parse(listProduct.ViewCount.ToString()) + 1;
             //get view
-            ViewBag.Views = db.Products.Where(p => cookieId.Contains(p.ID));
+            ViewBag.Views = EditView(int.Parse(id), viewNow);
+            //get string img multi
             List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listProduct.MoreImages);
             ViewBag.MoreImgs = listImgs;
             //get product by category
             DataTable dt = _productService.ListRelatedProduct(id);
+            //check list relate
             if (dt.Rows.Count > 0)
                 ViewBag.ProductCagtegory = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(9).ToList();
             return View(listProduct);
         }
 
+        public int EditView(int id, int view)
+        {
+            int result = 0;
+            if (id != 0)
+            {
+                Product newProduct = new Product();
+                ProductViewModel productVM = new ProductViewModel();
+                newProduct = _productService.GetById(id);
+                newProduct.ViewCount = view;
+                _productService.Update(newProduct);
+                _productService.Save();
+                result = _productService.GetViewProduct(id);
+            }
+            return result;
+        }
+
         [HttpPost]
-        public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor, int parentID, int pageSize)
+        public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor, int pageSize)
         {
             try
             {
@@ -93,15 +111,25 @@ namespace Web.Controllers
                     sortBy = "%";
                 if (sortColor == "0" || sortColor == null)
                     sortColor = "%";
-                if (parentID > 0)
-                    dt = _productService.ListProduct(parentID.ToString(), sortBy, sortPrice, sortColor, categories);
-                else
-                    dt = _productService.ListProduct(categories, sortBy, sortPrice, sortColor, "%");
+                dt = _productService.ListProduct(categories, sortBy, sortPrice, sortColor);
                 if (dt.Rows.Count > 0)
                 {
                     //Get data by take
-                    var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(pageSize).CopyToDataTable();
-                    list = _productService.GetTableRows(model);
+                    if (sortBy == "%" || int.Parse(sortBy) == 1)
+                    {
+                        var model = dt.AsEnumerable().OrderBy(p => p.Field<double>("Price")).Take(pageSize).CopyToDataTable();
+                        list = _productService.GetTableRows(model);
+                    }
+                    else if (int.Parse(sortBy) == 2)
+                    {
+                        var model = dt.AsEnumerable().OrderByDescending(p => p.Field<double>("Price")).Take(pageSize).CopyToDataTable();
+                        list = _productService.GetTableRows(model);
+                    }
+                    else if (int.Parse(sortBy) == 3)
+                    {
+                        var model = dt.AsEnumerable().Where(p => p.Field<Int32>(10) > 0).OrderByDescending(p => p.Field<int>("PromotionPrice")).Take(pageSize).CopyToDataTable();
+                        list = _productService.GetTableRows(model);
+                    }
                 }
                 return Json(list, JsonRequestBehavior.AllowGet);
             }
@@ -120,11 +148,11 @@ namespace Web.Controllers
                 List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
                 if (categories == "0" || categories == null)
                     categories = "%";
-                if (parentID > 0)
-                    dt = _productService.ListProduct(parentID.ToString(), "%", "0", "%", categories);
-                else
-                    dt = _productService.ListProduct(categories, "%", "0", "%", "%");
-
+                //if (parentID > 0)
+                //    dt = _productService.ListProduct(parentID.ToString(), "%", "0", "%", categories);
+                //else
+                //    dt = _productService.ListProduct(categories, "%", "0", "%", "%");
+                dt = _productService.ListProduct(categories, "%", "0", "%");
                 if (dt.Rows.Count > 0)
                 {
                     //Get data by take
@@ -158,6 +186,13 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        public JsonResult ListNewProductByTake(int take)
+        {
+            var model = _productService.ListNewProduct().Take(take);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult SearchProduct(string keyword)
         {
             string key = keyword.ToLower().Replace(" ", "-");
@@ -183,6 +218,19 @@ namespace Web.Controllers
         {
             var model = _productService.ListNewProduct();
             return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListStoreOverview(int type)
+        {
+            List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+            DataTable dt = _productService.ListStoreOverview(type);
+            if (dt.Rows.Count > 0)
+            {
+                var model = dt.AsEnumerable().Take(10).CopyToDataTable();
+                list = _productService.GetTableRows(model);
+            }
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 }

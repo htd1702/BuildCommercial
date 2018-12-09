@@ -122,8 +122,17 @@
     <Compile Include="Migrations\201811281554393_AddScaleProduct.Designer.cs">
       <DependentUpon>201811281554393_AddScaleProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812010651210_NewTableBanner.cs" />
+    <Compile Include="Migrations\201812010651210_NewTableBanner.Designer.cs">
+      <DependentUpon>201812010651210_NewTableBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812080516473_NewInventoryProduct.cs" />
+    <Compile Include="Migrations\201812080516473_NewInventoryProduct.Designer.cs">
+      <DependentUpon>201812080516473_NewInventoryProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BannerRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\ColorRepository.cs" />
@@ -184,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811281554393_AddScaleProduct.resx">
       <DependentUpon>201811281554393_AddScaleProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812010651210_NewTableBanner.resx">
+      <DependentUpon>201812010651210_NewTableBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812080516473_NewInventoryProduct.resx">
+      <DependentUpon>201812080516473_NewInventoryProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

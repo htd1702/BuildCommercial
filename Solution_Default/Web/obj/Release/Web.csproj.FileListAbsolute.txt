@@ -158,3 +158,9 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\vi\Web.resour
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.pdb
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.News.re_News.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.ShopingCart.re_ShopingCart.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.News.re_News.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.News.re_News.vi.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.ShopingCart.re_ShopingCart.vi.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.ShopingCart.re_ShopingCart.fr.resources

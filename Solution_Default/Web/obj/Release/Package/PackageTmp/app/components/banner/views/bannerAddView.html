@@ -1,0 +1,57 @@
+﻿<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Add</h4>
+        <p class="card-category">Complete</p>
+    </div>
+    <div class="card-body">
+        <form class="form-horizontal" novalidate name="frmAddBanner" role="form" ng-submit="AddBanner()">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="name">
+                        Banner Name
+                        <span ng-hide="frmAddBanner.name.$error.maxlength" ng-show="frmAddBanner.name.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="banner.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
+                    <span ng-show="frmAddBanner.name.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="type">
+                        Type
+                    </label>
+                    <select name="type" ng-model="banner.type" class="custom-select" ng-change="changeType(banner.type)" ng-options="option.ID as option.Name for option in types">
+                        <option value="">Loại hiển thị</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="typeName">
+                        Loại hiển thị
+                    </label>
+                    <input type="text" class="text-control" ng-model="banner.typeName" name="typeName" readonly="readonly" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="image">
+                        Image
+                        <span ng-show="frmAddBanner.image.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="banner.Image" name="image" required>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="description">Description</label>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="banner.Description" name="description"></textarea>
+                    <span class="text-danger" ng-show="frmAddBanner.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col col-md-6">
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="banners"><i class="fa fa-ban"></i> Back</button>
+                </div>
+                <div class="col col-md-6">
+                    <button type="submit" ng-disabled="frmAddBanner.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

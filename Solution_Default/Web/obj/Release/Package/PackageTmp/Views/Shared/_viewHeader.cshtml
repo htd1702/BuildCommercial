@@ -1,12 +1,22 @@
-﻿@using Web.Resources.Product
-<header class="header-v2">
+﻿@using Web.Resources.Home
+@using Model.Model
+@using Data;
+@{
+    DBContext db = new DBContext();
+    string cookieLang = "";
+    if (Request.Cookies["Lang"] != null)
+    {
+        cookieLang = Request.Cookies["Lang"].Value;
+    }
+}
+<header class="header-v2" ng-controller="ProductController">
     <!-- Header desktop -->
     <div class="container-menu-desktop trans-03">
         <!-- Topbar -->
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
-                    <i class="fa fa-phone"></i> (+84) 123-456-789 &nbsp; <i class="fa fa-envelope-square"></i> abc@gmail.com
+                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> aledale.online01@gmail.com
                 </div>
 
                 <div class="right-top-bar flex-w h-full">
@@ -15,10 +25,15 @@
                         EN
                     </a>
 
+                    <a href="#" id="changeLang" data-lang="fr" class="flex-c-m trans-04 p-lr-25">
+                        FR
+                    </a>
+
                     <a href="#" id="changeLang" data-lang="vi" class="flex-c-m trans-04 p-lr-25">
                         VN
                     </a>
 
+                    <input type="text" hidden value="@cookieLang" id="cookieLang" />
                     @*<a href="#" class="flex-c-m trans-04 p-lr-25">
                             USD
                         </a>*@
@@ -37,27 +52,76 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li>
-                            <a href="/CLient/ProductCategoryDetail/0">Shop</a>
+                        <li class="label1" data-label1="New">
+                            <a href="/new-product">@re_Home.New</a>
                         </li>
 
                         <li>
-                            <a href="/tin-tuc">Blog</a>
+                            <a href="/new-product">@re_Home.Shop</a>
+                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                            {
+                                <script type="text/ng-template" id="treeMenuHeard">
+                                    <a href="/Product/ProductByCategory/?name={{parent.NameVN}}&parentID={{parent.ParentID}}&id={{parent.ID}}">{{parent.NameVN}}</a>
+                                    <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
+                                        <li style="font-size:15px" class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
+                                    </ul>
+                                </script>
+                                <ul class="sub-menu">
+                                    <li style="font-size:18px" ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <script type="text/ng-template" id="treeMenuHeard">
+                                    <a href="/Product/ProductByCategory/?name={{parent.NameVN}}&parentID={{parent.ParentID}}&id={{parent.ID}}">{{parent.Name}}</a>
+                                    <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
+                                        <li class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
+                                    </ul>
+                                </script>
+                                <ul class="sub-menu">
+                                    <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
+                                </ul>
+                            }
+                            @*<ul class="sub-menu">
+                                    @foreach (ProductCategory c in ViewBag.ParentCategory)
+                                    {
+                                        var Item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <li>
+                                            <a href="/Product/ProductByCategory/?name=@c.Name&parentID=@c.ParentID&id=@c.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? c.NameVN : c.Name)</a>
+                                            <ul class="sub-menu">
+                                                @foreach (var cate in Item)
+                                                {
+                                                    <li>
+                                                        <a href="/Product/ProductByCategory/?name=@cate.Name&parentID=@cate.ParentID&id=@cate.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? cate.NameVN : cate.Name)</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>*@
                         </li>
 
                         <li>
-                            <a href="/gioi-thieu">About</a>
+                            <a href="/news">@re_Home.Blog</a>
                         </li>
 
                         <li>
-                            <a href="/lien-he">Contact</a>
+                            <a href="/about">@re_Home.About</a>
+                        </li>
+
+                        <li>
+                            <a href="/contact">@re_Home.Contact</a>
+                        </li>
+
+                        <li class="label1" data-label1="Hot">
+                            <a href="/sale-product">@re_Home.Sale</a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m">
-                    <a href="/Account/LoginFacebook" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
+                    <a href="https://www.facebook.com/Adelade-268771333801883/" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
                         <i class="fa fa-facebook"></i>
                     </a>
                     <a href="#" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
@@ -83,7 +147,7 @@
 
         <!-- Icon header -->
         <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-            <a href="#" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
+            <a href="https://www.facebook.com/Adelade-268771333801883/" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
                 <i class="fa fa-facebook"></i>
             </a>
             <a href="#" class="fs-18 cl2 hov-cl1 trans-04 m-r-26">
@@ -110,46 +174,52 @@
         <ul class="topbar-mobile">
             <li>
                 <div class="left-top-bar">
-                    Free shipping for standard order over $100
+                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> aledale.online01@gmail.com
                 </div>
             </li>
 
             <li>
                 <div class="right-top-bar flex-w h-full">
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        Help & FAQs
-                    </a>
-
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        My Account
-                    </a>
-
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">
+                    <a href="#" id="changeLang" data-lang="en" class="flex-c-m trans-04 p-lr-25">
                         EN
                     </a>
 
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">
-                        USD
+                    <a href="#" id="changeLang" data-lang="fr" class="flex-c-m trans-04 p-lr-25">
+                        FR
                     </a>
+
+                    <a href="#" id="changeLang" data-lang="vi" class="flex-c-m trans-04 p-lr-25">
+                        VN
+                    </a>
+
+                    <input type="text" hidden value="@cookieLang" id="cookieLang" />
                 </div>
             </li>
         </ul>
 
         <ul class="main-menu-m">
             <li>
-                <a href="/CLient/ProductCategoryDetail/0">Shop</a>
+                <a href="/new-product">New</a>
             </li>
 
             <li>
-                <a href="/tin-tuc">Blog</a>
+                <a href="/new-product">Shop</a>
             </li>
 
             <li>
-                <a href="/gioi-thieu">About</a>
+                <a href="/news">Blog</a>
             </li>
 
             <li>
-                <a href="/lien-he">Contact</a>
+                <a href="/about">About</a>
+            </li>
+
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+
+            <li>
+                <a href="/sale-product">Sale</a>
             </li>
         </ul>
     </div>

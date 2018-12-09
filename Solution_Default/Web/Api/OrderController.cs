@@ -44,12 +44,12 @@ namespace Web.Api
 
         [Route("getall")]
         [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var model = _orderService.GetAll();
+                var model = _orderService.GetAll(keyword);
                 //count model
                 totalRow = model.Count();
                 //sap xep giam dan
@@ -70,6 +70,19 @@ namespace Web.Api
                 };
                 //check status
                 var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
+
+        [Route("getneworder")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _orderService.GetAll().Take(5);
+                var responseData = Mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });
         }
@@ -296,6 +309,25 @@ namespace Web.Api
                         }
                         response = request.CreateResponse(HttpStatusCode.Created, list);
                     }
+                    return response;
+                });
+            }
+            else
+                return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("getname")]
+        [HttpGet]
+        public HttpResponseMessage GetName(HttpRequestMessage request, string term)
+        {
+            if (!string.IsNullOrWhiteSpace(term))
+            {
+                return CreateHttpResponse(request, () =>
+                {
+                    var model = _orderService.ListNameOrder(term);
+                    //check status
+                    var response = request.CreateResponse(HttpStatusCode.OK, model);
+                    //return status
                     return response;
                 });
             }

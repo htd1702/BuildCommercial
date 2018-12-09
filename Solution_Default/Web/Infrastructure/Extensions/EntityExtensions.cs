@@ -10,11 +10,11 @@ namespace Web.Infrastructure.Extensions
         public static void UpdatePostCategory(this PostCategory postCategory, PostCategoryViewModel postCategoryVM)
         {
             postCategory.ID = postCategoryVM.ID;
-            postCategory.Name = postCategoryVM.Name;
-            postCategory.NameVN = postCategoryVM.Name;
-            postCategory.NameFr = postCategoryVM.Name;
+            postCategory.Name = postCategoryVM.Name.Trim();
+            postCategory.NameVN = postCategoryVM.Name.Trim();
+            postCategory.NameFr = postCategoryVM.Name.Trim();
             postCategory.Alias = postCategoryVM.Alias;
-            postCategory.Description = postCategoryVM.Description;
+            postCategory.Description = postCategoryVM.Description.Trim();
             postCategory.ParentID = postCategoryVM.ParentID;
             postCategory.DisplayOrder = postCategoryVM.DisplayOrder;
             postCategory.Image = postCategoryVM.Image;
@@ -32,9 +32,9 @@ namespace Web.Infrastructure.Extensions
         public static void UpdatePost(this Post post, PostViewModel postVM)
         {
             post.ID = postVM.ID;
-            post.Name = postVM.Name;
-            post.NameVN = postVM.NameVN;
-            post.NameFr = postVM.NameFr;
+            post.Name = postVM.Name.Trim();
+            post.NameVN = postVM.NameVN.Trim();
+            post.NameFr = postVM.NameFr.Trim();
             post.Alias = postVM.Alias;
             post.Description = postVM.Description;
             post.CategoryID = postVM.CategoryID;
@@ -56,9 +56,9 @@ namespace Web.Infrastructure.Extensions
         public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryVM)
         {
             productCategory.ID = productCategoryVM.ID;
-            productCategory.Name = productCategoryVM.Name;
-            productCategory.NameVN = productCategoryVM.NameVN;
-            productCategory.NameFr = productCategoryVM.NameFr;
+            productCategory.Name = productCategoryVM.Name.Trim();
+            productCategory.NameVN = productCategoryVM.NameVN.Trim();
+            productCategory.NameFr = productCategoryVM.NameFr.Trim();
             productCategory.Alias = productCategoryVM.Alias;
             productCategory.Description = productCategoryVM.Description;
             productCategory.ParentID = productCategoryVM.ParentID;
@@ -85,9 +85,9 @@ namespace Web.Infrastructure.Extensions
             else
                 product.ID = productVM.ID;
             product.Code = productVM.Code;
-            product.Name = productVM.Name;
-            product.NameVN = productVM.NameVN;
-            product.NameFr = productVM.NameFr;
+            product.Name = productVM.Name.Trim();
+            product.NameVN = productVM.NameVN.Trim();
+            product.NameFr = productVM.NameFr.Trim();
             product.Alias = productVM.Alias;
             product.CategoryID = productVM.CategoryID;
             product.Image = productVM.Image;
@@ -124,6 +124,7 @@ namespace Web.Infrastructure.Extensions
             productDetail.SizeID = productDetailVM.SizeID;
             productDetail.Quantity = productDetailVM.Quantity;
             productDetail.Type = productDetailVM.Type;
+            productDetail.Inventory = productDetailVM.Inventory;
             //productDetail.Description = productDetailVM.Description;
             productDetail.CreatedDate = productDetailVM.CreatedDate;
             productDetail.CreatedBy = productDetailVM.CreatedBy;
@@ -136,8 +137,8 @@ namespace Web.Infrastructure.Extensions
         public static void UpdateColor(this Color color, ColorViewModel colorVM)
         {
             color.ID = colorVM.ID;
-            color.Name = colorVM.Name;
-            color.NameVN = colorVM.NameVN;
+            color.Name = colorVM.Name.Trim();
+            color.NameVN = colorVM.NameVN.Trim();
             color.Alias = colorVM.Alias;
             color.Description = colorVM.Description;
             color.CreatedDate = colorVM.CreatedDate;
@@ -150,8 +151,8 @@ namespace Web.Infrastructure.Extensions
         public static void UpdateSize(this Size size, SizeViewModel sizeVM)
         {
             size.ID = sizeVM.ID;
-            size.Name = sizeVM.Name;
-            size.NameVN = sizeVM.NameVN;
+            size.Name = sizeVM.Name.Trim();
+            size.NameVN = sizeVM.NameVN.Trim();
             size.Alias = sizeVM.Alias;
             size.Description = sizeVM.Description;
             size.CreatedDate = sizeVM.CreatedDate;
@@ -164,10 +165,10 @@ namespace Web.Infrastructure.Extensions
         public static void UpdateOrder(this Order order, OrderViewModel orderVM)
         {
             order.ID = orderVM.ID;
-            order.CustomerName = orderVM.CustomerName;
-            order.Address = orderVM.Address;
-            order.Email = orderVM.Email;
-            order.Phone = orderVM.Phone;
+            order.CustomerName = orderVM.CustomerName.Trim();
+            order.Address = orderVM.Address.Trim();
+            order.Email = orderVM.Email.Trim();
+            order.Phone = orderVM.Phone.Trim();
             order.Total = orderVM.Total;
             order.CustomerMessage = orderVM.CustomerMessage;
             order.PaymentMethod = orderVM.PaymentMethod;
@@ -183,6 +184,21 @@ namespace Web.Infrastructure.Extensions
             orderDetail.ProductID = orderDetailVM.ProductID;
             orderDetail.Quantitty = orderDetailVM.Quantitty;
             orderDetail.UnitPrice = orderDetailVM.UnitPrice;
+        }
+
+        //Set value mmapp order detail
+        public static void UpdateBanner(this Banner banner, BannerViewModel bannerVM)
+        {
+            banner.ID = bannerVM.ID;
+            banner.Name = bannerVM.Name.Trim();
+            banner.type = bannerVM.type;
+            banner.Image = bannerVM.Image;
+            banner.MoreImages = bannerVM.MoreImages;
+            banner.Description = bannerVM.Description;
+            banner.CreatedDate = bannerVM.CreatedDate;
+            banner.CreatedBy = bannerVM.CreatedBy;
+            banner.UpdatedDate = bannerVM.UpdatedDate;
+            banner.UpdatedBy = bannerVM.UpdatedBy;
         }
     }
 }

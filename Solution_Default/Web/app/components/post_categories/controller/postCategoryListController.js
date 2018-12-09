@@ -27,7 +27,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 20
+                    pageSize: 10
                 }
             }
             //call apiService url,params,success,error

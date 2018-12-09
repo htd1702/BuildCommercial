@@ -164,12 +164,12 @@ namespace Web.Api
                     productVM.PriceFr = dynamicObj["PriceFr"];
                     productVM.Scale = dynamicObj["Scale"];
                     productVM.PromotionPrice = dynamicObj["PromotionPrice"];
+                    productVM.Tags = "";
                     productVM.Quantity = 0;
                     productVM.Warranty = dynamicObj["Warranty"];
-                    productVM.Description = dynamicObj["Description"];
+                    productVM.Description = dynamicObj["Content"];
                     productVM.Content = dynamicObj["Content"];
-                    productVM.ViewCount = dynamicObj["ViewCount"];
-                    productVM.Tags = dynamicObj["Tags"];
+                    productVM.ViewCount = 1;
                     productVM.CreatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     productVM.CreatedBy = dynamicObj["CreatedBy"];
                     productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
@@ -195,6 +195,7 @@ namespace Web.Api
                             //Call method add product category in folder extensions
                             newProductDetailVM.ColorID = int.Parse(listColor[i].ToString());
                             newProductDetailVM.Quantity = int.Parse(listQuantity[i].ToString());
+                            newProductDetailVM.Inventory = newProductDetailVM.Quantity;
                             for (int j = 0; j < listSize.Length; j++)
                             {
                                 newProductDetailVM.ProductID = responseData.ID;
@@ -260,10 +261,10 @@ namespace Web.Api
                     productVM.PromotionPrice = dynamicObj["PromotionPrice"];
                     productVM.Quantity = 0;
                     productVM.Warranty = dynamicObj["Warranty"];
-                    productVM.Description = dynamicObj["Description"];
+                    productVM.Description = dynamicObj["Content"];
                     productVM.Content = dynamicObj["Content"];
                     productVM.ViewCount = dynamicObj["ViewCount"];
-                    productVM.Tags = dynamicObj["Tags"];
+                    productVM.Tags = "";
                     productVM.UpdatedDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     productVM.UpdatedBy = dynamicObj["UpdatedBy"];
                     productVM.MetaKeyword = "";
@@ -290,6 +291,7 @@ namespace Web.Api
                                 //Call method add product category in folder extensions
                                 newProductDetailVM.ColorID = int.Parse(listColor[i].ToString());
                                 newProductDetailVM.Quantity = int.Parse(listQuantity[i].ToString());
+                                newProductDetailVM.Inventory = newProductDetailVM.Quantity;
                                 for (int j = 0; j < listSize.Length; j++)
                                 {
                                     newProductDetailVM.ProductID = productVM.ID;

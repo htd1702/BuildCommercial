@@ -45,5 +45,6 @@ namespace Data
         public DbSet<Color> Colors { get; set; }
         public DbSet<Error> Errors { get; set; }
         public DbSet<ContactDetail> ContactDetails { set; get; }
+        public DbSet<Banner> Banners { set; get; }
     }
 }

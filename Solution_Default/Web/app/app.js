@@ -11,7 +11,7 @@
             'default.orders',
             'default.colors',
             'default.sizes',
-            'default.orderDetails',
+            'default.banners',
             'default.common'
         ])
         .config(config)
@@ -84,22 +84,24 @@
                 Color: 'Color',
                 Size: 'Size',
                 Order: 'Order',
+                Banner: 'Banner',
                 OrderDetail: 'Order Detail',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'
             })
             .translations('vi', {
-                Product: 'Sản phẩm',
-                ProductDetail: 'Chi tiết sản phẩm',
-                Category: 'Danh Mục',
-                Post: 'Tin',
-                PostCategory: 'Loại tin',
+                Product: 'Quảng lý sản phẩm',
+                ProductDetail: 'Quảng lý chi tiết sản phẩm',
+                Category: 'Quảng lý danh Mục',
+                Post: 'Quảng lý tin tức',
+                PostCategory: 'Quảng lý loại tin',
                 Statistical: 'Thống kê',
-                Color: 'Màu sắc',
-                Size: 'Kích thước',
-                Order: 'Hóa đơn',
-                OrderDetail: 'Chi tiết hóa đơn',
+                Color: 'Quảng lý màu sắc',
+                Size: 'Quảng lý kích thước',
+                Order: 'Quảng lý hóa đơn',
+                Banner: 'Quảng lý quảng cáo',
+                OrderDetail: 'Quảng lý chi tiết hóa đơn',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'

@@ -1,16 +1,14 @@
-﻿<div class="p-t-55">
-    <h4 class="mtext-112 cl2 p-b-33">
-        Categories
-    </h4>
+﻿<h4 class="mtext-112 cl2 p-b-33">
+    Categories
+</h4>
 
-    <ul>
-        @foreach (var c in Model)
-        {
-            <li class="bor18">
-                <a href="/Post/GetPostByPostCategory/@c.ID" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-                    @c.Name
-                </a>
-            </li>
-        }
-    </ul>
-</div>
+<ul>
+    @foreach (var c in Model)
+    {
+        <li class="bor18">
+            <a href="/post-category/@c.ID" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                @c.Name
+            </a>
+        </li>
+    }
+</ul>

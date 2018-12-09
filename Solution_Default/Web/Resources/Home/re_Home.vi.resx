@@ -118,22 +118,82 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value />
+    <value>Thông tin</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tất cả</value>
   </data>
   <data name="Blog" xml:space="preserve">
-    <value>Tin</value>
+    <value>Tin tức</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Loại sản phẩm</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Màu sắc</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Liên lạc</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Mặc định</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Giảm giá</value>
+  </data>
+  <data name="Featured" xml:space="preserve">
+    <value>Sản phẩm Hot</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Lọc</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>Liên lạc</value>
+  </data>
+  <data name="HighToLow" xml:space="preserve">
+    <value>Giá: Cao đến thấp</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="LowToHigh" xml:space="preserve">
+    <value>Giá: Thấp đến cao</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>Mới</value>
   </data>
+  <data name="NewsLetter" xml:space="preserve">
+    <value>Gửi phản hồi</value>
+  </data>
+  <data name="Parents" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Giá</value>
+  </data>
+  <data name="ProductOverview" xml:space="preserve">
+    <value>Giới thiệu sản phẩm</value>
+  </data>
+  <data name="QuickView" xml:space="preserve">
+    <value>Xem Ngay</value>
+  </data>
   <data name="Sale" xml:space="preserve">
-    <value>Sale</value>
+    <value>Giảm giá</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm</value>
   </data>
   <data name="Shop" xml:space="preserve">
-    <value>Shop</value>
+    <value>Sản phẩm</value>
     <comment>head menu</comment>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sắp xếp</value>
+  </data>
+  <data name="StoreOverview" xml:space="preserve">
+    <value>Tổng quan về cửa hàng</value>
+  </data>
+  <data name="TopRate" xml:space="preserve">
+    <value>Sản phẩm yêu thích</value>
   </data>
 </root>

@@ -12,4 +12,3 @@ $(window).scroll(function () {
     //if (positionCurrent >= 400)
     //    $(".section-main").addClass("effectLeft");
 });
-

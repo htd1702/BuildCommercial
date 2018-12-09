@@ -19,6 +19,10 @@ namespace Data.Repositories
         List<string> ListNameCategory(string keyword);
 
         DataTable GetCategoryByParent();
+
+        IEnumerable<ProductCategory> GetCategoryShowHome(int take);
+
+        int CheckExistsProductCategory(int id);
     }
 
     public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
@@ -57,6 +61,20 @@ namespace Data.Repositories
         public DataTable GetCategoryByParent()
         {
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetCategoryByParent").Tables[0];
+        }
+
+        public IEnumerable<ProductCategory> GetCategoryShowHome(int take)
+        {
+            return this.DbContext.ProductCategorys.Where(x => x.Status == true && x.ParentID == 0 && x.HomeFlag == true).OrderByDescending(x => x.CreatedDate).Take(take).ToList();
+        }
+
+        public int CheckExistsProductCategory(int id)
+        {
+            var parent = this.DbContext.ProductCategorys.Where(p => p.ParentID == id).ToList();
+            if (parent.Count > 0)
+                return 1;
+            else
+                return 0;
         }
     }
 }

@@ -70,12 +70,19 @@
                             <input type="hidden" name="categoryID" ng-model="product.CategoryID" />
                         </div>
                         <div class="form-group col-md-4">
+                            <label for="promotionPrice">
+                                PromotionPrice
+                                <span class="text-danger" ng-show="frmEditproduct.promotionPrice.$invalid"> *</span>
+                            </label>
+                            <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="100" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
+                        </div>
+                        <!--<div class="form-group col-md-4">
                             <label for="tags">
                                 Tags
                                 <span ng-show="frmEditproduct.tags.$invalid" class="text-danger"> *</span>
                             </label>
                             <input type="text" class="text-control" ng-model="product.Tags" name="tags" placeholder="Nhập nhãn hiệu...">
-                        </div>
+                        </div>-->
                         <!--<div class="form-group col-md-6">
                             <label for="quantity">
                                 Quantity
@@ -97,28 +104,25 @@
                             </label>
                             <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Scale" ng-change="changeScale()" name="scale">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="priceVN">
                                 Price VN
                             </label>
                             <input type="number" placeholder="Nhập giá..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="priceFr">
                                 Price Frenk
                             </label>
                             <input type="number" placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="promotionPrice">
-                                PromotionPrice
-                                <span class="text-danger" ng-show="frmEditproduct.promotionPrice.$invalid"> *</span>
-                            </label>
-                            <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="100" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
-                        </div>
+
                         <div class="form-group col-md-6">
-                            <label for="warranty">Warranty</label>
-                            <input type="number" class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month">
+                            <label for="warranty">
+                                Warranty
+                                <span class="text-danger" ng-show="frmAddproduct.warranty.$invalid"> *</span>
+                            </label>
+                            <input type="number" class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month" required>
                         </div>
                         <!--<div class="form-group col-md-6">
                             <label for="metaKeyword">
@@ -153,14 +157,13 @@
                         <div class="form-group col-md-6">
                             <label for="imageMore">
                                 MoreImages
-                                <span ng-show="frmEditproduct.imageMore.$invalid" class="text-danger"> *</span>
                             </label>
                             <ul class="nav">
                                 <li class="nav-item" ng-repeat="img in moreImages">
                                     <img ng-src="{{img}}" class="img-content" style="width:4.5em" />
                                 </li>
                             </ul>
-                            <input type="text" class="text-control" ng-model="product.ImageMore" name="imageMore" style="display:none" required>
+                            <input type="text" class="text-control" ng-model="product.ImageMore" name="imageMore" style="display:none">
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImageMore()">Upload</button>
                             </div>

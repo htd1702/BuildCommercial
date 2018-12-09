@@ -15,6 +15,13 @@
     opacity: 0;
 }
 
+.col-xs-6 {
+    width: 50% !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+/*effect*/
 @keyframes contentFromTop {
     0% {
         transform: translateY(100%);
@@ -124,7 +131,7 @@ a.filter-link.stext-106.trans-04 {
     cursor: pointer;
 }
 
-.main-menu > li:hover {
+.child-menu > li:hover {
     cursor: pointer;
 }
 
@@ -132,6 +139,131 @@ a.filter-link.stext-106.trans-04 {
     color: #6c7ae0;
 }
 
+.child-menu {
+    list-style-type: none;
+    margin: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+}
+
+    .child-menu > li {
+        display: block;
+        position: relative;
+        padding: 20px 10px 20px 0px;
+        margin: 0px 4px 0px 14px;
+    }
+
+        .child-menu > li > a {
+            font-family: Roboto,Helvetica,Arial,sans-serif;
+            font-size: 20px;
+            padding: 5px 0px;
+            transition: all 0.4s;
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+        }
+
+        .child-menu > li:hover > a {
+            text-decoration: none;
+            color: #6c7ae0;
+        }
+
+        .child-menu > li > .sub-menu {
+            top: 100%;
+            left: 0;
+        }
+
+        .child-menu > li:hover > .sub-menu {
+            visibility: visible;
+            opacity: 1;
+            z-index: 300;
+        }
+
+        .child-menu > li.active-menu > a {
+            color: #6c7ae0;
+        }
+
+@media (max-width: 1300px) {
+    .child-menu {
+        display: contents;
+    }
+
+    .sub-menu {
+        min-width: 75px;
+    }
+
+    .bg-img-sale {
+        background-size: cover !important;
+        height: auto !important;
+    }
+}
+/*sub menu category*/
+.sub-menu-vertical {
+    position: relative;
+}
+
+    .sub-menu-vertical ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        /* sub menu */
+        .sub-menu-vertical ul li a {
+            display: block;
+            /*background: #ebebeb;*/
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            -webkit-transition: 0.2s linear;
+            -moz-transition: 0.2s linear;
+            -ms-transition: 0.2s linear;
+            -o-transition: 0.2s linear;
+            transition: 0.2s linear;
+        }
+
+            .sub-menu-vertical ul li a:hover {
+                background: #f8f8f8;
+                color: #515151;
+            }
+
+            .sub-menu-vertical ul li a .fa {
+                width: 16px;
+                text-align: center;
+                margin-right: 5px;
+                float: right;
+            }
+
+        .sub-menu-vertical ul ul {
+            /*background-color: #ebebeb;*/
+        }
+
+        .sub-menu-vertical ul li ul li a {
+            /*background: #f8f8f8;*/
+            border-left: 4px solid transparent;
+            padding: 10px 20px;
+        }
+
+            .sub-menu-vertical ul li ul li a:hover {
+                background: #ebebeb;
+                border-left: 4px solid #3498db;
+            }
+
+.sample-show-hide {
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+    .sample-show-hide.ng-hide {
+        opacity: 0;
+    }
 /* Absolute Center Spinner */
 .loading {
     position: fixed;
@@ -185,8 +317,184 @@ a.filter-link.stext-106.trans-04 {
             box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
         }
 
-/* Animation */
+/*icon image*/
+.sale {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*margin-left: 225px;*/
+    display: inline-block;
+    background: orange;
+    color: white;
+    height: 2.5rem;
+    width: 2.7rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2.5rem;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    -webkit-animation: beat 1s ease infinite alternate;
+    animation: beat 1s ease infinite alternate;
+}
 
+    .sale:before, .sale:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .sale:after {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+
+
+.sale-main {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*margin-left: 256px;*/
+    display: inline-block;
+    background: orange;
+    color: white;
+    height: 2.5rem;
+    width: 2.7rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2.5rem;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    -webkit-animation: beat 1s ease infinite alternate;
+    animation: beat 1s ease infinite alternate;
+}
+
+    .sale-main:before, .sale-main:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .sale-main:after {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+
+.hot-product-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*margin-left: 256px;*/
+    display: inline-block;
+    background: #e94541;
+    color: white;
+    height: 2.5rem;
+    width: 2.7rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2.5rem;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    -webkit-animation: beat 1s ease infinite alternate;
+    animation: beat 1s ease infinite alternate;
+}
+
+    .hot-product-icon:before, .hot-product-icon:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .hot-product-icon:after {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+.new-product-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    /*margin-left: 256px;*/
+    display: inline-block;
+    background: #20c2d6;
+    color: white;
+    height: 2.5rem;
+    width: 2.7rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2.5rem;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    -webkit-animation: beat 1s ease infinite alternate;
+    animation: beat 1s ease infinite alternate;
+}
+
+    .new-product-icon:before, .new-product-icon:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .new-product-icon:after {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+@-webkit-keyframes beat {
+    from {
+        -webkit-transform: rotate(-20deg) scale(1);
+        transform: rotate(-20deg) scale(1);
+    }
+
+    to {
+        -webkit-transform: rotate(-20deg) scale(1.1);
+        transform: rotate(-20deg) scale(1.1);
+    }
+}
+
+@keyframes beat {
+    from {
+        -webkit-transform: rotate(-20deg) scale(1);
+        transform: rotate(-20deg) scale(1);
+    }
+
+    to {
+        -webkit-transform: rotate(-20deg) scale(1.1);
+        transform: rotate(-20deg) scale(1.1);
+    }
+}
+
+
+/* Animation */
 @-webkit-keyframes spinner {
     0% {
         -webkit-transform: rotate(0deg);

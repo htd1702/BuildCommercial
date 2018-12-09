@@ -3,17 +3,10 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <!-- Slider -->
-@Html.Partial("_sectionSlider")
+@{Html.RenderAction("_sectionSlider", "Client");}
 <!-- Banner -->
 @{Html.RenderAction("_viewParent", "ProductCategory");}
-<!--Main-->
-<section class="section-main" id="section-main">
-    <div class="container">
-        <div class="p-b-10">
-            <h3 class="ltext-103 cl5">
-                Product Overview
-            </h3>
-        </div>
-        @{Html.RenderAction("_viewProduct", "Client");}
-    </div>
-</section>
+<!--  Main  -->
+@{Html.RenderAction("_viewProduct", "Client");}
+<!--  Hot  -->
+@{Html.RenderAction("ProductOverView", "Product");}

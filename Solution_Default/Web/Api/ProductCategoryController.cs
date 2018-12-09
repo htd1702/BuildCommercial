@@ -215,14 +215,19 @@ namespace Web.Api
                     }
                     else
                     {
-                        //Delete
-                        var reponse = _productCategoryService.Delete(id);
-                        //Save change
-                        _productCategoryService.Save();
-                        //Mapping data to dataView
-                        var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(reponse);
-                        //Check request
-                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                        if (_productCategoryService.CheckExistsProductCategory(id) != 1)
+                        {
+                            //Delete
+                            var reponse = _productCategoryService.Delete(id);
+                            //Save change
+                            _productCategoryService.Save();
+                            //Mapping data to dataView
+                            var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(reponse);
+                            //Check request
+                            response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                        }
+                        else
+                            response = request.CreateResponse(HttpStatusCode.BadRequest);
                     }
                     return response;
                 });

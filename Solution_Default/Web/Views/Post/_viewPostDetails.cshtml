@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Web.Resources.Home
+@using Web.Resources.Product
+@{
     ViewBag.Title = "PostDetails";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
@@ -12,12 +14,12 @@
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
             <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
+                @re_Home.Home
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <a href="/tin-tuc" class="stext-109 cl8 hov-cl1 trans-04">
-                Blog
+            <a href="/news" class="stext-109 cl8 hov-cl1 trans-04">
+                @re_Home.Blog
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -28,7 +30,7 @@
     </div>
 
     <!-- Content page -->
-    <section class="bg0 p-t-52 p-b-20">
+    <section class="bg0 p-t-52 p-b-20" ng-controller="PostController">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-9 p-b-80">
@@ -62,11 +64,6 @@
 
                                 <span>
                                     StreetStyle, Fashion, Couple
-                                    <span class="cl12 m-l-4 m-r-6">|</span>
-                                </span>
-
-                                <span>
-                                    8 Comments
                                 </span>
                             </span>
 
@@ -77,22 +74,6 @@
                             <p class="stext-117 cl6 p-b-26">
                                 @Html.Raw(Model.Content)
                             </p>
-                        </div>
-
-                        <div class="flex-w flex-t p-t-16">
-                            <span class="size-216 stext-116 cl8 p-t-4">
-                                Tags
-                            </span>
-
-                            <div class="flex-w size-217">
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Streetstyle
-                                </a>
-
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Crafts
-                                </a>
-                            </div>
                         </div>
 
                         <!--  -->
@@ -111,16 +92,16 @@
                                 </div>
 
                                 @*<div class="bor19 size-218 m-b-20">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
-                                </div>
+                                        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
+                                    </div>
 
-                                <div class="bor19 size-218 m-b-20">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
-                                </div>
+                                    <div class="bor19 size-218 m-b-20">
+                                        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
+                                    </div>
 
-                                <div class="bor19 size-218 m-b-30">
-                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
-                                </div>*@
+                                    <div class="bor19 size-218 m-b-30">
+                                        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
+                                    </div>*@
 
                                 <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
                                     Post Comment
@@ -132,202 +113,55 @@
 
                 <div class="col-md-4 col-lg-3 p-b-80">
                     <div class="side-menu">
-                        <div class="bor17 of-hidden pos-relative">
-                            <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search" placeholder="Search">
 
-                            <button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
-                                <i class="zmdi zmdi-search"></i>
-                            </button>
+                        <div>
+                            @Html.Action("_viewPostCategory", "PostCategory")
                         </div>
-
-                        @Html.Action("_viewPostCategory", "PostCategory")
 
                         <div class="p-t-65">
                             <h4 class="mtext-112 cl2 p-b-33">
-                                Featured Products
+                                @re_Home.Featured
                             </h4>
 
                             <ul>
-                                <li class="flex-w flex-t p-b-30">
-                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="~/img/client/product-min-01.jpg" alt="PRODUCT">
+                                <li class="flex-w flex-t p-b-30" ng-repeat="p in hotProductposts">
+                                    <a href="/product-details/{{p.ID}}" class="wrao-pic-w hov-ovelay1 m-r-20" style="width:80px;">
+                                        <img ng-src="{{p.Image}}" alt="PRODUCT" style="max-width:80px;">
                                     </a>
+                                    @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                    {
+                                        <div class="size-215 flex-col-t p-t-8">
+                                            <a href="/product-details/{{p.ID}}" class="stext-116 cl8 hov-cl1 trans-04">
+                                                {{p.NameVN}}
+                                            </a>
 
-                                    <div class="size-215 flex-col-t p-t-8">
-                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                            White Shirt With Pleat Detail Back
-                                        </a>
+                                            <span class="stext-116 cl6 p-t-20" ng-show="p.PromotionPrice > 0">
+                                                <span style="text-decoration:line-through">{{p.PriceVN | currency:"":0}} vnđ</span> - {{(p.PriceVN - (p.PriceVN * p.PromotionPrice)/100) | currency:"":0}} vnđ
+                                            </span>
 
-                                        <span class="stext-116 cl6 p-t-20">
-                                            $19.00
-                                        </span>
-                                    </div>
-                                </li>
+                                            <span class="stext-116 cl6 p-t-20" ng-show="p.PromotionPrice < 1">
+                                                {{p.PriceVN | currency:"":0}} vnđ
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="size-215 flex-col-t p-t-8">
+                                            <a href="/product-details/{{p.ID}}" class="stext-116 cl8 hov-cl1 trans-04">
+                                                {{p.Name}}
+                                            </a>
 
-                                <li class="flex-w flex-t p-b-30">
-                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="~/img/client/product-min-02.jpg" alt="PRODUCT">
-                                    </a>
+                                            <span class="stext-116 cl6 p-t-20" ng-show="p.PromotionPrice > 0">
+                                                <span style="text-decoration:line-through">{{p.Price | currency}}</span> - {{(p.Price - (p.Price * p.PromotionPrice)/100) | currency}}
+                                            </span>
 
-                                    <div class="size-215 flex-col-t p-t-8">
-                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                            Converse All Star Hi Black Canvas
-                                        </a>
-
-                                        <span class="stext-116 cl6 p-t-20">
-                                            $39.00
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <li class="flex-w flex-t p-b-30">
-                                    <a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-                                        <img src="~/img/client/product-min-03.jpg" alt="PRODUCT">
-                                    </a>
-
-                                    <div class="size-215 flex-col-t p-t-8">
-                                        <a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-                                            Nixon Porter Leather Watch In Tan
-                                        </a>
-
-                                        <span class="stext-116 cl6 p-t-20">
-                                            $17.00
-                                        </span>
-                                    </div>
+                                            <span class="stext-116 cl6 p-t-20" ng-show="p.PromotionPrice < 1">
+                                                {{p.Price | currency}}
+                                            </span>
+                                        </div>
+                                    }
                                 </li>
                             </ul>
-                        </div>
-
-                        <div class="p-t-55">
-                            <h4 class="mtext-112 cl2 p-b-20">
-                                Archive
-                            </h4>
-
-                            <ul>
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            July 2018
-                                        </span>
-
-                                        <span>
-                                            (9)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            June 2018
-                                        </span>
-
-                                        <span>
-                                            (39)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            May 2018
-                                        </span>
-
-                                        <span>
-                                            (29)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            April  2018
-                                        </span>
-
-                                        <span>
-                                            (35)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            March 2018
-                                        </span>
-
-                                        <span>
-                                            (22)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            February 2018
-                                        </span>
-
-                                        <span>
-                                            (32)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            January 2018
-                                        </span>
-
-                                        <span>
-                                            (21)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-b-7">
-                                    <a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-                                        <span>
-                                            December 2017
-                                        </span>
-
-                                        <span>
-                                            (26)
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="p-t-50">
-                            <h4 class="mtext-112 cl2 p-b-27">
-                                Tags
-                            </h4>
-
-                            <div class="flex-w m-r--5">
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Fashion
-                                </a>
-
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Lifestyle
-                                </a>
-
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Denim
-                                </a>
-
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Streetstyle
-                                </a>
-
-                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Crafts
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>

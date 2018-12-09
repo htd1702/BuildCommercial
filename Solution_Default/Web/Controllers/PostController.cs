@@ -1,6 +1,7 @@
 ﻿using Data;
 using Service;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -41,6 +42,24 @@ namespace Web.Controllers
         {
             var model = db.Posts.Find(id);
             return View(model);
+        }
+
+        [HttpGet]
+        public JsonResult ListNamePost(string term)
+        {
+            var model = _postService.ListNamePost(term);
+            return Json(new
+            {
+                data = model,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult SearchPost(string keyword)
+        {
+            int id = _postService.ListPostIDByName(keyword);
+            return Json(id, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

@@ -70,11 +70,38 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blog.
         /// </summary>
         public static string Blog {
             get {
                 return ResourceManager.GetString("Blog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CATEGORIES.
+        /// </summary>
+        public static string Categories {
+            get {
+                return ResourceManager.GetString("Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -88,6 +115,78 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string Default {
+            get {
+                return ResourceManager.GetString("Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount.
+        /// </summary>
+        public static string Discount {
+            get {
+                return ResourceManager.GetString("Discount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Featured.
+        /// </summary>
+        public static string Featured {
+            get {
+                return ResourceManager.GetString("Featured", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        public static string Filter {
+            get {
+                return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET IN TOUCH.
+        /// </summary>
+        public static string GetInTouch {
+            get {
+                return ResourceManager.GetString("GetInTouch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price: High to Low.
+        /// </summary>
+        public static string HighToLow {
+            get {
+                return ResourceManager.GetString("HighToLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price: Low to High.
+        /// </summary>
+        public static string LowToHigh {
+            get {
+                return ResourceManager.GetString("LowToHigh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string New {
@@ -97,7 +196,34 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PRODUCT OVERVIEW.
+        ///   Looks up a localized string similar to NEWSLETTER.
+        /// </summary>
+        public static string NewsLetter {
+            get {
+                return ResourceManager.GetString("NewsLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PARENTS.
+        /// </summary>
+        public static string Parents {
+            get {
+                return ResourceManager.GetString("Parents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Overview.
         /// </summary>
         public static string ProductOverview {
             get {
@@ -106,47 +232,11 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filter.
+        ///   Looks up a localized string similar to Quick View.
         /// </summary>
-        public static string ProductOverview1 {
+        public static string QuickView {
             get {
-                return ResourceManager.GetString("ProductOverview1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string ProductOverview2 {
-            get {
-                return ResourceManager.GetString("ProductOverview2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sort By.
-        /// </summary>
-        public static string ProductOverview3 {
-            get {
-                return ResourceManager.GetString("ProductOverview3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Price.
-        /// </summary>
-        public static string ProductOverview4 {
-            get {
-                return ResourceManager.GetString("ProductOverview4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Color.
-        /// </summary>
-        public static string ProductOverview5 {
-            get {
-                return ResourceManager.GetString("ProductOverview5", resourceCulture);
+                return ResourceManager.GetString("QuickView", resourceCulture);
             }
         }
         
@@ -160,6 +250,15 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shop.
         /// </summary>
         public static string Shop {
@@ -169,56 +268,29 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PARENTS.
+        ///   Looks up a localized string similar to Sort By.
         /// </summary>
-        public static string String1 {
+        public static string SortBy {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("SortBy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CATEGORIES.
+        ///   Looks up a localized string similar to Store Overview.
         /// </summary>
-        public static string String2 {
+        public static string StoreOverview {
             get {
-                return ResourceManager.GetString("String2", resourceCulture);
+                return ResourceManager.GetString("StoreOverview", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GET IN TOUCH.
+        ///   Looks up a localized string similar to Top Rate.
         /// </summary>
-        public static string String3 {
+        public static string TopRate {
             get {
-                return ResourceManager.GetString("String3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NEWSLETTER.
-        /// </summary>
-        public static string String4 {
-            get {
-                return ResourceManager.GetString("String4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copyright © 2018 All rights reserved.
-        /// </summary>
-        public static string String5 {
-            get {
-                return ResourceManager.GetString("String5", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tags.
-        /// </summary>
-        public static string String6 {
-            get {
-                return ResourceManager.GetString("String6", resourceCulture);
+                return ResourceManager.GetString("TopRate", resourceCulture);
             }
         }
     }

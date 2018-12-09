@@ -10,22 +10,71 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ViewPostDetail",
+                url: "post-detail/{id}",
+                defaults: new { controller = "Post", action = "_viewPostDetails", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "GetPostByPostCategory",
+                url: "post-category/{id}",
+                defaults: new { controller = "Post", action = "GetPostByPostCategory", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+           );
+
+            routes.MapRoute(
+                name: "ViewCart",
+                url: "view-cart",
+                defaults: new { controller = "Cart", action = "ViewCart", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+           );
+
+            routes.MapRoute(
+              name: "CheckOut",
+              url: "check-out",
+              defaults: new { controller = "Cart", action = "CheckOut", id = UrlParameter.Optional },
+              namespaces: new string[] { "Web.Controllers" }
+           );
+
+            routes.MapRoute(
+               name: "ProductDetails",
+               url: "product-details/{id}",
+               defaults: new { controller = "Product", action = "Details", id = UrlParameter.Optional },
+               namespaces: new string[] { "Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "SaleProduct",
+                url: "sale-product",
+                defaults: new { controller = "Product", action = "SaleProduct", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+             );
+
+            routes.MapRoute(
+                name: "NewProduct",
+                url: "new-product",
+                defaults: new { controller = "Product", action = "NewProduct", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Contact",
-                url: "lien-he",
+                url: "contact",
                 defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "About",
-                url: "gioi-thieu",
+                url: "about",
                 defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "Web.Controllers" }
             );
 
             routes.MapRoute(
                name: "Blog",
-               url: "tin-tuc",
+               url: "news",
                defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional },
                namespaces: new string[] { "Web.Controllers" }
            );

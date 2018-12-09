@@ -8,6 +8,7 @@
     productEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService", "authData"];
 
     function productEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
+        //create array
         $scope.moreImages = [];
         $scope.listColor = [];
         $scope.listSize = [];
@@ -18,16 +19,16 @@
         $scope.ChooseImageMore = ChooseImageMore;
         $scope.changePrice = changePrice;
         $scope.changeScale = changeScale;
-
         //set value model
         $scope.product = {
             UpdatedDate: new Date(),
             Status: true
-        }
+        };
+        //edit ckeditor
         $scope.editorOptions = {
             lang: 'en',
             height: '120px'
-        }
+        };
         //binding title seo by name
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSEOTitle($scope.product.Name);
@@ -125,6 +126,7 @@
         LoadListColor();
         LoadListSize();
         LoadCategory();
+        //when all function run
         $(document).ready(function () {
             //Method get id product
             function loadProductDetail() {

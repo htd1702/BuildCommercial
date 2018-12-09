@@ -23,7 +23,13 @@
         }
         //method load parentId
         function LoadParentCategory() {
-            apiService.get("/api/productcategory/getallparents", null, function (result) {
+            var config = {
+                //params truyen vao api
+                params: {
+                    type: 1
+                }
+            }
+            apiService.get("/api/productcategory/getallparentbytype", config, function (result) {
                 $scope.parentCategories = result.data;
             }, function () {
                 notificationService.displayError("Load thất bại!");
@@ -33,6 +39,8 @@
         function AddProductCategory() {
             if ($scope.productCategory.ParentID == undefined)
                 $scope.productCategory.ParentID = 0;
+            if ($scope.productCategory.DisplayOrder == undefined)
+                $scope.productCategory.DisplayOrder = 0;
             $scope.productCategory.CreatedBy = authData.authenticationData.userName;
             $scope.productCategory.UpdatedBy = $scope.productCategory.CreatedBy;
             $scope.productCategory.UpdatedDate = $scope.productCategory.CreatedDate;

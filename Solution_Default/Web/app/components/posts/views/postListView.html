@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="input-group">
-                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
@@ -60,7 +60,7 @@
                     </tr>
                     <tr>
                         <td colspan="12">
-                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getPost(page)"></pager-directive>
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getPosts(page)"></pager-directive>
                             <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
                         </td>
                     </tr>

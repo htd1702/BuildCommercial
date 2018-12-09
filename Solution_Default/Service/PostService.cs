@@ -21,6 +21,8 @@ namespace Service
 
         List<string> ListNamePost(string keyword);
 
+        int ListPostIDByName(string keyword);
+
         void Save();
     }
 
@@ -66,6 +68,11 @@ namespace Service
         public List<string> ListNamePost(string keyword)
         {
             return _postRepository.ListNamePost(keyword);
+        }
+
+        public int ListPostIDByName(string keyword)
+        {
+            return _postRepository.GetIdByName(keyword);
         }
 
         public void Save()

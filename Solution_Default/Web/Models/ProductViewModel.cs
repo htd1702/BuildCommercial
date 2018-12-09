@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Web.Models
@@ -77,5 +78,7 @@ namespace Web.Models
         public bool Status { set; get; }
 
         public virtual ProductCategoryViewModel ProductCategories { set; get; }
+
+        public virtual IEnumerable<ProductTagViewModel> ProductTags { set; get; }
     }
 }

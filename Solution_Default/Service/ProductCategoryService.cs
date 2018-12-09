@@ -30,6 +30,10 @@ namespace Service
 
         DataTable GetCategoryByParent();
 
+        IEnumerable<ProductCategory> GetCategoryShowHome(int take);
+
+        int CheckExistsProductCategory(int id);
+
         void Save();
     }
 
@@ -47,6 +51,11 @@ namespace Service
         public ProductCategory Add(ProductCategory ProductCategory)
         {
             return _productCategoryRepository.Add(ProductCategory);
+        }
+
+        public int CheckExistsProductCategory(int id)
+        {
+            return _productCategoryRepository.CheckExistsProductCategory(id);
         }
 
         public ProductCategory Delete(int id)
@@ -90,6 +99,11 @@ namespace Service
         public IEnumerable<ProductCategory> GetCategoryByTake(int take)
         {
             return _productCategoryRepository.GetCategoryByTake(take);
+        }
+
+        public IEnumerable<ProductCategory> GetCategoryShowHome(int take)
+        {
+            return _productCategoryRepository.GetCategoryShowHome(take);
         }
 
         public List<string> ListNameCategory(string keyword)

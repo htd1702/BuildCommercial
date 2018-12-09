@@ -14,6 +14,8 @@ namespace Web.Models
 
         public int Quantity { set; get; }
 
+        public int Inventory { set; get; }
+
         public string MoreImages { set; get; }
 
         public int Type { set; get; }

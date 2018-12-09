@@ -6,7 +6,40 @@
     .messageStatusRed {
         color: red;
     }
+
+    #content-model {
+        width: 1300px;
+        overflow-x: no-display;
+    }
+
+    .modal-lg {
+        margin-left: 2.2rem;
+        margin-top: 6rem;
+    }
+
+    @media (max-width: 1300px) {
+        #content-model {
+            width: 1300px;
+        }
+
+        .modal-lg {
+            overflow-x: scroll;
+            margin: 1.5rem;
+        }
+    }
 </style>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card">
     <div class="card-header card-header-primary">
         <h4 class="card-title ">List Order</h4>
@@ -47,7 +80,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="12"><span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span></td>
+                        <td colspan="12">
+                            <pager-directive class="pull-left" page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getOrders(page)"></pager-directive>
+                            <span class="pull-right" style="font-size:15px;">Trang: {{page + 1}} - Tìm thấy: {{totalCount}}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -55,9 +91,9 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade model-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width:1310px !important">
-        <div class="modal-content">
+<div class="modal fade bd-example-modal-lg model-order" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="content-model">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Order Detail</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -68,11 +104,12 @@
                 <table class="table">
                     <thead class=" text-primary">
                         <tr>
-                            <th>Customer Name</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Product</th>
                             <th>Color</th>
                             <th>Size</th>
                             <th>Quantity</th>
@@ -88,6 +125,7 @@
                             <td>{{odetails.Email}}</td>
                             <td>{{odetails.Phone}}</td>
                             <td>{{odetails.Address}}</td>
+                            <td><img ng-src="{{odetails.Image}}" style="width:60px;height:75px;" /></td>
                             <td>{{odetails.ProductName}}</td>
                             <td>{{odetails.ColorName}}</td>
                             <td>{{odetails.SizeName}}</td>
@@ -103,4 +141,4 @@
         </div>
     </div>
 </div>
-<!-- END MAIN CONTENT-->
+

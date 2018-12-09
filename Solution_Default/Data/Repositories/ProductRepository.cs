@@ -13,7 +13,7 @@ namespace Data.Repositories
     {
         string GetCodeIndexProduct();
 
-        DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor, string parentID);
+        DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor);
 
         IEnumerable<Product> ListProductByCategory(int id);
 
@@ -28,6 +28,12 @@ namespace Data.Repositories
         IEnumerable<Product> ListProductDiscount();
 
         IEnumerable<Product> ListNewProduct();
+
+        DataTable ListStoreOverview(int type);
+
+        IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
+
+        int GetViewProduct(int id);
     }
 
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
@@ -53,7 +59,7 @@ namespace Data.Repositories
             return index = pram[0].Value.ToString();
         }
 
-        public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor, string parentID)
+        public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor)
         {
             SqlParameter[] pram = new SqlParameter[10];
             pram[0] = new SqlParameter("@Categories", SqlDbType.VarChar, 10);
@@ -64,8 +70,6 @@ namespace Data.Repositories
             pram[2].Value = sortPrice;
             pram[3] = new SqlParameter("@SortColor", SqlDbType.VarChar, 10);
             pram[3].Value = sortColor;
-            pram[4] = new SqlParameter("@ParentID", SqlDbType.VarChar, 10);
-            pram[4].Value = parentID;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
         }
 
@@ -110,6 +114,32 @@ namespace Data.Repositories
             pram[2] = new SqlParameter("@SizeID", SqlDbType.Int, 4);
             pram[2].Value = sizeID;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListCartProduct", pram).Tables[0];
+        }
+
+        public DataTable ListStoreOverview(int type)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@Type", SqlDbType.Int, 4);
+            pram[0].Value = type;
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.ListStoreOverview", pram).Tables[0];
+        }
+
+        public int GetViewProduct(int id)
+        {
+            var list = this.DbContext.Products.Find(id);
+            return int.Parse(list.ViewCount.ToString());
+        }
+
+        public IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow)
+        {
+            var query = from p in DbContext.Products
+                        join pt in DbContext.ProductTags
+                        on p.ID equals pt.ProductID
+                        where pt.TagID == tagId
+                        select p;
+            totalRow = query.Count();
+
+            return query.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
         }
     }
 }

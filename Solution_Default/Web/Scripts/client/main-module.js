@@ -11,6 +11,13 @@ var app = angular.module("app_client", ['ngRoute', 'ngAnimate']).directive('pagi
                 });
             }
         }
+    };
+}).filter('promotionPriceFilter', function () {
+    return function (input) {
+        if (input > 0)
+            return input + "%";
+        else
+            return "New";
     }
 });
 app.controller("ProductController", ProductController);
@@ -51,7 +58,7 @@ function ProductController($scope, $http) {
     var count = 0;
     $scope.products = [];
     $scope.parentCategory = [];
-    $scope.postCategories = [];
+    //$scope.postCategories = [];
     $scope.btnDetails = btnDetails;
     //load menu category
     function LoadSiteMenuCategory() {
@@ -66,14 +73,14 @@ function ProductController($scope, $http) {
         });
     }
     //function load list product
-    function LoadProduct(categories, sortBy, sortPrice, sortColor, parentID, pageSize) {
+    function LoadProduct(categories, sortBy, sortPrice, sortColor, pageSize) {
         if (pageSize == 0)
-            pageSize = 8;
+            pageSize = 12;
         return $http({
             method: 'POST',
             url: '/Product/LoadListProduct',
             async: false,
-            data: { categories: categories, sortBy: sortBy, sortPrice: sortPrice, sortColor: sortColor, parentID: parentID, pageSize: pageSize },
+            data: { categories: categories, sortBy: sortBy, sortPrice: sortPrice, sortColor: sortColor, pageSize: pageSize },
         }).then(function (response) {
             $scope.products = response.data;
             var len = response.data.length;
@@ -109,26 +116,25 @@ function ProductController($scope, $http) {
         });
     }
     //function Load list postcategories
-    function LoadPostCategories() {
-        $.ajax({
-            url: "/PostCategory/GetListPostCateogy",
-            type: "GET",
-            dataType: "JSON",
-            async: false,
-            success: function (data) {
-                $scope.postCategories = data;
-            }
-        });
-    }
+    //function LoadPostCategories() {
+    //    $.ajax({
+    //        url: "/PostCategory/GetListPostCateogy",
+    //        type: "GET",
+    //        dataType: "JSON",
+    //        async: false,
+    //        success: function (data) {
+    //            $scope.postCategories = data;
+    //        }
+    //    });
+    //}
     //function click change parent
-    $scope.btnParent = function (id, parentID) {
+    $scope.btnParent = function (id) {
         var pageSize = $("#txt_PageSize").val();
-        $("#txt_Parent").val(parentID);
         $("#txt_Category").val(id);
         pageSize = parseInt(pageSize);
-        if (pageSize < 8)
-            pageSize = 8;
-        LoadProduct(id, 0, 0, 0, parentID, pageSize);
+        if (pageSize < 12)
+            pageSize = 12;
+        LoadProduct(id, 0, 0, 0, pageSize);
     };
     //function find by sort
     $("#sort-by > li > a").click(function () {
@@ -143,7 +149,10 @@ function ProductController($scope, $http) {
     //function find by color
     $scope.btnColor = function (index, event, id) {
         $("#sort-color > li > a").removeClass("filter-link-active");
-        $(event.currentTarget).addClass("filter-link-active");
+        if (event == 0)
+            $("#default-color").addClass("filter-link-active");
+        else
+            $(event.currentTarget).addClass("filter-link-active");
     };
     //function click search detail product
     $("#btnSearch").click(function () {
@@ -151,6 +160,7 @@ function ProductController($scope, $http) {
         var sortBy = $("#sort-by > li").find(".filter-link-active").attr("data-row-1");
         var sortPrice = $("#sort-price > li").find(".filter-link-active").attr("data-row-2");
         var sortColor = $("#sort-color > li").find(".filter-link-active").attr("data-row-3");
+        $("#txt_PageSize").val(12);
         var pageSize = $("#txt_PageSize").val();
         pageSize = parseInt(pageSize);
         if (categories == undefined)
@@ -159,9 +169,9 @@ function ProductController($scope, $http) {
             sortBy = 0;
         if (sortPrice == undefined)
             sortPrice = 0;
-        if (sortColor == undefined)
+        if (sortColor == undefined || sortColor == 0)
             sortColor = 0;
-        LoadProduct(categories, sortBy, sortPrice, sortColor, 0, pageSize);
+        LoadProduct(categories, sortBy, sortPrice, sortColor, pageSize);
     });
     //function cick more product
     $("#btnLoadMoreProduct").click(function () {
@@ -169,10 +179,9 @@ function ProductController($scope, $http) {
         if (pageSize > 0)
             pageSize = parseInt(pageSize) + 8;
         else
-            pageSize = 8;
+            pageSize = 12;
         $("#txt_PageSize").val(pageSize);
         var category = $("#txt_Category").val();
-        var parent = $("#txt_Parent").val();
         var sortBy = $("#sort-by > li").find(".filter-link-active").attr("data-row-1");
         var sortPrice = $("#sort-price > li").find(".filter-link-active").attr("data-row-2");
         var sortColor = $("#sort-color > li").find(".filter-link-active").attr("data-row-3");
@@ -184,7 +193,7 @@ function ProductController($scope, $http) {
             sortPrice = 0;
         if (sortColor == undefined)
             sortColor = 0;
-        LoadProduct(category, sortBy, sortPrice, sortColor, parent, pageSize);
+        LoadProduct(category, sortBy, sortPrice, sortColor, pageSize);
     });
     //function search
     $("#txt_Keyword").blur(function () {
@@ -204,15 +213,14 @@ function ProductController($scope, $http) {
                 $("#txt_PageSize").val(len);
         });
     });
-
     //load menu cate
     LoadSiteMenuCategory();
     //Load list color
     LoadListColor();
     //load postcategories
-    LoadPostCategories();
+    //LoadPostCategories();
     //load list product
-    LoadProduct(0, 0, 0, 0, 0, 8);
+    LoadProduct(0, 0, 0, 0, 12);
 }
 
 //page shopping cart
@@ -266,7 +274,8 @@ function ShoppingCartController($scope, $http) {
 //Post
 PostController.$inject = ["$scope", "$http"];
 function PostController($scope, $http) {
-    $scope.posts = [];
+    $scope.hotProductposts = [];
+    $scope.newProductPosts = [];
     $scope.ListHotProduct = ListHotProduct;
     function ListHotProduct(top) {
         $.ajax({
@@ -276,11 +285,37 @@ function PostController($scope, $http) {
             async: false,
             data: { top: top },
             success: function (data) {
-                $scope.posts = data;
+                $scope.hotProductposts = data;
             }
         });
     }
+    function ListNewProduct(take) {
+        $.ajax({
+            url: "/Product/ListNewProductByTake",
+            type: "POST",
+            dataType: "JSON",
+            async: false,
+            data: { take: take },
+            success: function (data) {
+                $scope.newProductPosts = data;
+            }
+        });
+    }
+    $("#btnSearchPost").click(function () {
+        var keyword = $("#txt_KeywordPost").val();
+        $.ajax({
+            url: "/Post/SearchPost",
+            type: "POST",
+            dataType: "JSON",
+            async: false,
+            data: { keyword: keyword },
+            success: function (response) {
+                window.location = '/post-detail/' + response;
+            }
+        });
+    });
     ListHotProduct(4);
+    ListNewProduct(4);
 }
 
 //Product Sale
@@ -432,7 +467,20 @@ function NewProductController($scope, $http) {
         });
     }
     //function click change parent
-    $scope.btnParent = function (id, parentID) {
+    $scope.btnParent = function (id, parentID, index) {
+        if (parentID == undefined)
+            parentID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProductByCategory',
+            async: false,
+            data: { categories: id, parentID: parentID },
+        }).then(function (response) {
+            $scope.productNew = response.data;
+        });
+    };
+    //change child parent
+    $scope.btnChild = function (id, parentID) {
         if (parentID == undefined)
             parentID = 0;
         return $http({

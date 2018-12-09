@@ -9,7 +9,9 @@
             'default.posts',
             'default.post_categories',
             'default.orders',
-            'default.orderDetails',
+            'default.colors',
+            'default.sizes',
+            'default.banners',
             'default.common'
         ])
         .config(config)
@@ -76,6 +78,38 @@
                 Product: 'Product',
                 ProductDetail: 'Product Detail',
                 Category: 'Category',
+                Post: 'New',
+                PostCategory: 'New Category',
+                Statistical: 'Statistical',
+                Color: 'Color',
+                Size: 'Size',
+                Order: 'Order',
+                Banner: 'Banner',
+                OrderDetail: 'Order Detail',
+                en: 'English',
+                vi: 'Tiếng Việt',
+                fr: 'French'
+            })
+            .translations('vi', {
+                Product: 'Quảng lý sản phẩm',
+                ProductDetail: 'Quảng lý chi tiết sản phẩm',
+                Category: 'Quảng lý danh Mục',
+                Post: 'Quảng lý tin tức',
+                PostCategory: 'Quảng lý loại tin',
+                Statistical: 'Thống kê',
+                Color: 'Quảng lý màu sắc',
+                Size: 'Quảng lý kích thước',
+                Order: 'Quảng lý hóa đơn',
+                Banner: 'Quảng lý quảng cáo',
+                OrderDetail: 'Quảng lý chi tiết hóa đơn',
+                en: 'English',
+                vi: 'Tiếng Việt',
+                fr: 'French'
+            })
+            .translations('fr', {
+                Product: 'Product',
+                ProductDetail: 'Product Detail',
+                Category: 'Category',
                 Post: 'Post',
                 PostCategory: 'Post Category',
                 Statistical: 'Statistical',
@@ -84,21 +118,8 @@
                 Order: 'Order',
                 OrderDetail: 'Order Detail',
                 en: 'English',
-                vi: 'Tiếng Việt'
-            })
-            .translations('vi', {
-                Product: 'Sản phẩm',
-                ProductDetail: 'Chi tiết sản phẩm',
-                Category: 'Danh Mục',
-                Post: 'Tin',
-                PostCategory: 'Loại tin',
-                Statistical: 'Thống kê',
-                Color: 'Màu sắc',
-                Size: 'Kích thước',
-                Order: 'Hóa đơn',
-                OrderDetail: 'Chi tiết hóa đơn',
-                en: 'English',
-                vi: 'Tiếng Việt'
+                vi: 'Tiếng Việt',
+                fr: 'French'
             });
         $translateProvider.preferredLanguage('en');
     }

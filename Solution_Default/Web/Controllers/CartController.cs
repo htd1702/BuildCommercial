@@ -16,6 +16,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult CheckOut()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult Add(int Id, int colorID, int sizeID, string lang)
         {
@@ -45,17 +50,17 @@ namespace Web.Controllers
                 var response = new
                 {
                     Count = ShoppingCart.Cart.Count,
-                    Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
-                    Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
+                    Amount = ShoppingCart.Cart.Amount.ToString("#,##0.00"),
+                    Total = ShoppingCart.Cart.Total.ToString("#,##0.00"),
                 };
                 return Json(response);
             }
         }
 
         [HttpPost]
-        public JsonResult Remove(int Id)
+        public JsonResult Remove(int Id, int colorID, int sizeID)
         {
-            ShoppingCart.Cart.Remove(Id);
+            ShoppingCart.Cart.Remove(Id, colorID, sizeID);
             var response = new
             {
                 Count = ShoppingCart.Cart.Count,
@@ -66,9 +71,9 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(int Id, int newQty, string lang)
+        public JsonResult Update(int Id, int newQty, string lang, int colorID, int sizeID)
         {
-            ShoppingCart.Cart.Update(Id, newQty);
+            ShoppingCart.Cart.Update(Id, newQty, colorID, sizeID);
             if (lang == "vi")
             {
                 var response = new
@@ -94,8 +99,8 @@ namespace Web.Controllers
                 var response = new
                 {
                     Count = ShoppingCart.Cart.Count,
-                    Amount = ShoppingCart.Cart.Amount.ToString("#,###.#0"),
-                    Total = ShoppingCart.Cart.Total.ToString("#,###.#0"),
+                    Amount = ShoppingCart.Cart.Amount.ToString("#,##0.00"),
+                    Total = ShoppingCart.Cart.Total.ToString("#,##0.00"),
                 };
                 return Json(response);
             }

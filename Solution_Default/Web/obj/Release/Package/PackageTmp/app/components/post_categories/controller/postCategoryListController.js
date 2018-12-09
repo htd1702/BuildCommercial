@@ -17,7 +17,6 @@
         $scope.search = search;
         $scope.deletePostCategory = deletePostCategory;
         $scope.complateKeyWord = complateKeyWord;
-        $scope.filterSearch = filterSearch;
         $scope.deleteAllPostCategories = deleteAllPostCategories;
         //method get post cate
         function getPostCategories(page) {
@@ -28,7 +27,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 20
+                    pageSize: 10
                 }
             }
             //call apiService url,params,success,error
@@ -50,22 +49,8 @@
         //autocomplete
         function complateKeyWord(string) {
             if (string != "") {
-                $scope.hideSeach = false;
-                var output = [];
-                angular.forEach($scope.postCategories, function (value) {
-                    if (value.Name.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
-                        output.push(value.Name);
-                    }
-                });
-                $scope.filterName = output;
+                apiService.autocomplete("/api/postcategory/getname", "#txt_search");
             }
-            else
-                $scope.hideSeach = true;
-        }
-        //search keyword in model
-        function filterSearch(string) {
-            $scope.keyword = string;
-            $scope.hideSeach = true;
         }
         //method delete
         function deletePostCategory(id) {

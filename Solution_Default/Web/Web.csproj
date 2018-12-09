@@ -224,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\BannerController.cs" />
     <Compile Include="Api\OrderDetailController.cs" />
     <Compile Include="Api\OrderController.cs" />
     <Compile Include="Api\ColorController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Infrastructure\Core\ShoppingCart.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\BannerViewModel.cs" />
     <Compile Include="Models\ColorViewModel.cs" />
     <Compile Include="Models\ContactDetailViewModel.cs" />
     <Compile Include="Models\ExternalLoginListViewModel.cs" />
@@ -292,6 +294,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>re_Home.vi.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\News\re_News.fr.Designer.cs">
+      <DependentUpon>re_News.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\News\re_News.vi.Designer.cs">
+      <DependentUpon>re_News.vi.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\News\re_News.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_News.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Product\re_Product.fr.Designer.cs">
       <DependentUpon>re_Product.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -307,8 +324,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>re_Product.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ShopingCart\re_ShopingCart.vi.Designer.cs">
+      <DependentUpon>re_ShopingCart.vi.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ShopingCart\re_ShopingCart.fr.Designer.cs">
+      <DependentUpon>re_ShopingCart.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ShopingCart\re_ShopingCart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_ShopingCart.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\components\banner\controller\bannerAddController.js" />
+    <Content Include="app\components\banner\controller\bannerEditController.js" />
+    <Content Include="app\components\banner\controller\bannerListController.js" />
+    <Content Include="app\components\banner\controller\banner.module.js" />
+    <Content Include="app\components\banner\views\bannerAddView.html" />
+    <Content Include="app\components\banner\views\bannerEditView.html" />
+    <Content Include="app\components\banner\views\bannerListView.html" />
     <Content Include="app\components\colors\controller\colos.module.js" />
     <Content Include="app\components\colors\controller\colorAddController.js" />
     <Content Include="app\components\colors\controller\colorEditController.js" />
@@ -320,9 +359,6 @@
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
     <Content Include="app\components\login\controller\loginController.js" />
-    <Content Include="app\components\order_details\controller\orderDetailListController.js" />
-    <Content Include="app\components\order_details\controller\orderDetails.module.js" />
-    <Content Include="app\components\order_details\views\orderDetailListView.html" />
     <Content Include="app\components\orders\controller\orders.module.js" />
     <Content Include="app\components\orders\controller\orderEditController.js" />
     <Content Include="app\components\orders\controller\orderListController.js" />
@@ -3967,6 +4003,10 @@
     <Content Include="fonts\linearicons-v1.0.0\icon-font.min.css" />
     <Content Include="fonts\linearicons-v1.0.0\WebFont\Linearicons-Free.svg" />
     <Content Include="img\admin\apple-icon.png" />
+    <Content Include="img\admin\bg.jpg" />
+    <Content Include="img\admin\bg2.jpg" />
+    <Content Include="img\admin\bg3.jpg" />
+    <Content Include="img\admin\bg7.jpg" />
     <Content Include="img\admin\cover.jpg" />
     <Content Include="img\admin\faces\avatar.jpg" />
     <Content Include="img\admin\faces\card-profile1-square.jpg" />
@@ -4053,6 +4093,10 @@
     <Content Include="img\client\item-cart-03.jpg" />
     <Content Include="img\client\item-cart-04.jpg" />
     <Content Include="img\client\item-cart-05.jpg" />
+    <Content Include="img\client\parent\parent-hat.jpeg" />
+    <Content Include="img\client\parent\parent-kid.jpg" />
+    <Content Include="img\client\parent\parent-man.jpeg" />
+    <Content Include="img\client\parent\parent-women.jpeg" />
     <Content Include="img\client\product-01.jpg" />
     <Content Include="img\client\product-02.jpg" />
     <Content Include="img\client\product-03.jpg" />
@@ -4157,7 +4201,6 @@
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\components\banner\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="Resources\About\" />
@@ -4165,7 +4208,6 @@
     <Folder Include="Resources\Contact\" />
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="Resources\ProductDetail\" />
-    <Folder Include="Resources\Shop\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
     <Folder Include="Views\Home\" />
@@ -4372,10 +4414,11 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\_viewPosts.cshtml" />
-    <Content Include="Views\Product\HotProduct.cshtml" />
+    <Content Include="Views\Product\ProductOverView.cshtml" />
     <Content Include="Views\Product\SaleProduct.cshtml" />
     <Content Include="Views\Product\NewProduct.cshtml" />
     <Content Include="Views\Product\ProductByCategory.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -4399,14 +4442,28 @@
     <EmbeddedResource Include="Resources\Home\re_Home.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Home.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Home\re_Home.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Home.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Home\re_Home.vi.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Home.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\News\re_News.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_News.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\News\re_News.vi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_News.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\News\re_News.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_News.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Product\re_Product.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -4419,6 +4476,18 @@
     <EmbeddedResource Include="Resources\Product\re_Product.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Product.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ShopingCart\re_ShopingCart.vi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_ShopingCart.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ShopingCart\re_ShopingCart.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_ShopingCart.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ShopingCart\re_ShopingCart.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_ShopingCart.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
