@@ -61,11 +61,65 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cart Totals.
+        /// </summary>
+        public static string CartTotals {
+            get {
+                return ResourceManager.GetString("CartTotals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check Out.
         /// </summary>
         public static string CheckOut {
             get {
                 return ResourceManager.GetString("CheckOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no shipping methods available. Please double check your address, or contact us if you need any help..
+        /// </summary>
+        public static string DescriptionShipp {
+            get {
+                return ResourceManager.GetString("DescriptionShipp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculate Shipping.
+        /// </summary>
+        public static string InfoCustomer {
+            get {
+                return ResourceManager.GetString("InfoCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The product does not include tax and shipping charges.
+        /// </summary>
+        public static string MessageShipp {
+            get {
+                return ResourceManager.GetString("MessageShipp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to Checkout.
+        /// </summary>
+        public static string ProceedCheckout {
+            get {
+                return ResourceManager.GetString("ProceedCheckout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipping.
+        /// </summary>
+        public static string Shipping {
+            get {
+                return ResourceManager.GetString("Shipping", resourceCulture);
             }
         }
         
@@ -79,11 +133,65 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Cart.
         /// </summary>
         public static string ViewCart {
             get {
                 return ResourceManager.GetString("ViewCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address....
+        /// </summary>
+        public static string wAddress {
+            get {
+                return ResourceManager.GetString("wAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description....
+        /// </summary>
+        public static string wDescription {
+            get {
+                return ResourceManager.GetString("wDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email....
+        /// </summary>
+        public static string wEmail {
+            get {
+                return ResourceManager.GetString("wEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name....
+        /// </summary>
+        public static string wName {
+            get {
+                return ResourceManager.GetString("wName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone....
+        /// </summary>
+        public static string wPhone {
+            get {
+                return ResourceManager.GetString("wPhone", resourceCulture);
             }
         }
         

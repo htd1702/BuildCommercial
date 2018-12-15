@@ -130,6 +130,42 @@
     <Compile Include="Migrations\201812080516473_NewInventoryProduct.Designer.cs">
       <DependentUpon>201812080516473_NewInventoryProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812111551054_NewColumBannerAndPostCategory.cs" />
+    <Compile Include="Migrations\201812111551054_NewColumBannerAndPostCategory.Designer.cs">
+      <DependentUpon>201812111551054_NewColumBannerAndPostCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111626014_NewColumPost.cs" />
+    <Compile Include="Migrations\201812111626014_NewColumPost.Designer.cs">
+      <DependentUpon>201812111626014_NewColumPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121607212_TitleTypeBanner.cs" />
+    <Compile Include="Migrations\201812121607212_TitleTypeBanner.Designer.cs">
+      <DependentUpon>201812121607212_TitleTypeBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150530518_NewProertyTable.cs" />
+    <Compile Include="Migrations\201812150530518_NewProertyTable.Designer.cs">
+      <DependentUpon>201812150530518_NewProertyTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150537404_DeleteProTable.cs" />
+    <Compile Include="Migrations\201812150537404_DeleteProTable.Designer.cs">
+      <DependentUpon>201812150537404_DeleteProTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150543559_NewProertyTable1.cs" />
+    <Compile Include="Migrations\201812150543559_NewProertyTable1.Designer.cs">
+      <DependentUpon>201812150543559_NewProertyTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150815440_NewPropertyProduct.cs" />
+    <Compile Include="Migrations\201812150815440_NewPropertyProduct.Designer.cs">
+      <DependentUpon>201812150815440_NewPropertyProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150830549_NewPropertyProduct1.cs" />
+    <Compile Include="Migrations\201812150830549_NewPropertyProduct1.Designer.cs">
+      <DependentUpon>201812150830549_NewPropertyProduct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812150902048_DeleteClumnProduct.cs" />
+    <Compile Include="Migrations\201812150902048_DeleteClumnProduct.Designer.cs">
+      <DependentUpon>201812150902048_DeleteClumnProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BannerRepository.cs" />
@@ -199,6 +235,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812080516473_NewInventoryProduct.resx">
       <DependentUpon>201812080516473_NewInventoryProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111551054_NewColumBannerAndPostCategory.resx">
+      <DependentUpon>201812111551054_NewColumBannerAndPostCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111626014_NewColumPost.resx">
+      <DependentUpon>201812111626014_NewColumPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121607212_TitleTypeBanner.resx">
+      <DependentUpon>201812121607212_TitleTypeBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150530518_NewProertyTable.resx">
+      <DependentUpon>201812150530518_NewProertyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150537404_DeleteProTable.resx">
+      <DependentUpon>201812150537404_DeleteProTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150543559_NewProertyTable1.resx">
+      <DependentUpon>201812150543559_NewProertyTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150815440_NewPropertyProduct.resx">
+      <DependentUpon>201812150815440_NewPropertyProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150830549_NewPropertyProduct1.resx">
+      <DependentUpon>201812150830549_NewPropertyProduct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812150902048_DeleteClumnProduct.resx">
+      <DependentUpon>201812150902048_DeleteClumnProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,6 +23,18 @@
                                 <li ng-repeat="parent in parentCategory | orderBy : CreatedDate" ng-if="parent.ParentID == 0" ng-include="'treeMenu'"></li>
                             </ul>
                         }
+                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                        {
+                            <script type="text/ng-template" id="treeMenu">
+                                <a ng-click="btnParent(parent.ID, parent.ParentID)">{{parent.NameFr}}</a>
+                                <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
+                                    <li style="font-size:15px" class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenu'"></li>
+                                </ul>
+                            </script>
+                            <ul class="child-menu">
+                                <li ng-repeat="parent in parentCategory | orderBy : CreatedDate" ng-if="parent.ParentID == 0" ng-include="'treeMenu'"></li>
+                            </ul>
+                        }
                         else
                         {
                             <script type="text/ng-template" id="treeMenu">
@@ -36,7 +48,6 @@
                             </ul>
                         }
                     }
-
                 </div>
 
                 <div class="flex-w flex-c-m m-tb-10">
@@ -204,11 +215,25 @@
                                 </a>
 
                                 <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
-                                    <span style="text-decoration:line-through">{{p.PriceVN | currency:"":0}} vnđ</span> - {{(p.PriceVN - (p.PriceVN * p.PromotionPrice)/100) | currency:"":0}} vnđ
+                                    <span style="text-decoration:line-through">{{p.PriceVN | currency:"":0}} vnđ</span> - <span style="color:red">{{(p.PriceVN - (p.PriceVN * p.PromotionPrice)/100) | currency:"":0}} vnđ</span>
                                 </span>
 
                                 <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
                                     {{p.PriceVN | currency:"":0}} vnđ
+                                </span>
+                            }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                <a href="/product-details/{{p.ID}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{p.NameFr}}
+                                </a>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
+                                    <span style="text-decoration:line-through">{{p.PriceFr | currency}}</span> - <span style="color:red">{{(p.PriceFr - (p.PriceFr * p.PromotionPrice)/100) | currency}}</span>
+                                </span>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
+                                    {{p.PriceFr | currency}}
                                 </span>
                             }
                             else
@@ -218,7 +243,7 @@
                                 </a>
 
                                 <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
-                                    <span style="text-decoration:line-through">{{p.Price | currency}}</span> - {{(p.Price - (p.Price * p.PromotionPrice)/100) | currency}}
+                                    <span style="text-decoration:line-through">{{p.Price | currency}}</span> - <span style="color:red">{{(p.Price - (p.Price * p.PromotionPrice)/100) | currency}}</span>
                                 </span>
 
                                 <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
@@ -226,7 +251,6 @@
                                 </span>
                             }
                         </div>
-
                     </div>
                 </div>
                 <input style="display:none" type="text" value="12" id="txt_PageSize" />
@@ -244,5 +268,3 @@
         <hr />
     </div>
 </section>
-
-

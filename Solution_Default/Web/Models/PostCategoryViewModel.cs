@@ -24,6 +24,10 @@ namespace Web.Models
 
         public string Description { set; get; }
 
+        public string DescriptionFr { set; get; }
+
+        public string DescriptionVN { set; get; }
+
         public int? ParentID { set; get; }
 
         public int? DisplayOrder { set; get; }
@@ -43,6 +47,8 @@ namespace Web.Models
         public string MetaKeyword { set; get; }
 
         public string MetaDescription { set; get; }
+
+        public bool? Promotion { set; get; }
 
         public bool Status { set; get; }
 

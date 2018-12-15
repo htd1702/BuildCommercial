@@ -1,9 +1,12 @@
-﻿using Data;
+﻿using AutoMapper;
+using Data;
+using Model.Model;
 using Service;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -26,22 +29,14 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult _viewPosts()
-        {
-            ViewBag.items = db.Posts.OrderByDescending(p => p.CreatedDate).ToList();
-            return PartialView();
-        }
-
-        public ActionResult GetListPostPaging(int PageNo = 0, int PageSize = 3)
-        {
-            ViewBag.items = db.Posts.Where(p => p.Status == true).OrderByDescending(p => p.CreatedDate).Skip(PageNo * PageSize).Take(PageSize).ToList();
-            return PartialView("_viewPosts");
-        }
-
         public ActionResult _viewPostDetails(int id)
         {
-            var model = db.Posts.Find(id);
-            return View(model);
+            var postID = db.Posts.FirstOrDefault(p => p.CategoryID == id).ID;
+            var model = _postService.GetById(postID);
+            var listPost = Mapper.Map<Post, PostViewModel>(model);
+            List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listPost.MoreImages);
+            ViewBag.MoreImgs = listImgs;
+            return View(listPost);
         }
 
         [HttpGet]
@@ -73,12 +68,6 @@ namespace Web.Controllers
         {
             ViewBag.items = db.Posts.Where(p => p.CategoryID == id && p.Status == true).OrderByDescending(p => p.CreatedDate).Take(3).ToList();
             return View("Index");
-        }
-
-        public ActionResult GetPagePostCount(int PageSize = 3)
-        {
-            var pageCount = Math.Ceiling(1.0 * db.Posts.Count() / PageSize);
-            return Json(pageCount, JsonRequestBehavior.AllowGet);
         }
     }
 }

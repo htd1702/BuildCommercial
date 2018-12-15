@@ -9,7 +9,7 @@ namespace Web.Controllers
     {
         private IPostCategoryService _postCategoryService;
         private IPostService _postService;
-        DBContext db = new DBContext();
+        private DBContext db = new DBContext();
 
         //contructor
         public PostCategoryController(IPostCategoryService postCategoryService, IPostService postService)
@@ -26,8 +26,9 @@ namespace Web.Controllers
 
         public ActionResult _viewPostCategory()
         {
-            var model = db.PostCategorys.Where(p => p.Status == true).OrderByDescending(c => c.Name).ToList();
-            return PartialView(model);
+            ViewBag.PostNews = db.PostCategorys.Where(p => p.Status == true && p.HomeFlag == true && p.Promotion != true).OrderByDescending(p => p.CreatedDate).ToList();
+            ViewBag.PostPromotion = db.PostCategorys.Where(p => p.Status == true && p.HomeFlag == true && p.Promotion == true).OrderByDescending(p => p.CreatedDate).ToList();
+            return View();
         }
 
         [HttpGet]

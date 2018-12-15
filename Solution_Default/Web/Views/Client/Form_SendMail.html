@@ -1,15 +1,71 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title> Thông tin đơn hàng mới từ khách hàng: {{CustomerName}}</title>
+    <title>Info from cus</title>
     <meta charset="utf-8" />
+    <style>
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table td, .table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        th {
+            text-align: inherit;
+        }
+    </style>
 </head>
 <body>
-    Thông tin đơn hàng mới từ khách hàng: {{CustomerName}}
-    Điện thoại: {{Phone}} <br />
-    Email: {{Email}}<br />
-    Địa chỉ: {{Address}}<br />
-    Trị giá: {{Total}}<br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <h3>
+                        Information from customer
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Name: {{CustomerName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone number: {{Phone}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email: {{Email}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address: {{Address}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total: {{Total}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
-

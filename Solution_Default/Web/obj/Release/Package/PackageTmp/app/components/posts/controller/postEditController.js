@@ -7,6 +7,7 @@
     postEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService", "authData"];
 
     function postEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
+        $scope.moreImages = [];
         //set value model
         $scope.post = {
             CreatedDate: new Date(),
@@ -17,10 +18,14 @@
             lang: 'en',
             height: '120px'
         };
+        if ($scope.moreImages == "") {
+            $("input[name=imageMore]").show();
+        }
         //create funtion
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.EditPost = EditPost;
         $scope.ChooseImage = ChooseImage;
+        $scope.ChooseImageMore = ChooseImageMore;
         //binding title seo bye name
         function GetSeoTitle() {
             $scope.post.Alias = commonService.getSEOTitle($scope.post.Name);
@@ -37,6 +42,7 @@
         function loadPostDetail() {
             apiService.get("/api/post/getid/" + $stateParams.id, null, function (result) {
                 $scope.post = result.data;
+                $scope.moreImages = JSON.parse($scope.post.MoreImages);
             }, function (error) {
                 notificationService.displayError("Lấy id thất bại!");
             });
@@ -46,6 +52,7 @@
             $scope.post.CreatedBy = authData.authenticationData.userName;
             $scope.post.UpdatedBy = $scope.post.CreatedBy;
             $scope.post.UpdatedDate = $scope.post.CreatedDate;
+            $scope.post.MoreImages = JSON.stringify($scope.moreImages);
             apiService.put("/api/post/update", $scope.post, function (result) {
                 notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
                 $state.go("posts");
@@ -61,6 +68,18 @@
                     $scope.post.Image = filtUrl;
                 });
             };
+            finder.popup();
+        }
+        //function upload multi img
+        function ChooseImageMore() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.post.ImageMore = filtUrl;
+                    $scope.moreImages.push(filtUrl);
+                    $.unique($scope.moreImages.sort()).sort();
+                });
+            }
             finder.popup();
         }
         //call method load parent

@@ -37,7 +37,7 @@
     <!--Details-->
     <div id="view-details"></div>
     <!--Cart-->
-    @Html.Partial("_viewCart")
+    @{Html.RenderAction("_viewCart", "Client");}
     <!-- Back to top -->
     <div class="btn-back-to-top" id="myBtn">
         <span class="symbol-btn-back-to-top">
@@ -147,7 +147,6 @@
     Autocomplete("#txt_KeywordProductCategory", "/Product/ListNameProduct");
     Autocomplete("#txt_KeywordProductSale", "/Product/ListNameProduct");
     Autocomplete("#txt_KeywordProductNew", "/Product/ListNameProduct");
-    Autocomplete("#txt_KeywordPost", "/Post/ListNamePost");
 </script>
 <script>
     (function (d, s, id) {

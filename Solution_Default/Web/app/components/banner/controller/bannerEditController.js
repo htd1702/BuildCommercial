@@ -31,7 +31,7 @@
         function loadBannerDetail() {
             apiService.get("/api/banner/getid/" + $stateParams.id, null, function (result) {
                 $scope.banner = result.data;
-                $scope.$watch('banner.typeName', changeType(result.data.type));
+                $scope.$watch('banner.TitleType', changeType(result.data.type));
             }, function (error) {
                 notificationService.displayError("Lấy id thất bại!");
             });
@@ -51,13 +51,13 @@
         //function change type
         function changeType(type) {
             if (type == 1) {
-                $scope.banner.typeName = "Page Home";
+                $scope.banner.TitleType = "Page Home";
             }
             else if (type == 2) {
-                $scope.banner.typeName = "Page Sale";
+                $scope.banner.TitleType = "Page Sale";
             }
             else if (type == 3) {
-                $scope.banner.typeName = "Page New";
+                $scope.banner.TitleType = "Page New";
             }
         }
         //funcion upload

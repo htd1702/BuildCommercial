@@ -22,7 +22,7 @@ namespace Data.Repositories
 
         IEnumerable<ProductCategory> GetCategoryShowHome(int take);
 
-        int CheckExistsProductCategory(int id);
+        int CheckExistsProductCategory(int id, int type);
     }
 
     public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
@@ -68,13 +68,24 @@ namespace Data.Repositories
             return this.DbContext.ProductCategorys.Where(x => x.Status == true && x.ParentID == 0 && x.HomeFlag == true).OrderByDescending(x => x.CreatedDate).Take(take).ToList();
         }
 
-        public int CheckExistsProductCategory(int id)
+        public int CheckExistsProductCategory(int id, int type)
         {
-            var parent = this.DbContext.ProductCategorys.Where(p => p.ParentID == id).ToList();
-            if (parent.Count > 0)
-                return 1;
+            if (type == 1)
+            {
+                var parent = this.DbContext.ProductCategorys.Where(p => p.ParentID == id).ToList();
+                if (parent.Count > 0)
+                    return 1;
+                else
+                    return 0;
+            }
             else
-                return 0;
+            {
+                var product = this.DbContext.Products.Where(p => p.CategoryID == id).ToList();
+                if (product.Count > 0)
+                    return 1;
+                else
+                    return 0;
+            }
         }
     }
 }

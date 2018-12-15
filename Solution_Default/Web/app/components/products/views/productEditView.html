@@ -90,37 +90,38 @@
                             </label>
                             <input type="number" required class="text-control" min="0" ng-model="product.Quantity" name="quantity" placeholder="Nhập số lượng...">
                         </div>-->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="price">
                                 Price
                                 <span class="text-danger" ng-show="frmEditproduct.price.$invalid"> *</span>
                             </label>
                             <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Price" ng-change="changePrice()" name="price">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="scale">
                                 Scale
                                 <span class="text-danger" ng-show="frmEditproduct.scale.$invalid"> *</span>
                             </label>
                             <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Scale" ng-change="changeScale()" name="scale">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="priceVN">
                                 Price VN
+                                <span class="text-danger" ng-show="frmEditproduct.priceVN.$invalid"> *</span>
                             </label>
-                            <input type="number" placeholder="Nhập giá..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
+                            <input type="number" required placeholder="Nhập giá..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="priceFr">
                                 Price Frenk
+                                <span class="text-danger" ng-show="frmEditproduct.priceFr.$invalid"> *</span>
                             </label>
-                            <input type="number" placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
+                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
                         </div>
-
                         <div class="form-group col-md-6">
                             <label for="warranty">
                                 Warranty
-                                <span class="text-danger" ng-show="frmAddproduct.warranty.$invalid"> *</span>
+                                <span class="text-danger" ng-show="frmEditproduct.warranty.$invalid"> *</span>
                             </label>
                             <input type="number" class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month" required>
                         </div>
@@ -142,7 +143,7 @@
                             <label for="viewCount">
                                 View
                             </label>
-                            <input type="number" class="text-control" min="0" ng-model="product.ViewCount" name="viewCount">
+                            <input type="number" class="text-control" min="0" value="1" name="viewCount" readonly="readonly">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="image">

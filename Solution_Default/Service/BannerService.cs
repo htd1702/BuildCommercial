@@ -21,7 +21,7 @@ namespace Service
 
         List<string> ListNameBanner(string keyword);
 
-        IEnumerable<Banner> ListBannerByType(int type);
+        IEnumerable<Banner> ListBannerByType(int type, int typeBanner);
 
         void Save();
     }
@@ -65,9 +65,9 @@ namespace Service
             return _bannerRepository.GetSingleById(id);
         }
 
-        public IEnumerable<Banner> ListBannerByType(int type)
+        public IEnumerable<Banner> ListBannerByType(int type, int typeBanner)
         {
-            return _bannerRepository.ListBannerByType(type);
+            return _bannerRepository.ListBannerByType(type, typeBanner);
         }
 
         public List<string> ListNameBanner(string keyword)

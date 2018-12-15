@@ -277,11 +277,11 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product Name.
+        ///   Looks up a localized string similar to Product Category.
         /// </summary>
-        public static string ProductName {
+        public static string ProductByCategory {
             get {
-                return ResourceManager.GetString("ProductName", resourceCulture);
+                return ResourceManager.GetString("ProductByCategory", resourceCulture);
             }
         }
         

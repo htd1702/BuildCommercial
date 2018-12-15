@@ -14,7 +14,9 @@ namespace Web.Infrastructure.Extensions
             postCategory.NameVN = postCategoryVM.Name.Trim();
             postCategory.NameFr = postCategoryVM.Name.Trim();
             postCategory.Alias = postCategoryVM.Alias;
-            postCategory.Description = postCategoryVM.Description.Trim();
+            postCategory.Description = postCategoryVM.Description;
+            postCategory.DescriptionVN = postCategoryVM.DescriptionVN;
+            postCategory.DescriptionFr = postCategoryVM.DescriptionFr;
             postCategory.ParentID = postCategoryVM.ParentID;
             postCategory.DisplayOrder = postCategoryVM.DisplayOrder;
             postCategory.Image = postCategoryVM.Image;
@@ -26,6 +28,7 @@ namespace Web.Infrastructure.Extensions
             postCategory.MetaKeyword = postCategoryVM.MetaKeyword;
             postCategory.MetaDescription = postCategoryVM.MetaDescription;
             postCategory.Status = postCategoryVM.Status;
+            postCategory.Promotion = postCategoryVM.Promotion;
         }
 
         //Set value mapp post
@@ -37,9 +40,10 @@ namespace Web.Infrastructure.Extensions
             post.NameFr = postVM.NameFr.Trim();
             post.Alias = postVM.Alias;
             post.Description = postVM.Description;
+            post.DescriptionVN = postVM.DescriptionVN;
+            post.DescriptionFr = postVM.DescriptionFr;
             post.CategoryID = postVM.CategoryID;
             post.Image = postVM.Image;
-            post.Content = postVM.Content;
             post.HomeFlag = postVM.HomeFlag;
             post.HotFlag = postVM.HotFlag;
             post.ViewCount = postVM.ViewCount;
@@ -50,6 +54,7 @@ namespace Web.Infrastructure.Extensions
             post.MetaKeyword = postVM.MetaKeyword;
             post.MetaDescription = postVM.MetaDescription;
             post.Status = postVM.Status;
+            post.MoreImages = postVM.MoreImages;
         }
 
         //Set value mapp productCategory
@@ -154,6 +159,7 @@ namespace Web.Infrastructure.Extensions
             size.Name = sizeVM.Name.Trim();
             size.NameVN = sizeVM.NameVN.Trim();
             size.Alias = sizeVM.Alias;
+            size.ParentSizeID = sizeVM.ParentSizeID;
             size.Description = sizeVM.Description;
             size.CreatedDate = sizeVM.CreatedDate;
             size.CreatedBy = sizeVM.CreatedBy;
@@ -199,6 +205,8 @@ namespace Web.Infrastructure.Extensions
             banner.CreatedBy = bannerVM.CreatedBy;
             banner.UpdatedDate = bannerVM.UpdatedDate;
             banner.UpdatedBy = bannerVM.UpdatedBy;
+            banner.Title = bannerVM.Title;
+            banner.TitleType = bannerVM.TitleType;
         }
     }
 }

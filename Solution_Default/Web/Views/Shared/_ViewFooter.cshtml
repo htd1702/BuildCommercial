@@ -10,7 +10,7 @@
                 {
                     <ul>
                         <li class="p-b-10">
-                            <a href="/Product/ProductByCategory/?name=@item.Name&parentID=@item.ParentID&id=@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/product-category/@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
                                 @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
                             </a>
                         </li>
@@ -27,7 +27,7 @@
                 {
                     <ul>
                         <li class="p-b-10">
-                            <a href="/Product/ProductByCategory/?name=@item.Name&parentID=@item.ParentID&id=@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/product-category/@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
                                 @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
                             </a>
                         </li>

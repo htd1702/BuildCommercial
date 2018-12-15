@@ -215,19 +215,23 @@ namespace Web.Api
                     }
                     else
                     {
-                        if (_productCategoryService.CheckExistsProductCategory(id) != 1)
+                        int result = 0;
+                        if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
                         {
-                            //Delete
-                            var reponse = _productCategoryService.Delete(id);
-                            //Save change
-                            _productCategoryService.Save();
-                            //Mapping data to dataView
-                            var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(reponse);
-                            //Check request
-                            response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                            if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                            {
+                                //Delete
+                                var reponse = _productCategoryService.Delete(id);
+                                //Save change
+                                _productCategoryService.Save();
+                                result = 1;
+                            }
+                            else
+                                result = -1;
                         }
                         else
-                            response = request.CreateResponse(HttpStatusCode.BadRequest);
+                            result = -2;
+                        response = request.CreateResponse(HttpStatusCode.Created, result);
                     }
                     return response;
                 });
@@ -252,15 +256,26 @@ namespace Web.Api
                 }
                 else
                 {
+                    List<int> result = new List<int>();
                     var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(listId);
                     foreach (var id in listProductCategory)
                     {
-                        _productCategoryService.Delete(id);
+                        if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
+                        {
+                            if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                            {
+                                _productCategoryService.Delete(id);
+                                //Save change
+                                _productCategoryService.Save();
+                                result.Add(1);
+                            }
+                            else
+                                result.Add(-1);
+                        }
+                        else
+                            result.Add(-2);
                     }
-                    //Save change
-                    _productCategoryService.Save();
-                    //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 return response;
             });

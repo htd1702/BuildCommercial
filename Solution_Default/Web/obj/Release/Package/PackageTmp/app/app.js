@@ -86,6 +86,7 @@
                 Order: 'Order',
                 Banner: 'Banner',
                 OrderDetail: 'Order Detail',
+                Name: "Name",
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'
@@ -102,6 +103,7 @@
                 Order: 'Quảng lý hóa đơn',
                 Banner: 'Quảng lý quảng cáo',
                 OrderDetail: 'Quảng lý chi tiết hóa đơn',
+                Name: 'Tên',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'

@@ -24,9 +24,11 @@
                 <thead class=" text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>Tên</th>
-                        <th>Ngày tạo</th>
-                        <th>Người tạo</th>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Type Name</th>
+                        <th>Create Date</th>
                         <th class="td-actions text-right">
                             Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllBanners()"><i class="fa fa-trash"></i></button>
                         </th>
@@ -36,8 +38,10 @@
                     <tr ng-repeat="item in banners | orderBy: 'Name'">
                         <td><input type="checkbox" class="chk_allBanners" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.Name}}</td>
+                        <td>{{item.Title}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.TitleType}}</td>
                         <td>{{item.CreatedDate | date:"dd/MM/yyyy"}}</td>
-                        <td>{{item.CreatedBy}}</td>
                         <td class="td-actions text-right">
                             <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_banner({id:item.ID})">
                                 <i class="material-icons">edit</i>

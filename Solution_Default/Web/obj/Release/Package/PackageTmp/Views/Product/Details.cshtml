@@ -43,7 +43,7 @@
                 </a>
             }
 
-            <span class="stext-109 cl4">
+            <span class="stext-109 text-primary">
                 @Model.Name  (@re_Product.View: @ViewBag.Views)
             </span>
         </div>
@@ -92,7 +92,7 @@
                             if (Model.PromotionPrice > 0)
                             {
                                 <span class="mtext-106 cl2">
-                                    Giá: <b><span style="text-decoration:line-through">@string.Format("{0:#,##0}", Model.PriceVN) vnđ</span> - @string.Format("{0:#,##0}", Model.PriceVN - (Model.PriceVN * Model.PromotionPrice) / 100) vnđ</b>
+                                    Giá: <span style="text-decoration:line-through">@string.Format("{0:#,##0}", Model.PriceVN) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", Model.PriceVN - (Model.PriceVN * Model.PromotionPrice) / 100) vnđ</span>
                                 </span>
                             }
                             else
@@ -111,7 +111,7 @@
                             if (Model.PromotionPrice > 0)
                             {
                                 <span class="mtext-106 cl2">
-                                    Price: <b><span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", Model.Price)</span> - $@string.Format("{0:#,##0.00}", Model.Price - (Model.Price * Model.PromotionPrice) / 100)</b>
+                                    Price: <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", Model.Price)</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", Model.Price - (Model.Price * Model.PromotionPrice) / 100)</span>
                                 </span>
                             }
                             else
@@ -310,7 +310,7 @@
                                                 if (int.Parse(row["PromotionPrice"].ToString()) > 0)
                                                 {
                                                     <span class="stext-105 cl3">
-                                                        <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ
+                                                        <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ</span>
                                                     </span>
                                                 }
                                                 else
@@ -329,7 +329,7 @@
                                                 if (int.Parse(row["PromotionPrice"].ToString()) > 0)
                                                 {
                                                     <span class="stext-105 cl3">
-                                                        <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))</span> - $@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()) - (double.Parse(row["Price"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)
+                                                        <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()) - (double.Parse(row["Price"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
                                                     </span>
                                                 }
                                                 else

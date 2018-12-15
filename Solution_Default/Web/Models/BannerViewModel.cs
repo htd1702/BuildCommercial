@@ -8,7 +8,11 @@ namespace Web.Models
 
         public string Name { set; get; }
 
+        public string Title { set; get; }
+
         public int type { set; get; }
+
+        public string TitleType { set; get; }
 
         public string Image { set; get; }
 

@@ -215,14 +215,18 @@ namespace Web.Api
                     }
                     else
                     {
-                        //Delete
-                        var reponse = _postCategoryService.Delete(id);
-                        //Save change
-                        _postCategoryService.Save();
-                        //Mapping data to dataView
-                        var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(reponse);
-                        //Check request
-                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                        int result = 0;
+                        if (_postCategoryService.CheckExistsPostCategory(id) != 1)
+                        {
+                            //Delete
+                            var reponse = _postCategoryService.Delete(id);
+                            //Save change
+                            _postCategoryService.Save();
+                            result = 1;
+                        }
+                        else
+                            result = -1;
+                        response = request.CreateResponse(HttpStatusCode.Created, result);
                     }
                     return response;
                 });
@@ -247,15 +251,22 @@ namespace Web.Api
                 }
                 else
                 {
+                    List<int> result = new List<int>();
                     var listPostCategory = new JavaScriptSerializer().Deserialize<List<int>>(listId);
                     foreach (var id in listPostCategory)
                     {
-                        _postCategoryService.Delete(id);
+                        if (_postCategoryService.CheckExistsPostCategory(id) != 1)
+                        {
+                            _postCategoryService.Delete(id);
+                            //Save change
+                            _postCategoryService.Save();
+                            result.Add(1);
+                        }
+                        else
+                            result.Add(-1);
                     }
-                    //Save change
-                    _postCategoryService.Save();
                     //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, listPostCategory.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 return response;
             });

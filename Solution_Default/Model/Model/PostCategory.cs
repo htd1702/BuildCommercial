@@ -29,16 +29,22 @@ namespace Model.Model
         [MaxLength(256)]
         public string Alias { set; get; }
 
-        [MaxLength(500)]
         public string Description { set; get; }
 
+        public string DescriptionFr { set; get; }
+
+        public string DescriptionVN { set; get; }
+
         public int? ParentID { set; get; }
+
         public int? DisplayOrder { set; get; }
 
         [MaxLength(256)]
         public string Image { set; get; }
 
         public bool? HomeFlag { set; get; }
+
+        public bool? Promotion { set; get; }
 
         public virtual IEnumerable<Post> Posts { set; get; }
     }

@@ -21,6 +21,7 @@ namespace Web.Controllers
                 return uriBuilder.Uri;
             }
         }
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 

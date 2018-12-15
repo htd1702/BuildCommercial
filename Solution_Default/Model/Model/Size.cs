@@ -27,6 +27,8 @@ namespace Model.Model
         [MaxLength(250)]
         public string Description { set; get; }
 
+        public int? ParentSizeID { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }

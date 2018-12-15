@@ -32,7 +32,7 @@ namespace Service
 
         IEnumerable<ProductCategory> GetCategoryShowHome(int take);
 
-        int CheckExistsProductCategory(int id);
+        int CheckExistsProductCategory(int id, int type);
 
         void Save();
     }
@@ -53,9 +53,9 @@ namespace Service
             return _productCategoryRepository.Add(ProductCategory);
         }
 
-        public int CheckExistsProductCategory(int id)
+        public int CheckExistsProductCategory(int id, int type)
         {
-            return _productCategoryRepository.CheckExistsProductCategory(id);
+            return _productCategoryRepository.CheckExistsProductCategory(id, type);
         }
 
         public ProductCategory Delete(int id)

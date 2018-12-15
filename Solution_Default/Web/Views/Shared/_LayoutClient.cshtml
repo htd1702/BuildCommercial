@@ -37,7 +37,7 @@
     <!--Details-->
     <div id="view-details"></div>
     <!--Cart-->
-    @Html.Partial("_viewCart")
+    @{Html.RenderAction("_viewCart", "Client");}
     <!-- Back to top -->
     <div class="btn-back-to-top" id="myBtn">
         <span class="symbol-btn-back-to-top">
@@ -50,6 +50,7 @@
 
 <script src="~/Assets/client/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/plugins/jquery/jquery-ui.js"></script>
+<script src="~/Scripts/plugins/jquery/jquery.zoom.min.js"></script>
 <script src="~/Assets/client/vendor/animsition/js/animsition.min.js"></script>
 <script src="~/Assets/client/vendor/bootstrap/js/popper.js"></script>
 <script src="~/Assets/client/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -147,7 +148,6 @@
     Autocomplete("#txt_KeywordProductCategory", "/Product/ListNameProduct");
     Autocomplete("#txt_KeywordProductSale", "/Product/ListNameProduct");
     Autocomplete("#txt_KeywordProductNew", "/Product/ListNameProduct");
-    Autocomplete("#txt_KeywordPost", "/Post/ListNamePost");
 </script>
 <script>
     (function (d, s, id) {

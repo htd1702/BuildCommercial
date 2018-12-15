@@ -1,11 +1,13 @@
 ﻿@model Web.Models.ContactDetailViewModel
+@using Web.Resources.Home
+@using Web.Resources.Contact
 @{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = re_Home.Contact + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
-
 <style>
     #map {
+        width: 100%;
         height: 400px;
     }
 </style>
@@ -17,7 +19,7 @@
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('../../img/client/bg-01.jpg');">
         <h2 class="ltext-105 cl0 txt-center">
-            Contact
+            @re_Home.Contact
         </h2>
     </section>
 
@@ -28,20 +30,20 @@
                 <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
                     <form>
                         <h4 class="mtext-105 cl2 txt-center p-b-30">
-                            Send Us A Message
+                            @re_Contact.SendMessage
                         </h4>
 
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Your Email Address">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="@re_Contact.YourEmail" id="txt_contactEmail">
                             <img class="how-pos4 pointer-none" src="~/img/client/icons/icon-email.png" alt="ICON">
                         </div>
 
                         <div class="bor8 m-b-30">
-                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
+                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="@re_Contact.HowCanIHelp" id="txt_contactDescription"></textarea>
                         </div>
 
-                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-                            Submit
+                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" id="btnContact">
+                            @re_Contact.Submit
                         </button>
                     </form>
                 </div>
@@ -54,7 +56,7 @@
 
                         <div class="size-212 p-t-2">
                             <span class="mtext-110 cl2">
-                                Address
+                                @re_Contact.Address
                             </span>
 
                             <p class="stext-115 cl6 size-213 p-t-18">
@@ -70,7 +72,7 @@
 
                         <div class="size-212 p-t-2">
                             <span class="mtext-110 cl2">
-                                Phone
+                                @re_Contact.Phone
                             </span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
@@ -86,7 +88,7 @@
 
                         <div class="size-212 p-t-2">
                             <span class="mtext-110 cl2">
-                                Email
+                                @re_Contact.Email
                             </span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
@@ -100,33 +102,31 @@
     </section>
 
     <!-- Map -->
-    <div class="map">
-        <div id="map"></div>
-    </div>
+    <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.087942821384!2d-73.64213308492786!3d45.46803234120949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91747f8b6aa6f%3A0xe1d0cebf38f6170f!2s4865+Avenue+Cumberland%2C+Montr%C3%A9al%2C+QC+H4V+2N5%2C+Canada!5e0!3m2!1sen!2s!4v1544859345908" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
+<div class="loading-img-waiting-contact" style="display:none"></div>
+@*<script>
+        function initMap() {
+            var lat = $('#hidLat').val();
+            var lng = $('#hidLng').val();
+            var uluru = { lat: parseFloat(lat), lng: parseFloat(lng) };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+            });
 
-<script>
-    function initMap() {
-        var lat = $('#hidLat').val();
-        var lng = $('#hidLng').val();
-        var uluru = { lat: parseFloat(lat), lng: parseFloat(lng) };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
-            center: uluru
-        });
+            var contentString = $('#hidAddress').val();
 
-        var contentString = $('#hidAddress').val();
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            title: $('#hidName').val()
-        });
-        infowindow.open(map, marker);
-    }
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdP2zhT7jhBQjyP0zH-gJufdhKbQ0Wgw0&callback=initMap"></script>
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: $('#hidName').val()
+            });
+            infowindow.open(map, marker);
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdP2zhT7jhBQjyP0zH-gJufdhKbQ0Wgw0&callback=initMap"></script>*@

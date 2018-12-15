@@ -178,6 +178,15 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to - Adelade.ca.
+        /// </summary>
+        public static string LinkTile {
+            get {
+                return ResourceManager.GetString("LinkTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price: Low to High.
         /// </summary>
         public static string LowToHigh {
@@ -250,6 +259,15 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SaleProduct.
+        /// </summary>
+        public static string SaleProduct {
+            get {
+                return ResourceManager.GetString("SaleProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
@@ -282,6 +300,15 @@ namespace Web.Resources.Home {
         public static string StoreOverview {
             get {
                 return ResourceManager.GetString("StoreOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adelade | Buy cheap fashion clothes online.
+        /// </summary>
+        public static string TitleMain {
+            get {
+                return ResourceManager.GetString("TitleMain", resourceCulture);
             }
         }
         

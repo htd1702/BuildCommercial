@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Data;
 using Model.Model;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Web.Models;
@@ -16,6 +16,8 @@ namespace Web.Controllers
     {
         private IProductService _productService;
         private IBannerService _bannerService;
+        private DBContext db = new DBContext();
+
         //contructor
         public ProductController(IProductService productService, IBannerService bannerService)
         {
@@ -32,21 +34,25 @@ namespace Web.Controllers
         public ActionResult SaleProduct()
         {
             Session["ShoppingUrl"] = "/sale-product";
-            ViewBag.BannerImage = _bannerService.ListBannerByType(2);
+            ViewBag.BannerImage = _bannerService.ListBannerByType(2, 2);
             return View();
         }
 
         public ActionResult NewProduct()
         {
             Session["ShoppingUrl"] = "/new-product";
+            ViewBag.BannerImage = _bannerService.ListBannerByType(2, 3);
             return View();
         }
 
-        public ActionResult ProductByCategory(string name, int parentID, int id)
+        public ActionResult ProductByCategory(int id)
         {
-            Session["ShoppingUrl"] = "/Product/ProductByCategory/?name=" + name + "&parentID=" + parentID.ToString() + "&id=" + id.ToString();
-            ViewBag.Name = name;
-            ViewBag.ParentID = parentID;
+            Session["ShoppingUrl"] = "/product-category/" + id.ToString();
+            var category = db.ProductCategorys.Find(id);
+            ViewBag.Name = category.Name;
+            ViewBag.NameFr = category.NameFr;
+            ViewBag.NameVN = category.NameVN;
+            ViewBag.ParentID = category.ParentID;
             ViewBag.ID = id;
             return View();
         }
@@ -186,9 +192,9 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult ListNewProductByTake(int take)
+        public JsonResult ListDiscountProductByTake(int take)
         {
-            var model = _productService.ListNewProduct().Take(take);
+            var model = _productService.ListProductDiscount().Take(take);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 

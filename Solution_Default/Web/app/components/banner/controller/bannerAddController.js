@@ -28,8 +28,8 @@
         $scope.ChooseImage = ChooseImage;
         //function add
         function AddBanner() {
-            if ($scope.banner.ParentID == undefined)
-                $scope.banner.ParentID = 0;
+            if ($scope.banner.type == undefined)
+                $scope.banner.type = 0;
             $scope.banner.CreatedBy = authData.authenticationData.userName;
             $scope.banner.UpdatedBy = $scope.banner.CreatedBy;
             $scope.banner.UpdatedDate = $scope.banner.CreatedDate;
@@ -43,13 +43,13 @@
         //funtion load type
         function changeType(type) {
             if (type == 1) {
-                $scope.banner.typeName = "Page Home";
+                $scope.banner.TitleType = "Page Home";
             }
             else if (type == 2) {
-                $scope.banner.typeName = "Page Sale";
+                $scope.banner.TitleType = "Page Sale";
             }
             else if (type == 3) {
-                $scope.banner.typeName = "Page New";
+                $scope.banner.TitleType = "Page New";
             }
         }
         //funcion upload

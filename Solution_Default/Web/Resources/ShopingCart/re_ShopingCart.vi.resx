@@ -117,14 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CartTotals" xml:space="preserve">
+    <value>Tổng số giỏ hàng</value>
+  </data>
   <data name="CheckOut" xml:space="preserve">
     <value>Thanh toán</value>
+  </data>
+  <data name="DescriptionShipp" xml:space="preserve">
+    <value>Không có phương thức vận chuyển có sẵn. Vui lòng kiểm tra lại địa chỉ của bạn hoặc liên hệ với chúng tôi nếu bạn cần bất kỳ sự giúp đỡ nào.</value>
+  </data>
+  <data name="InfoCustomer" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="MessageShipp" xml:space="preserve">
+    <value>Sản phẩm không bao gồm thuế và phí vận chuyển</value>
+  </data>
+  <data name="ProceedCheckout" xml:space="preserve">
+    <value>Tiến hành thanh toán</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Phí giao hàng</value>
   </data>
   <data name="ShopingMore" xml:space="preserve">
     <value>Mua tiếp</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
   <data name="ViewCart" xml:space="preserve">
     <value>Xem giỏ hàng</value>
+  </data>
+  <data name="wAddress" xml:space="preserve">
+    <value>Địa chỉ...</value>
+  </data>
+  <data name="wDescription" xml:space="preserve">
+    <value>Ghi chú...</value>
+  </data>
+  <data name="wEmail" xml:space="preserve">
+    <value>Email...</value>
+  </data>
+  <data name="wName" xml:space="preserve">
+    <value>Họ tên...</value>
+  </data>
+  <data name="wPhone" xml:space="preserve">
+    <value>Số điện thoại...</value>
   </data>
   <data name="YourCart" xml:space="preserve">
     <value>Giỏ hàng của bạn</value>

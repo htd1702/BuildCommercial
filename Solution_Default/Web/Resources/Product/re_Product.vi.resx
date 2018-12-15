@@ -189,8 +189,8 @@
   <data name="Product" xml:space="preserve">
     <value>Sản Phẩm</value>
   </data>
-  <data name="ProductName" xml:space="preserve">
-    <value>Tên sản phẩm</value>
+  <data name="ProductByCategory" xml:space="preserve">
+    <value>Loại sản phẩm</value>
   </data>
   <data name="PromotionPrice" xml:space="preserve">
     <value>Gía khuyến mãi</value>

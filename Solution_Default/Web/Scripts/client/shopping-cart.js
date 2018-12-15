@@ -91,7 +91,7 @@
                             }
                         });
                         $.ajax({
-                            url: "/Cart/Index",
+                            url: "/Cart/ViewCartDetails",
                             async: false,
                             success: function (response) {
                                 $("#page_ShoppingCart").html(response);

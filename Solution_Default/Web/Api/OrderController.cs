@@ -142,7 +142,7 @@ namespace Web.Api
                     orderVM.Phone = dynamicObj["customerPhomeNumber"];
                     orderVM.CustomerMessage = dynamicObj["customerMessage"];
                     orderVM.Total = decimal.Parse(dynamicObj["total"]);
-                    orderVM.Status = true;
+                    orderVM.Status = false;
                     orderVM.OrderDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     //Call method add product category in folder extensions
                     newOrder.UpdateOrder(orderVM);
@@ -333,6 +333,42 @@ namespace Web.Api
             }
             else
                 return request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("sendmailcontact")]
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage SendMailContact(HttpRequestMessage request, object obj)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                //check issue
+                if (!ModelState.IsValid)
+                {
+                    //get status
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    Order newOrder = new Order();
+                    OrderViewModel orderVM = new OrderViewModel();
+                    OrderDetail newOrderDetail = new OrderDetail();
+                    OrderDetailViewModel orderDetailVM = new OrderDetailViewModel();
+                    JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+                    dynamic dynamicObj = jsonSerializer.Deserialize<dynamic>(obj.ToString());
+                    string email = dynamicObj["email"];
+                    string des = dynamicObj["des"];
+                    string content = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Views/Client/Form_SendMailContact.html"));
+                    content = content.Replace("{{Email}}", email);
+                    content = content.Replace("{{Description}}", des);
+                    var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+                    new MailHelper().SendMail(toEmail, "Contact", content);
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.Created, "success");
+                }
+                return response;
+            });
         }
     }
 }

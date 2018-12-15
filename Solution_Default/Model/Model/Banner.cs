@@ -15,7 +15,11 @@ namespace Model.Model
         [MaxLength(100)]
         public string Name { set; get; }
 
+        public string Title { set; get; }
+
         public int type { set; get; }
+
+        public string TitleType { set; get; }
 
         [MaxLength(256)]
         public string Image { set; get; }

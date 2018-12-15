@@ -3,9 +3,9 @@
     function statusFilter() {
         return function (input) {
             if (input == true)
-                return "Kích hoạt";
+                return "Active";
             else
-                return "Khóa";
+                return "Lock";
         }
     }
 })(angular.module("default.common"));

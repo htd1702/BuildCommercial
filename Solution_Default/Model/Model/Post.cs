@@ -35,10 +35,14 @@ namespace Model.Model
         [MaxLength(256)]
         public string Image { set; get; }
 
-        [MaxLength(500)]
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
         public string Description { set; get; }
 
-        public string Content { set; get; }
+        public string DescriptionFr { set; get; }
+
+        public string DescriptionVN { set; get; }
 
         public bool? HomeFlag { set; get; }
 

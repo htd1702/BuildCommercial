@@ -133,7 +133,7 @@
     <value>Màu sắc</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Liên lạc</value>
+    <value>Liên hệ</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
@@ -155,6 +155,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Trang chủ</value>
+  </data>
+  <data name="LinkTile" xml:space="preserve">
+    <value>- Adelade.ca</value>
   </data>
   <data name="LowToHigh" xml:space="preserve">
     <value>Giá: Thấp đến cao</value>
@@ -180,6 +183,9 @@
   <data name="Sale" xml:space="preserve">
     <value>Giảm giá</value>
   </data>
+  <data name="SaleProduct" xml:space="preserve">
+    <value>Sản phẩm giảm giá</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm</value>
   </data>
@@ -192,6 +198,9 @@
   </data>
   <data name="StoreOverview" xml:space="preserve">
     <value>Tổng quan về cửa hàng</value>
+  </data>
+  <data name="TitleMain" xml:space="preserve">
+    <value>Adelade | Mua Online quần áo thời trang giá rẻ</value>
   </data>
   <data name="TopRate" xml:space="preserve">
     <value>Sản phẩm yêu thích</value>

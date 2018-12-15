@@ -156,6 +156,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="LinkTile" xml:space="preserve">
+    <value>- Adelade.ca</value>
+  </data>
   <data name="LowToHigh" xml:space="preserve">
     <value>Price: Low to High</value>
   </data>
@@ -180,6 +183,9 @@
   <data name="Sale" xml:space="preserve">
     <value>Sale</value>
   </data>
+  <data name="SaleProduct" xml:space="preserve">
+    <value>SaleProduct</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
@@ -192,6 +198,9 @@
   </data>
   <data name="StoreOverview" xml:space="preserve">
     <value>Store Overview</value>
+  </data>
+  <data name="TitleMain" xml:space="preserve">
+    <value>Adelade | Buy cheap fashion clothes online</value>
   </data>
   <data name="TopRate" xml:space="preserve">
     <value>Top Rate</value>

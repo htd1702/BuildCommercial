@@ -19,6 +19,8 @@ namespace Web.Infrastructure.Core
         public string NameVN { get; set; }
         public string NameFr { get; set; }
         public double Price { get; set; }
+        public double PriceVN { get; set; }
+        public double PriceFr { get; set; }
         public string Image { get; set; }
         public int PromotionPrice { get; set; }
         public int Quantity { get; set; }
@@ -34,8 +36,6 @@ namespace Web.Infrastructure.Core
         public string ColorName { get; set; }
         public int SizeID { get; set; }
         public string SizeName { get; set; }
-        public double PriceVN { get; set; }
-        public double PriceFr { get; set; }
     }
 
     public class ShoppingCart

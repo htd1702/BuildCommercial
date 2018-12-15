@@ -1,7 +1,10 @@
 ﻿@using Model.Model
 @using Data;
+@using Web.Resources.ShopingCart
+@using Web.Resources.Product
+@using Web.Resources.Home
 @{
-    ViewBag.Title = "CheckOut";
+    ViewBag.Title = re_ShopingCart.CheckOut + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <script src="~/Scripts/plugins/jquery/jquery.min.js"></script>
@@ -13,11 +16,12 @@
                     <table class="table-shopping-cart" style="min-width:0">
                         <tbody>
                             <tr class="table_head">
-                                <th class="column-1">Product</th>
+                                <th class="column-1">@re_Product.Product</th>
                                 <th class="column-2"></th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Discount</th>
-                                <th class="column-5">Quantity</th>
+                                <th class="column-2">@re_Product.Code</th>
+                                <th class="column-3">@re_Product.Price</th>
+                                <th class="column-4">@re_Home.Discount</th>
+                                <th class="column-5">@re_Product.Quantity</th>
                             </tr>
 
                             @foreach (Web.Infrastructure.Core.InfoCart p in Web.Infrastructure.Core.ShoppingCart.Cart.Items)
@@ -43,6 +47,9 @@
                                         }
                                         <br />
                                         <span class="spanSizeColor" data-size="@p.SizeID" data-color="@p.ColorID">@p.ColorName, @p.SizeName</span>
+                                    </td>
+                                    <td class="column-2">
+                                        <span>@p.Code</span>
                                     </td>
                                     <td class="column-3">
 
@@ -78,19 +85,19 @@
                                 </tr>
                             }
                             <tr>
-                                <td colspan="5" style="padding-right:10px;height:50px;">
+                                <td colspan="6" style="padding-right:10px;height:50px;">
                                     <span class="pull-right">
                                         @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
                                         {
-                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
+                                            <b>@re_ShopingCart.Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalVN, "{0:C}")</span>
                                         }
                                         else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
                                         {
-                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
+                                            <b>@re_ShopingCart.Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr">@Html.FormatValue(Web.Infrastructure.Core.ShoppingCart.Cart.TotalFr, "{0:C}")</span>
                                         }
                                         else
                                         {
-                                            <b>Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">$@string.Format("{0:#,##0.00}", Web.Infrastructure.Core.ShoppingCart.Cart.Total)</span>
+                                            <b>@re_ShopingCart.Total:</b> <span id="spanTotal" data-total="@Web.Infrastructure.Core.ShoppingCart.Cart.Total">$@string.Format("{0:#,##0.00}", Web.Infrastructure.Core.ShoppingCart.Cart.Total)</span>
                                         }
                                     </span>
                                 </td>
@@ -116,14 +123,18 @@
 
             <div class="col-md-5">
                 <h4 class="mtext-109 cl2 p-b-30">
-                    Cart Totals
+                    @re_ShopingCart.CartTotals
                 </h4>
 
                 <div class="flex-w flex-t bor12 p-b-13">
-                    <div class="size-209">
+                    <div>
                         <span class="stext-110 cl2">
                             <span>
-                                Shipping: {{customerName}}
+                                @re_ShopingCart.Shipping: <span style="color:red">@re_ShopingCart.MessageShipp</span>
+                            </span>
+                            <br />
+                            <span>
+                                {{customerName}}
                             </span>
                             <br />
                             <span>
@@ -136,38 +147,38 @@
                 <div class="flex-w flex-t p-t-15 p-b-30">
                     <div>
                         <p class="stext-111 cl6 p-t-2">
-                            There are no shipping methods available. Please double check your address, or contact us if you need any help.
+                            @re_ShopingCart.DescriptionShipp
                         </p>
 
                         <div class="p-t-15">
                             <span class="stext-112 cl8">
-                                Calculate Shipping
+                                @re_ShopingCart.InfoCustomer:
                             </span>
 
                             <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerName" type="text" id="customerName" name="customerName" placeholder="Name">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerName" type="text" id="customerName" name="customerName" placeholder="@re_ShopingCart.wName">
                             </div>
 
                             <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerEmail" type="email" id="customerEmail" name="customerEmail" placeholder="Email">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerEmail" type="email" id="customerEmail" name="customerEmail" placeholder="@re_ShopingCart.wEmail">
                             </div>
 
                             <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerAddress" type="text" id="customerAddress" name="customerAddress" placeholder="Address">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerAddress" type="text" id="customerAddress" name="customerAddress" placeholder="@re_ShopingCart.wAddress">
                             </div>
 
                             <div class="bor8 bg0 m-b-12">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerPhomeNumber" type="text" id="customerPhomeNumber" name="customerPhomeNumber" placeholder="Phone number">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" ng-model="customerPhomeNumber" type="text" id="customerPhomeNumber" name="customerPhomeNumber" placeholder="@re_ShopingCart.wPhone">
                             </div>
 
                             <div class="bor8 bg0 m-b-12">
-                                <textarea class="stext-111 cl8 plh3 size-111 p-lr-15" id="customerMessage" name="customerMessage" placeholder="Description"></textarea>
+                                <textarea class="stext-111 cl8 plh3 size-111 p-lr-15" id="customerMessage" name="customerMessage" placeholder="@re_ShopingCart.wDescription"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="btnCheckOut">Proceed to Checkout</button>
+                <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="btnCheckOut">@re_ShopingCart.ProceedCheckout</button>
             </div>
         </div>
     </div>
@@ -211,7 +222,7 @@
                         }
                     });
                     $.ajax({
-                        url: "/Cart/Index",
+                        url: "/Cart/ViewCartDetails",
                         async: false,
                         success: function (response) {
                             $("#page_ShoppingCart").html(response);
@@ -234,6 +245,8 @@
         var customerAddress = $("#customerAddress").val();
         var customerPhomeNumber = $("#customerPhomeNumber").val();
         var customerMessage = $("#customerMessage").val();
+        if (customerMessage == undefined || customerMessage == "")
+            customerMessage = "No comment";
         var total = $("#spanTotal").attr("data-total");
         var len = $(".spanNameProduct").length;
         for (var i = 0; i < len; i++) {
@@ -268,6 +281,10 @@
             swal("Faild!", "Please enter a email!", "error");
             return;
         }
+        if (!validateEmail(obj.customerEmail)) {
+            swal("Faild!", "Please check a email again!", "error");
+            return;
+        }
         if (obj.customerAddress == undefined || obj.customerAddress == "") {
             swal("Faild!", "Please enter a address!", "error");
             return;
@@ -276,6 +293,11 @@
             swal("Faild!", "Please enter a phone number!", "error");
             return;
         }
+        if (obj.customerPhomeNumber.length < 10 || obj.customerPhomeNumber.length > 11) {
+            swal("Faild!", "Please check a phone number again!", "error");
+            return;
+        }
+
         $.ajax({
             url: "/api/order/Create",
             contentType: "application/json; charset=utf-8",
@@ -297,14 +319,14 @@
                         }
                     });
                     $.ajax({
-                        url: "/Cart/Index",
+                        url: "/Cart/ViewCartDetails",
                         async: false,
                         success: function (response) {
                             $("#page_ShoppingCart").html(response);
                         }
                     });
                 }
-                swal(obj.customerName, "Bạn đã đặt hàng thành công!", "success").then((result) => {
+                swal(obj.customerName, "You have successfully placed the order. We will contact you as soon as possible!", "success").then((result) => {
                     window.location.href = "/";
                 });
             },
@@ -314,4 +336,3 @@
         });
     });
 </script>
-

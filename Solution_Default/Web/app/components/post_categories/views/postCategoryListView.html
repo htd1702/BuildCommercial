@@ -48,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in postCategories | orderBy: 'Name'">
+                    <tr ng-repeat="item in postCategories | orderBy: 'CreatedDate' : true">
                         <td><input type="checkbox" class="chk_allPostCategories" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
                         <td>{{item.Name}}</td>
                         <!--<td>{{item.Alias}}</td>-->

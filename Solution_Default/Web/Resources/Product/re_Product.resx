@@ -189,8 +189,8 @@
   <data name="Product" xml:space="preserve">
     <value>Product</value>
   </data>
-  <data name="ProductName" xml:space="preserve">
-    <value>Product Name</value>
+  <data name="ProductByCategory" xml:space="preserve">
+    <value>Product Category</value>
   </data>
   <data name="PromotionPrice" xml:space="preserve">
     <value>Promotion Price</value>

@@ -30,6 +30,8 @@ namespace Service
 
         DataTable GetPostCategoryByParent();
 
+        int CheckExistsPostCategory(int id);
+
         void Save();
     }
 
@@ -105,6 +107,11 @@ namespace Service
         public void Update(PostCategory PostCategory)
         {
             _postCategoryRepository.Update(PostCategory);
+        }
+
+        public int CheckExistsPostCategory(int id)
+        {
+            return _postCategoryRepository.CheckExistsPostCategory(id);
         }
     }
 }

@@ -6,7 +6,7 @@
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmEditBanner" role="form" ng-submit="EditBanner()">
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="name">
                         Banner Name
                         <span ng-hide="frmEditBanner.name.$error.maxlength" ng-show="frmEditBanner.name.$invalid" class="text-danger"> *</span>
@@ -14,21 +14,27 @@
                     <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="banner.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
                     <span ng-show="frmEditBanner.name.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="type">
                         Type
                     </label>
                     <select name="type" ng-model="banner.type" class="custom-select" ng-change="changeType(banner.type)" ng-options="option.ID as option.Name for option in types">
-                        <option value="" hidden>Loại hiển thị</option>
+                        <option value="">Loại hiển thị</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="typeName">
                         Loại hiển thị
                     </label>
-                    <input type="text" class="text-control" ng-model="banner.typeName" name="typeName" readonly="readonly" />
+                    <input type="text" class="text-control" ng-model="banner.TitleType" name="typeName" />
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
+                    <label for="title">
+                        Tiêu đề
+                    </label>
+                    <input type="text" class="text-control" ng-model="banner.Title" name="title" />
+                </div>
+                <div class="form-group col-md-4">
                     <label for="image">
                         Image
                         <span ng-show="frmEditBanner.image.$invalid" class="text-danger"> *</span>

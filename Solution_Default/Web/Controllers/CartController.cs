@@ -21,6 +21,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult ViewCartDetails()
+        {
+            return PartialView();
+        }
+
         [HttpPost]
         public JsonResult Add(int Id, int colorID, int sizeID, string lang)
         {

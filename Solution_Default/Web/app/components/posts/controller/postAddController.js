@@ -8,11 +8,15 @@
     function postAddController($scope, apiService, notificationService, $state, commonService, authData) {
         //load option parentID
         $scope.parentCategories = [];
+        $scope.moreImages = [];
         //set value model
         $scope.post = {
             CreatedDate: new Date(),
             Status: true
         };
+        if ($scope.moreImages == "") {
+            $("input[name=imageMore]").show();
+        }
         //setting ckeditor
         $scope.editorOptions = {
             lang: 'en',
@@ -22,6 +26,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddPost = AddPost;
         $scope.ChooseImage = ChooseImage;
+        $scope.ChooseImageMore = ChooseImageMore;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.post.Alias = commonService.getSEOTitle($scope.post.Name);
@@ -42,6 +47,7 @@
             $scope.post.CreatedBy = authData.authenticationData.userName;
             $scope.post.UpdatedBy = $scope.post.CreatedBy;
             $scope.post.UpdatedDate = $scope.post.CreatedDate;
+            $scope.post.MoreImages = JSON.stringify($scope.moreImages);
             apiService.post("/api/post/create", $scope.post, function (result) {
                 notificationService.displaySuccess(result.data.Name + " thêm thành công!");
                 $state.go("posts");
@@ -55,6 +61,19 @@
             finder.selectActionFunction = function (filtUrl) {
                 $scope.$apply(function () {
                     $scope.post.Image = filtUrl;
+                });
+            };
+            finder.popup();
+        }
+        //function upload multi img
+        function ChooseImageMore() {
+            $("input[name=imageMore]").hide();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (filtUrl) {
+                $scope.$apply(function () {
+                    $scope.post.ImageMore = filtUrl;
+                    $scope.moreImages.push(filtUrl);
+                    $.unique($scope.moreImages.sort()).sort();
                 });
             };
             finder.popup();

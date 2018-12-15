@@ -197,11 +197,14 @@
     [ Cart ]*/
     $('.js-show-cart').on('click', function () {
         $.ajax({
-            url: "/Cart/Index",
+            url: "/Cart/ViewCartDetails",
             async: false,
             success: function (response) {
                 $("#page_ShoppingCart").html(response);
                 $('.js-panel-cart').addClass('show-header-cart');
+            },
+            error: function (error) {
+                console.log(error);
             }
         });
     });

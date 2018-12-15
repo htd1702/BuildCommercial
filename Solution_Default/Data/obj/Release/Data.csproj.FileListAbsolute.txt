@@ -45,3 +45,6 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrati
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AddScaleProduct.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewTableBanner.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewInventoryProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewColumBannerAndPostCategory.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewColumPost.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.TitleTypeBanner.resources

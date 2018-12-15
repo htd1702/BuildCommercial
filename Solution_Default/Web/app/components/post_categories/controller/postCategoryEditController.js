@@ -7,6 +7,11 @@
     postCategoryEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService", "authData"];
 
     function postCategoryEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
+        //setting ckeditor
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
+        };
         //set value model
         $scope.postCategory = {
             CreatedDate: new Date(),

@@ -1,7 +1,7 @@
 ﻿@using Web.Resources.Home
 @using Web.Resources.Product
 @{
-    ViewBag.Title = "ProductByCategory";
+    ViewBag.Title = re_Product.ProductByCategory + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
@@ -33,8 +33,19 @@
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
-        <a class="stext-109 cl8 hov-cl1 trans-04">
-            @ViewBag.Name
+        <a class="stext-109 text-primary hov-cl1 trans-04">
+            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+            {
+                @ViewBag.NameVN
+            }
+            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+            {
+                @ViewBag.NameFr
+            }
+            else
+            {
+                @ViewBag.Name
+            }
         </a>
         <hr />
     </div>
@@ -56,13 +67,36 @@
                         </h4>
 
                         <div class='sub-menu-vertical'>
-                            <ul ng-if="childParent.ParentID != 0" ng-repeat="childParent in childCategory | orderBy : CreatedDate">
-                                <li>
-                                    <a href="" ng-click="btnParent(childParent.ID, childParent.ParentID)">
-                                        {{childParent.Name}}
-                                    </a>
-                                </li>
-                            </ul>
+                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                            {
+                                <ul ng-if="childParent.ParentID != 0" ng-repeat="childParent in childCategory | orderBy : CreatedDate">
+                                    <li>
+                                        <a href="" ng-click="btnParent(childParent.ID, childParent.ParentID)">
+                                            {{childParent.NameVN}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                <ul ng-if="childParent.ParentID != 0" ng-repeat="childParent in childCategory | orderBy : CreatedDate">
+                                    <li>
+                                        <a href="" ng-click="btnParent(childParent.ID, childParent.ParentID)">
+                                            {{childParent.NameFr}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul ng-if="childParent.ParentID != 0" ng-repeat="childParent in childCategory | orderBy : CreatedDate">
+                                    <li>
+                                        <a href="" ng-click="btnParent(childParent.ID, childParent.ParentID)">
+                                            {{childParent.Name}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
                         </div>
                     </div>
                 </div>
@@ -86,11 +120,25 @@
                                         </a>
 
                                         <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
-                                            <span style="text-decoration:line-through">{{p.PriceVN | currency:"":0}} vnđ</span> - {{(p.PriceVN - (p.PriceVN * p.PromotionPrice)/100) | currency:"":0}} vnđ
+                                            <span style="text-decoration:line-through">{{p.PriceVN | currency:"":0}} vnđ</span> - <span style="color:red">{{(p.PriceVN - (p.PriceVN * p.PromotionPrice)/100) | currency:"":0}} vnđ</span>
                                         </span>
 
                                         <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
                                             {{p.PriceVN | currency:"":0}} vnđ
+                                        </span>
+                                    }
+                                    else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                    {
+                                        <a href="/product-details/{{p.ID}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            {{p.NameFr}}
+                                        </a>
+
+                                        <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
+                                            <span style="text-decoration:line-through">{{p.PriceFr | currency}}</span> - <span style="color:red">{{(p.PriceFr - (p.PriceFr * p.PromotionPrice)/100) | currency}}</span>
+                                        </span>
+
+                                        <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
+                                            {{p.PriceFr | currency}}
                                         </span>
                                     }
                                     else
@@ -100,14 +148,13 @@
                                         </a>
 
                                         <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
-                                            <span style="text-decoration:line-through">{{p.Price | currency}}</span> - {{(p.Price - (p.Price * p.PromotionPrice)/100) | currency}}
+                                            <span style="text-decoration:line-through">{{p.Price | currency}}</span> - <span style="color:red">{{(p.Price - (p.Price * p.PromotionPrice)/100) | currency}}</span>
                                         </span>
 
                                         <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
                                             {{p.Price | currency}}
                                         </span>
                                     }
-
                                 </div>
                             </div>
                         </div>
@@ -127,6 +174,3 @@
         </div>
     </section>
 </section>
-
-
-

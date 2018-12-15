@@ -6,7 +6,7 @@
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmAddBanner" role="form" ng-submit="AddBanner()">
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="name">
                         Banner Name
                         <span ng-hide="frmAddBanner.name.$error.maxlength" ng-show="frmAddBanner.name.$invalid" class="text-danger"> *</span>
@@ -14,7 +14,7 @@
                     <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="banner.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
                     <span ng-show="frmAddBanner.name.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="type">
                         Type
                     </label>
@@ -22,13 +22,19 @@
                         <option value="">Loại hiển thị</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="typeName">
                         Loại hiển thị
                     </label>
-                    <input type="text" class="text-control" ng-model="banner.typeName" name="typeName" readonly="readonly" />
+                    <input type="text" class="text-control" ng-model="banner.TitleType" name="typeName" readonly="readonly" />
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
+                    <label for="title">
+                        Tiêu đề
+                    </label>
+                    <input type="text" class="text-control" ng-model="banner.Title" name="title" />
+                </div>
+                <div class="form-group col-md-4">
                     <label for="image">
                         Image
                         <span ng-show="frmAddBanner.image.$invalid" class="text-danger"> *</span>

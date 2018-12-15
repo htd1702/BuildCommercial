@@ -279,6 +279,21 @@
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Contact\re_Contact.vi.Designer.cs">
+      <DependentUpon>re_Contact.vi.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Contact\re_Contact.fr.Designer.cs">
+      <DependentUpon>re_Contact.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Contact\re_Contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>re_Contact.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Home\re_Home.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4146,6 +4161,7 @@
     <Content Include="Scripts\plugins\bootstrap\bootstrap-material-design.min.js" />
     <Content Include="Scripts\plugins\jquery\jquery-ui.js" />
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
+    <Content Include="Scripts\plugins\jquery\jquery.zoom.min.js" />
     <Content Include="Scripts\plugins\popper\popper.min.js" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -4188,6 +4204,7 @@
     <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-32-18.jpg" />
     <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-34-38.jpg" />
     <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-38-56.jpg" />
+    <Content Include="Views\Client\Form_SendMailContact.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4205,7 +4222,6 @@
     <Folder Include="app\components\users\" />
     <Folder Include="Resources\About\" />
     <Folder Include="Resources\Blog\" />
-    <Folder Include="Resources\Contact\" />
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="Resources\ProductDetail\" />
     <Folder Include="UploadedFiles\flash\" />
@@ -4399,11 +4415,9 @@
     <Content Include="Views\Shared\_viewFooter.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
     <Content Include="Views\Shared\_viewProduct.cshtml" />
-    <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
     <Content Include="Views\Post\_viewPostDetails.cshtml" />
     <Content Include="Views\ProductCategory\_viewParent.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -4412,13 +4426,13 @@
     <Content Include="Views\Client\Form_SendMail.html" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\Post\_viewPosts.cshtml" />
     <Content Include="Views\Product\ProductOverView.cshtml" />
     <Content Include="Views\Product\SaleProduct.cshtml" />
     <Content Include="Views\Product\NewProduct.cshtml" />
     <Content Include="Views\Product\ProductByCategory.cshtml" />
     <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
+    <Content Include="Views\Cart\ViewCartDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -4439,6 +4453,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Contact\re_Contact.vi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Contact.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Contact\re_Contact.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Contact.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Contact\re_Contact.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>re_Contact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Home\re_Home.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>re_Home.fr.Designer.cs</LastGenOutput>

@@ -19,6 +19,8 @@ namespace Data.Repositories
         DataTable GetPostCategoryByParent();
 
         List<string> ListNamePostCategory(string keyword);
+
+        int CheckExistsPostCategory(int id);
     }
 
     public class PostCategoryRepository : RepositoryBase<PostCategory>, IPostCategoryRepository
@@ -27,6 +29,15 @@ namespace Data.Repositories
 
         public PostCategoryRepository(IDbFactory dbFactory) : base(dbFactory)
         { }
+
+        public int CheckExistsPostCategory(int id)
+        {
+            var post = this.DbContext.Posts.Where(p => p.CategoryID == id).ToList();
+            if (post.Count > 0)
+                return 1;
+            else
+                return 0;
+        }
 
         public IEnumerable<PostCategory> GetByAlias(string alias)
         {

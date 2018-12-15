@@ -11,24 +11,21 @@
                         Post Name
                         <span ng-hide="frmAddPost.name.$error.maxlength" ng-show="frmAddPost.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="post.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPost.name.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="post.Name" name="name" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameVN">
                         Post Name VN
                         <span ng-hide="frmAddPost.nameVN.$error.maxlength" ng-show="frmAddPost.nameVN.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="post.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPost.nameVN.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="post.NameVN" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameFr">
                         Post Name Frank
                         <span ng-hide="frmAddPost.nameFr.$error.maxlength" ng-show="frmAddPost.nameFr.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="post.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPost.nameFr.$error.maxlength" class="text-danger">Bài viết tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="post.NameFr" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
                 <div class="form-group col-md-3" style="display:none;">
                     <label for="alias">
@@ -43,12 +40,6 @@
                     <input type="hidden" name="categoryID" ng-model="post.CategoryID" />
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="viewCount">
-                        View
-                    </label>
-                    <input type="number" required class="text-control" min="0" ng-model="post.ViewCount" name="viewCount">
-                </div>
-                <div class="form-group col-md-4">
                     <label for="image">
                         Image
                         <span ng-show="frmAddPost.image.$invalid" class="text-danger"> *</span>
@@ -56,6 +47,21 @@
                     <input type="text" class="text-control" ng-model="post.Image" name="image" required>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="imageMore">
+                        MoreImages
+                        <span ng-show="frmAddPost.imageMore.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <ul class="nav">
+                        <li class="nav-item" ng-repeat="img in moreImages">
+                            <img ng-src="{{img}}" class="img-content" style="width:4.5em" />
+                        </li>
+                    </ul>
+                    <input type="text" class="text-control" ng-model="post.ImageMore" name="imageMore" style="display:none" required>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImageMore()">Upload</button>
                     </div>
                 </div>
                 <!--<div class="form-group col-md-6">
@@ -74,8 +80,15 @@
                 </div>-->
                 <div class="form-group col-md-12">
                     <label for="description">Description</label>
-                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="post.Content" name="content"></textarea>
-                    <span class="text-danger" ng-show="frmAddPost.content.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.Description" name="description"></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="descriptionVN">Description VN</label>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionVN" name="descriptionVN"></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="descriptionFr">Description Fr</label>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionFr" name="descriptionFr"></textarea>
                 </div>
             </div>
             <div class="form-row">

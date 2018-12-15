@@ -37,7 +37,7 @@ namespace Web.Controllers
         [ChildActionOnly]
         public ActionResult _sectionSlider()
         {
-            var model = _bannerService.ListBannerByType(1);
+            var model = _bannerService.ListBannerByType(1, 1);
             return PartialView(model);
         }
 
@@ -50,6 +50,11 @@ namespace Web.Controllers
         }
 
         public ActionResult _viewProduct()
+        {
+            return PartialView();
+        }
+
+        public ActionResult _viewCart()
         {
             return PartialView();
         }

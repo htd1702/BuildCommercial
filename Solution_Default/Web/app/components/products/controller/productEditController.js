@@ -117,10 +117,14 @@
         //function change price
         function changePrice() {
             $scope.product.PriceFr = $scope.product.Price;
+            var scale = $scope.product.Scale;
+            if (scale != undefined && scale > 0)
+                $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
         }
         //function change scale
         function changeScale() {
             $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
+            $scope.product.TransportFeeVN = $scope.product.TransportFee * $scope.product.Scale;
         }
         //call method load list categories
         LoadListColor();
@@ -165,7 +169,6 @@
                 });
                 //get list size
                 apiService.get('/api/productdetail/getlistproductbysizecolor', size, function (result) {
-                    console.log(result.data);
                     if (result.data.length > 0) {
                         //get value list size
                         $("input[name=chkSize]").each(function () {

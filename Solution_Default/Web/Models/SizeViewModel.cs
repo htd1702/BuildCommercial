@@ -14,6 +14,8 @@ namespace Web.Models
 
         public string Description { set; get; }
 
+        public int? ParentSizeID { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }

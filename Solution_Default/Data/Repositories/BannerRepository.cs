@@ -10,7 +10,7 @@ namespace Data.Repositories
     {
         List<string> ListNameBanner(string keyword);
 
-        IEnumerable<Banner> ListBannerByType(int type);
+        IEnumerable<Banner> ListBannerByType(int type, int typeBanner);
     }
 
     public class BannerRepository : RepositoryBase<Banner>, IBannerRepository
@@ -25,20 +25,12 @@ namespace Data.Repositories
             return this.DbContext.Banners.Where(p => p.Name.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
-        public IEnumerable<Banner> ListBannerByType(int type)
+        public IEnumerable<Banner> ListBannerByType(int type, int typeBanner)
         {
             if (type == 1)
-            {
-                return this.DbContext.Banners.Where(b => b.type == type).Take(3).OrderBy(b => b.CreatedDate).ToList();
-            }
-            else if (type == 2)
-            {
-                return this.DbContext.Banners.Where(b => b.type == type).Take(1).OrderBy(b => b.CreatedDate).ToList();
-            }
+                return this.DbContext.Banners.Where(b => b.type == typeBanner).Take(3).OrderBy(b => b.CreatedDate).ToList();
             else
-            {
-                return this.DbContext.Banners.Where(b => b.type == type).Take(1).OrderBy(b => b.CreatedDate).ToList();
-            }
+                return this.DbContext.Banners.Where(b => b.type == typeBanner).Take(1).OrderBy(b => b.CreatedDate).ToList();
         }
     }
 }

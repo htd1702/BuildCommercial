@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Web.Models
 {
@@ -26,9 +27,14 @@ namespace Web.Models
 
         public string Image { set; get; }
 
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
         public string Description { set; get; }
 
-        public string Content { set; get; }
+        public string DescriptionFr { set; get; }
+
+        public string DescriptionVN { set; get; }
 
         public bool? HomeFlag { set; get; }
 

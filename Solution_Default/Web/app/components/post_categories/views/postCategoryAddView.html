@@ -11,24 +11,21 @@
                         Post Name
                         <span ng-hide="frmAddPostCategory.name.$error.maxlength" ng-show="frmAddPostCategory.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPostCategory.name.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" name="name" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameVN">
                         Post Name VN
                         <span ng-hide="frmAddPostCategory.nameVN.$error.maxlength" ng-show="frmAddPostCategory.nameVN.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="postCategory.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPostCategory.nameVN.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="postCategory.NameVN" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameFr">
                         Post Name Frank
                         <span ng-hide="frmAddPostCategory.nameFr.$error.maxlength" ng-show="frmAddPostCategory.nameFr.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="postCategory.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
-                    <span ng-show="frmAddPostCategory.nameFr.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="postCategory.NameFr" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
                 </div>
             </div>
             <!--<div class="form-row">
@@ -59,10 +56,29 @@
                     <span ng-show="frmAddPostCategory.displayOrder.$invalid" class="text-danger">Bạn chưa nhập thứ tự hiển thị</span>
                 </div>
             </div>-->
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="image">
+                        Image
+                        <span ng-show="frmAddPostCategory.image.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="postCategory.Image" name="image" required>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
-                <label for="description">Mô tả</label>
-                <textarea rows="3" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="postCategory.Description" name="description"></textarea>
-                <span class="text-danger" ng-show="frmAddPostCategory.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                <label for="description">Description</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.Description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="descriptionFr">Description Fr</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionFr" name="descriptionFr"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="descriptionVN">Description VN</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionVN" name="descriptionVN"></textarea>
             </div>
             <!--<div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>
@@ -86,6 +102,14 @@
                 <div class="form-check col-3">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="postCategory.HomeFlag" ng-model="postCategory.HomeFlag"> Hiển thị trang chủ
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="promotion" ng-checked="postCategory.Promotion" ng-model="postCategory.Promotion"> Khuyến mãi
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>

@@ -10,6 +10,20 @@ namespace Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ProductByCategory",
+                url: "product-category/{id}",
+                defaults: new { controller = "Product", action = "ProductByCategory", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+           );
+
+            routes.MapRoute(
+                name: "ViewPostCategory",
+                url: "category-news",
+                defaults: new { controller = "PostCategory", action = "_viewPostCategory", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "ViewPostDetail",
                 url: "post-detail/{id}",
                 defaults: new { controller = "Post", action = "_viewPostDetails", id = UrlParameter.Optional },

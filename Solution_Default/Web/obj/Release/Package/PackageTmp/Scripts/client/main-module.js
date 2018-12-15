@@ -275,8 +275,9 @@ function ShoppingCartController($scope, $http) {
 PostController.$inject = ["$scope", "$http"];
 function PostController($scope, $http) {
     $scope.hotProductposts = [];
-    $scope.newProductPosts = [];
+    $scope.saleProductPosts = [];
     $scope.ListHotProduct = ListHotProduct;
+    $scope.ListSaleProduct = ListSaleProduct;
     function ListHotProduct(top) {
         $.ajax({
             url: "/Product/ListHotProduct",
@@ -289,33 +290,20 @@ function PostController($scope, $http) {
             }
         });
     }
-    function ListNewProduct(take) {
+    function ListSaleProduct(take) {
         $.ajax({
-            url: "/Product/ListNewProductByTake",
+            url: "/Product/ListDiscountProductByTake",
             type: "POST",
             dataType: "JSON",
             async: false,
             data: { take: take },
             success: function (data) {
-                $scope.newProductPosts = data;
+                $scope.saleProductPosts = data;
             }
         });
     }
-    $("#btnSearchPost").click(function () {
-        var keyword = $("#txt_KeywordPost").val();
-        $.ajax({
-            url: "/Post/SearchPost",
-            type: "POST",
-            dataType: "JSON",
-            async: false,
-            data: { keyword: keyword },
-            success: function (response) {
-                window.location = '/post-detail/' + response;
-            }
-        });
-    });
-    ListHotProduct(4);
-    ListNewProduct(4);
+    ListHotProduct(8);
+    ListSaleProduct(8);
 }
 
 //Product Sale
@@ -403,7 +391,7 @@ function ProductSaleController($scope, $http) {
         $scope.prevPage = function () {
             if ($scope.currentPage > 0) {
                 $scope.currentPage--;
-                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $("html, body").animate({ scrollTop: 470 }, "slow");
             }
         };
 
@@ -419,7 +407,7 @@ function ProductSaleController($scope, $http) {
         $scope.nextPage = function () {
             if ($scope.currentPage < $scope.pageCount()) {
                 $scope.currentPage++;
-                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $("html, body").animate({ scrollTop: 470 }, "slow");
             }
         };
 
@@ -430,7 +418,7 @@ function ProductSaleController($scope, $http) {
 
         $scope.setPage = function (n) {
             $scope.currentPage = n;
-            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $("html, body").animate({ scrollTop: 470 }, "slow");
         };
     });
 }

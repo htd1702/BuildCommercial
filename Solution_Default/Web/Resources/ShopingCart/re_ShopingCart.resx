@@ -117,14 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CartTotals" xml:space="preserve">
+    <value>Cart Totals</value>
+  </data>
   <data name="CheckOut" xml:space="preserve">
     <value>Check Out</value>
+  </data>
+  <data name="DescriptionShipp" xml:space="preserve">
+    <value>There are no shipping methods available. Please double check your address, or contact us if you need any help.</value>
+  </data>
+  <data name="InfoCustomer" xml:space="preserve">
+    <value>Calculate Shipping</value>
+  </data>
+  <data name="MessageShipp" xml:space="preserve">
+    <value>The product does not include tax and shipping charges</value>
+  </data>
+  <data name="ProceedCheckout" xml:space="preserve">
+    <value>Proceed to Checkout</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Shipping</value>
   </data>
   <data name="ShopingMore" xml:space="preserve">
     <value>Shopping More</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="ViewCart" xml:space="preserve">
     <value>View Cart</value>
+  </data>
+  <data name="wAddress" xml:space="preserve">
+    <value>Address...</value>
+  </data>
+  <data name="wDescription" xml:space="preserve">
+    <value>Description...</value>
+  </data>
+  <data name="wEmail" xml:space="preserve">
+    <value>Email...</value>
+  </data>
+  <data name="wName" xml:space="preserve">
+    <value>Name...</value>
+  </data>
+  <data name="wPhone" xml:space="preserve">
+    <value>Phone...</value>
   </data>
   <data name="YourCart" xml:space="preserve">
     <value>Your Cart</value>
