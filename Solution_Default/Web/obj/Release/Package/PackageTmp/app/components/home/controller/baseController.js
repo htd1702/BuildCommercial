@@ -22,7 +22,7 @@
         var translate = this;
         //set tran en
         translate.language = 'en';
-        //set multi tran 
+        //set multi tran
         translate.languages = ['en', 'vi', 'fr'];
         //function tran
         translate.updateLanguage = function (index) {

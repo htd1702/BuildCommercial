@@ -1,7 +1,7 @@
 ﻿@using Web.Resources.Home
 @using Web.Resources.Product
 @{
-    ViewBag.Title = "_viewPostCategory";
+    ViewBag.Title = re_Home.Blog + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
@@ -49,12 +49,35 @@
                         <div class="p-t-32 p-b-50">
                             <h4 class="p-b-15 txt-center">
                                 <a href="/post-detail/@p.ID" class="ltext-108 cl2 hov-cl1 trans-04">
-                                    @p.Name
+
+                                    @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                    {
+                                        @p.NameVN
+                                    }
+                                    else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                    {
+                                        @p.NameFr
+                                    }
+                                    else
+                                    {
+                                        @p.Name
+                                    }
                                 </a>
                             </h4>
 
                             <p class="stext-117 cl6">
-                                @Html.Raw(p.Description)
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    @Html.Raw(p.DescriptionVN)
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                {
+                                    @Html.Raw(p.DescriptionFr)
+                                }
+                                else
+                                {
+                                    @Html.Raw(p.Description)
+                                }
                             </p>
                         </div>
                     </div>
@@ -92,6 +115,20 @@
                                     {{p.PriceVN | currency:"":0}} vnđ
                                 </span>
                             }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                <a href="/product-details/{{p.ID}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{p.NameFr}}
+                                </a>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
+                                    <span style="text-decoration:line-through">{{p.PriceFr | currency}}</span> - <span style="color:red">{{(p.PriceFr - (p.PriceFr * p.PromotionPrice)/100) | currency}}</span>
+                                </span>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
+                                    {{p.PriceFr | currency}}
+                                </span>
+                            }
                             else
                             {
                                 <a href="/product-details/{{p.ID}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
@@ -107,7 +144,6 @@
                                 </span>
                             }
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -141,6 +177,20 @@
 
                                 <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
                                     {{p.PriceVN | currency:"":0}} vnđ
+                                </span>
+                            }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                <a href="/product-details/{{p.ID}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{p.NameFr}}
+                                </a>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice > 0">
+                                    <span style="text-decoration:line-through">{{p.PriceFr | currency}}</span> - <span style="color:red">{{(p.PriceFr - (p.PriceFr * p.PromotionPrice)/100) | currency}}</span>
+                                </span>
+
+                                <span class="stext-105 cl3" ng-show="p.PromotionPrice < 1">
+                                    {{p.PriceFr | currency}}
                                 </span>
                             }
                             else
@@ -192,12 +242,34 @@
                         <div class="p-t-32 p-b-50">
                             <h4 class="p-b-15 txt-center">
                                 <a href="/post-detail/@p.ID" class="ltext-108 cl2 hov-cl1 trans-04">
-                                    @p.Name
+                                    @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                    {
+                                        @p.NameVN
+                                    }
+                                    else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                    {
+                                        @p.NameFr
+                                    }
+                                    else
+                                    {
+                                        @p.Name
+                                    }
                                 </a>
                             </h4>
 
                             <p class="stext-117 cl6">
-                                @Html.Raw(p.Description)
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    @Html.Raw(p.DescriptionVN)
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                {
+                                    @Html.Raw(p.DescriptionFr)
+                                }
+                                else
+                                {
+                                    @Html.Raw(p.Description)
+                                }
                             </p>
                         </div>
                     </div>
@@ -206,4 +278,3 @@
         </div>
     </section>
 </div>
-

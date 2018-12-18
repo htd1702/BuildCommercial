@@ -59,6 +59,10 @@ namespace Service
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pagesize, out int totalRow);
 
+        int CheckInventoryProduct(int colorID, int sizeID);
+
+        int InventoryByProductDetails(int colorID, int sizeID);
+
         void Save();
     }
 
@@ -260,6 +264,16 @@ namespace Service
         public Tag GetTag(string tagId)
         {
             return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        public int CheckInventoryProduct(int colorID, int sizeID)
+        {
+            return _productRepository.CheckInventoryProduct(colorID, sizeID);
+        }
+
+        public int InventoryByProductDetails(int colorID, int sizeID)
+        {
+            return _productRepository.InventoryByProductDetails(colorID, sizeID);
         }
     }
 }

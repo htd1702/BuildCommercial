@@ -16,12 +16,15 @@ namespace Web.Controllers
     {
         private IProductService _productService;
         private IBannerService _bannerService;
-        private DBContext db = new DBContext();
+        private IProductCategoryService _productCategoryService;
+        private IProductDetailService _productDetailService;
 
         //contructor
-        public ProductController(IProductService productService, IBannerService bannerService)
+        public ProductController(IProductService productService, IProductCategoryService productCategoryService, IProductDetailService productDetailService, IBannerService bannerService)
         {
             _productService = productService;
+            _productCategoryService = productCategoryService;
+            _productDetailService = productDetailService;
             _bannerService = bannerService;
         }
 
@@ -35,6 +38,7 @@ namespace Web.Controllers
         {
             Session["ShoppingUrl"] = "/sale-product";
             ViewBag.BannerImage = _bannerService.ListBannerByType(2, 2);
+            ViewBag.Categories = _productCategoryService.GetCategoriyByType(3).Where(p => p.Type == 1).ToList();
             return View();
         }
 
@@ -42,18 +46,20 @@ namespace Web.Controllers
         {
             Session["ShoppingUrl"] = "/new-product";
             ViewBag.BannerImage = _bannerService.ListBannerByType(2, 3);
+            ViewBag.Categories = _productCategoryService.GetCategoriyByType(3).Where(p => p.Type == 1).ToList();
             return View();
         }
 
         public ActionResult ProductByCategory(int id)
         {
             Session["ShoppingUrl"] = "/product-category/" + id.ToString();
-            var category = db.ProductCategorys.Find(id);
+            var category = _productCategoryService.GetById(id);
             ViewBag.Name = category.Name;
             ViewBag.NameFr = category.NameFr;
             ViewBag.NameVN = category.NameVN;
             ViewBag.ParentID = category.ParentID;
             ViewBag.ID = id;
+            ViewBag.Categories = _productCategoryService.ListCategoryById(id);
             return View();
         }
 
@@ -79,8 +85,13 @@ namespace Web.Controllers
             //get string img multi
             List<string> listImgs = new JavaScriptSerializer().Deserialize<List<string>>(listProduct.MoreImages);
             ViewBag.MoreImgs = listImgs;
-            //get product by category
+            //get producT related
             DataTable dt = _productService.ListRelatedProduct(id);
+            //Get name category
+            var listCate = _productCategoryService.GetById(model.CategoryID);
+            ViewBag.CategoryName = listCate.Name;
+            ViewBag.CategoryNameVN = listCate.NameVN;
+            ViewBag.CategoryNameFr = listCate.NameFr;
             //check list relate
             if (dt.Rows.Count > 0)
                 ViewBag.ProductCagtegory = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).Take(9).ToList();
@@ -237,6 +248,20 @@ namespace Web.Controllers
                 list = _productService.GetTableRows(model);
             }
             return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult CheckQuantityProduct(int colorID, int sizeID)
+        {
+            var model = _productService.CheckInventoryProduct(colorID, sizeID);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult InventoryByProductDetails(int colorID, int sizeID)
+        {
+            var model = _productService.InventoryByProductDetails(colorID, sizeID);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }

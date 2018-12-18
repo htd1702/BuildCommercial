@@ -6,13 +6,24 @@
     productCategoryAddController.$inject = ["$scope", "apiService", "notificationService", "$state", "commonService", "authData"];
 
     function productCategoryAddController($scope, apiService, notificationService, $state, commonService, authData) {
+        //create value by type
+        $scope.types = [
+            { ID: 1, Name: "1" },
+            { ID: 2, Name: "2" },
+            { ID: 3, Name: "3" }
+        ];
         //load option parentID
         $scope.parentCategories = [];
         //set value model
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true
-        }
+        };
+        //setting ckeditor
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
+        };
         //create function
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProductCategory = AddProductCategory;
@@ -23,13 +34,7 @@
         }
         //method load parentId
         function LoadParentCategory() {
-            var config = {
-                //params truyen vao api
-                params: {
-                    type: 1
-                }
-            }
-            apiService.get("/api/productcategory/getallparentbytype", config, function (result) {
+            apiService.get("/api/productcategory/loadListparentbytype", null, function (result) {
                 $scope.parentCategories = result.data;
             }, function () {
                 notificationService.displayError("Load thất bại!");
@@ -37,18 +42,29 @@
         }
         //function add
         function AddProductCategory() {
-            if ($scope.productCategory.ParentID == undefined)
+            if ($scope.productCategory.Type == undefined || $scope.productCategory.Type == "") {
+                notificationService.displayWarning("Please enter a type!");
+                return;
+            }
+            if ($scope.productCategory.Type != 1) {
+                if ($scope.productCategory.ParentID == undefined || $scope.productCategory.ParentID == "") {
+                    notificationService.displayWarning("Please choose a category!");
+                    return;
+                }
+            }
+            else {
                 $scope.productCategory.ParentID = 0;
+            }
             if ($scope.productCategory.DisplayOrder == undefined)
                 $scope.productCategory.DisplayOrder = 0;
             $scope.productCategory.CreatedBy = authData.authenticationData.userName;
             $scope.productCategory.UpdatedBy = $scope.productCategory.CreatedBy;
             $scope.productCategory.UpdatedDate = $scope.productCategory.CreatedDate;
             apiService.post("/api/productcategory/create", $scope.productCategory, function (result) {
-                notificationService.displaySuccess(result.data.Name + " thêm thành công!");
+                notificationService.displaySuccess(result.data.Name + " Add successfully!");
                 $state.go("product_categories");
             }, function (error) {
-                notificationService.displayError("Thêm mới thất bại!");
+                notificationService.displayError("Add Faild!");
             });
         }
         //funcion upload
@@ -63,5 +79,7 @@
         }
         //call method load parent
         LoadParentCategory();
+        if ($scope.productCategory.Type == undefined || $scope.productCategory.Type == "")
+            $scope.productCategory.Type = 1;
     }
 })(angular.module('default.product_categories'));

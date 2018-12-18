@@ -19,10 +19,14 @@
         margin-bottom: 5px;
         margin-left: 10px;
     }
+
+    #img-more-details:hover {
+        cursor: pointer;
+    }
 </style>
 <div class="card">
     <div class="card-header card-header-primary">
-        <h4 class="card-title">EditProduct</h4>
+        <h4 class="card-title"> {{'Edit' | translate}}</h4>
         <p class="card-category">{{product.Name}}</p>
     </div>
     <div class="card-body">
@@ -32,10 +36,10 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="name">
-                                Product Name En
+                                {{'Name' | translate}}
                                 <span ng-hide="frmEditproduct.name.$error.maxlength" ng-show="frmEditproduct.name.$invalid" class="text-danger"> *</span>
                             </label>
-                            <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="product.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên sản phẩm...">
+                            <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="product.Name" ng-maxlength="40" name="name" required placeholder="{{'Name' | translate}}...">
                         </div>
                         <div class="form-group col-md-4" style="display:none">
                             <label for="alias">
@@ -46,35 +50,35 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nameVN">
-                                Product Name Vn
+                                {{'NameVN' | translate}}
                                 <span class="text-danger" ng-show="frmEditproduct.nameVN.$invalid"> *</span>
                             </label>
-                            <input type="text" class="text-control" ng-model="product.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tên sản phẩm...">
+                            <input type="text" class="text-control" ng-model="product.NameVN" ng-maxlength="40" name="nameVN" required placeholder="{{'NameVN' | translate}}...">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nameFr">
-                                Product Name Fr
+                                {{'NameFr' | translate}}
                                 <span class="text-danger" ng-show="frmEditproduct.nameFr.$invalid"> *</span>
                             </label>
-                            <input type="text" class="text-control" ng-model="product.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tên sản phẩm...">
+                            <input type="text" class="text-control" ng-model="product.NameFr" ng-maxlength="40" name="nameFr" required placeholder="{{'NameFr' | translate}}...">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="code">
-                                Code
+                                {{'Code' | translate}}
                             </label>
-                            <input type="text" required placeholder="Nhập mã sản phẩm..." class="text-control" ng-model="product.Code" name="code" readonly="readonly">
+                            <input type="text" required placeholder="{{'Code' | translate}}..." class="text-control" ng-model="product.Code" name="code" readonly="readonly">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="parentId">Category</label>
+                            <label for="parentId">{{'Type' | translate}}</label>
                             <select name="categoryID" ng-model="product.CategoryID" ng-options="option.ID as option.Name for option in categories" class="custom-select"></select>
                             <input type="hidden" name="categoryID" ng-model="product.CategoryID" />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="promotionPrice">
-                                PromotionPrice
+                                {{'PromotionPrice' | translate}}
                                 <span class="text-danger" ng-show="frmEditproduct.promotionPrice.$invalid"> *</span>
                             </label>
-                            <input type="number" required placeholder="Nhập giá khuyến mãi..." class="text-control" min="0" max="100" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
+                            <input type="number" required placeholder="{{'PromotionPrice' | translate}}..." class="text-control" min="0" max="100" maxlength="3" ng-model="product.PromotionPrice" name="promotionPrice">
                         </div>
                         <!--<div class="form-group col-md-4">
                             <label for="tags">
@@ -90,37 +94,38 @@
                             </label>
                             <input type="number" required class="text-control" min="0" ng-model="product.Quantity" name="quantity" placeholder="Nhập số lượng...">
                         </div>-->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="price">
-                                Price
+                                {{'Price' | translate}}
                                 <span class="text-danger" ng-show="frmEditproduct.price.$invalid"> *</span>
                             </label>
-                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Price" ng-change="changePrice()" name="price">
+                            <input type="number" required placeholder="{{'Price' | translate}}..." class="text-control" min="0" ng-model="product.Price" ng-change="changePrice()" name="price">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="scale">
-                                Scale
+                                {{'Scale' | translate}}
                                 <span class="text-danger" ng-show="frmEditproduct.scale.$invalid"> *</span>
                             </label>
-                            <input type="number" required placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.Scale" ng-change="changeScale()" name="scale">
+                            <input type="number" required placeholder="{{'Scale' | translate}}..." class="text-control" min="0" ng-model="product.Scale" ng-change="changeScale()" name="scale">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="priceVN">
-                                Price VN
+                                {{'PriceVN' | translate}}
+                                <span class="text-danger" ng-show="frmEditproduct.priceVN.$invalid"> *</span>
                             </label>
-                            <input type="number" placeholder="Nhập giá..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
+                            <input type="number" required placeholder="{{'PriceVN' | translate}}..." class="text-control" readonly="readonly" min="0" ng-model="product.PriceVN" name="priceVN">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="priceFr">
-                                Price Frenk
+                                {{'PriceFr' | translate}}
+                                <span class="text-danger" ng-show="frmEditproduct.priceFr.$invalid"> *</span>
                             </label>
-                            <input type="number" placeholder="Nhập giá..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
+                            <input type="number" required placeholder="{{'PriceFr' | translate}}..." class="text-control" min="0" ng-model="product.PriceFr" name="priceFr">
                         </div>
-
                         <div class="form-group col-md-6">
                             <label for="warranty">
-                                Warranty
-                                <span class="text-danger" ng-show="frmAddproduct.warranty.$invalid"> *</span>
+                                {{'Warranty' | translate}}
+                                <span class="text-danger" ng-show="frmEditproduct.warranty.$invalid"> *</span>
                             </label>
                             <input type="number" class="text-control" min="0" max="48" maxlength="3" ng-model="product.Warranty" name="warranty" placeholder="month" required>
                         </div>
@@ -140,13 +145,13 @@
                         </div>-->
                         <div class="form-group col-md-6">
                             <label for="viewCount">
-                                View
+                                {{'View' | translate}}
                             </label>
-                            <input type="number" class="text-control" min="0" ng-model="product.ViewCount" name="viewCount">
+                            <input type="number" class="text-control" min="0" value="1" name="viewCount" readonly="readonly">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="image">
-                                Image
+                                {{'Img' | translate}}
                                 <span ng-show="frmEditproduct.image.$invalid" class="text-danger"> *</span>
                             </label>
                             <input type="text" class="text-control" ng-model="product.Image" name="image" required>
@@ -156,11 +161,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="imageMore">
-                                MoreImages
+                                {{'MoreImg' | translate}}
                             </label>
                             <ul class="nav">
                                 <li class="nav-item" ng-repeat="img in moreImages">
-                                    <img ng-src="{{img}}" class="img-content" style="width:4.5em" />
+                                    <img ng-src="{{img}}" id="img-more-details" class="img-content" style="width:4.5em" ng-click="RemoveImgMore(img, $index)" />
                                 </li>
                             </ul>
                             <input type="text" class="text-control" ng-model="product.ImageMore" name="imageMore" style="display:none">
@@ -169,9 +174,8 @@
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="description">Description</label>
-                            <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="product.Content" name="content"></textarea>
-                            <span class="text-danger" ng-show="frmEditproduct.content.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                            <label for="description">{{'Description' | translate}}</label>
+                            <textarea placeholder="{{'Description' | translate}}..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="product.Content" name="content"></textarea>
                         </div>
                     </div>
                 </div>
@@ -182,7 +186,7 @@
                                 <div class="col-md-7">
                                     <div class="form-check edit-form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" ng-model="selectAllColor" ng-click="toggleAllColor()"> Color list
+                                            <input class="form-check-input" type="checkbox" ng-model="selectAllColor" ng-click="toggleAllColor()"> {{'ColorList' | translate}}
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
@@ -203,7 +207,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 input-check">
-                                        <input type="number" max="300" min="0" placeholder="Nhập số lượng..." class="text-control" name="quantity" data-quantity="{{color.ID}}">
+                                        <input type="number" max="300" min="0" placeholder="{{'Quantity' | translate}}..." class="text-control" name="quantity" data-quantity="{{color.ID}}">
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +217,7 @@
                                 <div class="col-md-7">
                                     <div class="form-check edit-form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" ng-model="selectAllSize"> Size list
+                                            <input class="form-check-input" type="checkbox" ng-model="selectAllSize"> {{'SizeList' | translate}}
                                             <span class="form-check-sign">
                                                 <span class="check"></span>
                                             </span>
@@ -242,7 +246,7 @@
             <div class="form-row">
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="status" ng-checked="product.Status" ng-model="product.Status"> Active Product
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="product.Status" ng-model="product.Status"> {{'Active' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -250,7 +254,7 @@
                 </div>
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="product.HomeFlag" ng-model="product.HomeFlag"> Show Home
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="product.HomeFlag" ng-model="product.HomeFlag"> {{'ShowHome' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -258,7 +262,7 @@
                 </div>
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="product.HotFlag" ng-model="product.HotFlag"> Hot Product
+                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="product.HotFlag" ng-model="product.HotFlag"> {{'Hot' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -267,10 +271,10 @@
             </div>
             <div class="form-row ">
                 <div class="col col-md-6">
-                    <button class="btn btn-danger btn-sm pull-left" ui-sref="products"><i class="fa fa-ban"></i> Back</button>
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="products"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmEditproduct.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="submit" ng-disabled="frmEditproduct.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

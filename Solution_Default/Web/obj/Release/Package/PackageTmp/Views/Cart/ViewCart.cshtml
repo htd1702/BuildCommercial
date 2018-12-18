@@ -4,7 +4,7 @@
 @using Web.Resources.Home
 @using Data;
 @{
-    ViewBag.Title = "ShoppingCart";
+    ViewBag.Title = re_ShopingCart.ViewCart + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <script src="~/Scripts/plugins/jquery/jquery.min.js"></script>
@@ -16,7 +16,7 @@
                     <table class="table-shopping-cart" style="min-width:0">
                         <thead>
                             <tr class="table_head">
-                                <th class="column-1">@re_Product.ProductName</th>
+                                <th class="column-1">@re_Product.Product</th>
                                 <th class="column-2"></th>
                                 <th class="column-2">@re_Product.Code</th>
                                 <th class="column-3">@re_Product.Price</th>
@@ -50,19 +50,7 @@
                                         <span class="spanSizeColor" data-size="@p.SizeID" data-color="@p.ColorID">@p.ColorName, @p.SizeName</span>
                                     </td>
                                     <td class="column-2">
-
-                                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
-                                        {
-                                            <span>@p.Code</span>
-                                        }
-                                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
-                                        {
-                                            <span>@p.Code</span>
-                                        }
-                                        else
-                                        {
-                                            <span>@p.Code</span>
-                                        }
+                                        <span>@p.Code</span>
                                     </td>
                                     <td class="column-3">
 
@@ -118,12 +106,12 @@
                             <tr>
                                 <td colspan="6" style="height:50px;">
                                     <span class="pull-left">
-                                        <a href="@Session["ShoppingUrl"]" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 btn-primary" style="min-width:110px;height:30px;font-size:13px;">
+                                        <a href="@Session["ShoppingUrl"]" class="flex-c-m stext-101 cl0 size-107 bor19 hov-btn3 p-lr-15 trans-04 btn-primary" style="min-width:110px;height:30px;font-size:13px;">
                                             @re_ShopingCart.ShopingMore
                                         </a>
                                     </span>
                                     <span class="pull-right">
-                                        <a href="/check-out" class="flex-c-m stext-101 cl0 size-107 bor2 hov-btn3 p-lr-15 trans-04 btn-success" style="min-width:110px;height:30px;font-size:13px;">
+                                        <a href="/check-out" class="flex-c-m stext-101 cl0 size-107 bor19 hov-btn3 p-lr-15 trans-04 btn-success" style="min-width:110px;height:30px;font-size:13px;">
                                             @re_ShopingCart.CheckOut
                                         </a>
                                     </span>

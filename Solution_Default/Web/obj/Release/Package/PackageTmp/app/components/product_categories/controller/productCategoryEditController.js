@@ -7,10 +7,21 @@
     productCategoryEditController.$inject = ["$scope", "apiService", "notificationService", "$state", "$stateParams", "commonService", "authData"];
 
     function productCategoryEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
+        //create value by type
+        $scope.types = [
+            { ID: 1, Name: "1" },
+            { ID: 2, Name: "2" },
+            { ID: 3, Name: "3" }
+        ];
         //set value model
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true
+        };
+        //setting ckeditor
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
         };
         //create funtion
         $scope.GetSeoTitle = GetSeoTitle;
@@ -22,16 +33,10 @@
         }
         //method load parentId
         function LoadParentCategory() {
-            var config = {
-                //params truyen vao api
-                params: {
-                    type: 1
-                }
-            }
-            apiService.get("/api/productcategory/getallparentbytype", config, function (result) {
+            apiService.get("/api/productcategory/loadListparentbytype", null, function (result) {
                 $scope.parentCategories = result.data;
             }, function () {
-                notificationService.displayError("Load thất bại!");
+                notificationService.displayError("Load Faild!");
             });
         }
         //load detail productcategory
@@ -44,6 +49,19 @@
         }
         //Edit
         function EditProductCategory() {
+            if ($scope.productCategory.Type == undefined || $scope.productCategory.Type == "") {
+                notificationService.displayWarning("Please enter a type!");
+                return;
+            }
+            if ($scope.productCategory.Type != 1) {
+                if ($scope.productCategory.ParentID == undefined || $scope.productCategory.ParentID == "") {
+                    notificationService.displayWarning("Please choose a category!");
+                    return;
+                }
+            }
+            else {
+                $scope.productCategory.ParentID = 0;
+            }
             if ($scope.productCategory.DisplayOrder == undefined)
                 $scope.productCategory.DisplayOrder = 0;
             $scope.productCategory.CreatedBy = authData.authenticationData.userName;

@@ -204,6 +204,9 @@
   <data name="SeoTitle" xml:space="preserve">
     <value>Tiêu đề SEO</value>
   </data>
+  <data name="ShowDetails" xml:space="preserve">
+    <value>Hiển thị chi tiết</value>
+  </data>
   <data name="ShowHomePage" xml:space="preserve">
     <value>Hiển thị trang chủ</value>
   </data>

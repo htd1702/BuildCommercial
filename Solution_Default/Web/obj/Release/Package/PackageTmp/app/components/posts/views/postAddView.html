@@ -1,4 +1,9 @@
-﻿<div class="card">
+﻿<style>
+    #img-more-details:hover {
+        cursor: pointer;
+    }
+</style>
+<div class="card">
     <div class="card-header card-header-primary">
         <h4 class="card-title">Add Post</h4>
         <p class="card-category">Complete</p>
@@ -56,7 +61,7 @@
                     </label>
                     <ul class="nav">
                         <li class="nav-item" ng-repeat="img in moreImages">
-                            <img ng-src="{{img}}" class="img-content" style="width:4.5em" />
+                            <img ng-src="{{img}}" id="img-more-details" class="img-content" style="width:4.5em" ng-click="RemoveImgMore(img, $index)" />
                         </li>
                     </ul>
                     <input type="text" class="text-control" ng-model="post.ImageMore" name="imageMore" style="display:none" required>
@@ -80,13 +85,21 @@
                 </div>-->
                 <div class="form-group col-md-12">
                     <label for="description">Description</label>
-                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.Content" name="content"></textarea>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.Description" name="description"></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="descriptionVN">Description VN</label>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionVN" name="descriptionVN"></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="descriptionFr">Description Fr</label>
+                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionFr" name="descriptionFr"></textarea>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="status" ng-checked="post.Status" ng-model="post.Status"> Active Post
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="post.Status" ng-model="post.Status"> {{'Active' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -94,7 +107,7 @@
                 </div>
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="post.HomeFlag" ng-model="post.HomeFlag"> Show Home
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="post.HomeFlag" ng-model="post.HomeFlag"> {{'ShowHome' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -102,7 +115,7 @@
                 </div>
                 <div class="form-check col">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="post.HotFlag" ng-model="post.HotFlag"> Hot Post
+                        <input class="form-check-input" type="checkbox" name="hotFlag" ng-checked="post.HotFlag" ng-model="post.HotFlag"> {{'Hot' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -111,10 +124,10 @@
             </div>
             <div class="form-row">
                 <div class="col col-md-6">
-                    <button class="btn btn-danger btn-sm pull-left" ui-sref="posts"><i class="fa fa-ban"></i> Back</button>
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="posts"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmAddPost.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="submit" ng-disabled="frmAddPost.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

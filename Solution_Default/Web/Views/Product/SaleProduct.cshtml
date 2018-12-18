@@ -1,8 +1,11 @@
 ﻿@using Web.Resources.Home
 @using Web.Resources.Product
+@using Model.Model
+@using Data
 @{
     ViewBag.Title = @re_Home.Sale + re_Home.LinkTile;
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    DBContext db = new DBContext();
 }
 <style>
     #page_ProductSale {
@@ -60,47 +63,105 @@
                         <h4 class="mtext-112 cl2 p-b-20">
                             @re_Home.Categories
                         </h4>
-                        <div class='sub-menu-vertical m-t-20'>
-                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
-                            {
-                                <ul ng-repeat="parent in parentCategory | orderBy : CreatedDate">
-                                    <li ng-if="parent.ParentID == 0">
-                                        <a ng-click="showDetails =! showDetails" href="#product-category-{{parent.ID}}">{{parent.NameVN}}<div ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" class='fa fa-caret-down right'></div></a>
-                                        <ul class="sample-show-hide" ng-show="showDetails" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" ng-repeat="child in parentCategory | filter:{ParentID : parent.ID} : true">
-                                            <li>
-                                                <a ng-click="btnParent(child.ID, child.ParentID)" href='#product-category-{{child.ParentID}}'>{{child.NameVN}}</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            }
-                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
-                            {
-                                <ul ng-repeat="parent in parentCategory">
-                                    <li ng-if="parent.ParentID == 0">
-                                        <a ng-click="showDetails =! showDetails" href="#product-category-{{parent.ID}}">{{parent.NameFr}}<div ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" class='fa fa-caret-down right'></div></a>
-                                        <ul class="sample-show-hide" ng-show="showDetails" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" ng-repeat="child in parentCategory | filter:{ParentID : parent.ID} : true">
-                                            <li>
-                                                <a ng-click="btnParent(child.ID, child.ParentID)" href='#product-category-{{child.ParentID}}'>{{child.Name}}</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            }
-                            else
-                            {
-                                <ul ng-repeat="parent in parentCategory">
-                                    <li ng-if="parent.ParentID == 0">
-                                        <a ng-click="showDetails =! showDetails" href="#product-category-{{parent.ID}}">{{parent.Name}}<div ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" class='fa fa-caret-down right'></div></a>
-                                        <ul class="sample-show-hide" ng-show="showDetails" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0" ng-repeat="child in parentCategory | filter:{ParentID : parent.ID} : true">
-                                            <li>
-                                                <a ng-click="btnParent(child.ID, child.ParentID)" href='#product-category-{{child.ParentID}}'>{{child.Name}}</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            }
-                        </div>
+                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID expanded">
+                                            <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.NameVN</a></td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.NameVN</a></td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
+                                                    {
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameVN</a></td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID expanded">
+                                            <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.NameFr</a></td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.NameFr</a></td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
+                                                    {
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameFr</a></td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID expanded">
+                                            <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.Name</a></td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.Name</a></td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
+                                                    {
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.Name</a></td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        }
                     </div>
                 </div>
                 <div class="col-md-8 col-lg-9 p-b-80">

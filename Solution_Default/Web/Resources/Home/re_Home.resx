@@ -126,11 +126,17 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="CareShippingAndReturn" xml:space="preserve">
+    <value>Care Shipping &amp; Return</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>CATEGORIES</value>
   </data>
   <data name="Color" xml:space="preserve">
     <value>Color</value>
+  </data>
+  <data name="Composition" xml:space="preserve">
+    <value>Composition</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>

@@ -33,16 +33,16 @@
                 <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>Name</th>
-                        <th>Code</th>
-                        <th>Price</th>
-                        <th>PromotionPrice</th>
-                        <th>Warranty</th>
-                        <th>View</th>
-                        <th>CreateDate</th>
-                        <th>Status</th>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'Code' | translate}}</th>
+                        <th>{{'Price' | translate}}</th>
+                        <th>{{'PromotionPrice' | translate}}</th>
+                        <th>{{'Warranty' | translate}}</th>
+                        <th>{{'View' | translate}}</th>
+                        <th>{{'CreateDate' | translate}}</th>
+                        <th>{{'Status' | translate}}</th>
                         <th class="td-actions text-right">
-                            Handling <button class="btn btn-danger" type="button" id="chk_deleteAll" ng-click="deleteAllProduct()"><i class="fa fa-trash"></i></button>
+                            {{'Handling' | translate}} <button class="btn btn-danger" type="button" id="chk_deleteAll" ng-click="deleteAllProduct()"><i class="fa fa-trash"></i></button>
                         </th>
                     </tr>
                 </thead>

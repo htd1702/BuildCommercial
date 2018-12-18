@@ -4000,6 +4000,7 @@
     <Content Include="Assets\ng-ckeditor\src\scripts\03-outro.js" />
     <Content Include="Assets\ng-ckeditor\test\directiveOnFormSpec.js" />
     <Content Include="Assets\ng-ckeditor\test\directiveSpec.js" />
+    <Content Include="Assets\treeview\jquery.treegrid.css" />
     <Content Include="Content\admin\material-dashboard.css" />
     <Content Include="Content\client\main-default.css" />
     <Content Include="Content\client\Main.css" />
@@ -4180,30 +4181,8 @@
     <Content Include="Scripts\plugins\jquery\nouislider.min.js" />
     <Content Include="Scripts\plugins\jquery\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\plugins\toastr\toastr.min.js" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-12-41.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-13-39.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-16-24.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-17-53.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-18-07.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-27-34.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-29-00.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-30-08.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-31-56.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-32-18.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-34-38.jpg" />
-    <Content Include="UploadedFiles\files\WuTa_2018-09-07_23-38-56.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-12-41.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-13-39.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-16-24.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-17-53.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-18-07.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-27-34.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-29-00.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-30-08.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-31-56.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-32-18.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-34-38.jpg" />
-    <Content Include="UploadedFiles\_thumbs\Files\WuTa_2018-09-07_23-38-56.jpg" />
+    <Content Include="Scripts\plugins\treeview\jquery.treegrid.js" />
+    <Content Include="Scripts\plugins\treeview\jquery.treegrid.min.js" />
     <Content Include="Views\Client\Form_SendMailContact.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4224,8 +4203,10 @@
     <Folder Include="Resources\Blog\" />
     <Folder Include="Resources\ProductCategory\" />
     <Folder Include="Resources\ProductDetail\" />
+    <Folder Include="UploadedFiles\files\" />
     <Folder Include="UploadedFiles\flash\" />
     <Folder Include="UploadedFiles\images\" />
+    <Folder Include="UploadedFiles\_thumbs\Files\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,11 @@
     postCategoryAddController.$inject = ["$scope", "apiService", "notificationService", "$state", "commonService", "authData"];
 
     function postCategoryAddController($scope, apiService, notificationService, $state, commonService, authData) {
+        //setting ckeditor
+        $scope.editorOptions = {
+            lang: 'en',
+            height: '120px'
+        };
         //load option parentID
         $scope.parentCategories = [];
         //set value model

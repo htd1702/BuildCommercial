@@ -26,6 +26,7 @@
         $scope.EditPost = EditPost;
         $scope.ChooseImage = ChooseImage;
         $scope.ChooseImageMore = ChooseImageMore;
+        $scope.RemoveImgMore = RemoveImgMore;
         //binding title seo bye name
         function GetSeoTitle() {
             $scope.post.Alias = commonService.getSEOTitle($scope.post.Name);
@@ -81,6 +82,14 @@
                 });
             }
             finder.popup();
+        }
+        //function remove img
+        function RemoveImgMore(img, index) {
+            var image = img;
+            var i = index;
+            $scope.moreImages = jQuery.grep($scope.moreImages, function (value) {
+                return value != image;
+            });
         }
         //call method load parent
         loadPostDetail();

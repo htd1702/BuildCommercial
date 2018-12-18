@@ -48,3 +48,10 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrati
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewColumBannerAndPostCategory.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewColumPost.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.TitleTypeBanner.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewProertyTable.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.DeleteProTable.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewProertyTable1.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewPropertyProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewPropertyProduct1.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.DeleteClumnProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AddNewTypeProductCategory.resources

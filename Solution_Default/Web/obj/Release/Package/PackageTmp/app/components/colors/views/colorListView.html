@@ -24,12 +24,12 @@
                 <thead class=" text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>Tên</th>
-                        <th>Tên VN</th>
-                        <th>Ngày tạo</th>
-                        <th>Người tạo</th>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'NameVN' | translate}}</th>
+                        <th>{{'CreateDate' | translate}}</th>
+                        <th>{{'CreateBy' | translate}}</th>
                         <th class="td-actions text-right">
-                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllColors()"><i class="fa fa-trash"></i></button>
+                            {{'Handling' | translate}} <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllColors()"><i class="fa fa-trash"></i></button>
                         </th>
                     </tr>
                 </thead>

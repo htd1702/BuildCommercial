@@ -1,7 +1,18 @@
 ﻿@using Web.Resources.Home
 @using Web.Resources.Product
 @{
-    ViewBag.Title = "PostDetails";
+    if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+    {
+        ViewBag.Title = Model.NameVN + re_Home.LinkTile;
+    }
+    else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+    {
+        ViewBag.Title = Model.NameVN + re_Home.LinkTile;
+    }
+    else
+    {
+        ViewBag.Title = Model.NameVN + re_Home.LinkTile;
+    }
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 @{
@@ -33,7 +44,18 @@
             </a>
 
             <span class="stext-109 text-primary">
-                @Model.Name
+                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                {
+                    @Model.NameVN
+                }
+                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                {
+                    @Model.NameFr
+                }
+                else
+                {
+                    @Model.Name
+                }
             </span>
         </div>
         <hr />
@@ -46,7 +68,18 @@
                 <div class="col-md-12 col-lg-12 p-b-80">
                     <div class="p-r-45 p-r-0-lg">
                         <h4 class="ltext-102 cl2 p-b-28">
-                            @Model.Name
+                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                            {
+                                @Model.NameVN
+                            }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                @Model.NameFr
+                            }
+                            else
+                            {
+                                @Model.Name
+                            }
                         </h4>
                         <!--  -->
                         <div class="post-details">
@@ -66,7 +99,18 @@
 
                             <div class="p-t-20">
                                 <p class="stext-117 cl6 p-b-26">
-                                    @Html.Raw(Model.Content)
+                                    @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                    {
+                                        @Html.Raw(Model.DescriptionVN)
+                                    }
+                                    else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                    {
+                                        @Html.Raw(Model.DescriptionFr)
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(Model.Description)
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -77,14 +121,13 @@
     </section>
 </div>
 
-
 @*@{
-    var moreImg = (List<string>)ViewBag.MoreImgs;
-    if (moreImg.Count > 0)
-    {
-        foreach (var item in moreImg)
+        var moreImg = (List<string>)ViewBag.MoreImgs;
+        if (moreImg.Count > 0)
         {
-            <img src="@item" alt="IMG-PRODUCT">
+            foreach (var item in moreImg)
+            {
+                <img src="@item" alt="IMG-PRODUCT">
+            }
         }
-    }
-}*@
+    }*@

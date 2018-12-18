@@ -18,6 +18,8 @@ namespace Data.Repositories
         int DeleteProductDetail(int id);
 
         DataTable Get_ListProductBySizeColor(int id, int type);
+
+        IEnumerable<ProductDetail> ListProductDetails(int id);
     }
 
     public class ProductDetailRepository : RepositoryBase<ProductDetail>, IProductDetailRepository
@@ -58,6 +60,11 @@ namespace Data.Repositories
             pram[1] = new SqlParameter("@Type", SqlDbType.Int, 4);
             pram[1].Value = type;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.Get_ListProductBySizeColor", pram).Tables[0];
+        }
+
+        public IEnumerable<ProductDetail> ListProductDetails(int id)
+        {
+            return this.DbContext.ProductDetails.Where(d => d.ProductID == id).ToList();
         }
     }
 }

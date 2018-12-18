@@ -16,7 +16,11 @@ namespace Service
 
         int DeleteProductDetail(int id);
 
+        ProductDetail GetById(int id);
+
         DataTable Get_ListProductBySizeColor(int id, int type);
+
+        IEnumerable<ProductDetail> ListProductDetails(int id);
 
         void Save();
     }
@@ -52,6 +56,11 @@ namespace Service
             _unitOfWork.Commit();
         }
 
+        public ProductDetail GetById(int id)
+        {
+            return _productDetailRepository.GetSingleById(id);
+        }
+
         public int DeleteProductDetail(int id)
         {
             return _productDetailRepository.DeleteProductDetail(id);
@@ -60,6 +69,11 @@ namespace Service
         public DataTable Get_ListProductBySizeColor(int id, int type)
         {
             return _productDetailRepository.Get_ListProductBySizeColor(id, type);
+        }
+
+        public IEnumerable<ProductDetail> ListProductDetails(int id)
+        {
+            return _productDetailRepository.ListProductDetails(id);
         }
     }
 }

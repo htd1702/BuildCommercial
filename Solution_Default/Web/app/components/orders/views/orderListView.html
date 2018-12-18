@@ -50,14 +50,14 @@
                 <thead class=" text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
-                        <th>Tên khách hàng</th>
+                        <th>{{'CustomerName'|translate}}</th>
                         <th>Email</th>
-                        <th>Số điện thoại</th>
-                        <th>Địa chỉ</th>
-                        <th>Trạng thái</th>
-                        <th>Ngày đặt hàng</th>
+                        <th>{{'Phone'|translate}}</th>
+                        <th>{{'Address'|translate}}</th>
+                        <th>{{'Status'|translate}}</th>
+                        <th>{{'OrderDate'|translate}}</th>
                         <th class="td-actions text-right">
-                            Thao tác <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllOrders()"><i class="fa fa-trash"></i></button>
+                            {{'Handling' | translate}} <button class="btn btn-danger" id="chk_deleteAll" ng-click="deleteAllOrders()"><i class="fa fa-trash"></i></button>
                         </th>
                     </tr>
                 </thead>
@@ -104,19 +104,19 @@
                 <table class="table">
                     <thead class=" text-primary">
                         <tr>
-                            <th>Name</th>
+                            <th>{{'CustomerName'|translate}}</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Image</th>
-                            <th>Product</th>
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Message</th>
-                            <th>Status</th>
-                            <th>Order date</th>
+                            <th>{{'Phone'|translate}}</th>
+                            <th>{{'Address'|translate}}</th>
+                            <th>{{'Img'|translate}}</th>
+                            <th>{{'ProductName'|translate}}</th>
+                            <th>{{'Color'|translate}}</th>
+                            <th>{{'Size'|translate}}</th>
+                            <th>{{'Quantity'|translate}}</th>
+                            <th>{{'Total'|translate}}</th>
+                            <th>{{'Desciption'|translate}}</th>
+                            <th>{{'Status'|translate}}</th>
+                            <th>{{'OrderDate'|translate}}</th>
                         </tr>
                     </thead>
                     <tbody>

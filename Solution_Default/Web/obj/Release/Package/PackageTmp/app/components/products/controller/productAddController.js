@@ -18,7 +18,7 @@
         $scope.GetIndexCode = GetIndexCode();
         $scope.changePrice = changePrice;
         $scope.changeScale = changeScale;
-
+        $scope.RemoveImgMore = RemoveImgMore;
         if ($scope.moreImages == "") {
             $("input[name=imageMore]").show();
         }
@@ -141,10 +141,22 @@
         //function change price
         function changePrice() {
             $scope.product.PriceFr = $scope.product.Price;
+            var scale = $scope.product.Scale;
+            if (scale != undefined && scale > 0)
+                $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
         }
         //function change scale
         function changeScale() {
             $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
+            $scope.product.TransportFeeVN = $scope.product.TransportFee * $scope.product.Scale;
+        }
+        //function remove img
+        function RemoveImgMore(img, index) {
+            var image = img;
+            var i = index;
+            $scope.moreImages = jQuery.grep($scope.moreImages, function (value) {
+                return value != image;
+            });
         }
         //call method load list categories
         LoadCategory();

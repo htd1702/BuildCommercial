@@ -8,45 +8,47 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">
-                        Name En
+                        {{'Name' | translate}}
                         <span ng-hide="frmEditProductCategory.name.$error.maxlength" ng-show="frmEditProductCategory.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="productCategory.Name" ng-maxlength="40" name="name" required placeholder="Nhập tên danh mục...">
-                    <span ng-show="frmEditProductCategory.name.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="productCategory.Name" ng-maxlength="40" name="name" required placeholder="{{'Name' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameVN">
-                        Name VN
+                        {{'NameVN' | translate}}
                         <span ng-hide="frmEditProductCategory.nameVN.$error.maxlength" ng-show="frmEditProductCategory.nameVN.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="productCategory.NameVN" ng-maxlength="40" name="nameVN" required placeholder="Nhập tên danh mục...">
-                    <span ng-show="frmEditProductCategory.nameVN.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="productCategory.NameVN" ng-maxlength="40" name="nameVN" required placeholder="{{'NameVN' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameFr">
-                        Name Frank
+                        {{'NameFr' | translate}}
                         <span ng-hide="frmEditProductCategory.nameFr.$error.maxlength" ng-show="frmEditProductCategory.nameFr.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="productCategory.NameFr" ng-maxlength="40" name="nameFr" required placeholder="Nhập tên danh mục...">
-                    <span ng-show="frmEditProductCategory.nameFr.$error.maxlength" class="text-danger">Tên danh mục tối đa 40 ký tự</span>
+                    <input type="text" class="text-control" ng-model="productCategory.NameFr" ng-maxlength="40" name="nameFr" required placeholder="{{'NameFr' | translate}}...">
                 </div>
                 <div class="form-group col-md-3" style="display:none">
                     <label for="alias">Tiêu đề SEO</label>
                     <input type="text" required placeholder="Nhập tiêu đề SEO..." class="text-control" ng-model="productCategory.Alias" name="alias">
-                    <span ng-show="frmEditProductCategory.alias.$invalid" class="text-danger">Bạn chưa nhập tiêu đề SEO</span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="parentId">Danh mục</label>
+                    <label for="type">
+                        {{'Type' | translate}}
+                    </label>
+                    <select name="type" ng-model="productCategory.Type" class="custom-select" ng-options="option.ID as option.Name for option in types"></select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="parentId">{{'Categories' | translate}}</label>
                     <select name="parentId" ng-model="productCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
-                        <option value="">-- Choose --</option>
+                        <option value="">{{'Choose' | translate}}</option>
                     </select>
                     <input type="hidden" name="parentId" ng-model="productCategory.ParentID" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="image">
-                        Image
+                        {{'Img' | translate}}
                         <span ng-show="frmEditProductCategory.image.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" class="text-control" ng-model="productCategory.Image" name="image" required>
@@ -61,9 +63,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="description">Mô tả</label>
-                <textarea rows="2" placeholder="Nội dung..." class="text-control" ng-maxlength="600" ng-model="productCategory.Description" name="description"></textarea>
-                <span class="text-danger" ng-show="frmEditProductCategory.description.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                <label for="description">{{'Description' | translate}}</label>
+                <textarea placeholder="{{'Description' | translate}}..." class="text-control" ckeditor="editorOptions" ng-maxlength="600" ng-model="productCategory.Description" name="description"></textarea>
             </div>
             <!--<div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>
@@ -78,7 +79,7 @@
             <div class="form-row">
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="status" ng-checked="productCategory.Status" ng-model="productCategory.Status"> Kích hoạt
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="productCategory.Status" ng-model="productCategory.Status"> {{'Active' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -86,7 +87,7 @@
                 </div>
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="productCategory.HomeFlag" ng-model="productCategory.HomeFlag"> Hiển thị trang chủ
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="productCategory.HomeFlag" ng-model="productCategory.HomeFlag"> {{'ShowHome' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -95,10 +96,10 @@
             </div>
             <div class="form-row">
                 <div class="col col-md-6">
-                    <button class="btn btn-danger btn-sm pull-left" ui-sref="product_categories"><i class="fa fa-ban"></i> Back</button>
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="product_categories"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmEditProductCategory.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="submit" ng-disabled="frmEditProductCategory.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

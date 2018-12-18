@@ -95,3 +95,4 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.pdb
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.NewPropertyProduct.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.NewPropertyProduct1.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.DeleteClumnProduct.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Debug\Data.Migrations.AddNewTypeProductCategory.resources

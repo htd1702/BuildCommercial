@@ -166,6 +166,10 @@
     <Compile Include="Migrations\201812150902048_DeleteClumnProduct.Designer.cs">
       <DependentUpon>201812150902048_DeleteClumnProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812160145203_AddNewTypeProductCategory.cs" />
+    <Compile Include="Migrations\201812160145203_AddNewTypeProductCategory.Designer.cs">
+      <DependentUpon>201812160145203_AddNewTypeProductCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BannerRepository.cs" />
@@ -262,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812150902048_DeleteClumnProduct.resx">
       <DependentUpon>201812150902048_DeleteClumnProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812160145203_AddNewTypeProductCategory.resx">
+      <DependentUpon>201812160145203_AddNewTypeProductCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

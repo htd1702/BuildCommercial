@@ -20,7 +20,7 @@ namespace Data.Repositories
 
         public List<string> ListNameColor(string keyword)
         {
-            return this.DbContext.Colors.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return this.DbContext.Colors.Where(p => p.Name.Contains(keyword) || p.NameVN.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
     }
 }

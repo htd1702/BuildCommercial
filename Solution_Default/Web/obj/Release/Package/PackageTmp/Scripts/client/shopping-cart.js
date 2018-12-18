@@ -1,4 +1,5 @@
 ﻿$(function () {
+
     //add shopping cart
     $(".js-addcart-detail").click(function () {
         //get attribute
@@ -15,18 +16,69 @@
             swal("Faild!", "Please select size when adding to cart!", "error");
             return;
         }
-        //call funtion load count and total
+        //function check quantity
         $.ajax({
-            url: "/Cart/Add",
-            data: { id: pid, colorID: colorID, sizeID: sizeID, lang: lang },
+            url: "/Product/CheckQuantityProduct",
+            data: { colorID: colorID, sizeID: sizeID },
             type: "post",
             async: false,
             success: function (response) {
-                $(".shopping-cart-des").attr("data-notify", response.Count);
-                $(".shopping-cart-mobi").attr("data-notify", response.Count);
-                swal("Success", "Add to cart successfully!", "success");
+                if (response > 0) {
+                    //call funtion load count and total
+                    $.ajax({
+                        url: "/Cart/Add",
+                        data: { id: pid, colorID: colorID, sizeID: sizeID, lang: lang },
+                        type: "post",
+                        async: false,
+                        success: function (response) {
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            swal("Success", "Add to cart successfully!", "success");
+                        }
+                    });
+                }
+                else {
+                    swal("Faild!", "The color and size of this product is out of stock. Please select another size or color!", "error");
+                }
             }
         });
+    });
+    //check out details by id
+    $(".js-checkout-detail").click(function () {
+        //get attribute
+        var pid = $(this).attr("data-add-to-cart");
+        var colorID = $("#ddl_color option:selected").val();
+        var sizeID = $("#ddl_size option:selected").val();
+        var lang = $("#cookieLang").val();
+        if ((colorID != undefined || colorID != 0) && (sizeID != undefined || sizeID != 0)) {
+            //call funtion load count and total
+            //function check quantity
+            $.ajax({
+                url: "/Product/CheckQuantityProduct",
+                data: { colorID: colorID, sizeID: sizeID },
+                type: "post",
+                async: false,
+                success: function (response) {
+                    if (response > 0) {
+                        //call funtion load count and total
+                        $.ajax({
+                            url: "/Cart/Add",
+                            data: { id: pid, colorID: colorID, sizeID: sizeID, lang: lang },
+                            type: "post",
+                            async: false,
+                            success: function (response) {
+                                $(".shopping-cart-des").attr("data-notify", response.Count);
+                                $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            }
+                        });
+                    }
+                    else {
+                        swal("Faild!", "The color and size of this product is out of stock. Please select another size or color!", "error");
+                    }
+                }
+            });
+        }
+        window.location.href = '/check-out';
     });
     //function up cart
     $(".btn-num-product-up").click(function () {
@@ -36,20 +88,35 @@
         var sizeID = $(this).attr("data-size");
         var qty = $(this).parents("tr").find("input[name='number-pro']").val();
         var lang = $("#cookieLang").val();
-        //call funtion load count and total
+        //check inventory
         $.ajax({
-            url: "/Cart/Update",
-            data: { id: pid, newqty: qty, lang: lang, colorID: colorID, sizeID: sizeID },
+            url: "/Product/InventoryByProductDetails",
+            data: { colorID: colorID, sizeID: sizeID },
             type: "post",
+            async: false,
             success: function (response) {
-                //set value atti in count and total
-                $(".shopping-cart-des").attr("data-notify", response.Count);
-                $(".shopping-cart-mobi").attr("data-notify", response.Count);
-                //cap nhat thanh tien cua san pham
-                if (lang == "en" || lang == "")
-                    $("#spanTotal").html("$" + response.Total);
-                else
-                    $("#spanTotal").html(response.Total);
+                if (qty <= response) {
+                    //call funtion load count and total
+                    $.ajax({
+                        url: "/Cart/Update",
+                        data: { id: pid, newqty: qty, lang: lang, colorID: colorID, sizeID: sizeID },
+                        type: "post",
+                        success: function (response) {
+                            //set value atti in count and total
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            //cap nhat thanh tien cua san pham
+                            if (lang == "en" || lang == "")
+                                $("#spanTotal").html("$" + response.Total);
+                            else
+                                $("#spanTotal").html(response.Total);
+                        }
+                    });
+                }
+                else {
+                    swal("Faild!", "Maximum number of item is " + response + ", please check again!", "error");
+                    $(".num-product").val(response);
+                }
             }
         });
     });
@@ -118,5 +185,45 @@
                 }
             });
         }
+    });
+    //function
+    $(".num-product").change(function () {
+        //get attribute
+        var pid = $(this).attr("data-update-cart");
+        var colorID = $(this).attr("data-color");
+        var sizeID = $(this).attr("data-size");
+        var qty = $(this).parents("tr").find("input[name='number-pro']").val();
+        var lang = $("#cookieLang").val();
+        //check inventory
+        $.ajax({
+            url: "/Product/InventoryByProductDetails",
+            data: { colorID: colorID, sizeID: sizeID },
+            type: "post",
+            async: false,
+            success: function (response) {
+                if (qty <= response) {
+                    //call funtion load count and total
+                    $.ajax({
+                        url: "/Cart/Update",
+                        data: { id: pid, newqty: qty, lang: lang, colorID: colorID, sizeID: sizeID },
+                        type: "post",
+                        success: function (response) {
+                            //set value atti in count and total
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                            //cap nhat thanh tien cua san pham
+                            if (lang == "en" || lang == "")
+                                $("#spanTotal").html("$" + response.Total);
+                            else
+                                $("#spanTotal").html(response.Total);
+                        }
+                    });
+                }
+                else {
+                    swal("Faild!", "Maximum number of item is " + response + ", please check again!", "error");
+                    $(".num-product").val(response);
+                }
+            }
+        });
     });
 });

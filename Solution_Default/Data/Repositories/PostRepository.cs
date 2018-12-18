@@ -41,7 +41,7 @@ namespace Data.Repositories
 
         public List<string> ListNamePost(string keyword)
         {
-            return this.DbContext.Posts.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return this.DbContext.Posts.Where(p => p.Name.Contains(keyword) || p.NameVN.Contains(keyword) || p.NameFr.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
     }
 }

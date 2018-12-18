@@ -16,7 +16,7 @@
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
-                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> aledale.online01@gmail.com
+                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> adelade.le.ca@gmail.com
                 </div>
 
                 <div class="right-top-bar flex-w h-full">
@@ -68,6 +68,18 @@
                                 </script>
                                 <ul class="sub-menu">
                                     <li style="font-size:18px" ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
+                                </ul>
+                            }
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                            {
+                                <script type="text/ng-template" id="treeMenuHeard">
+                                    <a href="/product-category/{{parent.ID}}">{{parent.NameFr}}</a>
+                                    <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
+                                        <li class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
+                                    </ul>
+                                </script>
+                                <ul class="sub-menu">
+                                    <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
                                 </ul>
                             }
                             else

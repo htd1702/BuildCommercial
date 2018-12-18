@@ -34,6 +34,10 @@ namespace Data.Repositories
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
 
         int GetViewProduct(int id);
+
+        int CheckInventoryProduct(int colorID, int sizeID);
+
+        int InventoryByProductDetails(int colorID, int sizeID);
     }
 
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
@@ -91,7 +95,7 @@ namespace Data.Repositories
 
         public List<string> ListNameProduct(string keyword)
         {
-            return this.DbContext.Products.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword) || p.Code.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return this.DbContext.Products.Where(p => p.Name.Contains(keyword) || p.NameVN.Contains(keyword) || p.NameFr.Contains(keyword) || p.Alias.Contains(keyword) || p.Code.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
         public IEnumerable<Product> ListProductDiscount()
@@ -140,6 +144,20 @@ namespace Data.Repositories
             totalRow = query.Count();
 
             return query.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public int CheckInventoryProduct(int colorID, int sizeID)
+        {
+            int inventory = this.DbContext.ProductDetails.FirstOrDefault(p => p.ColorID == colorID && p.SizeID == sizeID).Inventory;
+            if (inventory > 0)
+                return 1;
+            else
+                return 0;
+        }
+
+        public int InventoryByProductDetails(int colorID, int sizeID)
+        {
+            return this.DbContext.ProductDetails.FirstOrDefault(p => p.ColorID == colorID && p.SizeID == sizeID).Inventory;
         }
     }
 }

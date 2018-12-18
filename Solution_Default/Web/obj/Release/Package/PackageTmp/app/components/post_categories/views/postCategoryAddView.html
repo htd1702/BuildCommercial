@@ -69,8 +69,16 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="description">Mô tả</label>
-                <textarea rows="3" placeholder="Nội dung..." class="text-control" ng-model="postCategory.Description" name="description"></textarea>
+                <label for="description">Description</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.Description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="descriptionFr">Description Fr</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionFr" name="descriptionFr"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="descriptionVN">Description VN</label>
+                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionVN" name="descriptionVN"></textarea>
             </div>
             <!--<div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>

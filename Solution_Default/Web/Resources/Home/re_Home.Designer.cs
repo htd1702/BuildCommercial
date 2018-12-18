@@ -88,6 +88,15 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Care Shipping &amp; Return.
+        /// </summary>
+        public static string CareShippingAndReturn {
+            get {
+                return ResourceManager.GetString("CareShippingAndReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CATEGORIES.
         /// </summary>
         public static string Categories {
@@ -102,6 +111,15 @@ namespace Web.Resources.Home {
         public static string Color {
             get {
                 return ResourceManager.GetString("Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Composition.
+        /// </summary>
+        public static string Composition {
+            get {
+                return ResourceManager.GetString("Composition", resourceCulture);
             }
         }
         

@@ -10,7 +10,7 @@
         $scope.types = [
             { ID: 1, Name: "1" },
             { ID: 2, Name: "2" },
-            { ID: 3, Name: "3" },
+            { ID: 3, Name: "3" }
         ];
         //set value model
         $scope.banner = {

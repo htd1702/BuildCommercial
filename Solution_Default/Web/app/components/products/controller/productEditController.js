@@ -19,6 +19,7 @@
         $scope.ChooseImageMore = ChooseImageMore;
         $scope.changePrice = changePrice;
         $scope.changeScale = changeScale;
+        $scope.RemoveImgMore = RemoveImgMore;
         //set value model
         $scope.product = {
             UpdatedDate: new Date(),
@@ -125,6 +126,14 @@
         function changeScale() {
             $scope.product.PriceVN = $scope.product.Price * $scope.product.Scale;
             $scope.product.TransportFeeVN = $scope.product.TransportFee * $scope.product.Scale;
+        }
+        //function remove img
+        function RemoveImgMore(img, index) {
+            var image = img;
+            var i = index;
+            $scope.moreImages = jQuery.grep($scope.moreImages, function (value) {
+                return value != image;
+            });
         }
         //call method load list categories
         LoadListColor();

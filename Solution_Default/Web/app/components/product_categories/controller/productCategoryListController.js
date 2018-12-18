@@ -8,6 +8,7 @@
 
     function productCategoryListController($scope, apiService, notificationService, $ngBootbox, $filter) {
         //scope binding
+        $scope.parentCategory = [];
         $scope.productCategories = [];
         $scope.keyword = "";
         $scope.page = 0;
@@ -28,7 +29,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 10
+                    pageSize: 15
                 }
             }
             //call apiService url,params,success,error
@@ -109,18 +110,28 @@
                 console.log('Confirm dismissed!');
             });
         }
+        //
+        function loadCategoryAll() {
+            //call apiService url,params,success,error
+            apiService.get('/api/productcategory/getallparents', null, function (result) {
+                $scope.parentCategory = result.data;
+            }, function () {
+                console.log('Load productcategory failed.');
+            });
+        }
         //function show parent name
-        function showParentName(parentID, data) {
+        function showParentName(parentID) {
             if (parentID > 0) {
-                for (var i = 0; i < data.length; i++) {
-                    if (parentID == data[i].ID)
-                        return data[i].Name;
+                for (var i = 0; i < $scope.parentCategory.length; i++) {
+                    if (parentID == $scope.parentCategory[i].ID)
+                        return $scope.parentCategory[i].Name;
                 }
             }
             else
                 return "";
         }
         //call getproduct
+        loadCategoryAll();
         getProductCategories();
     }
 })(angular.module('default.product_categories'));

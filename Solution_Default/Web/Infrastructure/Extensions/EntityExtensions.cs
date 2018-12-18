@@ -65,6 +65,7 @@ namespace Web.Infrastructure.Extensions
             productCategory.NameVN = productCategoryVM.NameVN.Trim();
             productCategory.NameFr = productCategoryVM.NameFr.Trim();
             productCategory.Alias = productCategoryVM.Alias;
+            productCategory.Type = productCategoryVM.Type;
             productCategory.Description = productCategoryVM.Description;
             productCategory.ParentID = productCategoryVM.ParentID;
             productCategory.DisplayOrder = productCategoryVM.DisplayOrder;

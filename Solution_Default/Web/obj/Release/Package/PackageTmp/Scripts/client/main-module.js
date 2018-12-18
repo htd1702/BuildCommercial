@@ -51,6 +51,11 @@ function changeStamped(str) {
     str = str.replace(/Đ/g, "D");
     return str;
 }
+//check mail
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test($email);
+}
 //------------------------------------------------------------------//
 //page product
 ProductController.$inject = ["$scope", "$http"];
@@ -115,18 +120,6 @@ function ProductController($scope, $http) {
             }
         });
     }
-    //function Load list postcategories
-    //function LoadPostCategories() {
-    //    $.ajax({
-    //        url: "/PostCategory/GetListPostCateogy",
-    //        type: "GET",
-    //        dataType: "JSON",
-    //        async: false,
-    //        success: function (data) {
-    //            $scope.postCategories = data;
-    //        }
-    //    });
-    //}
     //function click change parent
     $scope.btnParent = function (id) {
         var pageSize = $("#txt_PageSize").val();
@@ -268,6 +261,7 @@ function ShoppingCartController($scope, $http) {
         //binding value in select
         LoadColor(id, "#ddl_color");
         LoadSize(id, "#ddl_size");
+        $('.img-zoom-details').zoom();
     });
 }
 
@@ -313,7 +307,6 @@ function ProductSaleController($scope, $http) {
     $scope.currentPage = 0;
     $scope.itemsPerPage = 8;
     $scope.productSales = [];
-    $scope.parentCategory = [];
     $scope.LoadListSaleProduct = LoadListSaleProduct;
     //funtion load list sale product
     function LoadListSaleProduct() {
@@ -325,31 +318,6 @@ function ProductSaleController($scope, $http) {
             $scope.productSales = response.data;
         });
     }
-    //load menu category
-    function LoadSiteMenuCategory() {
-        return $http({
-            url: "/ProductCategory/GetCategoryByType",
-            method: "GET",
-            params: { type: 3 }
-        }).then(function (response) {
-            $scope.parentCategory = response.data;
-        }, function (error) {
-            alert('Error');
-        });
-    }
-    //function click change parent
-    $scope.btnParent = function (id, parentID) {
-        if (parentID == undefined)
-            parentID = 0;
-        return $http({
-            method: 'POST',
-            url: '/Product/LoadListProductByCategory',
-            async: false,
-            data: { categories: id, parentID: parentID },
-        }).then(function (response) {
-            $scope.productSales = response.data;
-        });
-    };
     //function search
     $("#txt_KeywordProductSale").blur(function () {
         var keyword = $(this).val();
@@ -366,8 +334,6 @@ function ProductSaleController($scope, $http) {
     });
     //call funtion load list sale product
     LoadListSaleProduct();
-    //load menu cate
-    LoadSiteMenuCategory();
     //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
@@ -421,6 +387,23 @@ function ProductSaleController($scope, $http) {
             $("html, body").animate({ scrollTop: 470 }, "slow");
         };
     });
+    $(document).ready(function () {
+        //function click change parent
+        $(".btnShowDetailsProduct").click(function () {
+            var id = $(this).attr("data-id");
+            var parentID = $(this).attr("data-parent");
+            if (parentID == undefined)
+                parentID = 0;
+            return $http({
+                method: 'POST',
+                url: '/Product/LoadListProductByCategory',
+                async: false,
+                data: { categories: id, parentID: parentID },
+            }).then(function (response) {
+                $scope.productSales = response.data;
+            });
+        });
+    });
 }
 
 //New Product
@@ -430,7 +413,6 @@ function NewProductController($scope, $http) {
     $scope.currentPage = 0;
     $scope.itemsPerPage = 8;
     $scope.productNew = [];
-    $scope.parentCategory = [];
     $scope.LoadListNewProduct = LoadListNewProduct;
     //funtion load list sale product
     function LoadListNewProduct() {
@@ -442,31 +424,6 @@ function NewProductController($scope, $http) {
             $scope.productNew = response.data;
         });
     }
-    //load menu category
-    function LoadSiteMenuCategory() {
-        return $http({
-            url: "/ProductCategory/GetCategoryByType",
-            method: "GET",
-            params: { type: 3 }
-        }).then(function (response) {
-            $scope.parentCategory = response.data;
-        }, function (error) {
-            alert('Error');
-        });
-    }
-    //function click change parent
-    $scope.btnParent = function (id, parentID, index) {
-        if (parentID == undefined)
-            parentID = 0;
-        return $http({
-            method: 'POST',
-            url: '/Product/LoadListProductByCategory',
-            async: false,
-            data: { categories: id, parentID: parentID },
-        }).then(function (response) {
-            $scope.productNew = response.data;
-        });
-    };
     //change child parent
     $scope.btnChild = function (id, parentID) {
         if (parentID == undefined)
@@ -496,8 +453,6 @@ function NewProductController($scope, $http) {
     });
     //call funtion load list sale product
     LoadListNewProduct();
-    //load menu cate
-    LoadSiteMenuCategory();
     //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
@@ -551,6 +506,23 @@ function NewProductController($scope, $http) {
             $("html, body").animate({ scrollTop: 0 }, "slow");
         };
     });
+    $(document).ready(function () {
+        //function click change parent
+        $(".btnShowDetailsProduct").click(function () {
+            var id = $(this).attr("data-id");
+            var parentID = $(this).attr("data-parent");
+            if (parentID == undefined)
+                parentID = 0;
+            return $http({
+                method: 'POST',
+                url: '/Product/LoadListProductByCategory',
+                async: false,
+                data: { categories: id, parentID: parentID },
+            }).then(function (response) {
+                $scope.productNew = response.data;
+            });
+        });
+    });
 }
 
 //Product Category
@@ -564,18 +536,6 @@ function ProductCategoryController($scope, $http) {
     $scope.LoadListProductCategory = LoadListProductCategory;
     var id = $("#txt_CategoryID").val();
     var parentID = $("#txt_ParentID").val();
-    //load category parent by id
-    function LoadCategoryByParent() {
-        return $http({
-            url: "/ProductCategory/GetCategoryByParent",
-            method: "GET",
-            params: { id: id }
-        }).then(function (response) {
-            $scope.childCategory = response.data;
-        }, function (error) {
-            alert('Error');
-        });
-    }
     //funtion load list sale product
     function LoadListProductCategory(categories, parentID) {
         return $http({
@@ -614,8 +574,6 @@ function ProductCategoryController($scope, $http) {
             $scope.productCategories = response.data;
         });
     };
-    //
-    LoadCategoryByParent();
     //call funtion load list sale product
     LoadListProductCategory(id, parentID);
     //paging
@@ -670,5 +628,23 @@ function ProductCategoryController($scope, $http) {
             $scope.currentPage = n;
             $("html, body").animate({ scrollTop: 0 }, "slow");
         };
+    });
+    //
+    $(document).ready(function () {
+        //function click change parent
+        $(".btnShowDetailsProduct").click(function () {
+            var id = $(this).attr("data-id");
+            var parentID = $(this).attr("data-parent");
+            if (parentID == undefined)
+                parentID = 0;
+            return $http({
+                method: 'POST',
+                url: '/Product/LoadListProductByCategory',
+                async: false,
+                data: { categories: id, parentID: parentID },
+            }).then(function (response) {
+                $scope.productCategories = response.data;
+            });
+        });
     });
 }

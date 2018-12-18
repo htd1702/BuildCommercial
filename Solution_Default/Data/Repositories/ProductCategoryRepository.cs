@@ -16,6 +16,8 @@ namespace Data.Repositories
 
         IEnumerable<ProductCategory> GetCategoryByType(int type);
 
+        IEnumerable<ProductCategory> LoadListParentByType();
+
         List<string> ListNameCategory(string keyword);
 
         DataTable GetCategoryByParent();
@@ -55,7 +57,7 @@ namespace Data.Repositories
 
         public List<string> ListNameCategory(string keyword)
         {
-            return this.DbContext.ProductCategorys.Where(p => p.Name.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
+            return this.DbContext.ProductCategorys.Where(p => p.Name.Contains(keyword) || p.NameVN.Contains(keyword) || p.NameFr.Contains(keyword) || p.Alias.Contains(keyword)).Select(x => x.Name).Take(8).ToList();
         }
 
         public DataTable GetCategoryByParent()
@@ -65,7 +67,7 @@ namespace Data.Repositories
 
         public IEnumerable<ProductCategory> GetCategoryShowHome(int take)
         {
-            return this.DbContext.ProductCategorys.Where(x => x.Status == true && x.ParentID == 0 && x.HomeFlag == true).OrderByDescending(x => x.CreatedDate).Take(take).ToList();
+            return this.DbContext.ProductCategorys.Where(x => x.Status == true && x.ParentID == 0 && x.HomeFlag == true && x.Type == 1).OrderByDescending(x => x.CreatedDate).Take(take).ToList();
         }
 
         public int CheckExistsProductCategory(int id, int type)
@@ -86,6 +88,11 @@ namespace Data.Repositories
                 else
                     return 0;
             }
+        }
+
+        public IEnumerable<ProductCategory> LoadListParentByType()
+        {
+            return this.DbContext.ProductCategorys.OrderBy(c => c.Type).ToList();
         }
     }
 }

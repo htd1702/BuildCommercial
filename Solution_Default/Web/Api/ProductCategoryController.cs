@@ -90,6 +90,20 @@ namespace Web.Api
             });
         }
 
+        [Route("loadListparentbytype")]
+        [HttpGet]
+        public HttpResponseMessage LoadListParentByType(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _productCategoryService.LoadListParentByType();
+                //mapp data
+                var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
         [Route("getid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetId(HttpRequestMessage request, int id)

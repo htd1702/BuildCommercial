@@ -57,3 +57,7 @@ $("#btnContact").click(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $('.tree').treegrid();
+});

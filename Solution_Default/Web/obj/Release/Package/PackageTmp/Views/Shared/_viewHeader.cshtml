@@ -16,7 +16,7 @@
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
-                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> aledale.online01@gmail.com
+                    <i class="fa fa-phone"></i> +1(514) 995-0553 &nbsp; <i class="fa fa-envelope-square"></i> adelade.le.ca@gmail.com
                 </div>
 
                 <div class="right-top-bar flex-w h-full">
@@ -61,7 +61,7 @@
                             @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
                             {
                                 <script type="text/ng-template" id="treeMenuHeard">
-                                    <a href="/Product/ProductByCategory/?name={{parent.NameVN}}&parentID={{parent.ParentID}}&id={{parent.ID}}">{{parent.NameVN}}</a>
+                                    <a href="/product-category/{{parent.ID}}">{{parent.NameVN}}</a>
                                     <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
                                         <li style="font-size:15px" class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
                                     </ul>
@@ -70,10 +70,10 @@
                                     <li style="font-size:18px" ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
                                 </ul>
                             }
-                            else
+                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
                             {
                                 <script type="text/ng-template" id="treeMenuHeard">
-                                    <a href="/Product/ProductByCategory/?name={{parent.NameVN}}&parentID={{parent.ParentID}}&id={{parent.ID}}">{{parent.Name}}</a>
+                                    <a href="/product-category/{{parent.ID}}">{{parent.NameFr}}</a>
                                     <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
                                         <li class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
                                     </ul>
@@ -82,23 +82,18 @@
                                     <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
                                 </ul>
                             }
-                            @*<ul class="sub-menu">
-                                    @foreach (ProductCategory c in ViewBag.ParentCategory)
-                                    {
-                                        var Item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
-                                        <li>
-                                            <a href="/Product/ProductByCategory/?name=@c.Name&parentID=@c.ParentID&id=@c.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? c.NameVN : c.Name)</a>
-                                            <ul class="sub-menu">
-                                                @foreach (var cate in Item)
-                                                {
-                                                    <li>
-                                                        <a href="/Product/ProductByCategory/?name=@cate.Name&parentID=@cate.ParentID&id=@cate.ID">@(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? cate.NameVN : cate.Name)</a>
-                                                    </li>
-                                                }
-                                            </ul>
-                                        </li>
-                                    }
-                                </ul>*@
+                            else
+                            {
+                                <script type="text/ng-template" id="treeMenuHeard">
+                                    <a href="/product-category/{{parent.ID}}">{{parent.Name}}</a>
+                                    <ul class="sub-menu" ng-if="(parentCategory | filter:{ParentID : parent.ID}).length > 0">
+                                        <li class="active-menu" ng-repeat="parent in parentCategory | filter:{ParentID : parent.ID} : true" ng-include="'treeMenuHeard'"></li>
+                                    </ul>
+                                </script>
+                                <ul class="sub-menu">
+                                    <li ng-repeat="parent in parentCategory" ng-if="parent.ParentID == 0" ng-include="'treeMenuHeard'"></li>
+                                </ul>
+                            }
                         </li>
 
                         <li>

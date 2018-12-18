@@ -34,6 +34,10 @@ namespace Service
 
         int CheckExistsProductCategory(int id, int type);
 
+        IEnumerable<ProductCategory> ListCategoryById(int id);
+
+        IEnumerable<ProductCategory> LoadListParentByType();
+
         void Save();
     }
 
@@ -106,9 +110,19 @@ namespace Service
             return _productCategoryRepository.GetCategoryShowHome(take);
         }
 
+        public IEnumerable<ProductCategory> ListCategoryById(int id)
+        {
+            return _productCategoryRepository.GetMulti(c => c.ID == id);
+        }
+
         public List<string> ListNameCategory(string keyword)
         {
             return _productCategoryRepository.ListNameCategory(keyword);
+        }
+
+        public IEnumerable<ProductCategory> LoadListParentByType()
+        {
+            return _productCategoryRepository.LoadListParentByType();
         }
 
         public void Save()

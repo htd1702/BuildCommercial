@@ -1,16 +1,19 @@
-﻿@model Web.Models.ProductViewModel
-@using Web.Resources.Product
+﻿@using Web.Resources.Product
 @using Web.Resources.Home
+@using Web.Resources.ShopingCart
 @using System.Data
-@using Data
-@{
-    DBContext db = new DBContext();
-    var listCate = db.ProductCategorys.Find(Model.CategoryID);
-    string categoryName = listCate.Name;
-    string categoryNameVN = listCate.NameVN;
-    string categoryNameFr = listCate.NameFr;
-    var listDetails = db.ProductDetails.Where(p => p.ProductID == Model.ID).ToList();
-}
+
+<style>
+    .size-checkout {
+        margin-left: 11px !important;
+    }
+
+    @@media (max-width: 1300px) {
+        .size-checkout {
+            margin-left: 0px !important;
+        }
+    }
+</style>
 
 <div style="margin-top:30px;" ng-controller="ShoppingCartController">
     <!-- breadcrumb -->
@@ -24,21 +27,21 @@
             @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
             {
                 <a class="stext-109 cl8 hov-cl1 trans-04">
-                    @categoryNameVN
+                    @ViewBag.CategoryNameVN
                     <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
                 </a>
             }
             else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
             {
                 <a class="stext-109 cl8 hov-cl1 trans-04">
-                    @categoryNameFr
+                    @ViewBag.CategoryNameFr
                     <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
                 </a>
             }
             else
             {
                 <a class="stext-109 cl8 hov-cl1 trans-04">
-                    @categoryName
+                    @ViewBag.CategoryName
                     <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
                 </a>
             }
@@ -145,19 +148,6 @@
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    @re_Product.Size
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="time" id="ddl_size"></select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
                                     @re_Product.Color
                                 </div>
 
@@ -169,57 +159,30 @@
                                 </div>
                             </div>
 
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    @re_Product.Size
+                                </div>
+
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="time" id="ddl_size"></select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="flex-w flex-r-m">
                                 <div class="size-204 flex-w flex-m respon6-next">
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-add-to-cart="@Model.ID">
+                                    <button class="flex-c-m stext-101 cl0 size-102 bor19 bg1 p-lr-15 trans-04 js-addcart-detail btn-primary" data-add-to-cart="@Model.ID">
                                         @re_Product.AddToCart
+                                    </button>
+                                    <button class="flex-c-m stext-101 cl0 size-102 bor19 p-lr-15 trans-04 btn-success js-checkout-detail size-checkout" data-add-to-cart="@Model.ID">
+                                        @re_ShopingCart.CheckOut
                                     </button>
                                 </div>
                             </div>
                         </div>
-
-                        <table class="table" style="margin-top:10px;">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center">@re_Product.Color</th>
-                                    <th style="text-align:center">@re_Product.Size</th>
-                                    <th style="text-align:center">@re_Product.Inventory</th>
-                                </tr>
-                            </thead>
-                            <tbody style="text-align:center">
-                                @foreach (var item in listDetails)
-                                {
-                                    var colorName = db.Colors.FirstOrDefault(c => c.ID == item.ColorID).Name.ToString();
-                                    var colorNameVN = db.Colors.FirstOrDefault(c => c.ID == item.ColorID).NameVN.ToString();
-                                    var sizeName = db.Sizes.FirstOrDefault(s => s.ID == item.SizeID).Name.ToString();
-                                    <tr>
-                                        <td>
-                                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
-                                            {
-                                                @colorNameVN
-                                            }
-                                            else
-                                            {
-                                                @colorName
-                                            }
-                                        </td>
-                                        <td>
-                                            @sizeName
-                                        </td>
-                                        <td>
-                                            @if (item.Inventory == 0)
-                                            {
-                                                <span style="color:red">@re_Product.OutOfStock</span>
-                                            }
-                                            else
-                                            {
-                                                @item.Inventory
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -232,6 +195,14 @@
                         <li class="nav-item p-b-10">
                             <a class="nav-link active" data-toggle="tab" href="#description" role="tab">@re_Product.Description</a>
                         </li>
+
+                        <li class="nav-item p-b-10">
+                            <a class="nav-link" data-toggle="tab" href="#composition" role="tab">@re_Home.Composition</a>
+                        </li>
+
+                        <li class="nav-item p-b-10">
+                            <a class="nav-link" data-toggle="tab" href="#shipping" role="tab">@re_Home.CareShippingAndReturn</a>
+                        </li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -241,6 +212,22 @@
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6">
                                     @Html.Raw(Model.Description)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade show" id="composition" role="tabpanel">
+                            <div class="how-pos2 p-lr-15-md">
+                                <p class="stext-102 cl6">
+                                    Composition
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade show" id="shipping" role="tabpanel">
+                            <div class="how-pos2 p-lr-15-md">
+                                <p class="stext-102 cl6">
+                                    Care Shipping And Return
                                 </p>
                             </div>
                         </div>
@@ -257,7 +244,7 @@
                     Mã: @Model.Code
                 </span>
                 <span class="stext-107 cl6 p-lr-25">
-                    @re_Product.Category: @categoryNameVN
+                    @re_Product.Category: @ViewBag.CategoryNameVN
                 </span>
             }
             else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
@@ -266,7 +253,7 @@
                     CODE: @Model.Code
                 </span>
                 <span class="stext-107 cl6 p-lr-25">
-                    @re_Product.Category: @categoryNameFr
+                    @re_Product.Category: @ViewBag.CategoryNameFr
                 </span>
             }
             else
@@ -275,7 +262,7 @@
                     CODE: @Model.Code
                 </span>
                 <span class="stext-107 cl6 p-lr-25">
-                    @re_Product.Category: @categoryName
+                    @re_Product.Category: @ViewBag.CategoryName
                 </span>
             }
         </div>

@@ -322,6 +322,15 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Details.
+        /// </summary>
+        public static string ShowDetails {
+            get {
+                return ResourceManager.GetString("ShowDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show Home Page.
         /// </summary>
         public static string ShowHomePage {

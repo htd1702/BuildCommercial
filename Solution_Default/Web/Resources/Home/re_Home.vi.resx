@@ -126,11 +126,17 @@
   <data name="Blog" xml:space="preserve">
     <value>Tin tức</value>
   </data>
+  <data name="CareShippingAndReturn" xml:space="preserve">
+    <value>Chăm sóc và vẫn chuyển</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Loại sản phẩm</value>
   </data>
   <data name="Color" xml:space="preserve">
     <value>Màu sắc</value>
+  </data>
+  <data name="Composition" xml:space="preserve">
+    <value>Thành phần</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Liên hệ</value>
