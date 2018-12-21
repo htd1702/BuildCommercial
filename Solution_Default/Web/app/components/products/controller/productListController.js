@@ -39,7 +39,7 @@
             //call apiService url,params,success,error
             apiService.get('/api/product/getall', config, function (result) {
                 if (result.data.TotalCount == 0)
-                    notificationService.displayWarning("Không có bản ghi nào được tìm thấy!");
+                    notificationService.displayWarning("No records were found!");
                 $scope.products = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
@@ -50,14 +50,14 @@
         }
         //method delete product
         function deleteProduct(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do youi want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
                     }
                 };
                 apiService.delete("/api/product/delete", config, function () {
-                    notificationService.displaySuccess("Xóa thành công!");
+                    notificationService.displaySuccess("Delete successfully!");
                     search();
                 }, function () {
                     notificationService.displayError("Xóa không thành công!");
@@ -69,7 +69,7 @@
         //method delete all product
         function deleteAllProduct() {
             var listId = [];
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do youi want delete?").then(function () {
                 $(".chk_allProduct:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -79,7 +79,7 @@
                     }
                 };
                 apiService.delete("/api/product/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    notificationService.displaySuccess('Delete successfully ' + result.data + ' bản ghi.');
                     search();
                 }, function (error) {
                     notificationService.displayError("Xóa không thành công!");

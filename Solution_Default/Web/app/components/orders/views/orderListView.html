@@ -68,7 +68,7 @@
                         <td>{{item.Email}}</td>
                         <td>{{item.Phone}}</td>
                         <td>{{item.Address}}</td>
-                        <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | statusFilter}}</span></td>
+                        <td><span ng-class="{'messageStatusRed': item.Status == false,'messageStatusGreen': item.Status == true}">{{item.Status | orderStatusFilter}}</span></td>
                         <td>{{item.OrderDate | date:"dd/MM/yyyy"}}</td>
                         <td class="td-actions text-right">
                             <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="order_edit({id:item.ID})">
@@ -104,10 +104,6 @@
                 <table class="table">
                     <thead class=" text-primary">
                         <tr>
-                            <th>{{'CustomerName'|translate}}</th>
-                            <th>Email</th>
-                            <th>{{'Phone'|translate}}</th>
-                            <th>{{'Address'|translate}}</th>
                             <th>{{'Img'|translate}}</th>
                             <th>{{'ProductName'|translate}}</th>
                             <th>{{'Color'|translate}}</th>
@@ -116,15 +112,12 @@
                             <th>{{'Total'|translate}}</th>
                             <th>{{'Desciption'|translate}}</th>
                             <th>{{'Status'|translate}}</th>
+                            <th>{{'PaymentMethod'|translate}}</th>
                             <th>{{'OrderDate'|translate}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="odetails in orderDetails">
-                            <td>{{odetails.CustomerName}}</td>
-                            <td>{{odetails.Email}}</td>
-                            <td>{{odetails.Phone}}</td>
-                            <td>{{odetails.Address}}</td>
                             <td><img ng-src="{{odetails.Image}}" style="width:60px;height:75px;" /></td>
                             <td>{{odetails.ProductName}}</td>
                             <td>{{odetails.ColorName}}</td>
@@ -132,7 +125,8 @@
                             <td>{{odetails.Quantitty}}</td>
                             <td>{{odetails.Total}}</td>
                             <td>{{odetails.CustomerMessage}}</td>
-                            <td><span ng-class="{'messageStatusRed': odetails.Status == false,'messageStatusGreen': odetails.Status == true}">{{odetails.Status | statusFilter}}</span></td>
+                            <td><span ng-class="{'messageStatusRed': odetails.Status == false,'messageStatusGreen': odetails.Status == true}">{{odetails.Status | orderStatusFilter}}</span></td>
+                            <td>{{odetails.PaymentMethod}}</td>
                             <td>{{odetails.OrderDate | date:"dd/MM/yyyy"}}</td>
                         </tr>
                     </tbody>

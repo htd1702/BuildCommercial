@@ -34,10 +34,10 @@
             $scope.banner.UpdatedBy = $scope.banner.CreatedBy;
             $scope.banner.UpdatedDate = $scope.banner.CreatedDate;
             apiService.post("/api/banner/create", $scope.banner, function (result) {
-                notificationService.displaySuccess(result.data.Name + " thêm thành công!");
+                notificationService.displaySuccess(result.data.Name + " Success!");
                 $state.go("banners");
             }, function (error) {
-                notificationService.displayError("Thêm mới thất bại!");
+                notificationService.displayError("Failed!");
             });
         }
         //funtion load type

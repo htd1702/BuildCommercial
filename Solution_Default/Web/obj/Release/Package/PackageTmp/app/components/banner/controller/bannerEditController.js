@@ -33,7 +33,7 @@
                 $scope.banner = result.data;
                 $scope.$watch('banner.TitleType', changeType(result.data.type));
             }, function (error) {
-                notificationService.displayError("Lấy id thất bại!");
+                notificationService.displayError("Failed!");
             });
         }
         //Edit
@@ -42,10 +42,10 @@
             $scope.banner.UpdatedBy = $scope.banner.CreatedBy;
             $scope.banner.UpdatedDate = $scope.banner.CreatedDate;
             apiService.put("/api/banner/update", $scope.banner, function (result) {
-                notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
+                notificationService.displaySuccess(result.data.Name + " Success!");
                 $state.go("banners");
             }, function (error) {
-                notificationService.displayError("Cập nhật mới thất bại!");
+                notificationService.displayError("Failed!");
             });
         }
         //function change type

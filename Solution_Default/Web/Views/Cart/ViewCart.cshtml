@@ -21,7 +21,10 @@
                                 <th class="column-2">@re_Product.Code</th>
                                 <th class="column-3">@re_Product.Price</th>
                                 <th class="column-4">@re_Home.Discount</th>
-                                <th class="column-5">@re_Product.Quantity</th>
+                                <th class="column-4">
+                                    @re_Product.Quantity
+                                    <button class="btn btn-danger" id="btnDeleteCart"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +63,7 @@
                                         }
                                         else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
                                         {
-                                            <span class="spanPrice" data-price="@p.PriceFr">@p.PriceFr</span>
+                                            <span class="spanPrice" data-price="@p.PriceFr">$@string.Format("{0:#,##0.00}", p.PriceFr)</span>
                                         }
                                         else
                                         {

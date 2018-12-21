@@ -148,19 +148,40 @@
     <value>Xem giỏ hàng</value>
   </data>
   <data name="wAddress" xml:space="preserve">
-    <value>Địa chỉ...</value>
+    <value>Địa chỉ</value>
   </data>
   <data name="wDescription" xml:space="preserve">
-    <value>Ghi chú...</value>
+    <value>Ghi chú</value>
   </data>
   <data name="wEmail" xml:space="preserve">
-    <value>Email...</value>
+    <value>Email</value>
   </data>
   <data name="wName" xml:space="preserve">
-    <value>Họ tên...</value>
+    <value>Họ tên</value>
   </data>
   <data name="wPhone" xml:space="preserve">
-    <value>Số điện thoại...</value>
+    <value>Số điện thoại</value>
+  </data>
+  <data name="ThankYou" xml:space="preserve">
+    <value>Cảm ơn</value>
+  </data>
+  <data name="BankTransfer" xml:space="preserve">
+    <value>Chuyển khoản ngân hàng</value>
+  </data>
+  <data name="OrderInformation" xml:space="preserve">
+    <value>Thông tin đơn đặt hàng</value>
+  </data>
+  <data name="OrderSuccess" xml:space="preserve">
+    <value>Bạn đã đặt hàng thành công. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!</value>
+  </data>
+  <data name="PaymentMethods" xml:space="preserve">
+    <value>Phương thức thanh toán</value>
+  </data>
+  <data name="PaymentOnDelivery" xml:space="preserve">
+    <value>Thanh toán khi nhận hàng</value>
+  </data>
+  <data name="ThankYouForYourPurchase" xml:space="preserve">
+    <value>Cảm ơn bạn đã mua hàng</value>
   </data>
   <data name="YourCart" xml:space="preserve">
     <value>Giỏ hàng của bạn</value>

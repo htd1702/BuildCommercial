@@ -56,7 +56,7 @@
             apiService.get("/api/productcategory/getallparentbytype", obj, function (result) {
                 $scope.categories = result.data;
             }, function () {
-                notificationService.displayError("Load thất bại!");
+                notificationService.displayError("Load Failed!");
             });
         }
         //function add
@@ -87,10 +87,10 @@
             $scope.product.UpdatedDate = $scope.product.UpdatedDate;
             $scope.product.MoreImages = JSON.stringify($scope.moreImages);
             apiService.put("/api/product/update", $scope.product, function (result) {
-                notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
+                notificationService.displaySuccess(result.data.Name + " Success!");
                 $state.go("products");
             }, function (error) {
-                notificationService.displayError("Cập nhật thất bại!");
+                notificationService.displayError("Failed!");
             });
         }
         //funcion upload

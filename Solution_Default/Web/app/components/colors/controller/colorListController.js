@@ -34,7 +34,7 @@
             //call apiService url,params,success,error
             apiService.get('/api/color/getall', config, function (result) {
                 if (result.data.TotalCount == 0)
-                    notificationService.displayWarning("Không có bản ghi nào được tìm thấy!");
+                    notificationService.displayWarning("No records were found!");
                 $scope.colors = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
@@ -55,17 +55,17 @@
         }
         //method delete
         function deleteColor(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do y want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
                     }
                 };
                 apiService.delete("/api/color/delete", config, function () {
-                    notificationService.displaySuccess("Xóa thành công!");
+                    notificationService.displaySuccess("Success!");
                     search();
                 }, function () {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');
@@ -74,7 +74,7 @@
         //method delete multi
         function deleteAllColors() {
             var listId = [];
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allColors:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -84,10 +84,10 @@
                     }
                 };
                 apiService.delete("/api/color/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    notificationService.displaySuccess('Success ' + result.data + ' record.');
                     search();
                 }, function (error) {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

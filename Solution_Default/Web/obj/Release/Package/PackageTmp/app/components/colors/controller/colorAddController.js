@@ -31,10 +31,10 @@
             $scope.color.UpdatedBy = $scope.color.CreatedBy;
             $scope.color.UpdatedDate = $scope.color.CreatedDate;
             apiService.post("/api/color/create", $scope.color, function (result) {
-                notificationService.displaySuccess(result.data.Name + " thêm thành công!");
+                notificationService.displaySuccess(result.data.Name + " Success!");
                 $state.go("colors");
             }, function (error) {
-                notificationService.displayError("Thêm mới thất bại!");
+                notificationService.displayError("Failed!");
             });
         }
     }

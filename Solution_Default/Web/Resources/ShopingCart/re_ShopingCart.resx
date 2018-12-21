@@ -148,21 +148,42 @@
     <value>View Cart</value>
   </data>
   <data name="wAddress" xml:space="preserve">
-    <value>Address...</value>
+    <value>Address</value>
   </data>
   <data name="wDescription" xml:space="preserve">
-    <value>Description...</value>
+    <value>Description</value>
   </data>
   <data name="wEmail" xml:space="preserve">
-    <value>Email...</value>
+    <value>Email</value>
   </data>
   <data name="wName" xml:space="preserve">
-    <value>Name...</value>
+    <value>Name</value>
   </data>
   <data name="wPhone" xml:space="preserve">
-    <value>Phone...</value>
+    <value>Phone</value>
   </data>
   <data name="YourCart" xml:space="preserve">
     <value>Your Cart</value>
+  </data>
+  <data name="ThankYou" xml:space="preserve">
+    <value>Thank You</value>
+  </data>
+  <data name="BankTransfer" xml:space="preserve">
+    <value>Bank transfer</value>
+  </data>
+  <data name="OrderInformation" xml:space="preserve">
+    <value>Order information</value>
+  </data>
+  <data name="OrderSuccess" xml:space="preserve">
+    <value>You have successfully placed the order. We will contact you as soon as possible!</value>
+  </data>
+  <data name="PaymentMethods" xml:space="preserve">
+    <value>Payment methods</value>
+  </data>
+  <data name="PaymentOnDelivery" xml:space="preserve">
+    <value>Payment on delivery</value>
+  </data>
+  <data name="ThankYouForYourPurchase" xml:space="preserve">
+    <value>Thank you for your purchase</value>
   </data>
 </root>

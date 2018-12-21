@@ -16,10 +16,10 @@
             $scope.order.UpdatedBy = $scope.order.CreatedBy;
             $scope.order.UpdatedDate = $scope.order.CreatedDate;
             apiService.put("/api/order/update", $scope.order, function (result) {
-                notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
+                notificationService.displaySuccess(result.data.CustomerName + " success!");
                 $state.go("orders");
             }, function (error) {
-                notificationService.displayError("Cập nhật mới thất bại!");
+                notificationService.displayError("Faild!");
             });
         }
 
@@ -28,7 +28,7 @@
             apiService.get("/api/order/getid/" + $stateParams.id, null, function (result) {
                 $scope.order = result.data;
             }, function (error) {
-                notificationService.displayError("Lấy id thất bại!");
+                notificationService.displayError("Faild!");
             });
         }
         //call funtion load order

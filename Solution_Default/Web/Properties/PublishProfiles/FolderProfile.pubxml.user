@@ -6,23 +6,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\Studys\All_File_Public\18-12-2018</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\Studys\All_File_Public\21-12-2018</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="app/app.js">
-      <publishTime>12/16/2018 08:52:52</publishTime>
+      <publishTime>12/20/2018 23:13:13</publishTime>
     </File>
     <File Include="app/components/banner/controller/banner.module.js">
       <publishTime>12/01/2018 14:03:40</publishTime>
     </File>
     <File Include="app/components/banner/controller/bannerAddController.js">
-      <publishTime>12/16/2018 10:22:26</publishTime>
+      <publishTime>12/21/2018 13:24:19</publishTime>
     </File>
     <File Include="app/components/banner/controller/bannerEditController.js">
-      <publishTime>12/16/2018 10:22:25</publishTime>
+      <publishTime>12/21/2018 13:25:58</publishTime>
     </File>
     <File Include="app/components/banner/controller/bannerListController.js">
-      <publishTime>12/16/2018 15:45:26</publishTime>
+      <publishTime>12/21/2018 13:24:35</publishTime>
     </File>
     <File Include="app/components/banner/views/bannerAddView.html">
       <publishTime>12/16/2018 10:09:11</publishTime>
@@ -34,13 +34,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/15/2018 23:44:39</publishTime>
     </File>
     <File Include="app/components/colors/controller/colorAddController.js">
-      <publishTime>11/18/2018 17:32:50</publishTime>
+      <publishTime>12/21/2018 13:24:47</publishTime>
     </File>
     <File Include="app/components/colors/controller/colorEditController.js">
-      <publishTime>11/18/2018 17:36:34</publishTime>
+      <publishTime>12/21/2018 13:25:10</publishTime>
     </File>
     <File Include="app/components/colors/controller/colorListController.js">
-      <publishTime>12/16/2018 15:45:26</publishTime>
+      <publishTime>12/21/2018 13:25:16</publishTime>
     </File>
     <File Include="app/components/colors/controller/colos.module.js">
       <publishTime>12/04/2018 22:16:37</publishTime>
@@ -76,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 22:52:51</publishTime>
     </File>
     <File Include="app/components/orders/controller/orderEditController.js">
-      <publishTime>11/03/2018 23:11:14</publishTime>
+      <publishTime>12/20/2018 23:05:43</publishTime>
     </File>
     <File Include="app/components/orders/controller/orderListController.js">
       <publishTime>12/16/2018 15:45:26</publishTime>
@@ -85,10 +85,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/03/2018 09:41:11</publishTime>
     </File>
     <File Include="app/components/orders/views/orderEditView.html">
-      <publishTime>12/15/2018 23:55:30</publishTime>
+      <publishTime>12/20/2018 23:15:18</publishTime>
     </File>
     <File Include="app/components/orders/views/orderListView.html">
-      <publishTime>12/15/2018 23:58:49</publishTime>
+      <publishTime>12/20/2018 23:15:15</publishTime>
     </File>
     <File Include="app/components/order_details/controller/orderDetailListController.js">
       <publishTime>10/27/2018 21:47:09</publishTime>
@@ -142,13 +142,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2018 12:27:44</publishTime>
     </File>
     <File Include="app/components/products/controller/productAddController.js">
-      <publishTime>12/16/2018 00:31:40</publishTime>
+      <publishTime>12/21/2018 13:25:25</publishTime>
     </File>
     <File Include="app/components/products/controller/productEditController.js">
-      <publishTime>12/16/2018 00:17:18</publishTime>
+      <publishTime>12/21/2018 13:25:32</publishTime>
     </File>
     <File Include="app/components/products/controller/productListController.js">
-      <publishTime>12/16/2018 15:45:25</publishTime>
+      <publishTime>12/21/2018 13:26:52</publishTime>
     </File>
     <File Include="app/components/products/controller/products.module.js">
       <publishTime>11/24/2018 22:39:23</publishTime>
@@ -157,7 +157,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2018 00:30:49</publishTime>
     </File>
     <File Include="app/components/products/views/productEditView.html">
-      <publishTime>12/16/2018 00:21:59</publishTime>
+      <publishTime>12/20/2018 23:00:05</publishTime>
     </File>
     <File Include="app/components/products/views/productListView.html">
       <publishTime>12/15/2018 23:28:54</publishTime>
@@ -169,10 +169,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2018 12:14:09</publishTime>
     </File>
     <File Include="app/components/product_categories/controller/productCategoryEditController.js">
-      <publishTime>12/16/2018 12:16:06</publishTime>
+      <publishTime>12/19/2018 23:27:03</publishTime>
     </File>
     <File Include="app/components/product_categories/controller/productCategoryListController.js">
-      <publishTime>12/16/2018 16:08:32</publishTime>
+      <publishTime>12/19/2018 23:27:00</publishTime>
     </File>
     <File Include="app/components/product_categories/views/productCategoryAddView.html">
       <publishTime>12/16/2018 11:57:35</publishTime>
@@ -211,13 +211,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/04/2018 22:17:12</publishTime>
     </File>
     <File Include="app/shared/filter/statusFilter.js">
-      <publishTime>12/12/2018 23:20:29</publishTime>
+      <publishTime>12/20/2018 23:07:48</publishTime>
     </File>
     <File Include="app/shared/modules/default.common.js">
       <publishTime>09/05/2018 17:11:10</publishTime>
     </File>
     <File Include="app/shared/services/apiService.js">
-      <publishTime>11/23/2018 14:09:41</publishTime>
+      <publishTime>12/21/2018 13:27:33</publishTime>
     </File>
     <File Include="app/shared/services/authData.js">
       <publishTime>09/05/2018 15:28:48</publishTime>
@@ -11269,19 +11269,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2018 10:50:07</publishTime>
     </File>
     <File Include="bin/Common.dll">
-      <publishTime>12/18/2018 23:51:29</publishTime>
+      <publishTime>12/21/2018 13:27:51</publishTime>
     </File>
     <File Include="bin/Common.pdb">
-      <publishTime>12/18/2018 23:51:29</publishTime>
+      <publishTime>12/21/2018 13:27:51</publishTime>
     </File>
     <File Include="bin/Data.dll">
-      <publishTime>12/18/2018 23:51:31</publishTime>
+      <publishTime>12/21/2018 13:27:53</publishTime>
     </File>
     <File Include="bin/Data.dll.config">
       <publishTime>11/15/2018 23:40:29</publishTime>
     </File>
     <File Include="bin/Data.pdb">
-      <publishTime>12/18/2018 23:51:31</publishTime>
+      <publishTime>12/21/2018 13:27:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/19/2018 10:44:35</publishTime>
@@ -11293,7 +11293,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2015 15:48:00</publishTime>
     </File>
     <File Include="bin/fr/Web.resources.dll">
-      <publishTime>12/18/2018 23:51:45</publishTime>
+      <publishTime>12/21/2018 13:28:05</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>08/19/2018 10:44:36</publishTime>
@@ -11353,13 +11353,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2018 10:44:36</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>12/18/2018 23:51:29</publishTime>
+      <publishTime>12/21/2018 13:27:51</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>08/19/2018 10:44:34</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>12/18/2018 23:51:29</publishTime>
+      <publishTime>12/21/2018 13:27:51</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>08/19/2018 10:44:36</publishTime>
@@ -11518,10 +11518,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2018 10:44:36</publishTime>
     </File>
     <File Include="bin/Service.dll">
-      <publishTime>12/18/2018 23:51:32</publishTime>
+      <publishTime>12/21/2018 13:27:54</publishTime>
     </File>
     <File Include="bin/Service.pdb">
-      <publishTime>12/18/2018 23:51:32</publishTime>
+      <publishTime>12/21/2018 13:27:54</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
       <publishTime>08/19/2018 10:44:37</publishTime>
@@ -11560,13 +11560,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/19/2018 10:44:36</publishTime>
     </File>
     <File Include="bin/vi/Web.resources.dll">
-      <publishTime>12/18/2018 23:51:45</publishTime>
+      <publishTime>12/21/2018 13:28:04</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>12/18/2018 23:51:44</publishTime>
+      <publishTime>12/21/2018 13:28:04</publishTime>
     </File>
     <File Include="bin/Web.pdb">
-      <publishTime>12/18/2018 23:51:44</publishTime>
+      <publishTime>12/21/2018 13:28:04</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>08/19/2018 10:44:37</publishTime>
@@ -11581,7 +11581,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/18/2018 12:53:37</publishTime>
     </File>
     <File Include="Content/client/Main.css">
-      <publishTime>12/18/2018 12:42:32</publishTime>
+      <publishTime>12/20/2018 23:15:38</publishTime>
     </File>
     <File Include="Content/client/util.css">
       <publishTime>10/19/2018 12:32:12</publishTime>
@@ -12301,7 +12301,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2018 12:32:12</publishTime>
     </File>
     <File Include="Scripts/client/shopping-cart.js">
-      <publishTime>12/18/2018 23:50:45</publishTime>
+      <publishTime>12/21/2018 13:17:07</publishTime>
     </File>
     <File Include="Scripts/client/slick-custom.js">
       <publishTime>10/19/2018 12:32:12</publishTime>
@@ -12457,16 +12457,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/11/2018 11:19:50</publishTime>
     </File>
     <File Include="Views/Cart/CheckOut.cshtml">
-      <publishTime>12/18/2018 23:45:05</publishTime>
+      <publishTime>12/21/2018 13:11:24</publishTime>
     </File>
     <File Include="Views/Cart/Index.cshtml">
       <publishTime>12/09/2018 17:35:47</publishTime>
     </File>
+    <File Include="Views/Cart/OrderSuccess.cshtml">
+      <publishTime>12/21/2018 00:23:24</publishTime>
+    </File>
     <File Include="Views/Cart/ViewCart.cshtml">
-      <publishTime>12/18/2018 12:54:54</publishTime>
+      <publishTime>12/21/2018 13:11:58</publishTime>
     </File>
     <File Include="Views/Cart/ViewCartDetails.cshtml">
-      <publishTime>12/18/2018 13:13:47</publishTime>
+      <publishTime>12/21/2018 13:10:55</publishTime>
     </File>
     <File Include="Views/Client/About.cshtml">
       <publishTime>11/05/2018 22:14:35</publishTime>
@@ -12511,7 +12514,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/15/2018 13:27:02</publishTime>
     </File>
     <File Include="Views/Product/Details.cshtml">
-      <publishTime>12/18/2018 23:51:04</publishTime>
+      <publishTime>12/20/2018 23:47:29</publishTime>
     </File>
     <File Include="Views/Product/NewProduct.cshtml">
       <publishTime>12/18/2018 23:50:58</publishTime>
@@ -12532,7 +12535,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2018 16:11:24</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutClient.cshtml">
-      <publishTime>12/16/2018 21:38:17</publishTime>
+      <publishTime>12/21/2018 12:30:39</publishTime>
     </File>
     <File Include="Views/Shared/_sectionSlider.cshtml">
       <publishTime>12/15/2018 22:44:46</publishTime>
@@ -12541,10 +12544,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/18/2018 12:58:13</publishTime>
     </File>
     <File Include="Views/Shared/_viewFooter.cshtml">
-      <publishTime>12/15/2018 13:35:13</publishTime>
+      <publishTime>12/21/2018 12:42:02</publishTime>
     </File>
     <File Include="Views/Shared/_viewHeader.cshtml">
-      <publishTime>12/18/2018 13:13:44</publishTime>
+      <publishTime>12/21/2018 12:30:29</publishTime>
     </File>
     <File Include="Views/Shared/_viewProduct.cshtml">
       <publishTime>12/16/2018 17:52:37</publishTime>
@@ -12556,7 +12559,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/23/2018 21:43:19</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/18/2018 23:52:43</publishTime>
+      <publishTime>12/21/2018 13:29:51</publishTime>
     </File>
   </ItemGroup>
 </Project>

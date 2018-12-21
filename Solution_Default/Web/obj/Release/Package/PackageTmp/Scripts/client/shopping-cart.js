@@ -1,5 +1,4 @@
 ﻿$(function () {
-
     //add shopping cart
     $(".js-addcart-detail").click(function () {
         //get attribute
@@ -223,6 +222,52 @@
                     swal("Faild!", "Maximum number of item is " + response + ", please check again!", "error");
                     $(".num-product").val(response);
                 }
+            }
+        });
+    });
+    //btn delete cart all
+    $("#btnDeleteCart").click(function () {
+        //check count = 0 => remove product cart
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to remove all product from your shopping cart?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var lang = $("#cookieLang").val();
+                var len = $(".spanNameProduct").length;
+                for (var i = 0; i < len; i++) {
+                    var id = $(".spanNameProduct").eq(i).attr("data-id");
+                    var sizeID = $(".spanSizeColor").eq(i).attr("data-size");
+                    var colorID = $(".spanSizeColor").eq(i).attr("data-color");
+                    $.ajax({
+                        url: "/Cart/Remove",
+                        data: { id: parseInt(id), colorID: parseInt(colorID), sizeID: parseInt(sizeID) },
+                        type: "post",
+                        async: false,
+                        success: function (response) {
+                            $(".shopping-cart-des").attr("data-notify", response.Count);
+                            $(".shopping-cart-mobi").attr("data-notify", response.Count);
+                        }
+                    });
+                    $.ajax({
+                        url: "/Cart/ViewCartDetails",
+                        async: false,
+                        success: function (response) {
+                            $("#page_ShoppingCart").html(response);
+                        }
+                    });
+                    $(".table_row").each(function () {
+                        $(this).remove();
+                    });
+                    if (lang == "en" || lang == "")
+                        $("#spanTotal").html("$" + 0);
+                    else
+                        $("#spanTotal").html(0);
+                }
+                swal("Success!", "Delete successfully!", "success");
             }
         });
     });

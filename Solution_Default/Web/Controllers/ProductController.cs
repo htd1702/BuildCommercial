@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Data;
 using Model.Model;
 using Service;
 using System;

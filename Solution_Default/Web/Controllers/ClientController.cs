@@ -8,12 +8,15 @@ namespace Web.Controllers
         private IProductCategoryService _productCategoryService;
         private IProductService _productService;
         private IBannerService _bannerService;
+        private IContactDetailService _contactDetailService;
 
-        public ClientController(IProductCategoryService productCategoryService, IProductService productService, IBannerService bannerService)
+
+        public ClientController(IProductCategoryService productCategoryService, IProductService productService, IBannerService bannerService, IContactDetailService contactDetailService)
         {
             _productCategoryService = productCategoryService;
             _productService = productService;
             _bannerService = bannerService;
+            _contactDetailService = contactDetailService;
         }
 
         // GET: Client
@@ -46,6 +49,10 @@ namespace Web.Controllers
         {
             ViewBag.Parent = _productCategoryService.GetCategoriyByType(1);
             ViewBag.Category = _productCategoryService.GetCategoriyByType(2);
+            ViewBag.ConAddress = _contactDetailService.GetDefaultContact().Address;
+            ViewBag.ConNumber = _contactDetailService.GetDefaultContact().Phone;
+            ViewBag.ConEmail = _contactDetailService.GetDefaultContact().Email;
+
             return PartialView();
         }
 

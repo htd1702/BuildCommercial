@@ -47,7 +47,7 @@
                 $scope.categories = result.data;
                 $scope.product.CategoryID = $scope.categories[0].ID;
             }, function () {
-                notificationService.displayError("Load thất bại!");
+                notificationService.displayError("Load Failed!");
             });
         }
         //function add
@@ -87,14 +87,14 @@
                 $scope.product.Status = false;
             if ($scope.product.colorList.length > 0) {
                 apiService.post("/api/product/create", $scope.product, function (result) {
-                    notificationService.displaySuccess(result.data.Name + " thêm thành công!");
+                    notificationService.displaySuccess(result.data.Name + " Success!");
                     $state.go("products");
                 }, function (error) {
-                    notificationService.displayError("Thêm mới thất bại!");
+                    notificationService.displayError("Failed!");
                 });
             }
             else {
-                notificationService.displayWarning("Bạn chưa chọn thuộc tính sản phẩm, vui lòng kiểm tra lại!");
+                notificationService.displayWarning("You have not selected a product attribute, please check again!");
             }
         }
         //funcion upload

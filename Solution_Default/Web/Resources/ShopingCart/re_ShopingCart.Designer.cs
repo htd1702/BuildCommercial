@@ -61,6 +61,15 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank transfer.
+        /// </summary>
+        public static string BankTransfer {
+            get {
+                return ResourceManager.GetString("BankTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cart Totals.
         /// </summary>
         public static string CartTotals {
@@ -106,6 +115,42 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order information.
+        /// </summary>
+        public static string OrderInformation {
+            get {
+                return ResourceManager.GetString("OrderInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully placed the order. We will contact you as soon as possible!.
+        /// </summary>
+        public static string OrderSuccess {
+            get {
+                return ResourceManager.GetString("OrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment methods.
+        /// </summary>
+        public static string PaymentMethods {
+            get {
+                return ResourceManager.GetString("PaymentMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment on delivery.
+        /// </summary>
+        public static string PaymentOnDelivery {
+            get {
+                return ResourceManager.GetString("PaymentOnDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proceed to Checkout.
         /// </summary>
         public static string ProceedCheckout {
@@ -133,6 +178,24 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank You.
+        /// </summary>
+        public static string ThankYou {
+            get {
+                return ResourceManager.GetString("ThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you for your purchase.
+        /// </summary>
+        public static string ThankYouForYourPurchase {
+            get {
+                return ResourceManager.GetString("ThankYouForYourPurchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string Total {
@@ -151,7 +214,7 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address....
+        ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string wAddress {
             get {
@@ -160,7 +223,7 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description....
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string wDescription {
             get {
@@ -169,7 +232,7 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email....
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string wEmail {
             get {
@@ -178,7 +241,7 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name....
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string wName {
             get {
@@ -187,7 +250,7 @@ namespace Web.Resources.ShopingCart {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone....
+        ///   Looks up a localized string similar to Phone.
         /// </summary>
         public static string wPhone {
             get {

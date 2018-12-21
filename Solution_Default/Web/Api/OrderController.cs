@@ -143,6 +143,10 @@ namespace Web.Api
                     orderVM.CustomerMessage = dynamicObj["customerMessage"];
                     orderVM.Total = decimal.Parse(dynamicObj["total"]);
                     orderVM.Status = false;
+                    if (dynamicObj["paymentMethod"] == "1")
+                        orderVM.PaymentMethod = "Payment on delivery";
+                    else
+                        orderVM.PaymentMethod = "Bank transfer";
                     orderVM.OrderDate = DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy"));
                     //Call method add product category in folder extensions
                     newOrder.UpdateOrder(orderVM);
@@ -183,38 +187,36 @@ namespace Web.Api
             });
         }
 
-        //[Route("update")]
-        //[HttpPut]
-        //[AllowAnonymous]
-        //public HttpResponseMessage Update(HttpRequestMessage request, OrderViewModel orderVM)
-        //{
-        //    return CreateHttpResponse(request, () =>
-        //    {
-        //        HttpResponseMessage response = null;
-        //        //check issue
-        //        if (!ModelState.IsValid)
-        //        {
-        //            response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-        //        }
-        //        else
-        //        {
-        //            Order dbOrder = _orderService.GetById(orderVM.ID);
-        //            //Call method add product category in folder extensions
-        //            dbOrder.UpdateOrder(orderVM);
-        //            //Set date
-        //            dbOrder.UpdatedDate = DateTime.Now;
-        //            //Add data
-        //            _orderService.Update(dbOrder);
-        //            //Save change
-        //            _orderService.Save();
-        //            //Mapping data to dataView
-        //            var responseData = Mapper.Map<Order, OrderViewModel>(dbOrder);
-        //            //Check request
-        //            response = request.CreateResponse(HttpStatusCode.Created, responseData);
-        //        }
-        //        return response;
-        //    });
-        //}
+        [Route("update")]
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, OrderViewModel orderVM)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                //check issue
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    Order dbOrder = _orderService.GetById(orderVM.ID);
+                    //Call method add product category in folder extensions
+                    dbOrder.UpdateOrder(orderVM);
+                    //Add data
+                    _orderService.Update(dbOrder);
+                    //Save change
+                    _orderService.Save();
+                    //Mapping data to dataView
+                    var responseData = Mapper.Map<Order, OrderViewModel>(dbOrder);
+                    //Check request
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+                return response;
+            });
+        }
 
         [Route("delete")]
         [HttpDelete]

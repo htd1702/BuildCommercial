@@ -4414,6 +4414,7 @@
     <Content Include="Views\Cart\CheckOut.cshtml" />
     <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
     <Content Include="Views\Cart\ViewCartDetails.cshtml" />
+    <Content Include="Views\Cart\OrderSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

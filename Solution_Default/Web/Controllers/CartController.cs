@@ -1,10 +1,19 @@
-﻿using System.Web.Mvc;
+﻿using Service;
+using System.Data;
+using System.Web.Mvc;
 using Web.Infrastructure.Core;
 
 namespace Web.Controllers
 {
     public class CartController : Controller
     {
+        private IOrderService _orderService;
+
+        public CartController(IOrderService orderService)
+        {
+            this._orderService = orderService;
+        }
+
         // GET: Cart
         public ActionResult Index()
         {
@@ -24,6 +33,23 @@ namespace Web.Controllers
         public ActionResult ViewCartDetails()
         {
             return PartialView();
+        }
+
+        public ActionResult OrderSuccess(int id)
+        {
+            DataTable dt = new DataTable();
+            dt = _orderService.ListOrderDetail(id.ToString());
+            ViewBag.CustomerName = dt.Rows[0]["CustomerName"].ToString();
+            ViewBag.Email = dt.Rows[0]["Email"].ToString();
+            ViewBag.Phone = dt.Rows[0]["Phone"].ToString();
+            ViewBag.Address = dt.Rows[0]["Address"].ToString();
+            ViewBag.CustomerMessage = dt.Rows[0]["CustomerMessage"].ToString();
+            ViewBag.PaymentMethod = dt.Rows[0]["PaymentMethod"].ToString();
+            ViewBag.ID = dt.Rows[0]["ID"].ToString();
+            ViewBag.Total = dt.Rows[0]["Total"].ToString();
+            ViewBag.TotalVN = double.Parse(dt.Rows[0]["Total"].ToString()) * double.Parse(dt.Rows[0]["Scale"].ToString());
+            ViewBag.ListOrders = dt.AsEnumerable();
+            return View();
         }
 
         [HttpPost]
