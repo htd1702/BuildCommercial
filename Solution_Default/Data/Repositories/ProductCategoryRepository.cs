@@ -16,7 +16,7 @@ namespace Data.Repositories
 
         IEnumerable<ProductCategory> GetCategoryByType(int type);
 
-        IEnumerable<ProductCategory> LoadListParentByType();
+        IEnumerable<ProductCategory> LoadListParentByType(int type);
 
         List<string> ListNameCategory(string keyword);
 
@@ -25,6 +25,8 @@ namespace Data.Repositories
         IEnumerable<ProductCategory> GetCategoryShowHome(int take);
 
         int CheckExistsProductCategory(int id, int type);
+
+        int CheckParent(int id);
     }
 
     public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
@@ -90,9 +92,18 @@ namespace Data.Repositories
             }
         }
 
-        public IEnumerable<ProductCategory> LoadListParentByType()
+        public IEnumerable<ProductCategory> LoadListParentByType(int type)
         {
-            return this.DbContext.ProductCategorys.OrderBy(c => c.Type).ToList();
+            return this.DbContext.ProductCategorys.Where(c => c.Type == type).OrderBy(c => c.Type).ToList();
+        }
+
+        public int CheckParent(int id)
+        {
+            var parent = this.DbContext.ProductCategorys.FirstOrDefault(p => p.ID == id).ParentID;
+            if (parent == 0)
+                return 1;
+            else
+                return 0;
         }
     }
 }

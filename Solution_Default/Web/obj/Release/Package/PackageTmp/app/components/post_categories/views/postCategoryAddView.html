@@ -1,31 +1,31 @@
 ﻿<div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title">Add Post Category</h4>
-        <p class="card-category">Complete</p>
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'Add' | translate}}</h4>
+        <p class="card-category">{{postCategory.Name}}</p>
     </div>
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmAddPostCategory" role="form" ng-submit="AddPostCategory()">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">
-                        Post Name
+                        {{'Name' | translate}}
                         <span ng-hide="frmAddPostCategory.name.$error.maxlength" ng-show="frmAddPostCategory.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" name="name" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="postCategory.Name" name="name" required placeholder="{{'Name' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameVN">
-                        Post Name VN
+                        {{'NameVN' | translate}}
                         <span ng-hide="frmAddPostCategory.nameVN.$error.maxlength" ng-show="frmAddPostCategory.nameVN.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="postCategory.NameVN" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-model="postCategory.NameVN" name="nameVN" required placeholder="{{'NameVN' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameFr">
-                        Post Name Frank
+                        {{'NameFr' | translate}}
                         <span ng-hide="frmAddPostCategory.nameFr.$error.maxlength" ng-show="frmAddPostCategory.nameFr.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="postCategory.NameFr" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-model="postCategory.NameFr" name="nameFr" required placeholder="{{'NameFr' | translate}}...">
                 </div>
             </div>
             <!--<div class="form-row">
@@ -59,7 +59,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="image">
-                        Image
+                        {{'Img' | translate}}
                         <span ng-show="frmAddPostCategory.image.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" class="text-control" ng-model="postCategory.Image" name="image" required>
@@ -69,16 +69,16 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.Description" name="description"></textarea>
+                <label for="description">{{'Description' | translate}}</label>
+                <textarea placeholder="{{'Description' | translate}}..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.Description" name="description"></textarea>
             </div>
             <div class="form-group">
-                <label for="descriptionFr">Description Fr</label>
-                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionFr" name="descriptionFr"></textarea>
+                <label for="descriptionFr">{{'Description' | translate}} Fr</label>
+                <textarea placeholder="{{'Description' | translate}}Fr..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionFr" name="descriptionFr"></textarea>
             </div>
             <div class="form-group">
-                <label for="descriptionVN">Description VN</label>
-                <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionVN" name="descriptionVN"></textarea>
+                <label for="descriptionVN">{{'Description' | translate}} VN</label>
+                <textarea placeholder="{{'Description' | translate}}VN..." class="text-control" ckeditor="editorOptions" ng-model="postCategory.DescriptionVN" name="descriptionVN"></textarea>
             </div>
             <!--<div class="form-group">
                 <label for="metaKeyword">Meta Keyword</label>
@@ -88,12 +88,12 @@
             <div class="form-group">
                 <label for="metaDescription">Meta Description</label>
                 <textarea rows="4" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="postCategory.MetaDescription" name="metaDescription"></textarea>
-                <span class="text-danger" ng-show="frmAddPostCategory.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                <span class="text-danger" ng-show="frmAddPostCategory.metaDescription.$error.maxlength">{{'Description' | translate}} không được quá 600 ký tự</span>
             </div>-->
             <div class="form-row">
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="status" ng-checked="postCategory.Status" ng-model="postCategory.Status"> Kích hoạt
+                        <input class="form-check-input" type="checkbox" name="status" ng-checked="postCategory.Status" ng-model="postCategory.Status"> {{'Active' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="postCategory.HomeFlag" ng-model="postCategory.HomeFlag"> Hiển thị trang chủ
+                        <input class="form-check-input" type="checkbox" name="homeFlag" ng-checked="postCategory.HomeFlag" ng-model="postCategory.HomeFlag"> {{'ShowHome' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="form-check col-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="promotion" ng-checked="postCategory.Promotion" ng-model="postCategory.Promotion"> Khuyến mãi
+                        <input class="form-check-input" type="checkbox" name="promotion" ng-checked="postCategory.Promotion" ng-model="postCategory.Promotion"> {{'PromotionPrice' | translate}}
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -118,10 +118,10 @@
             </div>
             <div class="form-row">
                 <div class="col col-md-6">
-                    <button class="btn btn-danger btn-sm pull-left" ui-sref="post_categories"><i class="fa fa-ban"></i> Back</button>
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="post_categories"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmAddPostCategory.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="submit" ng-disabled="frmAddPostCategory.$invalid" class="btn btn-success btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

@@ -61,9 +61,13 @@
                         id: id
                     }
                 };
-                apiService.delete("/api/color/delete", config, function () {
-                    notificationService.displaySuccess("Success!");
-                    search();
+                apiService.delete("/api/color/delete", config, function (response) {
+                    if (response.data == 1) {
+                        notificationService.displaySuccess("Delete Success!");
+                        search();
+                    }
+                    else if (response.data == -1)
+                        notificationService.displayError("Other is not delete!");
                 }, function () {
                     notificationService.displayError("Failed!");
                 });
@@ -84,10 +88,16 @@
                     }
                 };
                 apiService.delete("/api/color/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Success ' + result.data + ' record.');
-                    search();
+                    for (var i = 0; i <= result.data.length; i++) {
+                        if (result.data[i] == 1) {
+                            notificationService.displaySuccess('Row' + (i + 1) + ': Delete Success!</br>!');
+                            search();
+                        }
+                        else if (result.data[i] == -1)
+                            notificationService.displayError('Row' + (i + 1) + ': Other is not delete!</br>!');
+                    }
                 }, function (error) {
-                    notificationService.displayError("Failed!");
+                    notificationService.displayError("Delete Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

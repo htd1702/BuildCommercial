@@ -147,6 +147,15 @@
   <data name="Handling" xml:space="preserve">
     <value>Thao tác</value>
   </data>
+  <data name="HotClothes" xml:space="preserve">
+    <value>Quần áo nổi bậc</value>
+  </data>
+  <data name="HotCosmetics" xml:space="preserve">
+    <value>Mỹ phẩm nổi bậc</value>
+  </data>
+  <data name="HotInteriorDesign" xml:space="preserve">
+    <value>Thiết kế nội thất nổi bậc</value>
+  </data>
   <data name="HotProduct" xml:space="preserve">
     <value>Sản phẩm hot</value>
   </data>
@@ -176,6 +185,15 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
+  </data>
+  <data name="NewClothes" xml:space="preserve">
+    <value>Quần áo mới</value>
+  </data>
+  <data name="NewCosmetics" xml:space="preserve">
+    <value>Mỹ phẩm mới</value>
+  </data>
+  <data name="NewInteriorDesign" xml:space="preserve">
+    <value>Thiết kế nội thất mới</value>
   </data>
   <data name="NewProduct" xml:space="preserve">
     <value>Sản phẩm mới</value>

@@ -59,5 +59,34 @@ $("#btnContact").click(function () {
 });
 
 $(document).ready(function () {
+    //event load product page home
+    var count = 0;
+    if (count == 0) {
+        var filterValue = ".new-clothes";
+        $('.product-new-grid').isotope({ filter: filterValue });
+        count++;
+    }
+
+    $('.filter-tope-group .btnParentNew').click(function (e) {
+        if (count > 0) {
+            var filterValue = $(this).attr('data-filter');
+            $('.product-new-grid').isotope({ filter: filterValue });
+        }
+        e.preventDefault();
+    });
+
+    var btnParentNew = $('.filter-tope-group btnParentNew');
+    $(btnParentNew).each(function () {
+        $(this).on('click', function () {
+            for (var i = 0; i < btnParentNew.length; i++) {
+                $(btnParentNew[i]).removeClass('how-active1');
+            }
+            $(this).addClass('how-active1');
+        });
+    });
+    $('.filter-tope-group .btnParentNew:nth-child(1)').addClass("how-active1");
+    //end function load product by page home
+
+    //call function show tree menu
     $('.tree').treegrid();
 });

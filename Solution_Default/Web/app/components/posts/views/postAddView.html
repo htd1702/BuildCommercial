@@ -4,33 +4,33 @@
     }
 </style>
 <div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title">Add Post</h4>
-        <p class="card-category">Complete</p>
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'Add' | translate}}</h4>
+        <p class="card-category">{{post.Name}}</p>
     </div>
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmAddPost" role="form" ng-submit="AddPost()">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">
-                        Post Name
+                        {{'Name' | translate}}
                         <span ng-hide="frmAddPost.name.$error.maxlength" ng-show="frmAddPost.name.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="post.Name" name="name" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-change="GetSeoTitle()" ng-model="post.Name" name="name" required placeholder="{{'Name' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameVN">
-                        Post Name VN
+                        {{'NameVN' | translate}}
                         <span ng-hide="frmAddPost.nameVN.$error.maxlength" ng-show="frmAddPost.nameVN.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="post.NameVN" name="nameVN" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-model="post.NameVN" name="nameVN" required placeholder="{{'NameVN' | translate}}...">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nameFr">
-                        Post Name Frank
+                        {{'NameFr' | translate}}
                         <span ng-hide="frmAddPost.nameFr.$error.maxlength" ng-show="frmAddPost.nameFr.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="post.NameFr" name="nameFr" required placeholder="Nhập tiêu đề bài viết...">
+                    <input type="text" class="text-control" ng-model="post.NameFr" name="nameFr" required placeholder="{{'NameFr' | translate}}...">
                 </div>
                 <div class="form-group col-md-3" style="display:none;">
                     <label for="alias">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="image">
-                        Image
+                        {{'Img' | translate}}
                         <span ng-show="frmAddPost.image.$invalid" class="text-danger"> *</span>
                     </label>
                     <input type="text" class="text-control" ng-model="post.Image" name="image" required>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="imageMore">
-                        MoreImages
+                        {{'MoreImg' | translate}}
                         <span ng-show="frmAddPost.imageMore.$invalid" class="text-danger"> *</span>
                     </label>
                     <ul class="nav">
@@ -81,19 +81,19 @@
                         MetaDescription
                     </label>
                     <input type="text" placeholder="Nhập Meta Description..." ng-maxlength="600" class="text-control" ng-model="post.MetaDescription" name="metaDescription" />
-                    <span class="text-danger" ng-show="frmAddPost.metaDescription.$error.maxlength">Nội dung không được quá 600 ký tự</span>
+                    <span class="text-danger" ng-show="frmAddPost.metaDescription.$error.maxlength">{{'Description' | translate}} không được quá 600 ký tự</span>
                 </div>-->
                 <div class="form-group col-md-12">
-                    <label for="description">Description</label>
-                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.Description" name="description"></textarea>
+                    <label for="description">{{'Description' | translate}}</label>
+                    <textarea placeholder="{{'Description' | translate}}..." class="text-control" ckeditor="editorOptions" ng-model="post.Description" name="description"></textarea>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="descriptionVN">Description VN</label>
-                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionVN" name="descriptionVN"></textarea>
+                    <label for="descriptionVN">{{'Description' | translate}} VN</label>
+                    <textarea placeholder="{{'Description' | translate}}VN..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionVN" name="descriptionVN"></textarea>
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="descriptionFr">Description Fr</label>
-                    <textarea placeholder="Nội dung..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionFr" name="descriptionFr"></textarea>
+                    <label for="descriptionFr">{{'Description' | translate}} Fr</label>
+                    <textarea placeholder="{{'Description' | translate}}Fr..." class="text-control" ckeditor="editorOptions" ng-model="post.DescriptionFr" name="descriptionFr"></textarea>
                 </div>
             </div>
             <div class="form-row">
@@ -127,7 +127,7 @@
                     <button class="btn btn-danger btn-sm pull-left" ui-sref="posts"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmAddPost.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
+                    <button type="submit" ng-disabled="frmAddPost.$invalid" class="btn btn-success btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

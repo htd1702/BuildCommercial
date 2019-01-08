@@ -13,9 +13,11 @@ namespace Data.Repositories
     {
         string GetCodeIndexProduct();
 
-        DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor);
+        DataTable ListProduct(string colorID, string fromPrice, string toPrice, string categoryID);
 
-        IEnumerable<Product> ListProductByCategory(int id);
+        DataTable ListStoreOverview(int type, int categoryType);
+
+        DataTable LoadListProductByCategory(string categories);
 
         DataTable ListProductByKeyword(string keyword);
 
@@ -23,13 +25,13 @@ namespace Data.Repositories
 
         DataTable ListCartProduct(string id, string colorID, string sizeID);
 
+        DataTable ListProductByCategoryType(int type, int categoryType);
+
         List<string> ListNameProduct(string keyword);
 
+        IEnumerable<Product> ListProductByCategory(int id);
+
         IEnumerable<Product> ListProductDiscount();
-
-        IEnumerable<Product> ListNewProduct();
-
-        DataTable ListStoreOverview(int type);
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
 
@@ -63,18 +65,26 @@ namespace Data.Repositories
             return index = pram[0].Value.ToString();
         }
 
-        public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor)
+        public DataTable ListProduct(string colorID, string fromPrice, string toPrice, string categoryID)
+        {
+            SqlParameter[] pram = new SqlParameter[10];
+            pram[0] = new SqlParameter("@ColorID", SqlDbType.VarChar, 10);
+            pram[0].Value = colorID;
+            pram[1] = new SqlParameter("@FromPrice", SqlDbType.VarChar, 10);
+            pram[1].Value = fromPrice;
+            pram[2] = new SqlParameter("@ToPrice", SqlDbType.VarChar, 10);
+            pram[2].Value = toPrice;
+            pram[3] = new SqlParameter("@Categories", SqlDbType.VarChar, 10);
+            pram[3].Value = categoryID;
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
+        }
+
+        public DataTable LoadListProductByCategory(string categories)
         {
             SqlParameter[] pram = new SqlParameter[10];
             pram[0] = new SqlParameter("@Categories", SqlDbType.VarChar, 10);
             pram[0].Value = categories;
-            pram[1] = new SqlParameter("@SortBy", SqlDbType.VarChar, 10);
-            pram[1].Value = sortBy;
-            pram[2] = new SqlParameter("@SortPrice", SqlDbType.VarChar, 10);
-            pram[2].Value = sortPrice;
-            pram[3] = new SqlParameter("@SortColor", SqlDbType.VarChar, 10);
-            pram[3].Value = sortColor;
-            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListProduct", pram).Tables[0];
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListProductByCategory", pram).Tables[0];
         }
 
         public DataTable ListProductByKeyword(string keyword)
@@ -103,11 +113,6 @@ namespace Data.Repositories
             return this.DbContext.Products.Where(p => p.Status == true && p.PromotionPrice > 0).OrderByDescending(p => p.PromotionPrice).ToList();
         }
 
-        public IEnumerable<Product> ListNewProduct()
-        {
-            return this.DbContext.Products.Where(p => p.Status == true).OrderByDescending(p => p.CreatedDate).ToList();
-        }
-
         public DataTable ListCartProduct(string id, string colorID, string sizeID)
         {
             SqlParameter[] pram = new SqlParameter[5];
@@ -120,11 +125,13 @@ namespace Data.Repositories
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListCartProduct", pram).Tables[0];
         }
 
-        public DataTable ListStoreOverview(int type)
+        public DataTable ListStoreOverview(int type, int categoryType)
         {
             SqlParameter[] pram = new SqlParameter[5];
             pram[0] = new SqlParameter("@Type", SqlDbType.Int, 4);
             pram[0].Value = type;
+            pram[1] = new SqlParameter("@CategoryType", SqlDbType.Int, 4);
+            pram[1].Value = categoryType;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.ListStoreOverview", pram).Tables[0];
         }
 
@@ -158,6 +165,16 @@ namespace Data.Repositories
         public int InventoryByProductDetails(int colorID, int sizeID)
         {
             return this.DbContext.ProductDetails.FirstOrDefault(p => p.ColorID == colorID && p.SizeID == sizeID).Inventory;
+        }
+
+        public DataTable ListProductByCategoryType(int type, int categoryType)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@Type", SqlDbType.Int, 4);
+            pram[0].Value = type;
+            pram[1] = new SqlParameter("@CategoryType", SqlDbType.Int, 4);
+            pram[1].Value = categoryType;
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.ListProductByCategoryType", pram).Tables[0];
         }
     }
 }

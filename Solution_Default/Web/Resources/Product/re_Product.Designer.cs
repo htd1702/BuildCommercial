@@ -97,6 +97,15 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clothes.
+        /// </summary>
+        public static string Clothes {
+            get {
+                return ResourceManager.GetString("Clothes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string Code {
@@ -111,6 +120,15 @@ namespace Web.Resources.Product {
         public static string Color {
             get {
                 return ResourceManager.GetString("Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cosmetics.
+        /// </summary>
+        public static string Cosmetics {
+            get {
+                return ResourceManager.GetString("Cosmetics", resourceCulture);
             }
         }
         
@@ -151,6 +169,33 @@ namespace Web.Resources.Product {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hot Clothes.
+        /// </summary>
+        public static string HotClothes {
+            get {
+                return ResourceManager.GetString("HotClothes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hot Cosmetics.
+        /// </summary>
+        public static string HotCosmetics {
+            get {
+                return ResourceManager.GetString("HotCosmetics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hot Interior Design.
+        /// </summary>
+        public static string HotInteriorDesign {
+            get {
+                return ResourceManager.GetString("HotInteriorDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot Product.
         /// </summary>
         public static string HotProduct {
@@ -174,6 +219,15 @@ namespace Web.Resources.Product {
         public static string Image {
             get {
                 return ResourceManager.GetString("Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interior Design.
+        /// </summary>
+        public static string InteriorDesign {
+            get {
+                return ResourceManager.GetString("InteriorDesign", resourceCulture);
             }
         }
         
@@ -237,6 +291,33 @@ namespace Web.Resources.Product {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Clothes.
+        /// </summary>
+        public static string NewClothes {
+            get {
+                return ResourceManager.GetString("NewClothes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Cosmetics.
+        /// </summary>
+        public static string NewCosmetics {
+            get {
+                return ResourceManager.GetString("NewCosmetics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Interior Design.
+        /// </summary>
+        public static string NewInteriorDesign {
+            get {
+                return ResourceManager.GetString("NewInteriorDesign", resourceCulture);
             }
         }
         

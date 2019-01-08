@@ -8,7 +8,7 @@
     function productCategoryAddController($scope, apiService, notificationService, $state, commonService, authData) {
         //create value by type
         $scope.types = [
-            { ID: 1, Name: "1" },
+            //{ ID: 1, Name: "1" },
             { ID: 2, Name: "2" },
             { ID: 3, Name: "3" }
         ];
@@ -28,17 +28,10 @@
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.AddProductCategory = AddProductCategory;
         $scope.ChooseImage = ChooseImage;
+        $scope.changeType = changeType;
         //binding title seo by name
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSEOTitle($scope.productCategory.Name);
-        }
-        //method load parentId
-        function LoadParentCategory() {
-            apiService.get("/api/productcategory/loadListparentbytype", null, function (result) {
-                $scope.parentCategories = result.data;
-            }, function () {
-                notificationService.displayError("Load thất bại!");
-            });
         }
         //function add
         function AddProductCategory() {
@@ -77,9 +70,32 @@
             };
             finder.popup();
         }
+        //function change
+        function changeType(type) {
+            var obj = {
+                params: {
+                    type: (parseInt(type) - 1)
+                }
+            };
+            //
+            if (type == 2) {
+                apiService.get("/api/productcategory/loadListparentbytype", obj, function (result) {
+                    $scope.parentCategories = result.data;
+                }, function () {
+                    notificationService.displayError("Load Failed!");
+                });
+            }
+            else if (type == 3) {
+                apiService.get("/api/productcategory/loadListparentbytype", obj, function (result) {
+                    $scope.parentCategories = result.data;
+                }, function () {
+                    notificationService.displayError("Load Failed!");
+                });
+            }
+        }
         //call method load parent
-        LoadParentCategory();
         if ($scope.productCategory.Type == undefined || $scope.productCategory.Type == "")
-            $scope.productCategory.Type = 1;
+            $scope.productCategory.Type = 2;
+        $scope.$watch('productCategory.Type', changeType($scope.productCategory.Type));
     }
 })(angular.module('default.product_categories'));

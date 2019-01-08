@@ -3,25 +3,25 @@
     <div class="row">
         <div class="col-md-6">
             <div class="input-group">
-                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="{{'Search' | translate}}...">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-success pull-right" ui-sref="add_banner"><i class="material-icons">add</i></button>
+            <button class="btn btn-primary pull-right" ui-sref="add_banner"><i class="material-icons">add</i></button>
         </div>
     </div>
 </div>
 <div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title ">List Banner</h4>
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'ListBanner' | translate}}</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table">
-                <thead class=" text-primary">
+                <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>{{'Name' | translate}}</th>

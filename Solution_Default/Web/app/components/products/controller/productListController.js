@@ -50,7 +50,7 @@
         }
         //method delete product
         function deleteProduct(id) {
-            $ngBootbox.confirm("Do youi want delete?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
@@ -60,7 +60,7 @@
                     notificationService.displaySuccess("Delete successfully!");
                     search();
                 }, function () {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');
@@ -69,7 +69,7 @@
         //method delete all product
         function deleteAllProduct() {
             var listId = [];
-            $ngBootbox.confirm("Do youi want delete?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allProduct:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -79,10 +79,10 @@
                     }
                 };
                 apiService.delete("/api/product/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Delete successfully ' + result.data + ' bản ghi.');
+                    notificationService.displaySuccess('Delete successfully ' + result.data + ' records.');
                     search();
                 }, function (error) {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

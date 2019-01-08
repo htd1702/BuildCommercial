@@ -129,11 +129,17 @@
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Clothes</value>
+  </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
   </data>
   <data name="Color" xml:space="preserve">
     <value>Color</value>
+  </data>
+  <data name="Cosmetics" xml:space="preserve">
+    <value>Cosmetics</value>
   </data>
   <data name="CreateDate" xml:space="preserve">
     <value>CreateDate</value>
@@ -147,6 +153,15 @@
   <data name="Handling" xml:space="preserve">
     <value>Handling</value>
   </data>
+  <data name="HotClothes" xml:space="preserve">
+    <value>Hot Clothes</value>
+  </data>
+  <data name="HotCosmetics" xml:space="preserve">
+    <value>Hot Cosmetics</value>
+  </data>
+  <data name="HotInteriorDesign" xml:space="preserve">
+    <value>Hot Interior Design</value>
+  </data>
   <data name="HotProduct" xml:space="preserve">
     <value>Hot Product</value>
   </data>
@@ -155,6 +170,9 @@
   </data>
   <data name="Image" xml:space="preserve">
     <value>Image</value>
+  </data>
+  <data name="InteriorDesign" xml:space="preserve">
+    <value>Interior Design</value>
   </data>
   <data name="Inventory" xml:space="preserve">
     <value>Quantity remaining</value>
@@ -176,6 +194,15 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="NewClothes" xml:space="preserve">
+    <value>New Clothes</value>
+  </data>
+  <data name="NewCosmetics" xml:space="preserve">
+    <value>New Cosmetics</value>
+  </data>
+  <data name="NewInteriorDesign" xml:space="preserve">
+    <value>New Interior Design</value>
   </data>
   <data name="NewProduct" xml:space="preserve">
     <value>New Product</value>

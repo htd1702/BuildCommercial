@@ -34,7 +34,7 @@
             //call apiService url,params,success,error
             apiService.get('/api/size/getall', config, function (result) {
                 if (result.data.TotalCount == 0)
-                    notificationService.displayWarning("Không có bản ghi nào được tìm thấy!");
+                    notificationService.displayWarning("No records were found!");
                 $scope.sizes = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
@@ -55,17 +55,21 @@
         }
         //method delete
         function deleteSize(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
                     }
                 };
-                apiService.delete("/api/size/delete", config, function () {
-                    notificationService.displaySuccess("Xóa thành công!");
-                    search();
+                apiService.delete("/api/size/delete", config, function (response) {
+                    if (response.data == 1) {
+                        notificationService.displaySuccess("Delete Success!");
+                        search();
+                    }
+                    else if (response.data == -1)
+                        notificationService.displayError("Other is not delete!");
                 }, function () {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');
@@ -74,7 +78,7 @@
         //method delete multi
         function deleteAllSizes() {
             var listId = [];
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allSizes:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -84,10 +88,16 @@
                     }
                 };
                 apiService.delete("/api/size/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                    search();
+                    for (var i = 0; i <= result.data.length; i++) {
+                        if (result.data[i] == 1) {
+                            notificationService.displaySuccess('Row' + (i + 1) + ': Delete Success!</br>!');
+                            search();
+                        }
+                        else if (result.data[i] == -1)
+                            notificationService.displayError('Row' + (i + 1) + ': Other is not delete!</br>!');
+                    }
                 }, function (error) {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

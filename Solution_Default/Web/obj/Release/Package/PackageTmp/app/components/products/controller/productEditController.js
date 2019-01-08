@@ -90,7 +90,7 @@
                 notificationService.displaySuccess(result.data.Name + " Success!");
                 $state.go("products");
             }, function (error) {
-                notificationService.displayError("Failed!");
+                notificationService.displayError("Edit Failed!");
             });
         }
         //funcion upload
@@ -159,7 +159,7 @@
                     $scope.product = result.data;
                     $scope.moreImages = JSON.parse($scope.product.MoreImages);
                 }, function (error) {
-                    notificationService.displayError("Lấy id thất bại!");
+                    notificationService.displayError("Faild!");
                 });
                 //Get list color
                 apiService.get('/api/productdetail/getlistproductbysizecolor', color, function (result) {

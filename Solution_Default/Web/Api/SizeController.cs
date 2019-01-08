@@ -201,14 +201,21 @@ namespace Web.Api
                     }
                     else
                     {
-                        //Delete
-                        var reponse = _sizeService.Delete(id);
-                        //Save change
-                        _sizeService.Save();
-                        //Mapping data to dataView
-                        var responseData = Mapper.Map<Size, SizeViewModel>(reponse);
+                        int result = 0;
+                        if (_sizeService.CheckType(id) == 1)
+                        {
+                            //Delete
+                            var reponse = _sizeService.Delete(id);
+                            //Save change
+                            _sizeService.Save();
+                            //Mapping data to dataView
+                            var responseData = Mapper.Map<Size, SizeViewModel>(reponse);
+                            result = 1;
+                        }
+                        else
+                            result = -1;
                         //Check request
-                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                        response = request.CreateResponse(HttpStatusCode.Created, result);
                     }
                     return response;
                 });
@@ -233,15 +240,21 @@ namespace Web.Api
                 }
                 else
                 {
+                    List<int> result = new List<int>();
                     var listSize = new JavaScriptSerializer().Deserialize<List<int>>(listId);
                     foreach (var id in listSize)
                     {
-                        _sizeService.Delete(id);
+                        if (_sizeService.CheckType(id) == 1)
+                        {
+                            _sizeService.Delete(id);
+                            _sizeService.Save();
+                            result.Add(1);
+                        }
+                        else
+                            result.Add(-1);
                     }
-                    //Save change
-                    _sizeService.Save();
                     //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, listSize.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 return response;
             });

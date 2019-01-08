@@ -1,11 +1,12 @@
 ﻿@using Web.Resources.Home
+@using Web.Resources.Product
 @using System.Data
 <!-- Product -->
-<section class="sec-product bg0 p-t-100 p-b-50">
+<section class="sec-product bg0 p-t-45 p-b-50">
     <div class="container">
         <div class="p-b-32">
             <h3 class="ltext-103 cl5 txt-center respon1">
-                @re_Home.StoreOverview
+                @re_Home.ProductHot
             </h3>
         </div>
 
@@ -14,26 +15,26 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item p-b-10">
-                    <a class="nav-link active" data-toggle="tab" href="#featured" role="tab">@re_Home.Featured</a>
+                    <a class="nav-link active" data-toggle="tab" href="#hot-clothes" role="tab">@re_Product.Clothes</a>
                 </li>
 
                 <li class="nav-item p-b-10">
-                    <a class="nav-link" data-toggle="tab" href="#sale" role="tab">@re_Home.Sale</a>
+                    <a class="nav-link" data-toggle="tab" href="#hot-cosmetic" role="tab">@re_Product.Cosmetics</a>
                 </li>
 
                 <li class="nav-item p-b-10">
-                    <a class="nav-link" data-toggle="tab" href="#top-rate" role="tab">@re_Home.TopRate</a>
+                    <a class="nav-link" data-toggle="tab" href="#hot-interior" role="tab">@re_Product.InteriorDesign</a>
                 </li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content p-t-50">
                 <!-- - -->
-                <div class="tab-pane fade show active" id="featured" role="tabpanel">
+                <div class="tab-pane fade show active" id="hot-clothes" role="tabpanel">
                     <!-- Slide2 -->
                     <div class="wrap-slick2">
                         <div class="slick2">
-                            @foreach (DataRow row in ViewBag.ProductFeatured)
+                            @foreach (DataRow row in ViewBag.ClothesProductHot)
                             {
                                 <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                                     <!-- Block2 -->
@@ -45,7 +46,6 @@
                                                 @re_Home.QuickView
                                             </a>
                                             <span class="hot-product-icon">Hot</span>
-                                            @*<span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>*@
                                         </div>
 
                                         <div class="block2-txt flex-w flex-t p-t-14">
@@ -118,11 +118,11 @@
                 </div>
 
                 <!-- - -->
-                <div class="tab-pane fade" id="sale" role="tabpanel">
+                <div class="tab-pane fade" id="hot-cosmetic" role="tabpanel">
                     <!-- Slide2 -->
                     <div class="wrap-slick2">
                         <div class="slick2">
-                            @foreach (DataRow row in ViewBag.ProductSale)
+                            @foreach (DataRow row in ViewBag.CosmeticsProductHot)
                             {
                                 <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                                     <!-- Block2 -->
@@ -133,7 +133,7 @@
                                             <a href="/product-details/@int.Parse(row["ID"].ToString())" data-id="@int.Parse(row["ID"].ToString())" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
                                                 @re_Home.QuickView
                                             </a>
-                                            <span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>
+                                            <span class="hot-product-icon">Hot</span>
                                         </div>
 
                                         <div class="block2-txt flex-w flex-t p-t-14">
@@ -206,11 +206,11 @@
                 </div>
 
                 <!-- - -->
-                <div class="tab-pane fade" id="top-rate" role="tabpanel">
+                <div class="tab-pane fade" id="hot-interior" role="tabpanel">
                     <!-- Slide2 -->
                     <div class="wrap-slick2">
                         <div class="slick2">
-                            @foreach (DataRow row in ViewBag.ProductRate)
+                            @foreach (DataRow row in ViewBag.InteriorProductHot)
                             {
                                 <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                                     <!-- Block2 -->
@@ -221,14 +221,7 @@
                                             <a href="/product-details/@int.Parse(row["ID"].ToString())" data-id="@int.Parse(row["ID"].ToString())" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
                                                 @re_Home.QuickView
                                             </a>
-                                            @if (int.Parse(row["PromotionPrice"].ToString()) == 0 && bool.Parse(row["HotFlag"].ToString()) == true)
-                                            {
-                                                <span class="hot-product-icon">Hot</span>
-                                            }
-                                            else
-                                            {
-                                                <span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>
-                                            }
+                                            <span class="hot-product-icon">Hot</span>
                                         </div>
 
                                         <div class="block2-txt flex-w flex-t p-t-14">

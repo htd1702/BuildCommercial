@@ -12,6 +12,8 @@ namespace Web.Models
 
         public string Alias { set; get; }
 
+        public int Type { set; get; }
+
         public string Description { set; get; }
 
         public int? ParentSizeID { set; get; }

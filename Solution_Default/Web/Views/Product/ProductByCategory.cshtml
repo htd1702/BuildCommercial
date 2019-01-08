@@ -14,8 +14,9 @@
     }
 
     .active {
-        background-color: grey;
-        color: white;
+        background-color: #ffc107;
+        color: white !important;
+        border-color: #ffc107;
     }
 
     .bor18:last-child {
@@ -63,113 +64,297 @@
                             <i class="zmdi zmdi-search"></i>
                         </button>
                     </div>
-
-                    <div class="m-t-20">
-                        <h4 class="mtext-112 cl2 p-b-20" ng-show="@ViewBag.ParentID == 0">
-                            @re_Home.Categories
+                    <div class="m-t-20 m-b-20">
+                        <h4 class="mtext-112 cl2 p-b-10">
+                            @re_Home.Shop
                         </h4>
 
-                        <div class='sub-menu-vertical'>
-                            @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
-                            {
-                                <table class="tree">
-                                    <tbody>
-                                        @foreach (ProductCategory c in ViewBag.Categories)
-                                        {
-                                            var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
-                                            <tr class="treegrid-@c.ID expanded">
-                                                <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.NameVN</a></td>
-                                            </tr>
-                                            if (item.Count > 0)
-                                            {
-                                                foreach (var child in item)
+                        @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID">
+                                            <td>
+                                                @if (c.ID == ViewBag.ID)
                                                 {
-                                                    var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
-                                                    <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
-                                                        <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.NameVN</a></td>
-                                                    </tr>
-                                                    if (item2.Count > 0)
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-active="true" data-id="@c.ID">@c.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-id="@c.ID">@c.Name</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td>
+                                                        <a class="btnShowDetailsProduct" data-type="@child.CategoryType" data-parent="@child.ParentID" data-id="@child.ID">@child.NameVN</a>
+                                                    </td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
                                                     {
-                                                        foreach (var child2 in item2)
-                                                        {
-                                                            <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
-                                                                <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameVN</a></td>
-                                                            </tr>
-                                                        }
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td>
+                                                                <a class="btnShowDetailsProduct" data-type="@child2.CategoryType" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameVN</a>
+                                                            </td>
+                                                        </tr>
                                                     }
                                                 }
                                             }
                                         }
-                                    </tbody>
-                                </table>
-                            }
-                            else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
-                            {
-                                <table class="tree">
-                                    <tbody>
-                                        @foreach (ProductCategory c in ViewBag.Categories)
-                                        {
-                                            var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
-                                            <tr class="treegrid-@c.ID expanded">
-                                                <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.NameFr</a></td>
-                                            </tr>
-                                            if (item.Count > 0)
-                                            {
-                                                foreach (var child in item)
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID">
+                                            <td>
+                                                @if (c.ID == ViewBag.ID)
                                                 {
-                                                    var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
-                                                    <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
-                                                        <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.NameFr</a></td>
-                                                    </tr>
-                                                    if (item2.Count > 0)
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-active="true" data-id="@c.ID">@c.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-id="@c.ID">@c.Name</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td>
+                                                        <a class="btnShowDetailsProduct" data-type="@child.CategoryType" data-parent="@child.ParentID" data-id="@child.ID">@child.NameFr</a>
+                                                    </td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
                                                     {
-                                                        foreach (var child2 in item2)
-                                                        {
-                                                            <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
-                                                                <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameFr</a></td>
-                                                            </tr>
-                                                        }
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td>
+                                                                <a class="btnShowDetailsProduct" data-type="@child2.CategoryType" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.NameFr</a>
+                                                            </td>
+                                                        </tr>
                                                     }
                                                 }
                                             }
                                         }
-                                    </tbody>
-                                </table>
-                            }
-                            else
-                            {
-                                <table class="tree">
-                                    <tbody>
-                                        @foreach (ProductCategory c in ViewBag.Categories)
-                                        {
-                                            var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
-                                            <tr class="treegrid-@c.ID expanded">
-                                                <td><a class="btnShowDetailsProduct" data-parent="@c.ParentID" data-id="@c.ID">@c.Name</a></td>
-                                            </tr>
-                                            if (item.Count > 0)
-                                            {
-                                                foreach (var child in item)
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <table class="tree">
+                                <tbody>
+                                    @foreach (ProductCategory c in ViewBag.Categories)
+                                    {
+                                        var item = db.ProductCategorys.Where(x => x.ParentID == c.ID).ToList();
+                                        <tr class="treegrid-@c.ID">
+                                            <td>
+                                                @if (c.ID == ViewBag.ID)
                                                 {
-                                                    var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
-                                                    <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
-                                                        <td><a class="btnShowDetailsProduct" data-parent="@child.ParentID" data-id="@child.ID">@child.Name</a></td>
-                                                    </tr>
-                                                    if (item2.Count > 0)
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-active="true" data-id="@c.ID">@c.Name</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btnShowDetailsProduct" data-type="@c.CategoryType" data-parent="@c.ParentID" data-id="@c.ID">@c.Name</a>
+                                                }
+                                            </td>
+                                        </tr>
+                                        if (item.Count > 0)
+                                        {
+                                            foreach (var child in item)
+                                            {
+                                                var item2 = db.ProductCategorys.Where(x => x.ParentID == child.ID).ToList();
+                                                <tr class="treegrid-@child.ID treegrid-parent-@child.ParentID">
+                                                    <td>
+                                                        <a class="btnShowDetailsProduct" data-type="@child.CategoryType" data-parent="@child.ParentID" data-id="@child.ID">@child.Name</a>
+                                                    </td>
+                                                </tr>
+                                                if (item2.Count > 0)
+                                                {
+                                                    foreach (var child2 in item2)
                                                     {
-                                                        foreach (var child2 in item2)
-                                                        {
-                                                            <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
-                                                                <td><a class="btnShowDetailsProduct" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.Name</a></td>
-                                                            </tr>
-                                                        }
+                                                        <tr class="treegrid-@child2.ID treegrid-parent-@child2.ParentID">
+                                                            <td>
+                                                                <a class="btnShowDetailsProduct" data-type="@child2.CategoryType" data-parent="@child2.ParentID" data-id="@child2.ID">@child2.Name</a>
+                                                            </td>
+                                                        </tr>
                                                     }
                                                 }
                                             }
                                         }
-                                    </tbody>
-                                </table>
-                            }
-                        </div>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                    <div class="m-t-20 m-b-20">
+                        <hr />
+                    </div>
+                    <div class="m-t-20 m-b-20">
+                        <h4 class="mtext-112 cl2 p-b-10">
+                            @re_Home.Price
+                        </h4>
+                        <ul id="sort-price">
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="0" data-to="0" checked="checked" />
+                                @re_Home.All
+                            </li>
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="0" data-to="25" />
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        0 - 250.000 vnđ
+                                    </span>
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "ft")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $0.00 - $25.00
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $0.00 - $25.00
+                                    </span>
+                                }
+                            </li>
+
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="25" data-to="50" />
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        250.000 - 500.000 vnđ
+                                    </span>
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "ft")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $25.00 - $50.00
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $25.00 - $50.00
+                                    </span>
+                                }
+                            </li>
+
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="50" data-to="100" />
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        500.000 - 1000.000 vnđ
+                                    </span>
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "ft")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $50.00 - $100.00
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $50.00 - $100.00
+                                    </span>
+                                }
+                            </li>
+
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="100" data-to="200" />
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        1.000.000 - 1.500.000 vnđ
+                                    </span>
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "ft")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $100.00 - $200.00
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $100.00 - $200.00
+                                    </span>
+                                }
+                            </li>
+
+                            <li class="p-b-6">
+                                <input type="radio" name="txt_checkPrice" data-from="200" data-to="999" />
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        2.000.000 vnđ ++
+                                    </span>
+                                }
+                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "ft")
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $200.00++
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-106 trans-04">
+                                        $200.00++
+                                    </span>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="m-t-20 m-b-20">
+                        <hr />
+                    </div>
+                    <div class="m-t-20 m-b-20">
+                        <h4 class="mtext-112 cl2 p-b-10">
+                            @re_Home.Color
+                        </h4>
+                        <ul id="sort-color">
+                            <li ng-repeat="c in listColors" class="p-b-6">
+                                <span class="{{c.Name}}"></span>
+                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                {
+                                    <a ng-click="btnColor($index, $event, c.ID)" data-id="{{c.ID}}">
+                                        {{c.NameVN}}
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a ng-click="btnColor($index, $event, c.ID)" data-id="{{c.ID}}">
+                                        {{c.Name}}
+                                    </a>
+                                }
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-8 col-lg-9 p-b-80">

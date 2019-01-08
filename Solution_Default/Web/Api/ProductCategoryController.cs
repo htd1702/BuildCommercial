@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data;
 using Model.Model;
 using Service;
 using System;
@@ -19,6 +20,7 @@ namespace Web.Api
     public class ProductCategoryController : ApiControllerBase
     {
         private IProductCategoryService _productCategoryService;
+        private DBContext db = new DBContext();
 
         #region Initialize
 
@@ -92,11 +94,11 @@ namespace Web.Api
 
         [Route("loadListparentbytype")]
         [HttpGet]
-        public HttpResponseMessage LoadListParentByType(HttpRequestMessage request)
+        public HttpResponseMessage LoadListParentByType(HttpRequestMessage request, int type)
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _productCategoryService.LoadListParentByType();
+                var model = _productCategoryService.LoadListParentByType(type);
                 //mapp data
                 var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
@@ -163,6 +165,8 @@ namespace Web.Api
                     ProductCategory newProductCategory = new ProductCategory();
                     //Call method add product category in folder extensions
                     newProductCategory.UpdateProductCategory(productCategoryVM);
+                    //find type parent 
+                    newProductCategory.CategoryType = db.ProductCategorys.FirstOrDefault(c => c.ID == productCategoryVM.ParentID).CategoryType;
                     //Set date
                     newProductCategory.CreatedDate = DateTime.Now;
                     //Add data
@@ -198,6 +202,8 @@ namespace Web.Api
                     dbProductCategory.UpdateProductCategory(productCategoryVM);
                     //Set date
                     dbProductCategory.UpdatedDate = DateTime.Now;
+                    //get type parent
+                    dbProductCategory.CategoryType = db.ProductCategorys.FirstOrDefault(c => c.ID == productCategoryVM.ParentID).CategoryType;
                     //Add data
                     _productCategoryService.Update(dbProductCategory);
                     //Save change
@@ -230,21 +236,26 @@ namespace Web.Api
                     else
                     {
                         int result = 0;
-                        if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
+                        if (_productCategoryService.CheckParent(id) == 0)
                         {
-                            if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                            if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
                             {
-                                //Delete
-                                var reponse = _productCategoryService.Delete(id);
-                                //Save change
-                                _productCategoryService.Save();
-                                result = 1;
+                                if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                                {
+                                    //Delete
+                                    var reponse = _productCategoryService.Delete(id);
+                                    //Save change
+                                    _productCategoryService.Save();
+                                    result = 1;
+                                }
+                                else
+                                    result = -1;
                             }
                             else
-                                result = -1;
+                                result = -2;
                         }
                         else
-                            result = -2;
+                            result = -3;
                         response = request.CreateResponse(HttpStatusCode.Created, result);
                     }
                     return response;
@@ -274,20 +285,25 @@ namespace Web.Api
                     var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(listId);
                     foreach (var id in listProductCategory)
                     {
-                        if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
+                        if (_productCategoryService.CheckParent(id) == 0)
                         {
-                            if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                            if (_productCategoryService.CheckExistsProductCategory(id, 1) != 1)
                             {
-                                _productCategoryService.Delete(id);
-                                //Save change
-                                _productCategoryService.Save();
-                                result.Add(1);
+                                if (_productCategoryService.CheckExistsProductCategory(id, 2) != 1)
+                                {
+                                    _productCategoryService.Delete(id);
+                                    //Save change
+                                    _productCategoryService.Save();
+                                    result.Add(1);
+                                }
+                                else
+                                    result.Add(-1);
                             }
                             else
-                                result.Add(-1);
+                                result.Add(-2);
                         }
                         else
-                            result.Add(-2);
+                            result.Add(-3);
                     }
                     response = request.CreateResponse(HttpStatusCode.OK, result);
                 }

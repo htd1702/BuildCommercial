@@ -1,0 +1,55 @@
+﻿<div class="card">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'Edit' | translate}}</h4>
+        <p class="card-category">{{info.Name}}</p>
+    </div>
+    <div class="card-body">
+        <form class="form-horizontal" novalidate name="frmEditInfo" role="form" ng-submit="EditInfo()">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="name">
+                        {{'Name' | translate}}
+                        <span ng-hide="frmEditInfo.name.$error.maxlength" ng-show="frmEditInfo.name.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="info.Name" ng-maxlength="40" name="name" required placeholder="{{'Name' | translate}}...">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="phone">
+                        {{'Phone' | translate}}
+                        <span ng-show="frmEditInfo.phone.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="info.Phone" name="phone" required placeholder="{{'Phone' | translate}}...">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="email">
+                        {{'Email' | translate}}
+                        <span ng-show="frmEditInfo.phone.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="email" class="text-control" ng-model="info.Email" name="email" required placeholder="{{'Email' | translate}}...">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="website">
+                        {{'Website' | translate}}
+                        <span ng-show="frmEditInfo.website.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="info.Website" ng-maxlength="40" name="website" required placeholder="{{'Website' | translate}}...">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address">
+                        {{'Address' | translate}}
+                        <span ng-show="frmEditInfo.address.$invalid" class="text-danger"> *</span>
+                    </label>
+                    <input type="text" class="text-control" ng-model="info.Address" name="address" required placeholder="{{'Address' | translate}}...">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col col-md-6">
+                    <button class="btn btn-danger btn-sm pull-left" ui-sref="infos"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
+                </div>
+                <div class="col col-md-6">
+                    <button type="submit" ng-disabled="frmEditInfo.$invalid" class="btn btn-success btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

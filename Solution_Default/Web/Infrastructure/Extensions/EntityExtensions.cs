@@ -6,7 +6,7 @@ namespace Web.Infrastructure.Extensions
     //Tạo ra 1 phương thức mỡ rộng cho 1 đối tượng
     public static class EntityExtensions
     {
-        //Set value mapp postCategory
+        //Set value map postCategory
         public static void UpdatePostCategory(this PostCategory postCategory, PostCategoryViewModel postCategoryVM)
         {
             postCategory.ID = postCategoryVM.ID;
@@ -31,7 +31,7 @@ namespace Web.Infrastructure.Extensions
             postCategory.Promotion = postCategoryVM.Promotion;
         }
 
-        //Set value mapp post
+        //Set value map post
         public static void UpdatePost(this Post post, PostViewModel postVM)
         {
             post.ID = postVM.ID;
@@ -57,7 +57,7 @@ namespace Web.Infrastructure.Extensions
             post.MoreImages = postVM.MoreImages;
         }
 
-        //Set value mapp productCategory
+        //Set value map productCategory
         public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryVM)
         {
             productCategory.ID = productCategoryVM.ID;
@@ -66,6 +66,7 @@ namespace Web.Infrastructure.Extensions
             productCategory.NameFr = productCategoryVM.NameFr.Trim();
             productCategory.Alias = productCategoryVM.Alias;
             productCategory.Type = productCategoryVM.Type;
+            productCategory.CategoryType = productCategoryVM.CategoryType;
             productCategory.Description = productCategoryVM.Description;
             productCategory.ParentID = productCategoryVM.ParentID;
             productCategory.DisplayOrder = productCategoryVM.DisplayOrder;
@@ -80,7 +81,7 @@ namespace Web.Infrastructure.Extensions
             productCategory.Status = productCategoryVM.Status;
         }
 
-        //Set value mapp product
+        //Set value map product
         public static void UpdateProduct(this Product product, ProductViewModel productVM, int type)
         {
             if (type == 1)
@@ -105,6 +106,7 @@ namespace Web.Infrastructure.Extensions
             product.PromotionPrice = productVM.PromotionPrice;
             product.Quantity = productVM.Quantity;
             product.Warranty = productVM.Warranty;
+            product.Composition = productVM.Composition;
             product.Description = productVM.Description;
             product.Content = productVM.Content;
             product.HomeFlag = productVM.HomeFlag;
@@ -118,7 +120,7 @@ namespace Web.Infrastructure.Extensions
             product.Status = productVM.Status;
         }
 
-        //Set value mapp product detail
+        //Set value map product detail
         public static void UpdateProductDetail(this ProductDetail productDetail, ProductDetailViewModel productDetailVM, int type)
         {
             if (type == 2)
@@ -139,7 +141,7 @@ namespace Web.Infrastructure.Extensions
             //productDetail.MoreImages = productDetailVM.MoreImages;
         }
 
-        //Set value mmapp product
+        //Set value map product
         public static void UpdateColor(this Color color, ColorViewModel colorVM)
         {
             color.ID = colorVM.ID;
@@ -147,13 +149,14 @@ namespace Web.Infrastructure.Extensions
             color.NameVN = colorVM.NameVN.Trim();
             color.Alias = colorVM.Alias;
             color.Description = colorVM.Description;
+            color.Type = colorVM.Type;
             color.CreatedDate = colorVM.CreatedDate;
             color.CreatedBy = colorVM.CreatedBy;
             color.UpdatedDate = colorVM.UpdatedDate;
             color.UpdatedBy = colorVM.UpdatedBy;
         }
 
-        //Set value mmapp product
+        //Set value map product
         public static void UpdateSize(this Size size, SizeViewModel sizeVM)
         {
             size.ID = sizeVM.ID;
@@ -161,6 +164,7 @@ namespace Web.Infrastructure.Extensions
             size.NameVN = sizeVM.NameVN.Trim();
             size.Alias = sizeVM.Alias;
             size.ParentSizeID = sizeVM.ParentSizeID;
+            size.Type = sizeVM.Type;
             size.Description = sizeVM.Description;
             size.CreatedDate = sizeVM.CreatedDate;
             size.CreatedBy = sizeVM.CreatedBy;
@@ -168,7 +172,7 @@ namespace Web.Infrastructure.Extensions
             size.UpdatedBy = sizeVM.UpdatedBy;
         }
 
-        //Set value mmapp order
+        //Set value map order
         public static void UpdateOrder(this Order order, OrderViewModel orderVM)
         {
             order.ID = orderVM.ID;
@@ -184,7 +188,7 @@ namespace Web.Infrastructure.Extensions
             order.Status = orderVM.Status;
         }
 
-        //Set value mmapp order detail
+        //Set value map order detail
         public static void UpdateOrderDetail(this OrderDetail orderDetail, OrderDetailViewModel orderDetailVM)
         {
             orderDetail.OrderID = orderDetailVM.OrderID;
@@ -193,7 +197,7 @@ namespace Web.Infrastructure.Extensions
             orderDetail.UnitPrice = orderDetailVM.UnitPrice;
         }
 
-        //Set value mmapp order detail
+        //Set value map order detail
         public static void UpdateBanner(this Banner banner, BannerViewModel bannerVM)
         {
             banner.ID = bannerVM.ID;
@@ -208,6 +212,21 @@ namespace Web.Infrastructure.Extensions
             banner.UpdatedBy = bannerVM.UpdatedBy;
             banner.Title = bannerVM.Title;
             banner.TitleType = bannerVM.TitleType;
+        }
+
+        //set valye map contact
+        public static void UpdateContactDetail(this ContactDetail contactDetail, ContactDetailViewModel contactDetailVM)
+        {
+            contactDetail.ID = contactDetailVM.ID;
+            contactDetail.Name = contactDetailVM.Name;
+            contactDetail.Phone = contactDetailVM.Phone;
+            contactDetail.Email = contactDetailVM.Email;
+            contactDetail.Website = contactDetailVM.Website;
+            contactDetail.Address = contactDetailVM.Address;
+            contactDetail.Other = contactDetailVM.Other;
+            contactDetail.Lat = contactDetailVM.Lat;
+            contactDetail.Lng = contactDetailVM.Lng;
+            contactDetail.Status = contactDetailVM.Status;
         }
     }
 }

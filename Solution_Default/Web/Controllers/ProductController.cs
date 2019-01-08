@@ -62,11 +62,19 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult ProductOverView()
+        public ActionResult HotProductOverView()
         {
-            ViewBag.ProductFeatured = _productService.ListStoreOverview(2).AsEnumerable().Take(10).ToList();
-            ViewBag.ProductSale = _productService.ListStoreOverview(3).AsEnumerable().Take(10).ToList();
-            ViewBag.ProductRate = _productService.ListStoreOverview(1).AsEnumerable().Take(10).ToList();
+            ViewBag.ClothesProductHot = _productService.ListStoreOverview(2, 3).AsEnumerable().Take(10).ToList();
+            ViewBag.CosmeticsProductHot = _productService.ListStoreOverview(2, 2).AsEnumerable().Take(10).ToList();
+            ViewBag.InteriorProductHot = _productService.ListStoreOverview(2, 1).AsEnumerable().Take(10).ToList();
+            return PartialView();
+        }
+
+        public ActionResult SaleProductOverView()
+        {
+            ViewBag.ClothesProductSale = _productService.ListStoreOverview(3, 3).AsEnumerable().Take(10).ToList();
+            ViewBag.CosmeticsProductSale = _productService.ListStoreOverview(3, 2).AsEnumerable().Take(10).ToList();
+            ViewBag.InteriorProductSale = _productService.ListStoreOverview(3, 1).AsEnumerable().Take(10).ToList();
             return PartialView();
         }
 
@@ -114,38 +122,20 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult LoadListProduct(string categories, string sortBy, string sortPrice, string sortColor, int pageSize)
+        public JsonResult LoadListProduct(string colorID, string fromPrice, string toPrice, string categoryID)
         {
             try
             {
+                if (colorID == "0")
+                    colorID = "%";
                 DataTable dt = new DataTable();
                 List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
-                //check params
-                if (categories == "0" || categories == null)
-                    categories = "%";
-                if (sortBy == "0" || sortBy == null)
-                    sortBy = "%";
-                if (sortColor == "0" || sortColor == null)
-                    sortColor = "%";
-                dt = _productService.ListProduct(categories, sortBy, sortPrice, sortColor);
+                dt = _productService.ListProduct(colorID, fromPrice, toPrice, categoryID);
                 if (dt.Rows.Count > 0)
                 {
                     //Get data by take
-                    if (sortBy == "%" || int.Parse(sortBy) == 1)
-                    {
-                        var model = dt.AsEnumerable().OrderBy(p => p.Field<double>("Price")).Take(pageSize).CopyToDataTable();
-                        list = _productService.GetTableRows(model);
-                    }
-                    else if (int.Parse(sortBy) == 2)
-                    {
-                        var model = dt.AsEnumerable().OrderByDescending(p => p.Field<double>("Price")).Take(pageSize).CopyToDataTable();
-                        list = _productService.GetTableRows(model);
-                    }
-                    else if (int.Parse(sortBy) == 3)
-                    {
-                        var model = dt.AsEnumerable().Where(p => p.Field<Int32>(10) > 0).OrderByDescending(p => p.Field<int>("PromotionPrice")).Take(pageSize).CopyToDataTable();
-                        list = _productService.GetTableRows(model);
-                    }
+                    var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).CopyToDataTable();
+                    list = _productService.GetTableRows(model);
                 }
                 return Json(list, JsonRequestBehavior.AllowGet);
             }
@@ -164,11 +154,7 @@ namespace Web.Controllers
                 List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
                 if (categories == "0" || categories == null)
                     categories = "%";
-                //if (parentID > 0)
-                //    dt = _productService.ListProduct(parentID.ToString(), "%", "0", "%", categories);
-                //else
-                //    dt = _productService.ListProduct(categories, "%", "0", "%", "%");
-                dt = _productService.ListProduct(categories, "%", "0", "%");
+                dt = _productService.LoadListProductByCategory(categories);
                 if (dt.Rows.Count > 0)
                 {
                     //Get data by take
@@ -195,20 +181,6 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult ListHotProduct(int top)
-        {
-            var model = _productService.GetHotProduct(top);
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult ListDiscountProductByTake(int take)
-        {
-            var model = _productService.ListProductDiscount().Take(take);
-            return Json(model, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
         public JsonResult SearchProduct(string keyword)
         {
             string key = keyword.ToLower().Replace(" ", "-");
@@ -232,15 +204,23 @@ namespace Web.Controllers
         [HttpGet]
         public JsonResult ListNewProduct()
         {
-            var model = _productService.ListNewProduct();
-            return Json(model, JsonRequestBehavior.AllowGet);
+            DataTable dt = new DataTable();
+            List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+            dt = _productService.ListStoreOverview(4, 3);
+            if (dt.Rows.Count > 0)
+            {
+                //Get data by take
+                var model = dt.AsEnumerable().CopyToDataTable();
+                list = _productService.GetTableRows(model);
+            }
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public JsonResult ListStoreOverview(int type)
+        public JsonResult ListStoreOverview(int type, int categoryType)
         {
             List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
-            DataTable dt = _productService.ListStoreOverview(type);
+            DataTable dt = _productService.ListStoreOverview(type, categoryType);
             if (dt.Rows.Count > 0)
             {
                 var model = dt.AsEnumerable().Take(10).CopyToDataTable();

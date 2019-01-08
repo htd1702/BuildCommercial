@@ -66,11 +66,20 @@
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > posWrapHeader) {
             $(headerDesktop).addClass('fix-menu-desktop');
-            $(wrapMenu).css('top', 0);
+            $(wrapMenu).css('top', 0).css("background-color", "#222222");
+            $(".logo-main").css("color", "wheat");
+            $(".main-menu li a").css("color", "#fff");
+            $(".wrap-icon-header a").css("color", "#fff");
+            $(".shopping-cart-des").css("color", "#fff");
+            $(".sub-menu li a").css("color", "#333");
         }
         else {
             $(headerDesktop).removeClass('fix-menu-desktop');
-            $(wrapMenu).css('top', posWrapHeader - $(this).scrollTop());
+            $(wrapMenu).css('top', posWrapHeader - $(this).scrollTop()).css("background-color", "#fff");
+            $(".logo-main").css("color", "initial");
+            $(".main-menu li a").css("color", "#333");
+            $(".wrap-icon-header a").css("color", "#333");
+            $(".shopping-cart-des").css("color", "#333");
         }
     });
 

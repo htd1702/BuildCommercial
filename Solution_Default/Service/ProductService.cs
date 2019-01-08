@@ -23,17 +23,21 @@ namespace Service
 
         IEnumerable<Product> ListProductDiscount();
 
-        IEnumerable<Product> ListNewProduct();
-
-        List<Dictionary<string, object>> GetTableRows(DataTable dtData);
-
-        Product GetById(int id);
+        IEnumerable<Product> ListProductByCategory(int id);
 
         IEnumerable<Product> GetLastest(int top);
 
-        IEnumerable<Product> GetHotProduct(int top);
+        IEnumerable<Product> GetListProductByTag(string tagId, int page, int pagesize, out int totalRow);
 
-        DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor);
+        List<Dictionary<string, object>> GetTableRows(DataTable dtData);
+
+        List<string> ListNameProduct(string keyword);
+
+        Product GetById(int id);
+
+        DataTable ListProduct(string colorID, string fromPrice, string toPrice, string categoryID);
+
+        DataTable LoadListProductByCategory(string categories);
 
         DataTable ListProductByKeyword(string keyword);
 
@@ -41,11 +45,9 @@ namespace Service
 
         DataTable ListCartProduct(string id, string colorID, string sizeID);
 
-        DataTable ListStoreOverview(int type);
+        DataTable ListStoreOverview(int type, int categoryType);
 
-        IEnumerable<Product> ListProductByCategory(int id);
-
-        List<string> ListNameProduct(string keyword);
+        DataTable ListProductByCategoryType(int type, int categoryType);
 
         string GetCodeIndexProduct();
 
@@ -56,8 +58,6 @@ namespace Service
         Tag GetTag(string tagId);
 
         void IncreaseView(int id);
-
-        IEnumerable<Product> GetListProductByTag(string tagId, int page, int pagesize, out int totalRow);
 
         int CheckInventoryProduct(int colorID, int sizeID);
 
@@ -176,11 +176,6 @@ namespace Service
             return _productRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
         }
 
-        public IEnumerable<Product> GetHotProduct(int top)
-        {
-            return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.ViewCount).Take(top);
-        }
-
         public List<Dictionary<string, object>> GetTableRows(DataTable dtData)
         {
             return _productRepository.GetTableRows(dtData);
@@ -191,9 +186,9 @@ namespace Service
             return _productRepository.ListNameProduct(keyword);
         }
 
-        public DataTable ListProduct(string categories, string sortBy, string sortPrice, string sortColor)
+        public DataTable ListProduct(string colorID, string fromPrice, string toPrice, string categoryID)
         {
-            return _productRepository.ListProduct(categories, sortBy, sortPrice, sortColor);
+            return _productRepository.ListProduct(colorID, fromPrice, toPrice, categoryID);
         }
 
         public IEnumerable<Product> ListProductByCategory(int id)
@@ -216,19 +211,14 @@ namespace Service
             return _productRepository.ListProductDiscount();
         }
 
-        public IEnumerable<Product> ListNewProduct()
-        {
-            return _productRepository.ListNewProduct();
-        }
-
         public DataTable ListCartProduct(string id, string colorID, string sizeID)
         {
             return _productRepository.ListCartProduct(id, colorID, sizeID);
         }
 
-        public DataTable ListStoreOverview(int type)
+        public DataTable ListStoreOverview(int type, int categoryType)
         {
-            return _productRepository.ListStoreOverview(type);
+            return _productRepository.ListStoreOverview(type, categoryType);
         }
 
         public void Save()
@@ -274,6 +264,16 @@ namespace Service
         public int InventoryByProductDetails(int colorID, int sizeID)
         {
             return _productRepository.InventoryByProductDetails(colorID, sizeID);
+        }
+
+        public DataTable ListProductByCategoryType(int type, int categoryType)
+        {
+            return _productRepository.ListProductByCategoryType(type, categoryType);
+        }
+
+        public DataTable LoadListProductByCategory(string categories)
+        {
+            return _productRepository.LoadListProductByCategory(categories);
         }
     }
 }

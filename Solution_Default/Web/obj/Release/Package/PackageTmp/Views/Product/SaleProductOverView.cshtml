@@ -1,0 +1,298 @@
+﻿@using Web.Resources.Home
+@using Web.Resources.Product
+@using System.Data
+<!-- Sale product -->
+<section class="sec-product bg0 p-t-45 p-b-50">
+    <div class="container">
+        <div class="p-b-32">
+            <h3 class="ltext-103 cl5 txt-center respon1">
+                @re_Home.SaleProduct
+            </h3>
+        </div>
+
+        <!-- Tab01 -->
+        <div class="tab01">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item p-b-10">
+                    <a class="nav-link active" data-toggle="tab" href="#sale-clothes" role="tab">@re_Product.Clothes</a>
+                </li>
+
+                <li class="nav-item p-b-10">
+                    <a class="nav-link" data-toggle="tab" href="#sale-cosmetic" role="tab">@re_Product.Cosmetics</a>
+                </li>
+
+                <li class="nav-item p-b-10">
+                    <a class="nav-link" data-toggle="tab" href="#sale-interior" role="tab">@re_Product.InteriorDesign</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content p-t-50">
+                <!-- - -->
+                <div class="tab-pane fade show active" id="sale-clothes" role="tabpanel">
+                    <!-- Slide2 -->
+                    <div class="wrap-slick2">
+                        <div class="slick2">
+                            @foreach (DataRow row in ViewBag.ClothesProductSale)
+                            {
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="@row["Image"].ToString()" alt="IMG-PRODUCT">
+
+                                            <a href="/product-details/@int.Parse(row["ID"].ToString())" data-id="@int.Parse(row["ID"].ToString())" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
+                                                @re_Home.QuickView
+                                            </a>
+                                            <span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>
+                                        </div>
+
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+
+                                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameVN"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ
+                                                        </span>
+                                                    }
+                                                }
+                                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameFr"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()) - (double.Parse(row["PriceFr"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["Name"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()) - (double.Parse(row["Price"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- - -->
+                <div class="tab-pane fade" id="sale-cosmetic" role="tabpanel">
+                    <!-- Slide2 -->
+                    <div class="wrap-slick2">
+                        <div class="slick2">
+                            @foreach (DataRow row in ViewBag.CosmeticsProductSale)
+                            {
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="@row["Image"].ToString()" alt="IMG-PRODUCT">
+
+                                            <a href="/product-details/@int.Parse(row["ID"].ToString())" data-id="@int.Parse(row["ID"].ToString())" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
+                                                @re_Home.QuickView
+                                            </a>
+                                            <span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>
+                                        </div>
+
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+
+                                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                                {
+                                                    <a href="" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameVN"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ
+                                                        </span>
+                                                    }
+                                                }
+                                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameFr"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()) - (double.Parse(row["PriceFr"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["Name"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()) - (double.Parse(row["Price"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- - -->
+                <div class="tab-pane fade" id="sale-interior" role="tabpanel">
+                    <!-- Slide2 -->
+                    <div class="wrap-slick2">
+                        <div class="slick2">
+                            @foreach (DataRow row in ViewBag.InteriorProductSale)
+                            {
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="@row["Image"].ToString()" alt="IMG-PRODUCT">
+
+                                            <a href="/product-details/@int.Parse(row["ID"].ToString())" data-id="@int.Parse(row["ID"].ToString())" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal">
+                                                @re_Home.QuickView
+                                            </a>
+                                            <span ng-show="@int.Parse(row["PromotionPrice"].ToString()) > 0" class="sale">@row["PromotionPrice"].ToString()%</span>
+                                        </div>
+
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+
+                                                @if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi")
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameVN"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ
+                                                        </span>
+                                                    }
+                                                }
+                                                else if (Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "fr")
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["NameFr"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()) - (double.Parse(row["PriceFr"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["PriceFr"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="/product-details/@row["ID"].ToString()" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        @row["Name"].ToString()
+                                                    </a>
+
+                                                    if (int.Parse(row["PromotionPrice"].ToString()) > 0)
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            <span style="text-decoration:line-through">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))</span> - <span style="color:red">$@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()) - (double.Parse(row["Price"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100)</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="stext-105 cl3">
+                                                            $@string.Format("{0:#,##0.00}", double.Parse(row["Price"].ToString()))
+                                                        </span>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

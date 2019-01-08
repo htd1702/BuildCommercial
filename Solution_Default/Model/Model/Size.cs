@@ -29,6 +29,8 @@ namespace Model.Model
 
         public int? ParentSizeID { set; get; }
 
+        public int Type { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }

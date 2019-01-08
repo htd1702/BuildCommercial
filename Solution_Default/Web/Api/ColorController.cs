@@ -201,14 +201,21 @@ namespace Web.Api
                     }
                     else
                     {
-                        //Delete
-                        var reponse = _colorService.Delete(id);
-                        //Save change
-                        _colorService.Save();
-                        //Mapping data to dataView
-                        var responseData = Mapper.Map<Color, ColorViewModel>(reponse);
+                        int result = 0;
+                        if (_colorService.CheckType(id) == 1)
+                        {
+                            //Delete
+                            var reponse = _colorService.Delete(id);
+                            //Save change
+                            _colorService.Save();
+                            //Mapping data to dataView
+                            var responseData = Mapper.Map<Color, ColorViewModel>(reponse);
+                            result = 1;
+                        }
+                        else
+                            result = -1;
                         //Check request
-                        response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                        response = request.CreateResponse(HttpStatusCode.Created, result);
                     }
                     return response;
                 });
@@ -233,15 +240,21 @@ namespace Web.Api
                 }
                 else
                 {
+                    List<int> result = new List<int>();
                     var listColor = new JavaScriptSerializer().Deserialize<List<int>>(listId);
                     foreach (var id in listColor)
                     {
-                        _colorService.Delete(id);
+                        if (_colorService.CheckType(id) == 1)
+                        {
+                            _colorService.Delete(id);
+                            _colorService.Save();
+                            result.Add(1);
+                        }
+                        else
+                            result.Add(-1);
                     }
-                    //Save change
-                    _colorService.Save();
                     //Check request
-                    response = request.CreateResponse(HttpStatusCode.OK, listColor.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 return response;
             });

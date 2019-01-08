@@ -25,6 +25,8 @@ namespace Web.Models
 
         public int Type { set; get; }
 
+        public int CategoryType { set; get; }
+
         public int? DisplayOrder { set; get; }
 
         public string Image { set; get; }

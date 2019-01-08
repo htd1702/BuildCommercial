@@ -170,6 +170,14 @@
     <Compile Include="Migrations\201812160145203_AddNewTypeProductCategory.Designer.cs">
       <DependentUpon>201812160145203_AddNewTypeProductCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812261458395_NewTypeTable.cs" />
+    <Compile Include="Migrations\201812261458395_NewTypeTable.Designer.cs">
+      <DependentUpon>201812261458395_NewTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901081519236_NewColumnProduct.cs" />
+    <Compile Include="Migrations\201901081519236_NewColumnProduct.Designer.cs">
+      <DependentUpon>201901081519236_NewColumnProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BannerRepository.cs" />
@@ -269,6 +277,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812160145203_AddNewTypeProductCategory.resx">
       <DependentUpon>201812160145203_AddNewTypeProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812261458395_NewTypeTable.resx">
+      <DependentUpon>201812261458395_NewTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901081519236_NewColumnProduct.resx">
+      <DependentUpon>201901081519236_NewColumnProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -31,10 +31,10 @@
             $scope.size.UpdatedBy = $scope.size.CreatedBy;
             $scope.size.UpdatedDate = $scope.size.CreatedDate;
             apiService.post("/api/size/create", $scope.size, function (result) {
-                notificationService.displaySuccess(result.data.Name + " thêm thành công!");
+                notificationService.displaySuccess(result.data.Name + " success!");
                 $state.go("sizes");
             }, function (error) {
-                notificationService.displayError("Thêm mới thất bại!");
+                notificationService.displayError("Add failed!");
             });
         }
     }

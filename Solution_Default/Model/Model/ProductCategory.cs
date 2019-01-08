@@ -33,6 +33,8 @@ namespace Model.Model
 
         public int? ParentID { set; get; }
 
+        public int CategoryType { set; get; }
+
         public int Type { set; get; }
 
         public int? DisplayOrder { set; get; }

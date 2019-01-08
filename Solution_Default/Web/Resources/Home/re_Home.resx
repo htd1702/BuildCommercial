@@ -180,6 +180,12 @@
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="ProductHot" xml:space="preserve">
+    <value>Product Hot</value>
+  </data>
+  <data name="ProductNew" xml:space="preserve">
+    <value>Product New</value>
+  </data>
   <data name="ProductOverview" xml:space="preserve">
     <value>Product Overview</value>
   </data>
@@ -190,7 +196,7 @@
     <value>Sale</value>
   </data>
   <data name="SaleProduct" xml:space="preserve">
-    <value>SaleProduct</value>
+    <value>Sale Product</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>

@@ -132,6 +132,9 @@
   <data name="Categories" xml:space="preserve">
     <value>Loại sản phẩm</value>
   </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Quần áo</value>
+  </data>
   <data name="Color" xml:space="preserve">
     <value>Màu sắc</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Liên hệ</value>
+  </data>
+  <data name="Cosmetics" xml:space="preserve">
+    <value>Nước hoa</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
@@ -162,6 +168,9 @@
   <data name="Home" xml:space="preserve">
     <value>Trang chủ</value>
   </data>
+  <data name="InteriorDesign" xml:space="preserve">
+    <value>Thiết kế nội thất</value>
+  </data>
   <data name="LinkTile" xml:space="preserve">
     <value>- Adelade.ca</value>
   </data>
@@ -179,6 +188,12 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Giá</value>
+  </data>
+  <data name="ProductHot" xml:space="preserve">
+    <value>Sản phẩm Hot</value>
+  </data>
+  <data name="ProductNew" xml:space="preserve">
+    <value>Sản phẩm mới</value>
   </data>
   <data name="ProductOverview" xml:space="preserve">
     <value>Giới thiệu sản phẩm</value>

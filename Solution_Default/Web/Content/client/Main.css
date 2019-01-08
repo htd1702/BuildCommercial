@@ -1,5 +1,5 @@
 ﻿.logo-main {
-    color: inherit;
+    color: initial;
     height: 50px;
     font-size: 2.5rem;
     line-height: 31px;
@@ -90,29 +90,42 @@
 }
 
 /*-------Color-------*/
+#sort-color li span {
+    webkit-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    display: -webkit-inline-box;
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+}
+
+#sort-color li a:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #6c7ae0;
+}
 
 .Black {
-    color: #222;
+    background-color: #222;
 }
 
 .Blue {
-    color: #4272d7;
+    background-color: #4272d7;
 }
 
 .Grey {
-    color: #b3b3b3;
+    background-color: #b3b3b3;
 }
 
 .Green {
-    color: #00ad5f;
+    background-color: #00ad5f;
 }
 
 .Red {
-    color: #fa4251;
+    background-color: #fa4251;
 }
 
 .White {
-    color: white;
+    background-color: white;
 }
 
 .ng-enter {
@@ -192,8 +205,13 @@ a.filter-link.stext-106.trans-04 {
         display: contents;
     }
 
+        .child-menu > li {
+            /*min-width: 150px;*/
+            width: 100%;
+        }
+
     .sub-menu {
-        min-width: 75px;
+        min-width: 140px;
     }
 
     .bg-img-sale {
@@ -265,6 +283,8 @@ a.filter-link.stext-106.trans-04 {
     .sample-show-hide.ng-hide {
         opacity: 0;
     }
+
+
 /* Absolute Center Spinner */
 .loading {
     position: fixed;
@@ -430,43 +450,6 @@ a.filter-link.stext-106.trans-04 {
         transform: rotate(60deg);
     }
 
-.new-product-icon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    /*margin-left: 256px;*/
-    display: inline-block;
-    background: #20c2d6;
-    color: white;
-    height: 2.5rem;
-    width: 2.7rem;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 2.5rem;
-    -webkit-transform: rotate(-20deg);
-    transform: rotate(-20deg);
-    -webkit-animation: beat 1s ease infinite alternate;
-    animation: beat 1s ease infinite alternate;
-}
-
-    .new-product-icon:before, .new-product-icon:after {
-        content: "";
-        position: absolute;
-        background: inherit;
-        height: inherit;
-        width: inherit;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        -webkit-transform: rotate(30deg);
-        transform: rotate(30deg);
-    }
-
-    .new-product-icon:after {
-        -webkit-transform: rotate(60deg);
-        transform: rotate(60deg);
-    }
-
 @-webkit-keyframes beat {
     from {
         -webkit-transform: rotate(-20deg) scale(1);
@@ -627,4 +610,11 @@ a.filter-link.stext-106.trans-04 {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+#sort-price li input[name="txt_checkPrice"] {
+    float: left;
+    margin: 3px 10px 3px 0px;
+    width: 17px;
+    height: 17px;
 }

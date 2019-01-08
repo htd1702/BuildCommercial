@@ -56,7 +56,7 @@
         }
         //method delete
         function deleteProductCategory(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
@@ -64,15 +64,17 @@
                 };
                 apiService.delete("/api/productcategory/delete", config, function (response) {
                     if (response.data == 1) {
-                        notificationService.displaySuccess("Xóa thành công!");
+                        notificationService.displaySuccess("Delete Success!");
                         search();
                     }
+                    else if (response.data == -3)
+                        notificationService.displayError("Parent is not delete!");
                     else if (response.data == -2)
-                        notificationService.displayError("Danh mục đang được sử dụng làm parent của danh mục khác, vui lòng kiểm tra lại!");
+                        notificationService.displayError("Please delete the parent category before!");
                     else if (response.data == -1)
-                        notificationService.displayError("Danh mục đang được sử dụng của sản phầm vui lòng xóa sản phẩm trước, vui lòng kiểm tra lại!");
+                        notificationService.displayError("Please delete the product before delete category!");
                 }, function () {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');
@@ -81,7 +83,7 @@
         //method delete multi
         function deleteAllProductCategories() {
             var listId = [];
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allProductCategories:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -93,18 +95,18 @@
                 apiService.delete("/api/productcategory/deletemulti", config, function (result) {
                     for (var i = 0; i <= result.data.length; i++) {
                         if (result.data[i] == 1) {
-                            notificationService.displaySuccess('Dòng:' + (i + 1) + ' xóa thành công!</br>!');
+                            notificationService.displaySuccess('Row' + (i + 1) + ': Delete Success!</br>!');
                             search();
                         }
-                        else if (result.data[i] == -1) {
-                            notificationService.displayError('Dòng:' + (i + 1) + ' danh mục đang được sử dụng của sản phầm vui lòng xóa sản phẩm trước, vui lòng kiểm tra lại!</br>!');
-                        }
-                        else if (result.data[i] == -2) {
-                            notificationService.displayError('Dòng:' + (i + 1) + ' danh mục đang được sử dụng làm parent của danh mục khác, vui lòng kiểm tra lại!</br>!');
-                        }
+                        else if (result.data[i] == -3)
+                            notificationService.displayError('Row' + (i + 1) + ': Parent is not delete!');
+                        else if (result.data[i] == -2)
+                            notificationService.displayError('Row' + (i + 1) + ': Please delete the parent category before!</br>!');
+                        else if (result.data[i] == -1)
+                            notificationService.displayError('Row' + (i + 1) + ': Please delete the product before delete category!</br>!');
                     }
                 }, function (error) {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete Failed!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

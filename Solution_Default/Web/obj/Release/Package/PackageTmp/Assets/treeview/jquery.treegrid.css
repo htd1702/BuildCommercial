@@ -1,3 +1,7 @@
+.tree {
+    width: 100%;
+}
+
 .treegrid-expander {
     display: inline-block;
     margin-left: -24px;
@@ -28,11 +32,11 @@
 }
 
     .treegrid-expander-expanded::after {
-        border-top-color: #ccc;
+        border-top-color: #000;
     }
 
     .treegrid-expander-collapsed::after {
-        border-left-color: #ccc;
+        border-left-color: #000;
     }
 
 tr.loading > td > .treegrid-container > .treegrid-expander::after {
@@ -61,7 +65,7 @@ tr.loading > td > .treegrid-container > .treegrid-expander::after {
 }
 
 .treegrid-container {
-    padding: 9px 0px !important;
+    padding: 5px 0px !important;
 }
 
 .tree tr td .treegrid-container a {
@@ -69,8 +73,7 @@ tr.loading > td > .treegrid-container > .treegrid-expander::after {
     transition: 0.2s linear !important;
 }
 
-    .tree tr td .treegrid-container a:hover {
-        background: #eec60a;
-        color: #fff;
+    .tree tr td .treegrid-container a:hover, .tree tr td .treegrid-container a:active, .tree tr td .treegrid-container a:focus, .tree tr td .treegrid-container a[data-active="true"] {
+        color: #6c7ae0;
         cursor: pointer;
     }

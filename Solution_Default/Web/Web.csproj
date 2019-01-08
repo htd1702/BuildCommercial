@@ -225,6 +225,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\BannerController.cs" />
+    <Compile Include="Api\ContactDetailController.cs" />
     <Compile Include="Api\OrderDetailController.cs" />
     <Compile Include="Api\OrderController.cs" />
     <Compile Include="Api\ColorController.cs" />
@@ -373,6 +374,11 @@
     <Content Include="app\components\home\controller\baseController.js" />
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
+    <Content Include="app\components\infomartion\controller\infoEditController.js" />
+    <Content Include="app\components\infomartion\controller\infoListController.js" />
+    <Content Include="app\components\infomartion\controller\infos.module.js" />
+    <Content Include="app\components\infomartion\views\infoEditView.html" />
+    <Content Include="app\components\infomartion\views\infoListView.html" />
     <Content Include="app\components\login\controller\loginController.js" />
     <Content Include="app\components\orders\controller\orders.module.js" />
     <Content Include="app\components\orders\controller\orderEditController.js" />
@@ -4398,7 +4404,7 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shared\_viewCart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
-    <Content Include="Views\Shared\_viewProduct.cshtml" />
+    <Content Include="Views\Shared\_viewProductNew.cshtml" />
     <Content Include="Views\Post\_viewPostDetails.cshtml" />
     <Content Include="Views\ProductCategory\_viewParent.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -4407,7 +4413,6 @@
     <Content Include="Views\Client\Form_SendMail.html" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Product\ProductOverView.cshtml" />
     <Content Include="Views\Product\SaleProduct.cshtml" />
     <Content Include="Views\Product\NewProduct.cshtml" />
     <Content Include="Views\Product\ProductByCategory.cshtml" />
@@ -4415,6 +4420,8 @@
     <Content Include="Views\PostCategory\_viewPostCategory.cshtml" />
     <Content Include="Views\Cart\ViewCartDetails.cshtml" />
     <Content Include="Views\Cart\OrderSuccess.cshtml" />
+    <Content Include="Views\Product\HotProductOverView.cshtml" />
+    <Content Include="Views\Product\SaleProductOverView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

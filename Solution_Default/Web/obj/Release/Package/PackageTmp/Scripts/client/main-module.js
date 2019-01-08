@@ -25,7 +25,7 @@ app.controller("ProductCategoryController", ProductCategoryController);
 app.controller("ProductSaleController", ProductSaleController);
 app.controller("NewProductController", NewProductController);
 app.controller("ShoppingCartController", ShoppingCartController);
-app.controller("PostController", PostController);
+
 //---------------------------FILTER---------------------------------//
 app.filter('offset', function () {
     return function (input, start) {
@@ -60,12 +60,7 @@ function validateEmail($email) {
 //page product
 ProductController.$inject = ["$scope", "$http"];
 function ProductController($scope, $http) {
-    var count = 0;
-    $scope.products = [];
     $scope.parentCategory = [];
-    //$scope.postCategories = [];
-    $scope.btnDetails = btnDetails;
-    //load menu category
     function LoadSiteMenuCategory() {
         return $http({
             url: "/ProductCategory/GetCategoryByType",
@@ -77,143 +72,8 @@ function ProductController($scope, $http) {
             alert('Error');
         });
     }
-    //function load list product
-    function LoadProduct(categories, sortBy, sortPrice, sortColor, pageSize) {
-        if (pageSize == 0)
-            pageSize = 12;
-        return $http({
-            method: 'POST',
-            url: '/Product/LoadListProduct',
-            async: false,
-            data: { categories: categories, sortBy: sortBy, sortPrice: sortPrice, sortColor: sortColor, pageSize: pageSize },
-        }).then(function (response) {
-            $scope.products = response.data;
-            var len = response.data.length;
-            var countSize = $("#txt_PageSize").val();
-            if (countSize >= len)
-                $("#txt_PageSize").val(len);
-        });
-    }
-    //function load list details
-    function btnDetails(id) {
-        $.ajax({
-            url: "/Product/Details",
-            async: false,
-            data: { id: id },
-            success: function (data) {
-                $("#view-details").html(data).show();
-            },
-            error: function (error) {
-                alert(error);
-            }
-        });
-    }
-    //funtion load list color
-    function LoadListColor() {
-        $.ajax({
-            url: "/Color/LoadListColor",
-            type: "GET",
-            dataType: "JSON",
-            async: false,
-            success: function (data) {
-                $scope.listColors = data;
-            }
-        });
-    }
-    //function click change parent
-    $scope.btnParent = function (id) {
-        var pageSize = $("#txt_PageSize").val();
-        $("#txt_Category").val(id);
-        pageSize = parseInt(pageSize);
-        if (pageSize < 12)
-            pageSize = 12;
-        LoadProduct(id, 0, 0, 0, pageSize);
-    };
-    //function find by sort
-    $("#sort-by > li > a").click(function () {
-        $("#sort-by > li > a").removeClass("filter-link-active");
-        $(this).addClass("filter-link-active");
-    });
-    //function find by price
-    $("#sort-price > li > a").click(function () {
-        $("#sort-price > li > a").removeClass("filter-link-active");
-        $(this).addClass("filter-link-active");
-    });
-    //function find by color
-    $scope.btnColor = function (index, event, id) {
-        $("#sort-color > li > a").removeClass("filter-link-active");
-        if (event == 0)
-            $("#default-color").addClass("filter-link-active");
-        else
-            $(event.currentTarget).addClass("filter-link-active");
-    };
-    //function click search detail product
-    $("#btnSearch").click(function () {
-        var categories = $("button[name='btnParent']").attr("data-type");
-        var sortBy = $("#sort-by > li").find(".filter-link-active").attr("data-row-1");
-        var sortPrice = $("#sort-price > li").find(".filter-link-active").attr("data-row-2");
-        var sortColor = $("#sort-color > li").find(".filter-link-active").attr("data-row-3");
-        $("#txt_PageSize").val(12);
-        var pageSize = $("#txt_PageSize").val();
-        pageSize = parseInt(pageSize);
-        if (categories == undefined)
-            categories = 0;
-        if (sortBy == undefined)
-            sortBy = 0;
-        if (sortPrice == undefined)
-            sortPrice = 0;
-        if (sortColor == undefined || sortColor == 0)
-            sortColor = 0;
-        LoadProduct(categories, sortBy, sortPrice, sortColor, pageSize);
-    });
-    //function cick more product
-    $("#btnLoadMoreProduct").click(function () {
-        var pageSize = $("#txt_PageSize").val();
-        if (pageSize > 0)
-            pageSize = parseInt(pageSize) + 8;
-        else
-            pageSize = 12;
-        $("#txt_PageSize").val(pageSize);
-        var category = $("#txt_Category").val();
-        var sortBy = $("#sort-by > li").find(".filter-link-active").attr("data-row-1");
-        var sortPrice = $("#sort-price > li").find(".filter-link-active").attr("data-row-2");
-        var sortColor = $("#sort-color > li").find(".filter-link-active").attr("data-row-3");
-        if (category == undefined)
-            category = 0;
-        if (sortBy == undefined)
-            sortBy = 0;
-        if (sortPrice == undefined)
-            sortPrice = 0;
-        if (sortColor == undefined)
-            sortColor = 0;
-        LoadProduct(category, sortBy, sortPrice, sortColor, pageSize);
-    });
-    //function search
-    $("#txt_Keyword").blur(function () {
-        var keyword = $(this).val();
-        keyword = changeStamped(keyword);
-        keyword = jQuery.trim(keyword);
-        return $http({
-            method: 'POST',
-            url: '/Product/SearchProduct',
-            async: false,
-            data: { keyword: keyword }
-        }).then(function (response) {
-            $scope.products = response.data;
-            var len = response.data.length;
-            var countSize = $("#txt_PageSize").val();
-            if (countSize >= len)
-                $("#txt_PageSize").val(len);
-        });
-    });
     //load menu cate
     LoadSiteMenuCategory();
-    //Load list color
-    LoadListColor();
-    //load postcategories
-    //LoadPostCategories();
-    //load list product
-    LoadProduct(0, 0, 0, 0, 12);
 }
 
 //page shopping cart
@@ -265,41 +125,6 @@ function ShoppingCartController($scope, $http) {
     });
 }
 
-//Post
-PostController.$inject = ["$scope", "$http"];
-function PostController($scope, $http) {
-    $scope.hotProductposts = [];
-    $scope.saleProductPosts = [];
-    $scope.ListHotProduct = ListHotProduct;
-    $scope.ListSaleProduct = ListSaleProduct;
-    function ListHotProduct(top) {
-        $.ajax({
-            url: "/Product/ListHotProduct",
-            type: "POST",
-            dataType: "JSON",
-            async: false,
-            data: { top: top },
-            success: function (data) {
-                $scope.hotProductposts = data;
-            }
-        });
-    }
-    function ListSaleProduct(take) {
-        $.ajax({
-            url: "/Product/ListDiscountProductByTake",
-            type: "POST",
-            dataType: "JSON",
-            async: false,
-            data: { take: take },
-            success: function (data) {
-                $scope.saleProductPosts = data;
-            }
-        });
-    }
-    ListHotProduct(8);
-    ListSaleProduct(8);
-}
-
 //Product Sale
 ProductSaleController.$inject = ["$scope", "$http"];
 function ProductSaleController($scope, $http) {
@@ -307,6 +132,7 @@ function ProductSaleController($scope, $http) {
     $scope.currentPage = 0;
     $scope.itemsPerPage = 8;
     $scope.productSales = [];
+    $scope.listColor = [];
     $scope.LoadListSaleProduct = LoadListSaleProduct;
     //funtion load list sale product
     function LoadListSaleProduct() {
@@ -316,6 +142,18 @@ function ProductSaleController($scope, $http) {
             async: false,
         }).then(function (response) {
             $scope.productSales = response.data;
+        });
+    }
+    //funtion load list color
+    function LoadListColor() {
+        $.ajax({
+            url: "/Color/LoadListColor",
+            type: "GET",
+            dataType: "JSON",
+            async: false,
+            success: function (data) {
+                $scope.listColors = data;
+            }
         });
     }
     //function search
@@ -332,8 +170,43 @@ function ProductSaleController($scope, $http) {
             $scope.productSales = response.data;
         });
     });
+    //function find by color
+    $scope.btnColor = function (index, event, colorID) {
+        $("#sort-color > li > a").removeClass("filter-link-active");
+        $(event.currentTarget).addClass("filter-link-active");
+        var fromPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-from");
+        var toPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-to");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productSales = response.data;
+        });
+    };
+    //function find by price
+    $("#sort-price > li > input[name='txt_checkPrice']").click(function () {
+        var fromPrice = $(this).attr("data-from");
+        var toPrice = $(this).attr("data-to");
+        var colorID = $("#sort-color > li").find(".filter-link-active").attr("data-id");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        if (colorID == undefined)
+            colorID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productSales = response.data;
+        });
+    });
     //call funtion load list sale product
     LoadListSaleProduct();
+    //Load list color
+    LoadListColor();
     //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
@@ -390,6 +263,11 @@ function ProductSaleController($scope, $http) {
     $(document).ready(function () {
         //function click change parent
         $(".btnShowDetailsProduct").click(function () {
+            $(".btnShowDetailsProduct").each(function () {
+                $(this).attr("data-active", false);
+            });
+            $(this).attr("data-active", true);
+
             var id = $(this).attr("data-id");
             var parentID = $(this).attr("data-parent");
             if (parentID == undefined)
@@ -413,6 +291,7 @@ function NewProductController($scope, $http) {
     $scope.currentPage = 0;
     $scope.itemsPerPage = 8;
     $scope.productNew = [];
+    $scope.listColor = [];
     $scope.LoadListNewProduct = LoadListNewProduct;
     //funtion load list sale product
     function LoadListNewProduct() {
@@ -424,19 +303,18 @@ function NewProductController($scope, $http) {
             $scope.productNew = response.data;
         });
     }
-    //change child parent
-    $scope.btnChild = function (id, parentID) {
-        if (parentID == undefined)
-            parentID = 0;
-        return $http({
-            method: 'POST',
-            url: '/Product/LoadListProductByCategory',
+    //funtion load list color
+    function LoadListColor() {
+        $.ajax({
+            url: "/Color/LoadListColor",
+            type: "GET",
+            dataType: "JSON",
             async: false,
-            data: { categories: id, parentID: parentID },
-        }).then(function (response) {
-            $scope.productNew = response.data;
+            success: function (data) {
+                $scope.listColors = data;
+            }
         });
-    };
+    }
     //function search
     $("#txt_KeywordProductNew").blur(function () {
         var keyword = $(this).val();
@@ -451,8 +329,43 @@ function NewProductController($scope, $http) {
             $scope.productNew = response.data;
         });
     });
+    //function find by color
+    $scope.btnColor = function (index, event, colorID) {
+        $("#sort-color > li > a").removeClass("filter-link-active");
+        $(event.currentTarget).addClass("filter-link-active");
+        var fromPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-from");
+        var toPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-to");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productNew = response.data;
+        });
+    };
+    //function find by price
+    $("#sort-price > li > input[name='txt_checkPrice']").click(function () {
+        var fromPrice = $(this).attr("data-from");
+        var toPrice = $(this).attr("data-to");
+        var colorID = $("#sort-color > li").find(".filter-link-active").attr("data-id");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        if (colorID == undefined)
+            colorID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productNew = response.data;
+        });
+    });
     //call funtion load list sale product
     LoadListNewProduct();
+    //Load list color
+    LoadListColor();
     //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
@@ -509,6 +422,11 @@ function NewProductController($scope, $http) {
     $(document).ready(function () {
         //function click change parent
         $(".btnShowDetailsProduct").click(function () {
+            $(".btnShowDetailsProduct").each(function () {
+                $(this).attr("data-active", false);
+            });
+            $(this).attr("data-active", true);
+
             var id = $(this).attr("data-id");
             var parentID = $(this).attr("data-parent");
             if (parentID == undefined)
@@ -532,7 +450,7 @@ function ProductCategoryController($scope, $http) {
     $scope.currentPage = 0;
     $scope.itemsPerPage = 8;
     $scope.productCategories = [];
-    $scope.parentCategory = [];
+    $scope.listColor = [];
     $scope.LoadListProductCategory = LoadListProductCategory;
     var id = $("#txt_CategoryID").val();
     var parentID = $("#txt_ParentID").val();
@@ -545,6 +463,18 @@ function ProductCategoryController($scope, $http) {
             data: { categories: categories, parentID: parentID },
         }).then(function (response) {
             $scope.productCategories = response.data;
+        });
+    }
+    //funtion load list color
+    function LoadListColor() {
+        $.ajax({
+            url: "/Color/LoadListColor",
+            type: "GET",
+            dataType: "JSON",
+            async: false,
+            success: function (data) {
+                $scope.listColors = data;
+            }
         });
     }
     //function search
@@ -561,21 +491,43 @@ function ProductCategoryController($scope, $http) {
             $scope.productCategories = response.data;
         });
     });
-    //function click change parent
-    $scope.btnParent = function (id, parentID) {
-        if (parentID == undefined)
-            parentID = 0;
+    //function find by color
+    $scope.btnColor = function (index, event, colorID) {
+        $("#sort-color > li > a").removeClass("filter-link-active");
+        $(event.currentTarget).addClass("filter-link-active");
+        var fromPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-from");
+        var toPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-to");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
         return $http({
             method: 'POST',
-            url: '/Product/LoadListProductByCategory',
+            url: '/Product/LoadListProduct',
             async: false,
-            data: { categories: id, parentID: parentID },
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
         }).then(function (response) {
             $scope.productCategories = response.data;
         });
     };
+    //function find by price
+    $("#sort-price > li > input[name='txt_checkPrice']").click(function () {
+        var fromPrice = $(this).attr("data-from");
+        var toPrice = $(this).attr("data-to");
+        var colorID = $("#sort-color > li").find(".filter-link-active").attr("data-id");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        if (colorID == undefined)
+            colorID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productCategories = response.data;
+        });
+    });
     //call funtion load list sale product
     LoadListProductCategory(id, parentID);
+    //Load list color
+    LoadListColor();
     //paging
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         $scope.range = function () {
@@ -633,6 +585,11 @@ function ProductCategoryController($scope, $http) {
     $(document).ready(function () {
         //function click change parent
         $(".btnShowDetailsProduct").click(function () {
+            $(".btnShowDetailsProduct").each(function () {
+                $(this).attr("data-active", false);
+            });
+            $(this).attr("data-active", true);
+
             var id = $(this).attr("data-id");
             var parentID = $(this).attr("data-parent");
             if (parentID == undefined)

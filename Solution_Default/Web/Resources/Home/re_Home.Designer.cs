@@ -250,6 +250,24 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Hot.
+        /// </summary>
+        public static string ProductHot {
+            get {
+                return ResourceManager.GetString("ProductHot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product New.
+        /// </summary>
+        public static string ProductNew {
+            get {
+                return ResourceManager.GetString("ProductNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product Overview.
         /// </summary>
         public static string ProductOverview {
@@ -277,7 +295,7 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SaleProduct.
+        ///   Looks up a localized string similar to Sale Product.
         /// </summary>
         public static string SaleProduct {
             get {

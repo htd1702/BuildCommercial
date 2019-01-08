@@ -50,6 +50,8 @@ namespace Web.Models
 
         public int? Warranty { set; get; }
 
+        public string Composition { set; get; }
+
         public string Description { set; get; }
 
         public string Content { set; get; }

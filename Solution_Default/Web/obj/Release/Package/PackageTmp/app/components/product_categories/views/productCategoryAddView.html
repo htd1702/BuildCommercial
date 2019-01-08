@@ -1,7 +1,7 @@
 ﻿<div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title">Add</h4>
-        <p class="card-category">Complete</p>
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'Add' | translate}}</h4>
+        <p class="card-category">{{productCategory.Name}}</p>
     </div>
     <div class="card-body">
         <form class="form-horizontal" novalidate name="frmAddProductCategory" role="form" ng-submit="AddProductCategory()">
@@ -37,11 +37,11 @@
                     <label for="type">
                         {{'Type' | translate}}
                     </label>
-                    <select name="type" ng-model="productCategory.Type" class="custom-select" ng-options="option.ID as option.Name for option in types"></select>
+                    <select name="type" ng-model="productCategory.Type" class="custom-select" ng-options="option.ID as option.Name for option in types" ng-change="(changeType(productCategory.Type))"></select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="parentId">{{'Categories' | translate}}</label>
-                    <select name="parentId" ng-model="productCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
+                    <select name="parentId" ng-disabled="productCategory.Type == 1" ng-model="productCategory.ParentID" ng-options="option.ID as option.Name for option in parentCategories" class="custom-select">
                         <option value="">{{'Choose' | translate}}</option>
                     </select>
                     <input type="hidden" name="parentId" ng-model="productCategory.ParentID" />
@@ -49,11 +49,10 @@
                 <div class="form-group col-md-4">
                     <label for="image">
                         {{'Img' | translate}}
-                        <span ng-show="frmAddProductCategory.image.$invalid" class="text-danger"> *</span>
                     </label>
-                    <input type="text" class="text-control" ng-model="productCategory.Image" name="image" required>
+                    <input type="text" class="text-control" ng-model="productCategory.Image" name="image" ng-readonly="productCategory.Type != 1">
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()">Upload</button>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="ChooseImage()" ng-disabled="productCategory.Type != 1">Upload</button>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -99,7 +98,7 @@
                     <button class="btn btn-danger btn-sm pull-left" ui-sref="product_categories"><i class="fa fa-ban"></i> {{'Back' | translate}}</button>
                 </div>
                 <div class="col col-md-6">
-                    <button type="submit" ng-disabled="frmAddProductCategory.$invalid" class="btn btn-primary btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
+                    <button type="submit" ng-disabled="frmAddProductCategory.$invalid" class="btn btn-success btn-sm pull-right"><i class="fa fa-dot-circle-o"></i> {{'Submit' | translate}}</button>
                 </div>
             </div>
         </form>

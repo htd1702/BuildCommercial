@@ -1,4 +1,5 @@
 ﻿using Service;
+using System.Data;
 using System.Web.Mvc;
 
 namespace Web.Controllers
@@ -56,8 +57,14 @@ namespace Web.Controllers
             return PartialView();
         }
 
-        public ActionResult _viewProduct()
+        [ChildActionOnly]
+        public ActionResult _viewProductNew()
         {
+            //New
+            ViewBag.NewInteriorDesign = _productService.ListProductByCategoryType(2, 1).AsEnumerable();
+            ViewBag.NewCosmetics = _productService.ListProductByCategoryType(2, 2).AsEnumerable();
+            ViewBag.NewClothes = _productService.ListProductByCategoryType(2, 3).AsEnumerable();
+            ViewBag.Parent = _productCategoryService.GetCategoriyByType(1);
             return PartialView();
         }
 

@@ -21,6 +21,8 @@ namespace Service
 
         List<string> ListNameColor(string keyword);
 
+        int CheckType(int id);
+
         void Save();
     }
 
@@ -38,6 +40,11 @@ namespace Service
         public Color Add(Color Color)
         {
             return _colorRepository.Add(Color);
+        }
+
+        public int CheckType(int id)
+        {
+            return _colorRepository.CheckType(id);
         }
 
         public Color Delete(int id)

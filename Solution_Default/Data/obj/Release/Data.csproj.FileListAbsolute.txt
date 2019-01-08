@@ -55,3 +55,5 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrati
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewPropertyProduct1.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.DeleteClumnProduct.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.AddNewTypeProductCategory.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewTypeTable.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Data\obj\Release\Data.Migrations.NewColumnProduct.resources

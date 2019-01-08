@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="input-group">
-                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="Search...">
+                <input id="txt_search" type="text" class="form-control" ng-model="keyword" ng-keyup="complateKeyWord(keyword)" placeholder="{{'Search' | translate}}...">
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                 </span>
@@ -41,13 +41,13 @@
     </div>
 </div>
 <div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title ">List Order</h4>
+    <div class="card-header card-header-warning">
+        <h4 class="card-title ">{{'ListOrder'|translate}}</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table">
-                <thead class=" text-primary">
+                <thead class="text-primary">
                     <tr>
                         <th><input name="checkAll" ng-model="checkAll" type="checkbox" /></th>
                         <th>{{'CustomerName'|translate}}</th>
@@ -64,7 +64,7 @@
                 <tbody>
                     <tr ng-repeat="item in orders | orderBy: 'OrderDate'">
                         <td><input type="checkbox" class="chk_allOrders" ng-model="checkAll" ng-checked="checkAll" value="{{item.ID}}" /></td>
-                        <td><a style="cursor:pointer;color:red" data-toggle="modal" data-target=".model-order" ng-click="loadListDetailsOrder(item.ID)">{{item.CustomerName}}</a></td>
+                        <td><a style="cursor:pointer;" class="text-danger" data-toggle="modal" data-target=".model-order" ng-click="loadListDetailsOrder(item.ID)">{{item.CustomerName}}</a></td>
                         <td>{{item.Email}}</td>
                         <td>{{item.Phone}}</td>
                         <td>{{item.Address}}</td>
@@ -95,7 +95,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content" id="content-model">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Order Detail</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">{{'OrderDetail'|translate}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

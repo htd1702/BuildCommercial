@@ -36,7 +36,9 @@ namespace Service
 
         IEnumerable<ProductCategory> ListCategoryById(int id);
 
-        IEnumerable<ProductCategory> LoadListParentByType();
+        IEnumerable<ProductCategory> LoadListParentByType(int type);
+
+        int CheckParent(int id);
 
         void Save();
     }
@@ -120,9 +122,14 @@ namespace Service
             return _productCategoryRepository.ListNameCategory(keyword);
         }
 
-        public IEnumerable<ProductCategory> LoadListParentByType()
+        public IEnumerable<ProductCategory> LoadListParentByType(int type)
         {
-            return _productCategoryRepository.LoadListParentByType();
+            return _productCategoryRepository.LoadListParentByType(type);
+        }
+
+        public int CheckParent(int id)
+        {
+            return _productCategoryRepository.CheckParent(id);
         }
 
         public void Save()

@@ -1,0 +1,36 @@
+﻿<!-- MAIN CONTENT-->
+<div class="card">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title ">{{'ListInfo' | translate}}</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'Phone' | translate}}</th>
+                        <th>{{'Email' | translate}}</th>
+                        <th>{{'Website' | translate}}</th>
+                        <th>{{'Address' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in infos | orderBy: 'Name'">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Phone}}</td>
+                        <td>{{item.Email}}</td>
+                        <td>{{item.Website}}</td>
+                        <td>{{item.Address}}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" rel="tooltip" class="btn btn-success btn-simple" ui-sref="edit_info({id:item.ID})">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

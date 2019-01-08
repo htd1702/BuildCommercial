@@ -20,6 +20,8 @@ namespace Model.Model
         [MaxLength(100)]
         public string NameVN { set; get; }
 
+        public int Type { set; get; }
+
         [Required]
         [MaxLength(100)]
         public string Alias { set; get; }

@@ -9,7 +9,7 @@
     function productCategoryEditController($scope, apiService, notificationService, $state, $stateParams, commonService, authData) {
         //create value by type
         $scope.types = [
-            { ID: 1, Name: "1" },
+            //{ ID: 1, Name: "1" },
             { ID: 2, Name: "2" },
             { ID: 3, Name: "3" }
         ];
@@ -27,24 +27,18 @@
         $scope.GetSeoTitle = GetSeoTitle;
         $scope.EditProductCategory = EditProductCategory;
         $scope.ChooseImage = ChooseImage;
+        $scope.changeType = changeType;
         //binding title seo bye name
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSEOTitle($scope.productCategory.Name);
-        }
-        //method load parentId
-        function LoadParentCategory() {
-            apiService.get("/api/productcategory/loadListparentbytype", null, function (result) {
-                $scope.parentCategories = result.data;
-            }, function () {
-                notificationService.displayError("Load Faild!");
-            });
         }
         //load detail productcategory
         function loadProductCategoryDetail() {
             apiService.get("/api/productcategory/getid/" + $stateParams.id, null, function (result) {
                 $scope.productCategory = result.data;
+                $scope.$watch('productCategory.Type', changeType(result.data.Type));
             }, function (error) {
-                notificationService.displayError("Lấy id thất bại!");
+                notificationService.displayError("Get id failed!");
             });
         }
         //Edit
@@ -68,11 +62,34 @@
             $scope.productCategory.UpdatedBy = $scope.productCategory.CreatedBy;
             $scope.productCategory.UpdatedDate = $scope.productCategory.CreatedDate;
             apiService.put("/api/productcategory/update", $scope.productCategory, function (result) {
-                notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
+                notificationService.displaySuccess(result.data.Name + " success!");
                 $state.go("product_categories");
             }, function (error) {
-                notificationService.displayError("Cập nhật mới thất bại!");
+                notificationService.displayError("Update failed!");
             });
+        }
+        //function change
+        function changeType(type) {
+            var obj = {
+                params: {
+                    type: (parseInt(type) - 1)
+                }
+            };
+            //
+            if (type == 2) {
+                apiService.get("/api/productcategory/loadListparentbytype", obj, function (result) {
+                    $scope.parentCategories = result.data;
+                }, function () {
+                    notificationService.displayError("Load Failed!");
+                });
+            }
+            else if (type == 3) {
+                apiService.get("/api/productcategory/loadListparentbytype", obj, function (result) {
+                    $scope.parentCategories = result.data;
+                }, function () {
+                    notificationService.displayError("Load Failed!");
+                });
+            }
         }
         //funcion upload
         function ChooseImage() {
@@ -86,6 +103,5 @@
         }
         //call method load parent
         loadProductCategoryDetail();
-        LoadParentCategory();
     }
 })(angular.module('default.product_categories'));

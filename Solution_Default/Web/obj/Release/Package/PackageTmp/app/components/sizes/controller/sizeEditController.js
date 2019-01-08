@@ -29,7 +29,7 @@
             apiService.get("/api/size/getid/" + $stateParams.id, null, function (result) {
                 $scope.size = result.data;
             }, function (error) {
-                notificationService.displayError("Lấy id thất bại!");
+                notificationService.displayError("Get Failed!");
             });
         }
         //Edit
@@ -38,10 +38,10 @@
             $scope.size.UpdatedBy = $scope.size.CreatedBy;
             $scope.size.UpdatedDate = $scope.size.CreatedDate;
             apiService.put("/api/size/update", $scope.size, function (result) {
-                notificationService.displaySuccess(result.data.Name + " cập nhật thành công!");
+                notificationService.displaySuccess(result.data.Name + " success!");
                 $state.go("sizes");
             }, function (error) {
-                notificationService.displayError("Cập nhật mới thất bại!");
+                notificationService.displayError("Update failed!");
             });
         }
         //call method load parent

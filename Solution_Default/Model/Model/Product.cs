@@ -55,6 +55,8 @@ namespace Model.Model
 
         public int? Warranty { set; get; }
 
+        public string Composition { set; get; }
+
         [MaxLength(500)]
         public string Description { set; get; }
 

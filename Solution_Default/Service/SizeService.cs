@@ -21,6 +21,8 @@ namespace Service
 
         List<string> ListNameSize(string keyword);
 
+        int CheckType(int id);
+
         void Save();
     }
 
@@ -61,6 +63,11 @@ namespace Service
         public Size GetById(int id)
         {
             return _sizeRepository.GetSingleById(id);
+        }
+
+        public int CheckType(int id)
+        {
+            return _sizeRepository.CheckType(id);
         }
 
         public List<string> ListNameSize(string keyword)
