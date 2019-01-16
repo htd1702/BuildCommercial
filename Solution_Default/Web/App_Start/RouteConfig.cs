@@ -73,6 +73,13 @@ namespace Web
              );
 
             routes.MapRoute(
+                name: "HotProduct",
+                url: "hot-product",
+                defaults: new { controller = "Product", action = "HotProduct", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "NewProduct",
                 url: "new-product",
                 defaults: new { controller = "Product", action = "NewProduct", id = UrlParameter.Optional },

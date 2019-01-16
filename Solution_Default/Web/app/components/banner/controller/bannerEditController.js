@@ -12,6 +12,7 @@
             { ID: 1, Name: "1" },
             { ID: 2, Name: "2" },
             { ID: 3, Name: "3" },
+            { ID: 4, Name: "4" }
         ];
         //set value model
         $scope.banner = {
@@ -58,6 +59,9 @@
             }
             else if (type == 3) {
                 $scope.banner.TitleType = "Page New";
+            }
+            else if (type == 4) {
+                $scope.banner.TitleType = "Page Hot";
             }
         }
         //funcion upload

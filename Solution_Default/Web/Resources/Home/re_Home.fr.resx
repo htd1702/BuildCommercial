@@ -168,6 +168,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Hot" xml:space="preserve">
+    <value>Hot</value>
+  </data>
   <data name="InteriorDesign" xml:space="preserve">
     <value>Interior Design</value>
   </data>
@@ -225,5 +228,8 @@
   </data>
   <data name="TopRate" xml:space="preserve">
     <value>Top Rate</value>
+  </data>
+  <data name="Trademark" xml:space="preserve">
+    <value>Trademark</value>
   </data>
 </root>

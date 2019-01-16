@@ -168,6 +168,9 @@
   <data name="Home" xml:space="preserve">
     <value>Trang chủ</value>
   </data>
+  <data name="Hot" xml:space="preserve">
+    <value>Sản phẩm Hot</value>
+  </data>
   <data name="InteriorDesign" xml:space="preserve">
     <value>Thiết kế nội thất</value>
   </data>
@@ -211,7 +214,7 @@
     <value>Tìm</value>
   </data>
   <data name="Shop" xml:space="preserve">
-    <value>Sản phẩm</value>
+    <value>Cửa hàng</value>
     <comment>head menu</comment>
   </data>
   <data name="SortBy" xml:space="preserve">
@@ -225,5 +228,8 @@
   </data>
   <data name="TopRate" xml:space="preserve">
     <value>Sản phẩm yêu thích</value>
+  </data>
+  <data name="Trademark" xml:space="preserve">
+    <value>Thương hiệu</value>
   </data>
 </root>

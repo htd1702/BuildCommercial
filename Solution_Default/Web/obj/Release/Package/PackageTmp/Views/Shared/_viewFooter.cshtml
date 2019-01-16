@@ -2,9 +2,9 @@
 <footer class="bg3 p-t-75 p-b-32">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-lg-2 p-b-50" style="padding-left:40px !important">
+            <div class="col-xs-5 col-sm-5 col-lg-2 p-b-50" style="padding-left:40px !important">
                 <h4 class="stext-301 cl0 p-b-30">
-                    @re_Home.Parents
+                    @re_Home.Categories
                 </h4>
                 @foreach (var item in ViewBag.Parent)
                 {
@@ -18,21 +18,34 @@
                 }
             </div>
 
-            <div class="col-xs-6 col-sm-6 col-lg-3 p-b-50" style="padding-left:40px !important">
+            <div class="col-xs-7 col-sm-7 col-lg-3 p-b-50" style="padding-left:40px !important">
                 <h4 class="stext-301 cl0 p-b-30">
-                    @re_Home.Categories
+                    @re_Home.Trademark
                 </h4>
 
-                @foreach (var item in ViewBag.Category)
-                {
-                    <ul>
-                        <li class="p-b-10">
-                            <a href="/product-category/@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
-                                @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
-                            </a>
-                        </li>
-                    </ul>
-                }
+                <ul>
+                    <li  class="p-b-10">
+                        <a class="stext-107 cl7 hov-cl1 trans-04" href="/category-news">@re_Home.Blog</a>
+                    </li>
+
+                    <li  class="p-b-10">
+                        <a class="stext-107 cl7 hov-cl1 trans-04" href="/about">@re_Home.About</a>
+                    </li>
+
+                    <li  class="p-b-10">
+                        <a class="stext-107 cl7 hov-cl1 trans-04" href="/contact">@re_Home.Contact</a>
+                    </li>
+                </ul>
+                @*@foreach (var item in ViewBag.Category)
+                    {
+                        <ul>
+                            <li class="p-b-10">
+                                <a href="/product-category/@item.ID" class="stext-107 cl7 hov-cl1 trans-04">
+                                    @(Request.Cookies["Lang"] != null && Request.Cookies["Lang"].Value == "vi" ? item.NameVN : item.Name)
+                                </a>
+                            </li>
+                        </ul>
+                    }*@
             </div>
 
             <div class="col-sm-6 col-lg-3 p-b-50">

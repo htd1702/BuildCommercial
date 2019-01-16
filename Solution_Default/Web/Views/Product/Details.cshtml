@@ -95,13 +95,13 @@
                             if (Model.PromotionPrice > 0)
                             {
                                 <span class="mtext-106 cl2">
-                                    Giá: <span style="text-decoration:line-through">@string.Format("{0:#,##0}", Model.PriceVN) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", Model.PriceVN - (Model.PriceVN * Model.PromotionPrice) / 100) vnđ</span>
+                                    Giá: <span style="text-decoration:line-through">@string.Format("{0:#,##0}", Model.PriceVN) đ</span> - <span style="color:red">@string.Format("{0:#,##0}", Model.PriceVN - (Model.PriceVN * Model.PromotionPrice) / 100) đ</span>
                                 </span>
                             }
                             else
                             {
                                 <span class="mtext-106 cl2">
-                                    Giá: <b>@string.Format("{0:#,##0}", Model.PriceVN) vnđ</b>
+                                    Giá: <b>@string.Format("{0:#,##0}", Model.PriceVN) đ</b>
                                 </span>
                             }
                         }
@@ -316,13 +316,13 @@
                                                 if (int.Parse(row["PromotionPrice"].ToString()) > 0)
                                                 {
                                                     <span class="stext-105 cl3">
-                                                        <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) vnđ</span>
+                                                        <span style="text-decoration:line-through">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()))</span> - <span style="color:red">@string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString()) - (double.Parse(row["PriceVN"].ToString()) * int.Parse(row["PromotionPrice"].ToString())) / 100) đ</span>
                                                     </span>
                                                 }
                                                 else
                                                 {
                                                     <span class="stext-105 cl3">
-                                                        @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) vnđ
+                                                        @string.Format("{0:#,##0}", double.Parse(row["PriceVN"].ToString())) đ
                                                     </span>
                                                 }
                                             }

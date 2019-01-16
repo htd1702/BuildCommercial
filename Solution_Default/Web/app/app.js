@@ -13,6 +13,7 @@
             'default.sizes',
             'default.banners',
             'default.infos',
+            'default.report',
             'default.common'
         ])
         .config(config)
@@ -142,9 +143,11 @@
                 ListColor: 'List Color',
                 ListInfo: 'List Info',
                 ListOrder: 'List Order',
-                OrderDetail: 'Order Detail',
                 ListNewCategory: 'List News Category',
                 ListNew: 'List News',
+                ListSatistical: 'Statistical',
+                PageNews: 'Page News',
+                PageShop: 'Page Shop',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'
@@ -216,9 +219,11 @@
                 ListColor: 'Danh sách màu sắc',
                 ListInfo: 'Thông tin cửa hàng',
                 ListOrder: 'Danh sách đơn đặt hàng',
-                OrderDetail: 'Chi tiết đơn hàng',
                 ListNewCategory: 'Danh sách danh mục tin tức',
                 ListNew: 'Danh sách tin tức',
+                ListSatistical: 'Danh sách thống kê',
+                PageNews: 'Trang tin tức',
+                PageShop: 'Trang bán hàng',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'
@@ -290,9 +295,11 @@
                 ListColor: 'List Color',
                 ListInfo: 'List Info',
                 ListOrder: 'List Order',
-                OrderDetail: 'Order Detail',
                 ListNewCategory: 'List News Category',
                 ListNew: 'List News',
+                ListSatistical: 'Statistical',
+                PageNews: 'Page News',
+                PageShop: 'Page Shop',
                 en: 'English',
                 vi: 'Tiếng Việt',
                 fr: 'French'

@@ -372,6 +372,7 @@
     <Content Include="app\components\colors\views\colorEditView.html" />
     <Content Include="app\components\colors\views\colorListView.html" />
     <Content Include="app\components\home\controller\baseController.js" />
+    <Content Include="app\components\home\controller\home.module.js" />
     <Content Include="app\components\home\controller\homeController.js" />
     <Content Include="app\components\home\controller\rootController.js" />
     <Content Include="app\components\infomartion\controller\infoEditController.js" />
@@ -4422,6 +4423,7 @@
     <Content Include="Views\Cart\OrderSuccess.cshtml" />
     <Content Include="Views\Product\HotProductOverView.cshtml" />
     <Content Include="Views\Product\SaleProductOverView.cshtml" />
+    <Content Include="Views\Product\HotProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

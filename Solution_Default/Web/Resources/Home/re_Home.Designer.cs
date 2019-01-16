@@ -196,6 +196,15 @@ namespace Web.Resources.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hot.
+        /// </summary>
+        public static string Hot {
+            get {
+                return ResourceManager.GetString("Hot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - Adelade.ca.
         /// </summary>
         public static string LinkTile {
@@ -354,6 +363,15 @@ namespace Web.Resources.Home {
         public static string TopRate {
             get {
                 return ResourceManager.GetString("TopRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trademark.
+        /// </summary>
+        public static string Trademark {
+            get {
+                return ResourceManager.GetString("Trademark", resourceCulture);
             }
         }
     }

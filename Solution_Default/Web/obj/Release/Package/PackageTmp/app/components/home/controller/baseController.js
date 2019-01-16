@@ -10,7 +10,7 @@
         function Show_Notifications() {
             apiService.get('/api/order/getneworder', null, function (result) {
                 if (result.data.TotalCount == 0)
-                    notificationService.displayWarning("Không có bản ghi nào được tìm thấy!");
+                    notificationService.displayWarning("No record!");
                 else {
                     $scope.Notifications = result.data;
                 }

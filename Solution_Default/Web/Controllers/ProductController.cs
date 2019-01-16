@@ -41,6 +41,14 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult HotProduct()
+        {
+            Session["ShoppingUrl"] = "/hot-product";
+            ViewBag.BannerImage = _bannerService.ListBannerByType(2, 4);
+            ViewBag.Categories = _productCategoryService.GetCategoriyByType(3).Where(p => p.Type == 1).ToList();
+            return View();
+        }
+
         public ActionResult NewProduct()
         {
             Session["ShoppingUrl"] = "/new-product";
@@ -181,6 +189,31 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        public JsonResult ReportProduct(string fromDate, string toDate)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(fromDate))
+                    fromDate = "%";
+                if (string.IsNullOrWhiteSpace(toDate))
+                    toDate = "%";
+                DataTable dt = _productService.ReportProduct(fromDate, toDate);
+                List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+                if (dt.Rows.Count > 0)
+                {
+                    //Get data by take
+                    var model = dt.AsEnumerable().OrderBy(p => p.Field<int>("ID")).CopyToDataTable();
+                    list = _productService.GetTableRows(model);
+                }
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
         public JsonResult SearchProduct(string keyword)
         {
             string key = keyword.ToLower().Replace(" ", "-");
@@ -214,6 +247,13 @@ namespace Web.Controllers
                 list = _productService.GetTableRows(model);
             }
             return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListHotProduct()
+        {
+            var model = _productService.ListHotProduct();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

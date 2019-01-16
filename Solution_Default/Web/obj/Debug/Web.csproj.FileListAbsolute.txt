@@ -173,9 +173,7 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Diagnos
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Diagnostics.Process.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.Compression.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.Pipes.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Reflection.Metadata.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.Security.AccessControl.dll

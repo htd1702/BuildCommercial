@@ -45,7 +45,7 @@
             //call apiService url,params,success,error
             apiService.get('/api/order/getall', config, function (result) {
                 if (result.data.TotalCount == 0)
-                    notificationService.displayWarning("Không có bản ghi nào được tìm thấy!");
+                    notificationService.displayWarning("No records were found!");
                 $scope.orders = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
@@ -56,17 +56,17 @@
         }
         //method delete
         function deleteOrder(id) {
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 var config = {
                     params: {
                         id: id
                     }
                 };
                 apiService.delete("/api/order/delete", config, function () {
-                    notificationService.displaySuccess("Xóa thành công!");
+                    notificationService.displaySuccess("Delete success!");
                     search();
                 }, function () {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete is not success!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');
@@ -75,7 +75,7 @@
         //method delete multi
         function deleteAllOrders() {
             var listId = [];
-            $ngBootbox.confirm("Bạn có muốn xóa không?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allOrders:checked").each(function () {
                     listId.push($(this).val());
                 });
@@ -85,10 +85,10 @@
                     }
                 };
                 apiService.delete("/api/order/deletemulti", config, function (result) {
-                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    notificationService.displaySuccess('Delete ' + result.data + ' record.');
                     search();
                 }, function (error) {
-                    notificationService.displayError("Xóa không thành công!");
+                    notificationService.displayError("Delete is not success!");
                 });
             }, function () {
                 console.log('Confirm dismissed!');

@@ -24,6 +24,7 @@ app.controller("ProductController", ProductController);
 app.controller("ProductCategoryController", ProductCategoryController);
 app.controller("ProductSaleController", ProductSaleController);
 app.controller("NewProductController", NewProductController);
+app.controller("HotProductController", HotProductController);
 app.controller("ShoppingCartController", ShoppingCartController);
 
 //---------------------------FILTER---------------------------------//
@@ -438,6 +439,165 @@ function NewProductController($scope, $http) {
                 data: { categories: id, parentID: parentID },
             }).then(function (response) {
                 $scope.productNew = response.data;
+            });
+        });
+    });
+}
+
+//Hot Product
+HotProductController.$inject = ["$scope", "$http"];
+function HotProductController($scope, $http) {
+    var count = 0;
+    $scope.currentPage = 0;
+    $scope.itemsPerPage = 8;
+    $scope.productHot = [];
+    $scope.listColor = [];
+    $scope.LoadListHotProduct = LoadListHotProduct;
+    //funtion load list sale product
+    function LoadListHotProduct() {
+        return $http({
+            method: 'GET',
+            url: '/Product/ListHotProduct',
+            async: false,
+        }).then(function (response) {
+            $scope.productHot = response.data;
+        });
+    }
+    //funtion load list color
+    function LoadListColor() {
+        $.ajax({
+            url: "/Color/LoadListColor",
+            type: "GET",
+            dataType: "JSON",
+            async: false,
+            success: function (data) {
+                $scope.listColors = data;
+            }
+        });
+    }
+    //function search
+    $("#txt_KeywordProductHot").blur(function () {
+        var keyword = $(this).val();
+        keyword = changeStamped(keyword);
+        keyword = jQuery.trim(keyword);
+        return $http({
+            method: 'POST',
+            url: '/Product/SearchProduct',
+            async: false,
+            data: { keyword: keyword }
+        }).then(function (response) {
+            $scope.productHot = response.data;
+        });
+    });
+    //function find by color
+    $scope.btnColor = function (index, event, colorID) {
+        $("#sort-color > li > a").removeClass("filter-link-active");
+        $(event.currentTarget).addClass("filter-link-active");
+        var fromPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-from");
+        var toPrice = $("#sort-price > li > input[name='txt_checkPrice']").attr("data-to");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productHot = response.data;
+        });
+    };
+    //function find by price
+    $("#sort-price > li > input[name='txt_checkPrice']").click(function () {
+        var fromPrice = $(this).attr("data-from");
+        var toPrice = $(this).attr("data-to");
+        var colorID = $("#sort-color > li").find(".filter-link-active").attr("data-id");
+        var categoryID = $(".treegrid-container").find("a[data-active='true']").attr("data-id");
+        if (colorID == undefined)
+            colorID = 0;
+        return $http({
+            method: 'POST',
+            url: '/Product/LoadListProduct',
+            async: false,
+            data: { colorID: colorID, fromPrice: fromPrice, toPrice: toPrice, categoryID: categoryID }
+        }).then(function (response) {
+            $scope.productHot = response.data;
+        });
+    });
+    //call funtion load list sale product
+    LoadListHotProduct();
+    //Load list color
+    LoadListColor();
+    //paging
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+        $scope.range = function () {
+            var rangeSize = 3;
+            var ret = [];
+            var start;
+
+            start = $scope.currentPage;
+            if (start > $scope.pageCount() - rangeSize) {
+                start = $scope.pageCount() - rangeSize + 1;
+                if (start < 0)
+                    start = 0;
+            }
+
+            for (var i = start; i < start + rangeSize; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+        };
+
+        $scope.prevPageDisabled = function () {
+            return $scope.currentPage == 0 ? "disabled" : "";
+        };
+
+        $scope.pageCount = function () {
+            var count = Math.ceil($scope.productHot.length / $scope.itemsPerPage) - 1;
+            return count;
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pageCount()) {
+                $scope.currentPage++;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            }
+        };
+
+        $scope.nextPageDisabled = function () {
+            var countMax = $scope.pageCount();
+            return $scope.currentPage == countMax ? "disabled" : "";
+        };
+
+        $scope.setPage = function (n) {
+            $scope.currentPage = n;
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        };
+    });
+    $(document).ready(function () {
+        //function click change parent
+        $(".btnShowDetailsProduct").click(function () {
+            $(".btnShowDetailsProduct").each(function () {
+                $(this).attr("data-active", false);
+            });
+            $(this).attr("data-active", true);
+
+            var id = $(this).attr("data-id");
+            var parentID = $(this).attr("data-parent");
+            if (parentID == undefined)
+                parentID = 0;
+            return $http({
+                method: 'POST',
+                url: '/Product/LoadListProductByCategory',
+                async: false,
+                data: { categories: id, parentID: parentID },
+            }).then(function (response) {
+                $scope.productHot = response.data;
             });
         });
     });

@@ -1,72 +1,46 @@
-﻿<div class="container-fluid">
+﻿<!-- MAIN CONTENT-->
+<div class="col-md-12">
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">content_copy</i>
-                    </div>
-                    <p class="card-category">Used Space</p>
-                    <h3 class="card-title">
-                        49/50
-                        <small>GB</small>
-                    </h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons text-danger">warning</i>
-                        <a href="#pablo">Get More Space...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">store</i>
-                    </div>
-                    <p class="card-category">Revenue</p>
-                    <h3 class="card-title">$34,245</h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">date_range</i> Last 24 Hours
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                    <div class="card-icon">
-                        <i class="material-icons">info_outline</i>
-                    </div>
-                    <p class="card-category">Fixed Issues</p>
-                    <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">local_offer</i> Tracked from Github
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                    <div class="card-icon">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    <p class="card-category">Followers</p>
-                    <h3 class="card-title">+245</h3>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">update</i> Just Updated
-                    </div>
-                </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="txt_search" type="date" class="form-control" ng-model="fromDate" name="fromDate">&nbsp;
+                <input id="txt_search" type="date" class="form-control" ng-model="toDate" name="toDate">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                </span>
             </div>
         </div>
     </div>
 </div>
+<div class="card">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">{{'ListBanner' | translate}}</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-primary">
+                    <tr>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'ColorName' | translate}}</th>
+                        <th>{{'SizeName' | translate}}</th>
+                        <th>{{'Quantitty' | translate}}</th>
+                        <th>{{'Total' | translate}}</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in report | orderBy: 'OrderDate': true">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.ColorName}}</td>
+                        <td>{{item.SizeName}}</td>
+                        <td>{{item.Quantitty}}</td>
+                        <td>{{item.Total}}</td>
+                        <td>{{item.Day}}/{{item.Month}}/{{item.Year}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

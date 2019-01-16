@@ -74,7 +74,7 @@
         //method delete multi
         function deleteAllBanners() {
             var listId = [];
-            $ngBootbox.confirm("Do y want delete?").then(function () {
+            $ngBootbox.confirm("Do you want delete?").then(function () {
                 $(".chk_allBanners:checked").each(function () {
                     listId.push($(this).val());
                 });

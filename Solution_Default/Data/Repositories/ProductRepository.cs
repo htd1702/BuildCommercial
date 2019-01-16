@@ -27,11 +27,15 @@ namespace Data.Repositories
 
         DataTable ListProductByCategoryType(int type, int categoryType);
 
+        DataTable ReportProduct(string fromDate, string toDate);
+
         List<string> ListNameProduct(string keyword);
 
         IEnumerable<Product> ListProductByCategory(int id);
 
         IEnumerable<Product> ListProductDiscount();
+
+        IEnumerable<Product> ListHotProduct();
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
 
@@ -101,6 +105,16 @@ namespace Data.Repositories
             pram[0] = new SqlParameter("@ID", SqlDbType.Int, 4);
             pram[0].Value = id;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.GetListRelatedProduct", pram).Tables[0];
+        }
+
+        public DataTable ReportProduct(string fromDate, string toDate)
+        {
+            SqlParameter[] pram = new SqlParameter[5];
+            pram[0] = new SqlParameter("@FromDate", SqlDbType.VarChar, 10);
+            pram[0].Value = fromDate;
+            pram[1] = new SqlParameter("@ToDate", SqlDbType.VarChar, 10);
+            pram[1].Value = toDate;
+            return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.ReportProduct", pram).Tables[0];
         }
 
         public List<string> ListNameProduct(string keyword)
@@ -175,6 +189,11 @@ namespace Data.Repositories
             pram[1] = new SqlParameter("@CategoryType", SqlDbType.Int, 4);
             pram[1].Value = categoryType;
             return SqlHelper.ExecuteDataset(connectString, CommandType.StoredProcedure, "dbo.ListProductByCategoryType", pram).Tables[0];
+        }
+
+        public IEnumerable<Product> ListHotProduct()
+        {
+            return this.DbContext.Products.Where(p => p.Status == true && p.HotFlag == true).ToList();
         }
     }
 }

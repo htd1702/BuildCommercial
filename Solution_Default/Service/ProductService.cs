@@ -23,6 +23,8 @@ namespace Service
 
         IEnumerable<Product> ListProductDiscount();
 
+        IEnumerable<Product> ListHotProduct();
+
         IEnumerable<Product> ListProductByCategory(int id);
 
         IEnumerable<Product> GetLastest(int top);
@@ -48,6 +50,8 @@ namespace Service
         DataTable ListStoreOverview(int type, int categoryType);
 
         DataTable ListProductByCategoryType(int type, int categoryType);
+
+        DataTable ReportProduct(string fromDate, string toDate);
 
         string GetCodeIndexProduct();
 
@@ -274,6 +278,16 @@ namespace Service
         public DataTable LoadListProductByCategory(string categories)
         {
             return _productRepository.LoadListProductByCategory(categories);
+        }
+
+        public DataTable ReportProduct(string fromDate, string toDate)
+        {
+            return _productRepository.ReportProduct(fromDate, toDate);
+        }
+
+        public IEnumerable<Product> ListHotProduct()
+        {
+            return _productRepository.ListHotProduct();
         }
     }
 }
