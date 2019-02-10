@@ -162,8 +162,8 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.News.re_News.vi.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.ShopingCart.re_ShopingCart.vi.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.ShopingCart.re_ShopingCart.fr.resources
-E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.Contact.re_Contact.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.Contact.re_Contact.vi.resources
 E:\Studys\Project\BuildCommercial\Solution_Default\Web\obj\Release\Web.Resources.Contact.re_Contact.fr.resources
+E:\Studys\Project\BuildCommercial\Solution_Default\Web\bin\roslyn\System.IO.FileSystem.dll

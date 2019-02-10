@@ -26,4 +26,3 @@ E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.cspro
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.csproj.CopyComplete
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.dll
 E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.pdb
-E:\Studys\Project\BuildCommercial\Solution_Default\Model\obj\Release\Model.csprojAssemblyReference.cache

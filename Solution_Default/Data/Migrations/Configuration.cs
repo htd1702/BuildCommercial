@@ -24,17 +24,17 @@
 
             var user = new ApplicationUser()
             {
-                UserName = "hieunt",
-                Email = "hieu.n2395@gmail.com",
+                UserName = "admin1",
+                Email = "adelade.le.ca@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
-                FullName = "Ngô Trung Hiếu",
-                PhoneNumber = "0938570330",
-                Address = "59/15",
+                FullName = "adelade",
+                PhoneNumber = "5149950553",
+                Address = "4865 avenue Cumberland, Montreal, Quebec, Canada",
                 LockoutEnabled = true,
             };
             //create new user
-            manager.Create(user, "123456");
+            manager.Create(user, "adelade741");
 
             //check role manager
             if (!roleManager.Roles.Any())
@@ -43,7 +43,7 @@
                 roleManager.Create(new IdentityRole { Name = "User" });
             }
             //find email
-            var adminUser = manager.FindByEmail("hieu.n2395@gmail.com");
+            var adminUser = manager.FindByEmail("adelade.le.ca@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }

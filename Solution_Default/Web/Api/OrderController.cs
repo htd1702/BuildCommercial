@@ -80,7 +80,7 @@ namespace Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _orderService.GetAll().Take(5);
+                var model = _orderService.GetAll().OrderByDescending(o => o.OrderDate).Take(5);
                 var responseData = Mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(model);
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
